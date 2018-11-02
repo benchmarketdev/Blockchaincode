@@ -1,0 +1,276 @@
+<div class="marketingTestsPage u-bgGradient">
+
+  <div class="marketingTestsWrapper" bg-state-manager>
+
+    <div class="visible-md visible-lg">
+      <div class="countentWrapperRound countentWrapperRound--fixedHeight">
+        <div class="row u-fullHeight">
+
+          <div class="col-md-7 u-sidePad30 u-roundedTopLeft u-roundedBottomLeft u-fullHeight">
+            <h1><span class="thin">The World's Most Secure Bitcoin Wallet.</span> Guaranteed.</h1>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="infoPanel">
+                  <div class="icon icon-large icon-lock"></div>
+                  <h4>Industry-leading multi-sig security</h4>
+                  <p class="subText u-textLightGray">
+                    Maximum security with minimal risk to accidental loss.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="infoPanel">
+                  <div class="icon icon-large icon-user"></div>
+                  <h4>User access control</h4>
+                  <p class="subText u-textLightGray">
+                    Set spending limits and customized permission levels for users on your wallet.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="infoPanel">
+                  <div class="icon icon-large icon-key"></div>
+                  <h4>Maintain Complete Custody</h4>
+                  <p class="subText u-textLightGray">
+                    You control your keys with all transactions on the blockchain.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="infoPanel">
+                  <div class="icon icon-large icon-umbrella"></div>
+                  <h4>The BitGo Promise</h4>
+                  <p class="subText u-textLightGray">Your bitcoin is protected by BitGo's insurance-based offering.*</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <p class="small u-textBottomRight u-textLightGray">*Requires a premium account. For more details, see <a href="{{ TemplatePathPrefix }}/insurance">bitgo.com/insurance</a></p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-md-5 u-roundedTopRight u-roundedBottomRight u-bgGray u-fullHeight">
+
+            <div ng-show="showState('signup')">
+
+              <form novalidate name="signupForm" signup-form>
+
+                <h2>Create Your Wallet <span class="u-floatRight">Have an account? <a href="{{ TemplatePathPrefix }}/login">Login</a></span> </h2>
+
+                <bg-form-error></bg-form-error>
+
+                <div class="formRow" ng-class="{ 'formRow--error': emailError }">
+                  <p class="notice" ng-show="emailError">Invalid email address</p>
+                  <div class="inputText">
+                    <input type="email" name="email" class="inputText-input" placeholder="Email Address" ng-model="user.settings.email.email" bg-input-validator bg-focus-when="true" />
+                  </div>
+                </div>
+
+                <div class="formRow" ng-class="{ 'formRow--error': passwordError }">
+                  <i class="formRow-icon icon icon--qmark" popover-trigger="mouseenter" popover-placement="right" popover-template="auth/templates/passwordpopover-partial.html"></i>
+
+                  <p class="notice" ng-show="passwordError">Invalid password</p>
+                  <div class="inputText">
+                    <input type="password" name="password" class="inputText-input" placeholder="Password" ng-model="password" bg-password-strength="passwordStrength" on-password-change="checkStrength(passwordStrength)" bg-input-validator />
+                  </div>
+                  <div class="passwordStrength" ng-show="showPasswordStrength()">
+                    <div class="passwordStrength-indicator">
+                      <span class="passwordStrength-fill" ng-class="passwordStrength.progress.class"></span>
+                    </div>
+                    It would take {{ passwordStrength.crack_time_display }} to crack this password.
+                  </div>
+                </div>
+
+                <div class="formRow" ng-class="{ 'formRow--error': passwordConfirmError }">
+                  <p class="notice" ng-show="passwordConfirmError">Invalid password confirmation</p>
+                  <div class="inputText">
+                    <input type="password" class="inputText-input" name="passwordConfirm" placeholder="Password Confirm" ng-model="passwordConfirm" bg-input-validator />
+                  </div>
+                </div>
+
+                <p class="subText u-colorBlueGreyDark">
+                  <input type="checkbox" name="terms" ng-model="agreedToTerms">
+                  <span ng-click="toggleTerms()">I have read and agree to the</span> <a href="https://www.bitgo.com/terms" target="_blank">Terms of Service</a>
+                </p>
+
+                <div class="buttons">
+                  <button type="submit" class="button button--fullWidth" name="btn-submit" ng-click="submitSignup()">CREATE BITCOIN WALLET</button>
+                </div>
+              </form>
+            </div>
+
+            <div ng-show="showState('confirmEmail')">
+
+              <h2>Create Your Wallet</h2>
+
+              <p class="u-typography-3">An email was sent to: {{ user.settings.email.email }}</p>
+              <p class="u-typography-3">Click on the activation link in the email to verify your email address.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="small u-textWhite">
+        TRUSTED BY THE WORLD'S LEADING BITCOIN BUSINESSES
+      </p>
+
+      <div>
+        <span class="logo logo-bitstamp"></span>
+        <span class="logo logo-changetip"></span>
+        <span class="logo logo-genesis"></span>
+        <span class="logo logo-bitquick"></span>
+        <span class="logo logo-bitfinex"></span>
+        <span class="logo logo-ecoin"></span>
+      </div>
+    </div>
+
+
+    <!-- View on small and xs screens -->
+    <div class="hidden-md hidden-lg">
+      <div class="countentWrapperRound">
+        <div class="row">
+
+          <div class="col-md-12">
+            <h1><span class="thin">The World's Most Secure Bitcoin Wallet.</span> Guaranteed.</h1>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="infoPanel">
+                  <div class="icon icon-large icon-lock"></div>
+                  <h4>Industry-leading multi-sig security</h4>
+                  <p class="subText u-textLightGray">
+                    Maximum security with minimal risk to accidental loss.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="infoPanel">
+                  <div class="icon icon-large icon-user"></div>
+                  <h4>User access control</h4>
+                  <p class="subText u-textLightGray">
+                    Set spending limits and customized permission levels for users on your wallet.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="infoPanel">
+                  <div class="icon icon-large icon-key"></div>
+                  <h4>Maintain Complete Custody</h4>
+                  <p class="subText u-textLightGray">
+                    You control your keys with all transactions on the blockchain.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="infoPanel">
+                  <div class="icon icon-large icon-umbrella"></div>
+                  <h4>The BitGo Promise</h4>
+                  <p class="subText u-textLightGray">Your bitcoin is protected by BitGo's insurance-based offering.*</p>
+                </div>
+              </div>
+
+
+                <div class="row u-alignCenter">
+                  <p class="small u-textLightGray">*Requires a premium account. For more details, see <a href="{{ TemplatePathPrefix }}/insurance">bitgo.com/insurance</a></p>
+                </div>
+
+
+            </div>
+          </div>
+
+          <div class="col-md-12 u-bgGray u-roundedBottomRight u-roundedBottomLeft">
+
+            <div ng-show="showState('signup')">
+
+              <form class="u-noMargin" novalidate name="signupForm" signup-form>
+
+                <h2>Create Your Wallet <span class="u-floatRight">Have an account? <a href="{{ TemplatePathPrefix }}/login">Login</a></span> </h2>
+
+                <bg-form-error></bg-form-error>
+
+                <div class="formRow" ng-class="{ 'formRow--error': emailError }">
+                  <p class="notice" ng-show="emailError">Invalid email address</p>
+                  <div class="inputText">
+                    <input type="email" name="email" class="inputText-input" placeholder="Email Address" ng-model="user.settings.email.email" bg-input-validator bg-focus-when="true" />
+                  </div>
+                </div>
+
+                <div class="formRow" ng-class="{ 'formRow--error': passwordError }">
+                  <i class="formRow-icon icon icon--qmark" popover-trigger="mouseenter" popover-placement="right" popover-template="auth/templates/passwordpopover-partial.html"></i>
+
+                  <p class="notice" ng-show="passwordError">Invalid password</p>
+                  <div class="inputText">
+                    <input type="password" name="password" class="inputText-input" placeholder="Password" ng-model="password" bg-password-strength="passwordStrength" on-password-change="checkStrength(passwordStrength)" bg-input-validator />
+                  </div>
+                  <div class="passwordStrength" ng-show="showPasswordStrength()">
+                    <div class="passwordStrength-indicator">
+                      <span class="passwordStrength-fill" ng-class="passwordStrength.progress.class"></span>
+                    </div>
+                    It would take {{ passwordStrength.crack_time_display }} to crack this password.
+                  </div>
+                </div>
+
+                <div class="formRow" ng-class="{ 'formRow--error': passwordConfirmError }">
+                  <p class="notice" ng-show="passwordConfirmError">Invalid password confirmation</p>
+                  <div class="inputText">
+                    <input type="password" class="inputText-input" name="passwordConfirm" placeholder="Password Confirm" ng-model="passwordConfirm" bg-input-validator />
+                  </div>
+                </div>
+
+                <p class="subText u-colorBlueGreyDark">
+                  <input type="checkbox" name="terms" ng-model="agreedToTerms">
+                  <span ng-click="toggleTerms()">I have read and agree to the</span> <a href="https://www.bitgo.com/terms" target="_blank">Terms of Service</a>
+                </p>
+
+                <div class="buttons">
+                  <button type="submit" class="button button--fullWidth" name="btn-submit" ng-click="submitSignup()">CREATE BITCOIN WALLET</button>
+                </div>
+
+              </form>
+            </div>
+
+            <div ng-show="showState('confirmEmail')">
+
+              <form class="u-noMargin">
+                <h2>Create Your Wallet</h2>
+
+                <p class="u-typography-3">An email was sent to: {{ user.settings.email.email }}</p>
+                <p class="u-typography-3">Click on the activation link in the email to verify your email address.</p>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="small u-textWhite">
+        TRUSTED BY THE WORLD'S LEADING BITCOIN BUSINESSES
+      </p>
+
+      <div class="row logo logo-bitstamp"></div>
+      <div class="row logo logo-changetip"></div>
+      <div class="row logo logo-genesis"></div>
+      <div class="row logo logo-bitquick"></div>
+      <div class="row logo logo-bitfinex"></div>
+      <div class="row logo logo-ecoin"></div>
+
+    </div>
+
+  </div>
+
+</div>

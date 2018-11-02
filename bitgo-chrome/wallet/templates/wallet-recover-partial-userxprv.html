@@ -1,0 +1,24 @@
+<div>
+
+  <p class="introText u-typography-3 u-colorGreyDark u-marginBottom45">
+    Enter the user private key for this wallet in the input below (begins with 'xprv'). If you have a paper print-out of the KeyCard,
+    use a QR code reader to scan the QR code for the user key, and enter the resulting text.
+  </p>
+
+  <form class="row" name="recoverWithUserXprvForm">
+    <fieldset class="col col--oneOfTwo">
+
+      <div class="formRow" ng-class="{ 'formRow--error': userXprvError }">
+        <p class="notice" ng-show="userXprvError">Invalid private key</p>
+        <div class="inputText">
+          <input type="text" name="userXprv" class="inputText-input" placeholder="User private key" ng-model="userInputRecoveryData.userXprv" bg-input-validator bg-focus-when="true" />
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="button" name="recoverWithUserXprv" ng-click="recoverWithUserXprv()">Recover</button>
+      </div>
+    </fieldset>
+  </form>
+
+</div>

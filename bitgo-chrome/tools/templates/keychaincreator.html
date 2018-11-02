@@ -1,0 +1,50 @@
+<div class="mainContent contentWrapper">
+
+  <div class="row">
+    <h1>Keychain Creator</h1>
+    <p class="u-typography-4 u-colorBlueGreyDark">
+      Create new, random Keychains for use with BitGo. Keychains are BitGo's term for <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP32 compatible Hierarchical, Deterministic Wallets</a>.
+    </p>
+    <i>
+      This tool runs entirely in your browser.  The tool is monitoring all mouse movements to collect random entropy, and you can also contribute your own randomness into the text box below.  No key data is exchanged with BitGo servers (or any servers) by using this tool. Do not use this tool on the same machine where you create your BitGo wallet.
+    </i>
+  </div>
+
+  <div class="row u-pushDown35">
+    <form class="form-horizontal">
+      <label>Enter Random Data</label>
+      <div class="inputText">
+        <input type="text" class="inputText-input" ng-model="random" />
+      </div>
+      <button type="submit" class="button" name="onGenerateBIP32Key" ng-click="onGenerateBIP32Key()">Generate My Key</button>
+    </form>
+  </div>
+
+  <div class="u-pushDown35" ng-show="xpub">
+    <div class="row">
+      <label>Public Keychain (xpub)</label>
+      <p class="u-typography-7 u-colorBlueGreyDark">{{ xpub }}</p>
+    </div>
+    <div class="row">
+      <bg-qr-code text="{{ xpub }}"></bg-qr-code>
+    </div>
+  </div>
+
+  <div class="u-pushDown35" ng-show="xpub">
+    <div class="row">
+      <label>Private Keychain (xprv)</label>
+      <p class="u-typography-7 u-colorBlueGreyDark">{{ xprv }}</p>
+    </div>
+    <div class="row">
+      <bg-qr-code text="{{ xprv }}"></bg-qr-code>
+    </div>
+  </div>
+
+  <div class="u-pushDown35" ng-show="xpub">
+    <div class="row">
+      <label>Verification Address</label>
+      <p class="u-typography-4 u-colorBlueGreyDark">{{ address }}</p>
+    </div>
+  </div>
+
+</div>

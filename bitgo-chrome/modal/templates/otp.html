@@ -1,0 +1,21 @@
+<div>
+  <div>
+    <h1 class="modal-heading">2-Step Verification</h1>
+  </div>
+
+  <bg-form-error></bg-form-error>
+
+  <form class="u-noMargin" novalidate name="modalOtpForm" modal-otp-form>
+
+    <div class="formRow" ng-class="{ 'formRow--error': otpError }">
+      <div class="inputText">
+        <input type="text" name="otp" class="inputText-input" placeholder="Enter code" ng-model="form.otp" bg-focus-when="true" max-length="44" />
+      </div>
+    </div>
+    <a class="u-typography-4 u-pullRight" ng-show="user.isAuthyUser()" ng-click="resendOTP()">Resend</a>
+
+    <button type="submit" class="button" name="submitOTP" ng-click="submitOTP()">Submit</button>
+    <a class="u-colorGreyDark u-typography-4" ng-click="closeWithError('cancel')">Cancel</a>
+
+  </form>
+</div>

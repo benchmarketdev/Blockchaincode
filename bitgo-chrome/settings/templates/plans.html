@@ -1,0 +1,188 @@
+<div>
+
+  <!-- Stripe is not enabled in the Chrome App due to CSP issues -->
+  <div ng-show="isChromeApp" class="row">
+    <h2>Changing your billing plan is not supported in the Chrome App.</h2>
+    <p class="u-typography-4 u-colorBlueGreyDark">
+      Please <a href="https://bitgo.com/login" target="_blank">log into BitGo</a> in your browser to upgrade your account.
+    </p>
+  </div>
+
+  <div ng-hide="isChromeApp" class="row" settings-plans-form>
+
+    <!-- Plan selection -->
+    <ul class="selector row">
+
+      <li class="selectorPricingItem selectorPlans" ng-class="{ 'is-selected' : isSelectedPlan(plans.basic.name) || isSelectedPlan(plans.grandfathered.name) }" ng-click="selectPlan(plans.basic.name)">
+        <h4 class="selectorPlans-heading">Basic</h4>
+        <div class="selectorPlans-priceContainer">
+          <p class="selectorPlans-price--large">$<span class="selectorPlans-value--large">0</span></p>
+          <p class="selectorPlans-price--small">per month</p>
+        </div>
+        <p class="selectorPlans-small">This plan is free</p>
+        <div class="u-marginTop20">
+          <p class="selectorPlans-body u-typography-3">Unlimited Secure Wallets</p>
+          <p class="selectorPlans-body u-typography-3">Multi-user Permissions</p>
+          <p class="selectorPlans-body u-typography-3">Spending Limits</p>
+        </div>
+        <div class="u-alignCenter u-marginTop30 u-marginBottom10">
+          <div class="u-marginTop42" ng-show="isUserPlan(plans.basic.name) || isUserPlan(plans.grandfathered.name)">
+            <b class="selectorPlans-current u-typography-4" ng-class="{ 'u-colorBlue' : !(isSelectedPlan(plans.basic.name) || isSelectedPlan(plans.grandfathered.name)) }">Current Plan</b>
+          </div>
+          <button class="button buttonSubmit" ng-show="buttonState(plans.basic.name) == 'notSelectedNotUserPlan'" ng-click="selectPlan(plans.basic.name)">
+            <span ng-hide="isUserPlan(plans.basic.name) || isUserPlan(plans.grandfathered.name)">Downgrade</span>
+          </button>
+        </div>
+      </li>
+
+      <li class="selectorPricingItem selectorPlans" ng-class="{ 'is-selected' : isSelectedPlan(plans.plusMonthly.name) }" ng-click="selectPlan(plans.plusMonthly.name)">
+        <h4 class="selectorPlans-heading">Plus</h4>
+        <div class="selectorPlans-priceContainer">
+          <p class="selectorPlans-price--large">$<span class="selectorPlans-value--large">10</span></p>
+          <p class="selectorPlans-price--small">per month</p>
+        </div>
+
+        <p class="selectorPlans-small">Everything in Basic, and:</p>
+        <div class="u-marginTop20">
+          <p class="selectorPlans-body u-typography-3">Insurance-backed up to $10k*</p>
+          <p class="selectorPlans-body u-typography-3">Monthly Statements</p>
+          <p class="selectorPlans-body u-typography-3">Address Whitelisting</p>
+        </div>
+        <div class="u-alignCenter u-marginTop30 u-marginBottom10">
+          <div class="u-marginTop42" ng-show="isUserPlan(plans.plusMonthly.name)">
+            <b class="selectorPlans-current u-typography-4" ng-class="{ 'u-colorBlue' : !isSelectedPlan(plans.plusMonthly.name) }">Current Plan</b>
+          </div>
+          <button class="button buttonSubmit" ng-show="buttonState(plans.plusMonthly.name) == 'notSelectedNotUserPlan'" ng-click="selectPlan(plans.plusMonthly.name)">
+            <span ng-show="isUserPlan(plans.proMonthly.name)">Downgrade</span>
+            <span ng-show="isUserPlan(plans.basic.name) || isUserPlan(plans.grandfathered.name)">Upgrade</span>
+          </button>
+        </div>
+      </li>
+
+      <li class="selectorPricingItem selectorPlans" ng-class="{ 'is-selected' : isSelectedPlan(plans.proMonthly.name) }" ng-click="selectPlan(plans.proMonthly.name)">
+        <h4 class="selectorPlans-heading">Pro</h4>
+        <div class="selectorPlans-priceContainer">
+          <p class="selectorPlans-price--large">$<span class="selectorPlans-value--large">30</span></p>
+          <p class="selectorPlans-price--small">per month</p>
+        </div>
+
+        <p class="selectorPlans-small">Everything in Plus, and:</p>
+        <div class="u-marginTop20">
+          <p class="selectorPlans-body u-typography-3">Insurance-backed up to $250k*</p>
+          <p class="selectorPlans-body u-typography-3">View Only Users</p>
+          <p class="selectorPlans-body u-typography-3">Security Audit Log</p>
+        </div>
+        <div class="u-alignCenter u-marginTop30 u-marginBottom10">
+          <div class="u-marginTop42" ng-show="isUserPlan(plans.proMonthly.name)">
+            <b class="selectorPlans-current u-typography-4" ng-class="{ 'u-colorBlue' : !isSelectedPlan(plans.proMonthly.name) }">Current Plan</b>
+          </div>
+          <button class="button buttonSubmit" ng-show="buttonState(plans.proMonthly.name) == 'notSelectedNotUserPlan'"  ng-click="selectPlan(plans.proMonthly.name)">
+            <span ng-hide="isUserPlan(plans.proMonthly.name)">Upgrade</span>
+          </button>
+        </div>
+      </li>
+
+    </ul>
+
+    <div ng-show="UserPlanDifferentFromSelectedPlan()">
+      <div class="row">
+        <div class="col u-pushLeft40">
+          <h2>You are
+            <span ng-show="isUpgrade()">upgrading</span>
+            <span ng-hide="isUpgrade()">downgrading</span> to the <b class="u-colorBlue">{{selectedPlan.prettyName}}</b> plan
+          </h2>
+          <p class="u-typography-4">
+            <span ng-show="isSelectedPlan(plans.basic.name)">
+              Your card will no longer be charged.
+            </span>
+            <span ng-show="isSelectedPlan(plans.plusMonthly.name)">
+              <span ng-show="isUpgrade()">
+                Your card will be charged $10 today, recurring monthly.
+              </span>
+              <span ng-hide="isUpgrade()">
+                The prorated amount from your last payment will be applied to your next monthly bill of $30.
+              </span>
+            </span>
+            <span ng-show="isSelectedPlan(plans.proMonthly.name)">
+              <span ng-show="isUserPlan(plans.basic.name) || isUserPlan(plans.grandfathered.name)">
+                Your card will be charged $30 today, recurring monthly.
+              </span>
+              <span ng-show="isUserPlan(plans.plusMonthly.name)">
+                Your card will be charged a prorated amount for the remainder of this month and $30 recurring monthly thereafter.
+              </span>
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <!-- if the user is basic and doesn't have subscriptionId, we need the card -->
+      <div ng-hide="currentUser.settings.stripe.subscription.id">
+        <form name="formcreditcard" class="row">
+
+          <bg-form-error></bg-form-error>
+
+          <fieldset>
+
+            <div class="row">
+              <div class="col col--fourOfTwelve u-pushLeft40">
+                <label>Credit Card</label>
+                <p class="notice" ng-show="formcreditcard.creditCard.$invalid && !formcreditcard.creditCard.focused">Invalid credit card number</p>
+                <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.creditCard.$invalid && !formcreditcard.creditCard.focused }">
+                  <div class="inputText">
+                    <input name="creditCard" type="text" ng-model="cc.number" class="inputText-input" payments-validate="card" placeholder="0000 0000 0000 0000" payments-format="card" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 0, 'blur': 0 } }" ng-focus="initCardTracker()" bg-input-validator bg-focus-when="true" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col--twoOfTwelve">
+                <label>Expiration</label>
+                <p class="notice" ng-show="formcreditcard.expiry.$invalid && !formcreditcard.expiry.focused">Invalid expiration</p>
+                <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.expiry.$invalid && !formcreditcard.expiry.focused }">
+                  <div class="inputText">
+                    <input name="expiry" type="text" ng-model="cc.expiry" class="inputText-input" payments-validate="expiry" placeholder="MM/YY" payments-format="expiry" ng-model-options="{ updateOn: 'blur' }" bg-input-validator />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col--twoOfTwelve">
+                <label>CVC</label>
+                <p class="notice" ng-show="formcreditcard.cvc.$invalid && !formcreditcard.cvc.focused">Invalid CVC</p>
+                <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.cvc.$invalid && !formcreditcard.cvc.focused }">
+                  <div class="inputText">
+                    <input name="cvc" type="text" ng-model="cc.cvc" class="inputText-input" payments-validate="cvc" payments-format="cvc" placeholder="234" ng-model-options="{ updateOn: 'blur' }" bg-input-validator />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="button button--create u-marginTop40" name="submitCard" ng-click="submitCard(selectedPlan.planId)" ng-disabled="inProcess"><span ng-hide="inProcess">Upgrade to {{selectedPlan.prettyName}}</span><span ng-show="inProcess">Updating ..... </span></button>
+          </fieldset>
+        </form>
+      </div>
+
+      <div ng-show="currentUser.settings.stripe.subscription.id">
+        <div class="row">
+          <div class="col u-pushLeft40">
+            <p class="u-typography-4 u-marginTop-15"><span>Credit Card on record: xxxx xxxx xxxx {{currentUser.settings.stripe.customer.data.cards.data[0].last4}}</span></p>
+          </div>
+        </div>
+
+        <div class="buttons u-marginTop20 u-marginBottom35">
+          <button type="submit" class="button button--create" ng-click="changePlan(selectedPlan.planId)" ng-disabled="inProcess"><span ng-hide="inProcess"><span ng-show="isUpgrade()">Upgrade</span><span ng-hide="isUpgrade()">Downgrade</span> to {{selectedPlan.prettyName}}</span><span ng-show="inProcess"> Updating .... </span></button>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="plansChangeSection" class="u-marginTop-25 u-marginBottom10">
+      <a ng-click="goToViewInfo()" target="_blank">*Learn more</a>
+    </div>
+
+    <div ng-show="confirmationState">
+      <div class="alert alert--successLarge" ng-hide="returnedTransaction.needsApproval">
+        <i class="icon icon--checkmark"></i>
+        <p class="alert-text">Your Plan was changed to {{userPlan.prettyName}}.</p>
+      </div>
+    </div>
+  </div>
+</div>

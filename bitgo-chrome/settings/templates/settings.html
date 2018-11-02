@@ -1,0 +1,26 @@
+<div bg-state-manager>
+  <section class="masthead">
+    <div class="contentWrapper">
+      <div class="row u-pushDown25">
+        <div class="col col--noPadding">
+          <h1 class="masthead-heading">Account Settings</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col--noPadding">
+          <nav>
+            <ul class="sectionNav">
+              <li class="sectionNav-item"><a ng-click="setState('profile')" class="sectionNav-link" ng-class="{ 'is-selected': showState('profile') }">Profile</a></li>
+              <li class="sectionNav-item"><a ng-click="setState('security')" class="sectionNav-link" ng-class="{ 'is-selected': showState('security') }">Security</a></li>
+              <li class="sectionNav-item"><a ng-click="setState('preferences')" class="sectionNav-link" ng-class="{ 'is-selected': showState('preferences') }">Preferences</a></li>
+              <li class="sectionNav-item"><a ng-click="setState('api_access')" class="sectionNav-link" ng-class="{ 'is-selected': showState('api_access') }">API Access</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <main class="mainContent contentWrapper">
+    <ng-include src="settingsStateTemplateSource"></ng-include>
+  </main>
+</div>

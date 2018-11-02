@@ -1,0 +1,41 @@
+<div class="approvalRequest-request row">
+	<div ng-show="userIsCreator" class="col">
+		<p>
+			Your request to
+			<span ng-switch="approvalItem.info.userChangeRequest.action">
+				<span ng-switch-when="shared">add</span>
+				<span ng-switch-when="removed">remove</span>
+			</span> a user is awaiting approval<br>
+			<b bg-get-user user-id="{{ approvalItem.info.userChangeRequest.userChanged }}">{{ user.settings.email.email }}</b> as <b>{{ approvalItem.info.userChangeRequest.permissions | bgPermissionsRoleConversionFilter }}</b>
+		</p>
+		<div class="meta">{{approvalItem.prettyDate}}</div>
+	</div>
+	<div ng-hide="userIsCreator" class="col">
+		<p>
+			<b bg-get-user user-id="{{ approvalItem.creator }}">{{ user.settings.email.email }}</b> requested to 
+			<span ng-switch="approvalItem.info.userChangeRequest.action">
+				<span ng-switch-when="shared">add</span>
+				<span ng-switch-when="removed">remove</span>
+			</span> a user<br>
+			<b bg-get-user user-id="{{ approvalItem.info.userChangeRequest.userChanged }}">{{ user.settings.email.email }}</b> as <b>{{ approvalItem.info.userChangeRequest.permissions | bgPermissionsRoleConversionFilter }}</b>
+		</p>
+		<div class="meta">{{approvalItem.prettyDate}}</div>
+	</div>
+	<div class="col col--pullRight">
+	 	<div class="buttons" ng-show="userIsCreator">
+	    	<a class="button button--small button--cancel" ng-click="setApprovalState('rejected')">Cancel</a>
+		</div>
+		<div class="buttons" ng-hide="userIsCreator">
+			<span bg-confirm-action>
+	        	<a class="button button--small button--green" ng-hide="confirmationMessage" ng-click="setApprovalState('approved')">Approve</a>
+	        	<a class="button button--small button--reject" ng-hide="confirmationMessage" ng-click="initiateAction()">Reject</a>
+	        	<span ng-show="confirmationMessage">Are you sure?
+	          		<a ng-click="setApprovalState('rejected')">Yes</a> | 
+	          		<a ng-click="cancelAction()">No</a>
+	        	</span>
+	    	</span>
+		</div>
+	</div>
+</div>
+
+

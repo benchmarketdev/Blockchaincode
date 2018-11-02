@@ -1,0 +1,8 @@
+<div class="customSelect customSelect--inlineSmall" bg-focus-ui>
+  <span class="customSelect-text">
+    {{ wallets.all[rewardWalletId].data.label }} <i class="icon icon--arrowSmallDown"></i>
+  </span>
+  <select data-ng-model="rewardWalletId" class="customSelect-select" ng-focus="highlightParent($event)" ng-blur="removeHighlight($event)">
+    <option ng-repeat="wallet in wallets.all" ng-disable="wallet.role !== 'Admin'" value="{{ wallet.data.id }}" ng-selected="isCurrentRewardWallet(wallet)">{{ wallet.data.label }}</option>
+  </select>
+</div>

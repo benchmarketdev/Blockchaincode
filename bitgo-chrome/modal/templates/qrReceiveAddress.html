@@ -1,0 +1,21 @@
+<div modal-qr-receive-address>
+  <div bg-state-manager>
+    <div class="row">
+      <div class="qrModalHeader"> Receive at:
+        <div class="qrModalHeaderWallet"> {{ locals.label }}</div>
+      </div>
+    </div>
+    <div class="u-alignCenter">
+      <div class="qrCode-modal-border-outer">
+        <div class="qrCode-modal-border-inner">
+          <bg-qr-code height="320" text=" {{ locals.address }} "></bg-qr-code>
+        </div>
+      </div>
+      <div>
+        <div class="qrModalHeaderAddress"> {{ locals.address }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

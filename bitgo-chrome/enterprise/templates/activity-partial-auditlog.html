@@ -1,0 +1,23 @@
+<div>
+
+  <div class="meta" ng-show="blockAuditLog()">
+    <h2>Audit Logs are a premium feature.</h2>
+    <p class="u-typography-4">To access a detailed security log of all wallet activity, <a ng-click="goToCreateOrg()">create an organization</a>.</p>
+  </div>
+
+  <div ng-hide="blockAuditLog()" activity-audit-log>
+    <table class="activityTable">
+
+      <thead>
+        <tr>
+          <th class="activityTable-events">Log Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="logItem in auditLog" audit-log-activity-tile tile-item="logItem"></tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</div>

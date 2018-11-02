@@ -1,0 +1,147 @@
+<div class="mainContent contentWrapper" bg-state-mananger settingsController>
+
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 col--noPadding">
+      <div class="alert alert--notice" ng-click="setTwoStepVerification()" ng-show="otpDeviceNotSet()">
+        <p class="alert-text u-pointer">
+          Your account is not protected with two-step verification.
+          <br>
+          Click here to set your device.
+        </p>
+      </div>
+      <div class="dashboardRow">
+        <!-- <h1 class="dashboardHeading">
+          Wallets
+        </h1>
+        <div class="u-topRight u-alignRight u-pushDown5">
+          <div class="u-typography-2">
+            {{ enterprises.current.balance | bgBitcoinFormat:'name' }}
+          </div>
+          <div ng-show="marketDataAvailable" class="u-colorGrey"> {{ enterprises.current.balance | bgBitcoinToCurrency }}</div>
+        </div> -->
+        <h1 class="dashboardHeading" ng-class="{'dashboardUnderline' : noWalletsInEnterprise() || canShowWelcomeMessage()}">
+          Wallets
+          <span class="dashboardHead-right-align u-clearfix">
+            <div class="u-typography-2">
+              {{ enterprises.current.balance | bgBitcoinFormat:'name' }}
+            </div>
+            <div ng-show="marketDataAvailable" class="u-alignRightMobile u-colorGrey"> {{ enterprises.current.balance | bgBitcoinToCurrency }}</div>
+          </span>
+        </h1>
+      </div>
+
+      <!-- If there are HAVE WALLETS on the enterprise -->
+      <div ng-show="filteredWalletsExist">
+        <table class="activityTable">
+          <thead>
+            <tr>
+              <!-- TODO: Allow sorting e.g. <i class="icon icon--arrowSmallUp"></i> -->
+              <th>Name</th>
+              <th class="u-alignRight">Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- show if has wallets -->
+            <tr class="activityTable-rowItem" ng-repeat="wallet in wallets.all | bgOrderObjectsBy:'data.label' track by $index">
+              <td class="activityTable-name" ng-click="goToWallet(wallet)" >
+                {{ wallet.data.label }}
+                <span feature-flag="instant" class="activityTable-subtext" ng-show="wallet.data.canSendInstant">
+                  Instant Enabled
+                </span>
+              </td>
+              <td class="activityTable-balance" ng-click="goToWallet(wallet)" >
+                {{ wallet.data.balance | bgBitcoinFormat }}
+                <div ng-show="marketDataAvailable" class="activityTable-currency">{{ wallet.data.balance | bgBitcoinToCurrency }}</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div ng-show="filteredWalletSharesExist">
+        <div class="row" ng-repeat="walletShare in walletShares.all.incoming | bgOrderObjectsBy:'walletLabel' track by $index " >
+          <div class="approvalRequest-request row">
+            <div class="col col--oneOfTwo col--noPadding">
+              <p><b bg-get-user user-id="{{ walletShare.fromUser }}">{{ user.settings.email.email }}</b> invited you to<br>
+              <b>{{ walletShare.walletLabel }}</b> as <b>{{walletShare.permissions | bgPermissionsRoleConversionFilter}}</b></p>
+            </div>
+            <div class="col col--pullRight">
+              <div class="buttons">
+                <a ng-click="acceptShare(walletShare)" ng-class="{ 'disabled' : processShare }" class="button button--small button--green">Join Wallet</a>
+                <a ng-click="rejectShare(walletShare)" ng-class="{ 'disabled' : processShare }" ng-disabled="processShare" class="button button--small button--reject">Reject</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- show if there are no wallets -->
+      <div ng-show="noWalletsInEnterprise()">
+        <p class="meta-display">No wallets yet.</p>
+      </div>
+      <!-- If there are NO WALLETS on the enterprise -->
+      <div ng-show="canShowWelcomeMessage()">
+        <div>
+          <h2 class="u-typography-1">Welcome to BitGo!</h2>
+          <p class="introText">To get started, create a wallet.</p>
+        </div>
+      </div>
+
+      <div ng-show="canCreateWallet()">
+        <a class="button button--small button--create u-marginTop30" ng-click="createNewWallet()">
+          <i class="icon icon--plus"></i> Create a Wallet
+        </a>
+      </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col--noPadding col--pullRight">
+      <div class="sideBarContainer u-topRight mobile-hideDisplay">
+        <div>
+          <market-widget></market-widget>
+        </div>
+        <div class="sideBarContainer-row" ng-show="showReferralWidget()">
+          <h2 class="sideBarContainer-heading">Want to buy Bitcoin?</h2>
+        </div>
+        <div class="sideBarContainer-row sideBarContainer-module" ng-show="showReferralWidget()">
+          <div class="col col--centered">
+            <p>Fund your wallet with Coinbase.</p>
+          </div>
+          <div class="col col--centered">
+            <a class="button button--small button--create u-pullRight"
+               ng-click="redirectReferralLink()"
+               href="https://www.coinbase.com/join/bitgo" target="_blank">
+              Buy Now
+            </a>
+          </div>
+        </div>
+        <div feature-flag="matchwallet" ng-show="canSendInvites()">
+          <div class="sideBarContainer-row">
+            <h2 class="sideBarContainer-heading">Want to earn Bitcoin?</h2>
+          </div>
+          <div class="sideBarContainer-row sideBarContainer-module" matchwallet-widget>
+            <div class="col col--centered">
+              <p>Invite your friends and earn some coins.</p>
+            </div>
+            <div class="col col--centered">
+              <a class="button button--small button--create u-pullRight"
+                 ng-click="goToMatchwallet()">Invite Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="sideBarContainer-row" ng-show="showCreateOrgWidget()">
+          <h2 class="sideBarContainer-heading">Organizations</h2>
+        </div>
+        <div class="sideBarContainer-row sideBarContainer-module" ng-show="showCreateOrgWidget()">
+          <div class="col col--centered">
+            <p>Unify your company wallets and users with a BitGo organization.</p>
+          </div>
+          <div class="col col--centered">
+            <a class="button button--small button--create u-pullRight" ng-click="goToCreateOrg()">
+              Create Org
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

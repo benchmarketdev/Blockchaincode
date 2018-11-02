@@ -1,0 +1,26 @@
+
+<h3>KeyTool app provided backup key</h3>
+
+<p class="u-typography-4 u-colorGreyDark">Please <a target="_blank" href="https://itunes.apple.com/app/keytool/id1029657739"><strong>launch the KeyTool app</strong></a> on your phone, and follow the instructions to create a new key. When finished, <strong>pair the key</strong> with this wallet by using the app to scan the pairing code below.</p>
+
+<label class="control-label">Pairing Code:</label>
+
+<bg-qr-code text="{{inputs.coldKeyQRCode}}"></bg-qr-code>
+<label class="control-label">
+Public key:
+</label>
+<label ng-hide="inputs.backupPubKey" class="u-marginTop10">
+  <span><i class="icon-spin icon-refresh"></i></span>
+  <span class="wordwrap">waiting for pairing...</span>
+</label>
+<div ng-show="inputs.backupPubKey">
+  <div class="alert alert--successLarge">
+    <i class="icon icon--checkmark"></i>
+    <p class="alert-text wordwrap">{{inputs.backupPubKey}}</p>
+  </div>
+  <div class="buttons">
+    <button class="button" ng-class="{ 'disabled' : !userXpubValid() }" name="coldKeyApp" ng-click="advanceBackupkey()">Next</button>
+    <a class="button button--grey" name="cancel" ng-click="cancel()">Cancel</a>
+  </div>
+</div>
+  

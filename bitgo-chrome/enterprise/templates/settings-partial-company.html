@@ -1,0 +1,98 @@
+<form class="row u-marginTop-25" enterprise-settings-company>
+  <fieldset class="col col--eightOfTwelve col--noPadding">
+
+        <div bg-approval-tile-enterprise-request bg-state-manager ng-repeat="approvalItem in enterprises.current.pendingApprovals | bgApprovalsFilter:false:'updateEnterpriseRequest'" id="{{ approvalItem.id }}">
+          <div class="approvalRequest-request row">
+            
+            <!-- If user is creator -->
+            <div ng-show="userIsCreator" class="col">
+              <p>
+                Your request to
+                <span ng-show="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+                  remove
+                </span>
+                <span ng-hide="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+                  add
+                </span>
+                a user<br>
+                <b bg-get-user user-id="{{ approvalItem.info.updateEnterpriseRequest.userId }}">{{ user.settings.email.email }}</b>
+                is awaiting approval
+              </p>
+              <div class="meta">{{approvalItem.prettyDate}}</div>
+            </div>
+
+            <!-- if someone else is creator -->
+            <div ng-hide="userIsCreator" class="col">
+              <p>
+                <b bg-get-user user-id="{{ approvalItem.creator }}">{{ user.settings.email.email }}</b> requested to 
+                <span ng-show="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+                  remove
+                </span>
+                <span ng-hide="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+                  add
+                </span> a user<br>
+                <b bg-get-user user-id="{{ approvalItem.info.updateEnterpriseRequest.userId }}">{{ user.settings.email.email }}</b>  
+                <span ng-show="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+                  from
+                </span>
+                <span ng-hide="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+                  to
+                </span> this organization
+              </p>
+              <div class="meta">{{approvalItem.prettyDate}}</div>
+            </div>
+            <div class="col col--pullRight">
+              <div ng-show="userIsCreator">
+                  <a class="button button--small button--cancel" ng-click="setApprovalState('rejected')">Cancel</a>
+              </div>
+              <div ng-hide="userIsCreator">
+                <span bg-confirm-action>
+                      <a class="button button--small button--green" ng-hide="confirmationMessage" ng-click="setApprovalState('approved')">Approve</a>
+                      <a class="button button--small button--reject" ng-hide="confirmationMessage" ng-click="initiateAction()">Reject</a>
+                      <span ng-show="confirmationMessage">Are you sure?
+                          <a ng-click="setApprovalState('rejected')">Yes</a> | 
+                          <a ng-click="cancelAction()">No</a>
+                      </span>
+                  </span>
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <p class="u-typography-3 u-colorGreyDark u-marginTop30">Organization owners can create wallets, change support plans and add or remove other owners.</p>
+    <table class="userTable">
+      <thead>
+        <tr>
+          <th>Owners</th>
+          <th></th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in enterpriseUsers.adminUsers" ng-click="selectUser(userId, walletsAccessibleByUser)">
+          <td class="userTable-user">{{ user.username }}</td>
+          <td class="userTable-role"></td>
+          <td class="userTable-action">
+            <span ng-show="canRemove(user.id)" bg-confirm-action class="ng-scope">
+              <a ng-hide="confirmationMessage" class="u-colorRed" ng-click="initiateAction()">Remove</a>
+              <span ng-show="confirmationMessage" class="ng-hide">Are you sure?
+                <a ng-click="removeAdmin(user.username); cancelAction()">Yes</a> |
+                <a ng-click="cancelAction()">No</a>
+              </span>
+            </span>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+    <div class="col col--eightOfTwelve col--noPadding">
+        <bg-form-error></bg-form-error>
+        <div class="inputText">
+          <input name="email" ng-model="email" class="inputText-input" placeholder="Email Address">
+        </div>
+    </div>
+    <button class="button u-pullRight" ng-click="addAdmin()">
+      Add Owner
+    </button>
+  </fieldset>
+</form>

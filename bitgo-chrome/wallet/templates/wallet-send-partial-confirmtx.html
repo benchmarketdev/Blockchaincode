@@ -1,0 +1,110 @@
+<div wallet-send-steps-confirm-tx>
+
+  <!-- In section notifications -->
+  <div class="row" ng-show="transactionSent">
+    <div>
+
+      <div class="invitation alert alert--success" ng-hide="returnedTransaction.needsApproval">
+        <i class="icon icon--checkmark"></i>
+        <p class="alert-text">Your transaction was sent.</p>
+        <div class="meta">{{ transaction.confirmationTime }}</div>
+        <div class="meta u-wordBreak">{{ transaction.transactionId }}</div>
+      </div>
+
+
+      <div class="alert alert--notice" ng-show="returnedTransaction.needsApproval">
+        <p class="alert-text">Your transaction was successfully submitted, but it {{ returnedTransaction.approvalMessage }} and will need approval from an<span ng-show="wallets.current.roleIsAdmin()">other</span> Admin.</p>
+        <div class="meta">{{ transaction.confirmationTime }}</div>
+      </div>
+
+    </div>
+  </div>
+
+  <form name="confirmSendBitcoinForm">
+    <div class="row">
+
+      <p class="alert alert--notice" ng-hide="!transaction.amountSpendWasReduced">Note: Your wallet does not have enough confirmed funds to pay the requested amount including fees. The spend amount has been reduced by {{ transaction.amountSpendWasReduced | bgBitcoinFormat:'name':null:null:null:true}}.
+      </p>
+
+      <div ng-show="!transaction.altCoin.useAltCoin">
+        <p ng-hide="transactionSent" class="u-typography-2">
+          You are about to send:
+        </p>
+
+        <p class="u-typography-4">{{ transaction.amount | bgBitcoinFormat:'name':null:null:null:true }}
+          to <span class="u-wordBreak">{{ transaction.recipientAddress }}</span>
+          <span class="u-colorGreyDark" ng-show="transaction.recipientWallet" >({{ transaction.recipientWallet.data.label }})</span>
+          <span class="u-colorGreyDark" ng-show="!transaction.recipientWallet && transaction.recipientLabel">({{ transaction.recipientLabel }})</span>
+        </p>
+
+        <p class="u-typography-4">
+          {{ transaction.blockchainFee | bgBitcoinFormat:'name':null:null:null:true }}
+          as a transaction fee to miners. <span class="u-colorRed" ng-show="transaction.feeRate > 15000">Increased fee due to network congestion.</span>
+        </p>
+
+       <p class="u-typography-4 txConfirm-total">
+         <b>{{ transaction.total | bgBitcoinFormat:'name':null:null:null:true }}</b>
+         <span ng-show="marketDataAvailable">({{ transaction.total | bgBitcoinToCurrency }})</span>
+         in total
+       </p>
+
+       <p class="u-typography-4" ng-show="transaction.message">
+         Internal memo: <span class="u-typography-5 u-colorGreyDark">{{ transaction.message }}
+       </p>
+     </div>
+
+     <div ng-show="transaction.altCoin.useAltCoin">
+
+       <p ng-hide="transactionSent" class="u-typography-2">
+         You are about to convert Bitcoin to {{transaction.altCoin.selected}}:
+       </p>
+
+       <div class="row u-center u-pushDown35">
+         <div class="col-md-4">
+           <img src="/img/coins/bitcoin.png" class="u-pushUp10 altcoinImageWidth">
+
+           <div class="bitcoinAmount u-colorGreyDark">
+               {{ transaction.total | bgBitcoinFormat:'name':null:null:null:true }}
+           </div>
+
+         </div>
+
+         <div class="col-md-3">
+          <span class="glyphicon glyphicon-arrow-right u-pushDown20 u-colorGreyDark u-typography-100"></span>
+          <p class="u-typography-4 u-colorGreyDark">1 BTC = {{(getTotalAltCoin()/transaction.amount)*1e8 | bgDecimalFormat:2:null}}  {{transaction.altCoin.symbol}}</p>
+         </div>
+
+         <div class="col-md-4">
+          <img ng-src="{{transaction.altCoin.image}}" class="u-pushUp10 altcoinImageWidth">
+
+          <div class="u-typography-2 u-pushDown10 u-colorGreyDark">
+            {{ getTotalAltCoin() | bgDecimalFormat:2:null }} {{transaction.altCoin.symbol}}</strong>
+          </div>
+
+           <div class="u-typography-6 ">
+              <strong class="u-colorGreyDark">{{transaction.altCoin.recipientAddress}}</strong>
+           </div>
+
+         </div>
+       </div>
+
+     </div>
+
+    <div ng-hide="transactionSent">
+      <div class="row" ng-class="{ 'u-marginTop-15': transaction.altCoin.useAltCoin }">
+        <div class="buttons">
+          <button type="submit" class="button buttonSubmit" ng-class="{ 'disabled' : processing }" name="sendTx" ng-click="sendTx()">{{transaction.altCoin.useAltCoin ? "Convert Coin" : "Send funds"}}</button>
+          <button class="button button--create" ng-class="{ 'disabled' : processing }" name="modifyTx" ng-click="setState('prepareTx')">Back</button>
+          <button class="button button--grey" ng-class="{ 'disabled' : processing }" name="cancelSend" ng-click="cancelSend()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="transactionSent">
+      <div class="row u-pushDown60">
+        <button class="button button--create" name="sendMoreFunds" ng-click="sendMoreFunds()">Send More Funds</button>
+      </div>
+    </div>
+  </form>
+
+</div>

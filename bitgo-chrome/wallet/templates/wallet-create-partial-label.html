@@ -1,0 +1,24 @@
+<div wallet-create-steps-label class="row">
+  <div class="col-xss-12 col-xs-8 col-sm-6 col-md-6 col-lg-6 col--noPadding">
+
+    <h2>Name Wallet</h2>
+
+    <form name="createStepsLabelForm">
+
+      <bg-form-error></bg-form-error>
+
+      <div class="formRow" ng-class="{ 'formRow--error': walletNameError }">
+        <p class="notice" ng-show="walletNameError">Invalid wallet name</p>
+        <div class="inputText">
+          <input type="text" name="walletName" class="inputText-input" placeholder="Wallet name" ng-model="inputs.walletLabel" bg-input-validator bg-focus-when="true" />
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="button" type="submit" name="advanceLabel" ng-click="advanceLabel()">Next</button>
+        <a class="button button--grey" name="cancel" ng-click="cancel()">Cancel</a>
+      </div>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<main wallet-transactions-manager class="mainContent">
+
+  <div class="row" ng-show="showTxApprovals()">
+    <div class="col col--eightOfTen">
+      <div class="approvalRequest approvalRequest--extraMargin">
+
+        <h2 class="approvalRequest-heading">Approval requested</h2>
+        <div wallet-approval-tile bg-approval-tile-tx-request bg-state-manager ng-repeat="approvalItem in wallets.current.data.pendingApprovals | bgApprovalsFilter:false:'transactionRequest' " id="{{ approvalItem.id }}"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <table class="transactionsTable">
+    <thead>
+      <tr>
+        <th colspan="2">Date</th>
+        <th>Description</th>
+        <th class="u-alignRight">Amount</th>
+        <th class="u-alignRight">Balance</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- No transactions -->
+      <tr ng-show="noTransactionPresent">
+        <td colspan="2">
+            <div class = "meta">
+              <h2>This wallet has not been used yet.</h2>
+              <p class="u-typography-4">
+                Deposit funds to this address: <span class="u-wordBreak">{{ currentReceiveAddress.address }}</span>
+              </p>
+            </div>
+        </td>
+      </tr>
+      <!-- List of transactions -->
+      <tr id="transactionTile-{{ tx.id }}" ng-repeat="tx in transactions" wallet-transaction-wallettx-tile ng-class="{ 'transactionsTable-pendingRow' : txIsUnconfirmed(tx), 'is-selected' : txIsOpen(tx) }" ng-click="toggleTxView($event, tx)"></tr>
+    </tbody>
+  </table>
+
+</main>

@@ -1,0 +1,34 @@
+<form name="settingsPhoneForm" settings-phone-form class="row">
+  <fieldset class="col col--oneOfTwo col--noPadding">
+    <bg-form-error></bg-form-error>
+    <label>Phone Number</label>
+    <p class="notice" ng-show="phoneError">Bad phone number</p>
+    <div class="formRow" ng-class="{ 'formRow--error': phoneError }">
+      <div class="inputText">
+        <bg-intl-tel-input name="phone" type="tel" ng-model="settings.phone.phone" bg-input-validator></bg-intl-tel-input>
+        <div ng-show="!needsVerification()" class="inputText-verification inputText-verification--verified">Verified <i class="icon icon--checkmark"></i></div>
+        <div ng-show="needsVerification()" class="inputText-verification inputText-verification--unverified">Unverified</div>
+      </div>
+    </div>
+
+    <div ng-show="showVerificationForm()">
+      <label>Please verify your new phone number</label>
+      <p class="notice" ng-show="verificationOtpError">Missing verification OTP</p>
+      <div class="formRow u-marginBottom30" ng-class="{ 'formRow--error': verificationOtpError }">
+        <div class = "inputText">
+          <input name="verificationOtp" ng-model="verificationOtp" class="inputText-input" placeholder="Enter Verification Code" bg-input-validator bg-input-numbers-only max-length="7" />
+        </div>
+        <p class="u-pullRight u-typography-6 u-noMargin u-layer"><a ng-click="sendSMS()" class="u-colorGreyDark">&nbsp;Resend verification code</a></p>
+        <p class="u-pullRight u-typography-6 u-noMargin u-layer"><a ng-click="cancelPhoneReset()" class="u-colorGreyDark">Cancel phone reset</a> |</p>
+      </div>
+    </div>
+
+    <span ng-hide="showVerificationForm()">
+      <button ng-show="hasChanges()" class="button buttonSubmit" type="submit" name="savePhoneForm" ng-click="savePhoneForm()">Save Changes</button>
+    </span>
+    <span ng-show="showVerificationForm()">
+      <button class="button buttonSubmit" type="submit" name="savePhoneForm" ng-click="savePhoneForm()">Verify Phone</button>
+    </span>
+
+  </fieldset>
+</form>

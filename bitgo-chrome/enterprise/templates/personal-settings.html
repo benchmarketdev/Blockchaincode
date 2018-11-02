@@ -1,0 +1,22 @@
+<section class="masthead">
+  <div class="contentWrapper" bg-state-manager>
+  	<div class="row">
+      <div class="col col--oneOfTwo">
+        <h1 class="masthead-heading">Personal Wallets</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--oneOfTwo col-noPadding">
+        <nav>
+          <ul class="sectionNav">
+            <li class="sectionNav-item"><a ng-click="setState('users'); setSubState()" class="sectionNav-link" ng-class="{ 'is-selected': showState('users') }" >Users</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<main class="mainContent contentWrapper">
+  <ng-include src="enterpriseSettingsTemplateSource"></ng-include>
+</main>
+

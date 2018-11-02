@@ -1,0 +1,23 @@
+<div class="mainContent contentWrapper">
+  <div bg-state-manager class="row">
+    <div class="col col--twelveOfTwelve">
+      <div class="processSteps">
+        <div class="circle done">
+          <span class="label">1</span>
+          <span class="title">Set up</span>
+        </div>
+        <span class="bar" ng-class="{'done': showState('support') || showState('payment')}"></span>
+        <div class="circle" ng-class="showState('support') || showState('payment') ? 'done' : 'active'">
+          <span class="label">2</span>
+	      <span class="title">Support plan</span>
+        </div>
+        <span class="bar" ng-class="{'done': showState('payment')}"></span>
+        <div class="circle" ng-class="showState('payment') ? 'done' : 'active'">
+          <span class="label">3</span>
+          <span class="title">Payment</span>
+        </div>
+	  </div>
+      <ng-include src="createFlowTemplateSource"></ng-include>
+    </div>
+  </div>
+</div>

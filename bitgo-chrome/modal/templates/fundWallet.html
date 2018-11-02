@@ -1,0 +1,22 @@
+<div modal-fund-wallet>
+  <div class="row">
+    <div class="row">
+      <a class="icon--cancel" ng-click="closeWithSuccess()"></a>
+      <div class="qrModalHeader">You've created your first wallet!</div>
+      <p>If this is your first Bitcoin wallet, click
+        <a ng-click="redirectReferralLink()" href="https://www.coinbase.com/join/bitgo" target="_blank"> here</a>
+        to buy Bitcoin and fund your wallet. If you already have Bitcoin you can make a deposit to your wallet here:
+      </p>
+      <div class="u-alignCenter" >
+        <div class="qrCode-modal-fund-border-outer">
+          <div class="qrCode-modal-border-inner">
+            <bg-qr-code height="155" text=" {{ modalFundWallet }} "></bg-qr-code>
+          </div>
+        </div>
+        <div class="u-marginTop10">
+          <div class="qrModalFundAddress"> {{ modalFundWallet }} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

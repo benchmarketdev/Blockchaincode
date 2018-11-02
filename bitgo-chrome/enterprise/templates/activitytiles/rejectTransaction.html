@@ -1,0 +1,28 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- If the current user took / didn't take the last action -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You 
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }}
+    </span>
+
+    <!-- If the current user was / was not the transaction initiator -->
+    <span ng-hide="currentUser.settings.id === logItem.data.initiator">
+      rejected a transaction initiated by <span bg-get-user user-id="{{ logItem.data.initiator }}">{{ user.settings.email.email }} </span>
+    </span>
+    <span ng-show="currentUser.settings.id === logItem.data.initiator">
+      canceled a transaction you initiated
+    </span>
+
+    <!-- uniform data -->
+    to send {{ logItem.data.amount | bgBitcoinFormat:'name' }}
+    to "<span bg-get-address-label address-id="{{ logItem.data.destinationAddress }}" wallet-id="{{ logItem.walletId }}">{{ label }}</span>" from wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+    
+    <div class="activityTable-timestamp">Approval ID: {{ logItem.target }}</div>
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

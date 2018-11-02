@@ -1,0 +1,48 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+  	<!-- if current user created the enterprise -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You 
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }} 
+    </span>
+    <span ng-show="logItem.data.pendingApprovalId">
+      created a pending approval to<br>
+      <span ng-hide="logItem.data.action === 'remove'">
+        add 
+      </span>
+      <span ng-show="logItem.data.action === 'remove'">
+        remove 
+      </span>
+    </span> 
+    <span ng-hide="logItem.data.pendingApprovalId">
+      <span ng-hide="logItem.data.action === 'remove'">
+        added 
+      </span>
+      <span ng-show="logItem.data.action === 'remove'">
+        removed 
+      </span>
+    </span>
+    <span bg-get-user user-id="{{ logItem.target }}"> 
+      <span ng-hide="user.settings.id === currentUser.settings.id">
+        {{ user.settings.email.email }} 
+      </span>
+      <span ng-show="user.settings.id === currentUser.settings.id">
+        you 
+      </span>      
+    </span> 
+    as an owner<br> 
+    <span ng-hide="logitem.data.action === 'remove'">
+      to 
+    </span>
+    <span ng-show="logitem.data.action === 'remove'">
+      from 
+    </span>
+     the organization "{{ enterprises.all[logItem.enterpriseId].name }}"
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>
+
+

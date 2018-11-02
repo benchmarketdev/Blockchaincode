@@ -1,0 +1,36 @@
+<div class="col col--eightOfTwelve col--noPadding">
+  <p class="u-typography-3 u-colorGreyDark u-marginTop5">
+    Each wallet user costs $30/month. To remove users, remove them from all wallets.
+  </p>
+  <table class="activityTable u-marginTop30">
+    <thead>
+      <tr>
+        <th  class="activityTable-users">Users</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-show="enterpriseUsers.walletUsers.length == 0">
+        <td colspan="2">
+          <div class = "meta">
+            <h2>No users on wallets</h2>
+            <p class="u-typography-4">There are no wallets under this organization</p>
+          </div>
+        </td>
+      </tr> 
+      <tr class="activityTable-rowItem" ng-repeat="user in enterpriseUsers.walletUsers">
+        <td>{{ user.username }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col col--fourOfTwelve col--pullRight">
+  <div class="sideInfoBox">
+
+    <div class="sideBarContainer-row">
+      <h2 class="sideBarContainer-heading">Total</h2>
+    </div>
+    <div class="sideInfoContent">
+      <p>Number of users on wallets within the organization: {{enterpriseUsers.count}}</p>
+    </div>
+  </div>
+</div>

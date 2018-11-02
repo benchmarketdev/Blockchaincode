@@ -1,0 +1,42 @@
+<div>
+
+  <p class="introText u-typography-3 u-colorGreyDark u-marginBottom45">
+    Enter and confirm a new password to encrypt your wallet.
+  </p>
+
+  <form class="row" name="newPasscodeForm">
+    <fieldset class="col col--oneOfTwo">
+
+      <!-- New PW -->
+      <div class="formRow" ng-class="{ 'formRow--error': newPasscodeError }">
+        <label>New Wallet Password</label>
+        <p class="notice" ng-show="newPasscodeError">Invalid new password</p>
+        <div class="inputText">
+          <input type="password" name="newPasscode" class="inputText-input" placeholder="Enter password" ng-model="newPasscode" bg-input-validator bg-password-strength="passcodeStrength" on-password-change="checkStrength(passcodeStrength)" />
+        </div>
+        <!-- Strength Meter -->
+        <div class="passwordStrength" ng-show="showPasscodeStrength()">
+          <div class="passwordStrength-indicator">
+            <span class="passwordStrength-fill" ng-class="passcodeStrength.progress.class"></span>
+          </div>
+          It would take {{ passcodeStrength.crack_time_display }} to crack this password.
+        </div>
+      </div>
+
+      <!-- PW Confirm -->
+      <div class="formRow" ng-class="{ 'formRow--error': newPasscodeConfirmError }">
+        <label>Confirm New Wallet Password</label>
+        <p class="notice" ng-show="newPasscodeConfirmError">Invalid password confirmation</p>
+        <div class="inputText">
+          <input type="password" class="inputText-input" name="newPasscodeConfirm" placeholder="Confirm new password" ng-model="newPasscodeConfirm" bg-input-validator />
+        </div>
+      </div>
+
+      <div class="buttons" ng-show="showUpdateButton()">
+        <button type="submit" class="button" name="finishRecovery" ng-click="finishRecovery()">Set New Password</button>
+      </div>
+
+    </fieldset>
+  </form>
+
+</div>

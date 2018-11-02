@@ -1,0 +1,90 @@
+<div enterprise-create-steps-billing class="row">
+  <div class="col col--eightOfTwelve">
+    <h2>Add a card</h2>
+    <p class="u-typography-3 u-colorGreyDark u-marginBottom10">
+      Please enter the credit card you would like us to charge each month.
+    </p>
+    <form bg-credit-card-form addTerms="true" name="formcreditcard">
+
+      <bg-form-error></bg-form-error>
+
+      <fieldset>
+        <div class="row">
+          <div class="col col--oneOfTwo col--noPadding">
+            <label>Name on Card</label>
+            <p class="notice" ng-show="formcreditcard.name.$invalid && !formcreditcard.name.focused">Please provide a name</p>
+            <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.name.$invalid && !formcreditcard.name.focused }">
+              <div class="inputText">
+                <input name="name" type="text" ng-model="cc.name" class="inputText-input" placeholder="Name on Card" ng-model-options="{ updateOn: 'blur' }" bg-input-validator />
+              </div>
+            </div>
+          </div>
+          <div class="col col--oneOfTwo col--noPadding">
+	        <label>Credit Card</label>
+	        <p class="notice" ng-show="formcreditcard.creditCard.$invalid && !formcreditcard.creditCard.focused">Invalid credit card number</p>
+	        <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.creditCard.$invalid && !formcreditcard.creditCard.focused }">
+	          <div class="inputText">
+	            <input name="creditCard" type="text" ng-model="cc.number" class="inputText-input" payments-validate="card" placeholder="0000 0000 0000 0000" payments-format="card" ng-model-options="{ updateOn: 'blur' }" ng-focus="initCardTracker()" bg-input-validator />
+	          </div>
+	        </div>
+	      </div>
+        </div>
+
+        <div class="row">
+          <div class="col col--threeOfTwelve">
+            <label>Expiration</label>
+            <p class="notice" ng-show="formcreditcard.expiry.$invalid && !formcreditcard.expiry.focused">Invalid expiration</p>
+            <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.expiry.$invalid && !formcreditcard.expiry.focused }">
+              <div class="inputText">
+                <input name="expiry" type="text" ng-model="cc.expiry" class="inputText-input" payments-validate="expiry" placeholder="MM/YY" payments-format="expiry" ng-model-options="{ updateOn: 'blur' }" bg-input-validator />
+              </div>
+            </div>
+          </div>
+
+          <div class="col col--threeOfTwelve">
+            <label>CVC</label>
+            <p class="notice" ng-show="formcreditcard.cvc.$invalid && !formcreditcard.cvc.focused">Invalid CVC</p>
+            <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.cvc.$invalid && !formcreditcard.cvc.focused }">
+              <div class="inputText">
+                <input name="cvc" type="text" ng-model="cc.cvc" class="inputText-input" payments-validate="cvc" payments-format="cvc" placeholder="234" ng-model-options="{ updateOn: 'blur' }" bg-input-validator />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inputCheckbox u-marginTop30">
+          <input type="checkbox" id="servicesAgreement" ng-model="terms">
+          <label for="servicesAgreement">I have read and agree to the <a href="{{ TemplatePathPrefix }}/services_agreement" target="_blank">terms and conditions</a></label>
+        </div>
+        <button type="submit" class="button u-marginTop20" name="submitCard" ng-click="submitCard()" ng-disabled="inProcess"><span ng-hide="inProcess">Create organization</span><span ng-show="inProcess">In Progress... </span></button>
+        <a class="button button--grey" ng-click="goBack()">Back</a>
+      </fieldset>
+    </form>
+
+  </div>
+  <div class="col col--fourOfTwelve col--pullRight">
+  	<div class="sideInfoBox">
+      <div ng-hide="inputs.enterpriseSupportPlan.planId == 'custom'"  class="sideBarContainer-row">
+        <h2 class="sideBarContainer-heading">Charge schedule</h2>
+      </div>
+      <div ng-hide="inputs.enterpriseSupportPlan.planId == 'custom'" class="sideInfoContent">
+        <p ng-hide="inputs.enterpriseSupportPlan.planId == 'basic'">This card will be charged  today and monthly thereafter. Cancellations and re-subscriptions will be pro rated. <a href="https://bitgo.zendesk.com/hc/en-us/articles/204611059-Are-my-monthly-charges-prorated-" target="_blank">Learn more</a></p>
+        <p ng-show="inputs.enterpriseSupportPlan.planId == 'basic'">This card will only be charged if users are added to wallets on the organization or the support plan is changed. Cancellations and re-subscriptions will be pro rated. <a href="https://bitgo.zendesk.com/hc/en-us/articles/204611059-Are-my-monthly-charges-prorated-" target="_blank">Learn more</a></p>
+      </div>
+      <div class="sideBarContainer-row">
+        <h2 class="sideBarContainer-heading">Charge summary</h2>
+      </div>
+      <div ng-hide="inputs.enterpriseSupportPlan.planId == 'custom'" class="sideInfoContent">
+        <p>
+          Your organization will be charged $30/month per wallet user.
+        </p>
+        <p>
+          Support Plan: &nbsp;&nbsp; ${{inputs.enterpriseSupportPlan.cost}}/month<br>
+          ({{inputs.enterpriseSupportPlan.prettyName}})
+        </p>
+      </div>
+      <div ng-show="inputs.enterpriseSupportPlan.planId == 'custom'" class="sideInfoContent">
+        <p>One of our sales team members will reach out to you to discuss custom integration and pricing. You can reach us at sales@bitgo.com</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<div ng-hide="loaded" class="u-center">
+  <img class="u-center" src="/img/loading.gif">
+</div>
+<div ng-show="loaded">
+  <!-- If url is wrong show 'not found page' -->
+  <div ng-hide="isValidUrl()">
+    <ng-include src="'interceptors/templates/page_not_found.html'"></ng-include>
+  </div>
+  <div ng-show="isValidUrl()">
+    <!-- Masthead section -->
+    <section class="proof-masthead">
+      <div class="contentWrapper">
+        <span class="masthead-logo masthead-logo--{{urlEnterpriseName}}"></span>
+        <h1 class="masthead-heading masthead-heading--withSubContent masthead-heading--fullLength">Proof of Reserves</h1>
+        <i class="masthead-vbb icon icon--vbb"></i>
+        <p class="u-typography-5 u-colorGreyDark u-marginBottom30">Valid as of <strong>{{ prettyEnterpriseProofTimestamp }}</strong></p>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <main class="mainContent contentWrapper relative">
+
+      <!-- Description -->
+      <h3>What does all of this mean?</h3>
+      <p class="u-marginBottom35">
+        <span ng-show="currentEnterprise.displayName">{{currentEnterprise.displayName}} has</span><span ng-hide="currentEnterprise.displayName">Enterprises have</span> partnered with BitGo to provide transparency for the funds they manage on your behalf. BitGo, as a co-signer on the bitcoin held by <span ng-show="currentEnterprise.displayName">{{currentEnterprise.displayName}}</span><span ng-hide="currentEnterprise.displayName">the enterprise</span>, is able to verify its existence on the blockchain. BitGo also receives information on stated liabilities from <span ng-show="currentEnterprise.displayName">{{currentEnterprise.displayName}}</span><span ng-hide="currentEnterprise.displayName">the enterprise</span> and presents it here, in a form which can be independently cryptographically verified by you, the users of <span ng-show="currentEnterprise.displayName">{{currentEnterprise.displayName}}</span><span ng-hide="currentEnterprise.displayName">the enterprise</span>.  To learn more please view the <a href="{{ templatePrefix }}/vbb/faq">Verified by BitGo FAQ</a>.
+      </p>
+      <!-- loading indicator -->
+      <div ng-hide="loaded" class="u-center"><img class="u-center" src="/img/loading.gif"></div>
+      <div ng-show="loaded">
+        <!-- Enterprise Reserves Section -->
+        <div ng-show="enterpriseProofs.length" class="u-marginBottom30">
+          <h3>Bitcoin Assets & Liabilities</h3>
+          <div class="alert" ng-class="{ 'alert--success': enterpriseProofs[0].solvent, 'alert--danger': !enterpriseProofs[0].solvent }">
+            <i class="icon" ng-class="{ 'icon--checkmark': enterpriseProofs[0].solvent, 'icon--crossmark': !enterpriseProofs[0].solvent }"></i>
+            <p class="alert-text" ng-show="enterpriseProofs[0].solvent">Bitcoin assets are greater than stated liabilities of <strong>XBT {{ formatBalance(enterpriseProofs[0].liabilities.sum) }}</strong>.</p>
+            <p class="alert-text" ng-hide="enterpriseProofs[0].solvent">Bitcoin assets of <strong>XBT {{ formatBalance(enterpriseProofs[0].assets.sum) }}</strong> are less than stated bitcoin liabilities of <strong>XBT {{ formatBalance(enterpriseProofs[0].liabilities.sum) }}</strong>.</p>
+            <div class="proofDetails">
+              <div class="meta"><a class="details-link" ng-click="toggleDetails('assets')">
+                {{ detailsLabel('assets') }}</a>
+              </div>
+              <div ng-show="detailsOpen('assets')">
+                <textarea class="details-textarea">{{proofDetails}}</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- General Liability Proof Section -->
+        <div ng-show="otherLiabilities.length" class="u-marginBottom30">
+          <h3>Fiat Liabilities</span></h3>
+          <div ng-repeat="liability in otherLiabilities">
+            <div class="alert alert--info">
+              <i class="icon icon--info"></i>
+              <div>
+                <p class="alert-text">Total stated {{ liability.currency }} balances of <strong>{{ liability.currency }} {{ formatBalance(liability.sum) }}</strong>.
+                <div class="proofDetails">
+                  <div class="meta"><a ng-click="toggleDetails('all-' + liability.currency)">
+                    {{ detailsLabel('all-' + liability.currency) }}</a>
+                  </div>
+                  <div ng-show="detailsOpen('all-' + liability.currency)">
+                    <textarea class="details-textarea">{{ liability.details }}</textarea>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- User Liability Proof Section -->
+        <div ng-show="allUserLiabilities.length" class="u-marginBottom30">
+          <h3>Your Account ({{urlUserId}})</h3>
+          <div ng-repeat="liability in allUserLiabilities">
+            <div class="alert" ng-class="{ 'alert--success': liability.valid, 'alert--caution': !liability.partial_tree, 'alert--danger': (liability.user && !liability.valid) }">
+              <i class="icon" ng-class="{ 'icon--checkmark': liability.valid, 'icon-qmark': !liability.partial_tree, 'icon-crossmark': (liability.user && !liability.valid) }"></i>
+              <div>
+                <p class="alert-text">
+                <span ng-show="liability.user">Your balance of <strong>{{ liability.currency }} {{ formatBalance(liability.user.sum) }} </strong>
+                  <span ng-show="liability.valid">has been included.</span>
+                  <span ng-hide="liability.valid">could not be verified.</span>
+                </span>
+                <span ng-hide="liability.user">No user-specific balance found.</span>
+                <div class="proofDetails">
+                  <div class="meta"><a ng-click="toggleDetails('user-' + liability.currency)">
+                    {{ detailsLabel('user-' + liability.currency) }}</a>
+                  </div>
+                  <div ng-show="detailsOpen('user-' + liability.currency)">
+                    <textarea class="details-textarea">{{ liability.details }}</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="/wallet?utm_source={{urlEnterpriseName}}&utm_medium=link&utm_campaign=proof">
+          <div class="button u-marginBottom30">
+            Create Your Free BitGo Wallet
+          </div>
+        </a>
+        <div class="u-center u-pushDown30">
+          <p><span class="u-typography-4"><a href="{{ templatePrefix }}/vbb/terms">Terms</a> | <a href="{{ templatePrefix }}/vbb/faq">FAQ</a></span></p>
+        </div>
+      </div>
+    </main>
+  </div>  
+</div>
+

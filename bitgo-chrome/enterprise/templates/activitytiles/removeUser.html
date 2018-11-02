@@ -1,0 +1,28 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- if current user took the action to remove a user from a wallet -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }}
+    </span>
+
+    <span ng-hide="logItem.data.needsApproval">
+      removed <span bg-get-user user-id="{{ logItem.target }}">{{ user.settings.email.email }}</span>
+      from the wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+    </span>
+
+    <span ng-show="logItem.data.needsApproval">
+      requested to remove <span bg-get-user user-id="{{ logItem.target }}">{{ user.settings.email.email }} </span> ({{ logItem.data.permissions | bgPermissionsRoleConversionFilter }})
+      from the wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+    </span>
+
+    <!-- uniform data -->
+    <div ng-show="logItem.data.needsApproval"><b>Removing them required approval.</b></div>
+    <div ng-show="logItem.data.needsApproval" class="activityTable-timestamp">Approval ID: {{ logItem.data.pendingApproval }}</div>
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

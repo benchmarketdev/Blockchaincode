@@ -1,0 +1,129 @@
+<div wallet-send-steps-prepare-tx>
+  <form class="row" name="sendBitcoinForm">
+    <fieldset class="col col--sevenOfTwelve">
+
+      <bg-form-error></bg-form-error>
+
+      <div class="formRow formRow--error" ng-show="showAltCoinDropDown">
+        <label>Choose Altcoin</label>
+        <i class="formRow-small--icon icon--sendAltCoin icon icon--qmark" popover-trigger="mouseenter" popover-placement="right" popover-template="enterprise/templates/sendAltCoinpopover-partial.html"></i>
+        <p class="notice" ng-show="unableToLoadAltCoins">Unable to load AltCoins. Please try again later</p>
+        <ss-drop-down id="alt-dropdown" alt="transaction.altCoin" selected="Bitcoin" change="changeCoin" has-errors="unableToLoadAltCoins" class="customSelect">
+        </ss-drop-down>
+
+      </div>
+
+      <div class="formRow" wallet-send-steps-typeahead ng-class="{ 'formRow--error': recipientInvalid }">
+        <label>Send To
+          <div class="u-pullRight inputText-verification inputText-verification--info sendLabel" ng-show="!showAltCoinDropDown" ng-click="useAltCoin()" feature-flag="shapeshift">Want to send Altcoins?</div>
+        </label>
+        <p class="notice" ng-show="recipientInvalid">Invalid bitcoin address</p>
+        <div class="inputText">
+          <!-- Use this input if user is using an alt-coin -->
+          <input type="text" name="altCoinRecipientAddress" class="inputText-input" ng-show="transaction.altCoin.useAltCoin" ng-model="transaction.altCoin.recipientAddress"   ng-change="changeMemo()" class="form-control" bg-focus-when="true" placeholder="Recipient {{transaction.altCoin.selected}} address" />
+          <input type="text" name="recipientViewValue" class="inputText-input"      ng-hide="transaction.altCoin.useAltCoin" ng-model="recipientViewValue" typeahead="wallet for wallet in dropdownWallets | filter:$viewValue | limitTo:4" typeahead-on-select="setRecipientFromTypeahead($item)" typeahead-template-url="wallet/templates/wallet-send-partial-typeaheaditem.html" class="form-control" bg-focus-when="true" placeholder="Recipient address or label" />
+          <span ng-show="transaction.recipientWallet" class="inputText-bitcoinAddress">
+            <span class="selected">{{ transaction.recipientWallet.data.id | bgCenterEllipsis: 19 }}</span>
+            <i class="icon icon--close" ng-click="clearRecipient()"></i>
+          </span>
+        </div>
+
+        <div ng-show="showRecipientLabelField() && !transaction.altCoin.useAltCoin" class="inputText">
+          <input type="text" name="recipientLabel" ng-model="transaction.recipientLabel" bg-input-validator class="inputText-input" placeholder="Label this address">
+        </div>
+
+      </div>
+
+      <!-- Show instant transaction confirmation -->
+
+      <div feature-flag="instant" class="checkbox" ng-show="wallets.current.data.canSendInstant">
+        <label class="qrModalHeaderAddress"><input type="checkbox" ng-model="transaction.isInstant">
+          Send as Instant Transaction
+          <a ng-click="toggleAdvert()" ng-hide="showInstantWalletAdvert">
+            What's this?
+          </a>
+          <a ng-click="toggleAdvert()" ng-show="showInstantWalletAdvert">
+            Hide
+          </a>
+        </label>
+      </div>
+      <div ng-show="showInstantWalletAdvert">
+        <div class="txConfirm-subtext u-pushDown10">
+          Transactions sent to the following BitGo partners will be credited to your account instantly.
+        </div>
+        <span>
+          <img class="partner-logo" src="./img/bitfinex-logo.png"></img>
+          <img class="partner-logo" src="./img/kraken-logo.png"></img>
+          <img class="partner-logo" src="./img/bitstamp-logo.png"></img>
+        </span>
+      </div>
+      <label>Amount</label>
+      <!-- Show alt-coin rate -->
+      <p ng-show="transaction.altCoin.useAltCoin && !hasAltErrors">1 BTC: {{transaction.altCoin.rate | bgDecimalFormat:2:null}} {{transaction.altCoin.symbol}}</p>
+
+      <div ng-show="violatesSpendingLimit()">
+        <p class="notice" ng-show="wallets.current.multipleAdmins">This transaction exceeds your spending limit and will need approval.</p>
+        <p class="notice" ng-hide="wallets.current.multipleAdmins">This transaction exceeds your spending limit.</p>
+      </div>
+      <div class="u-clearfix">
+        <div class="formRow col-xs-12 col-sm-5 col-md-5 col-lg-5 col--noPadding">
+          <div class="customInputText--overlay">
+            <span class="customSelect-text customSelect--overlay-text">
+              {{ null | bgBitcoinFormat:'name':null:null:'' }}
+              <!-- <i class="icon icon--arrowSmallDown"></i> -->
+            </span>
+            <!-- TODO (Gavin): Later, add multi-bitcoinunit support here -->
+            <!-- <select class="customSelect-select customSelect--overlay-select">
+              <option>BTC</option>
+              <option>USD</option>
+              <option>GBP</option>
+              <option>EUR</option>
+            </select> -->
+          </div>
+
+          <div class="inputText">
+            <input type="text" ng-show="!transaction.altCoin.useAltCoin" name="amount" ng-model="transaction.amount" bg-input-validator class="u-alignRight inputText-input" bg-input-to-satoshi-converter max-length="16">
+            <input type="text"  ng-show="transaction.altCoin.useAltCoin" name="amountAlt" ng-model="altCoinAmount.bitcoins" bg-input-validator  bg-input-to-satoshi-converter to-fixed="4" max-length="16" class="u-alignRight inputText-input">
+          </div>
+        </div>
+        <div class="formRow col-sm-offset-2 col-xs-12 col-sm-5 col-md-5 col-lg-5 col--noPadding">
+
+          <div class="currencyBox u-valignMiddle" ng-show="!transaction.altCoin.useAltCoin && marketDataAvailable">
+            <span class="u-typography-3 u-colorBlueGreyLight u-valignMiddle span--constrainWidth">{{ currency.data.symbol }} {{ transaction.amount | bgBitcoinToCurrency }}</span>
+            <span class="currencyBox-text u-valignMiddle u-pullRight">
+              {{ currency.currency }}
+              <!-- <i class="icon icon--arrowSmallDown"></i> -->
+            </span>
+            <!-- <select class="customSelect-select customSelect--inline-select">
+               TODO (Gavin): Later, add multicurrency support here -->
+              <!-- <option>BTC</option>
+              <option>USD</option>
+              <option>GBP</option>
+              <option>EUR</option>
+            </select> -->
+          </div>
+
+          <div ng-show="transaction.altCoin.useAltCoin">
+            <div class="customInputText--overlay" >
+                <span class="customSelect-text customSelect--overlay-text">
+                {{transaction.altCoin.symbol}}
+              </span>
+            </div>
+
+            <div class="inputText">
+              <input type="text" name="amount" ng-model="altCoinAmount.altCoins" bg-input-validator bg-input-to-satoshi-converter to-fixed="2" max-length="16" class="u-alignRight inputText-input">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="formRow u-marginTop-10">
+        <label>Internal Memo</label>
+        <div class="inputText">
+          <textarea name="message" ng-model="transaction.message" class="inputText-input inputText-textarea" placeholder="Enter a memo (optional)"></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="button buttonSubmit" name="advanceTransaction" ng-click="advanceTransaction()" ng-disabled="gatheringUnspents || gatheringMarketInfo || hasAltErrors">{{gatheringMarketInfo ? "Gathering coin information" : gatheringUnspents ? "Creating Transaction..." : "Next"}}</button>
+    </fieldset>
+  </form>
+</div>

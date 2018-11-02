@@ -1,0 +1,38 @@
+<div>
+
+  <!-- User Basics -->
+  <div class="u-marginBottom40">
+    <form name="settingsProfileForm" settings-profile-form class="row u-noMargin">
+      <fieldset class="col col--oneOfTwo col--noPadding">
+        <bg-form-error></bg-form-error>
+        <label>Name</label>
+        <div class="inputText">
+          <input type="text" data-ng-model="currentUser.settings.name.full" placeholder="Full Name" class="inputText-input" ng-disabled="!needsIdentityVerification()" bg-focus-when="true" bg-input-validator>
+          <div class="inputText-verification inputText-verification--unverified" ng-show="nameError">Need name</div>
+          <div ng-hide="needsIdentityVerification()" class="inputText-verification inputText-verification--verified">Verified <i class="icon icon--checkmark"></i></div>
+          <div ng-show="needsIdentityVerification()" class="inputText-verification inputText-verification--unverified identityVerificationLink" ng-click="goToIdentityVerification()"
+               popover-trigger="mouseenter" popover-placement="right" popover-template="settings/templates/unverified-popover-partial.html"
+               feature-flag="identity">Unverified</div>
+        </div>
+        <label>Email Address</label>
+        <div class="inputText--readonly">
+          <input type="email" placeholder="Email Address" class="inputText-input" ng-model="currentUser.settings.email.email" readonly="readonly" disabled>
+        </div>
+        <label>Timezone</label>
+        <div class="formRow">
+          <div class="customSelect">
+            <span class="customSelect-text">{{ settings.timezoneDisplay }}<i class="icon icon--arrowSmallDown"></i></span>
+            <bg-timezone-select settings="settings"></bg-timezone-select>
+          </div>
+        </div>
+        <button ng-show="hasChanges()" class="button buttonSubmit" type="submit" name="saveAboutForm" ng-click="saveAboutForm()">Save Changes</button>
+      </fieldset>
+    </form>
+
+    <!-- Account deactivation -->
+    <div bg-confirm-action class="u-marginTop30 row">
+      <a ng-hide="confirmationMessage" class="u-colorRed" ng-click="confirmDeactivate()">Deactivate Account</a>
+    </div>
+
+  </div>
+</div>

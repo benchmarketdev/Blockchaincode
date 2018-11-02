@@ -1,0 +1,58 @@
+<h2>Add user</h2>
+<div bg-add-user-to-wallet>
+  <form class="row" wallet-add-user-form>
+    <fieldset class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+      <bg-form-error></bg-form-error>
+
+      <div class="formRow" ng-class="{ 'formRow--error': emailError }">
+        <label>Email Address</label>
+        <p class="notice" ng-show="emailError">Invalid email address</p>
+        <div class="inputText">
+          <input type="email" name="email" ng-model="email" class="inputText-input" placeholder="Email Address" bg-input-validator bg-focus-when="true">
+        </div>
+      </div>
+
+      <div class="formRow">
+        <label>Invite Message</label>
+        <div class="inputText">
+          <textarea ng-model="message" class="inputText-input inputText-textarea" placeholder="Hi! Join my wallet on BitGo!"></textarea>
+        </div>
+      </div>
+
+      <div class="formRow u-marginBottom30">
+        <label>Role</label>
+        <i class="formRow-small--icon icon icon--qmark" popover-trigger="mouseenter" popover-placement="right" popover-template="enterprise/templates/rolepopover-partial.html"></i>
+        <div class="customSelect customSelect--inlineSmall" bg-focus-ui role="role">
+          <span class="customSelect-text">
+            {{ role }} <i class="icon icon--arrowSmallDown"></i>
+          </span>
+          <select class="customSelect-select" ng-focus="highlightParent($event)" ng-blur="removeHighlight($event)" ng-model="role">
+            <option value="Admin" selected="selected"> Admin </option>
+            <option value="Spender"> Spender </option>
+            <option value="Viewer"> Viewer </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Upsell alert for certain users -->
+      <div class="formRow" ng-show="blockRole()">
+        <div class="alert alert--notice">
+          <p class="alert-text">To add a {{ role }} to your wallet, <a ng-click="goToCreateOrg()">create an organization</a>.</p>
+        </div>
+      </div>
+
+      <!-- Roadblock -->
+      <div class="buttons" ng-show="blockRole()">
+        <button class="button disabled">Share</button>
+        <button class="button button--grey" ng-click="setState('showAllUsers')">Cancel</button>
+      </div>
+
+      <div class="buttons" ng-hide="blockRole()">
+        <button class="button" ng-click="saveAddUserForm()">Share</button>
+        <button class="button button--grey" ng-click="setState('showAllUsers')">Cancel</button>
+      </div>
+
+    </fieldset>
+  </form>
+</div>

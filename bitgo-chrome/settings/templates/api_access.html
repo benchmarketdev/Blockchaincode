@@ -1,0 +1,12 @@
+<div bg-state-manager>
+  <div class="row" developers-manager>
+
+    <div ng-show="showState('list')">
+      <ng-include src="'settings/templates/developers-accesstoken-list.html'"></ng-include>
+    </div>
+
+    <div ng-show="showState('add')">
+      <ng-include src="'settings/templates/developers-accesstoken-add.html'"></ng-include>
+    </div>
+  </div>
+</div>

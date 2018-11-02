@@ -1,0 +1,24 @@
+<div>
+
+  <p class="introText u-typography-3 u-colorGreyDark u-marginBottom45">
+    Using the backup KeyCard downloaded when you created this wallet, copy and paste the text from Box D into the input below. If you have a printed copy of the KeyCard, please use a QR code reader to load the data from the Box D QR code.
+  </p>
+
+  <form class="row" name="recoverWithKeycardBoxDForm">
+    <fieldset class="col col--oneOfTwo">
+
+      <div class="formRow" ng-class="{ 'formRow--error': keycardBoxDError }">
+        <p class="notice" ng-show="keycardBoxDError">Invalid text</p>
+        <div class="inputText">
+          <input type="text" name="keycardBoxD" class="inputText-input" placeholder="Box D text" ng-model="userInputRecoveryData.keycardBoxD" bg-input-validator bg-json-decrypt recovery-info="walletRecoveryInfo" wallet-data="userInputRecoveryData" />
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="button" name="recoverWithKeycardBoxD" ng-click="recoverWithKeycardBoxD()">Recover</button>
+      </div>
+
+    </fieldset>
+  </form>
+
+</div>

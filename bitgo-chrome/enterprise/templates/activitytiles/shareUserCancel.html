@@ -1,0 +1,19 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- if current user canceled a wallet share -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You canceled sharing wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+      with <span bg-get-user user-id="{{ logItem.target }}">{{user.settings.email.email}}</span>
+    </span>
+
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }} canceled sharing wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+      with <span bg-get-user user-id="{{ logItem.target }}">{{user.settings.email.email}}</span>
+    </span>
+
+    <!-- uniform data -->
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

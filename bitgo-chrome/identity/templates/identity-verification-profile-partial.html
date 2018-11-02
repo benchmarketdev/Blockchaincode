@@ -1,0 +1,12 @@
+<div>
+
+  <!-- User Basics -->
+  <div class="u-marginBottom40">
+    <form name="identityVerificationProfileForm" class="row u-noMargin">
+      <fieldset class="col col--oneOfTwo col--noPadding">
+        <bg-form-error></bg-form-error>
+        <label>Name</label>
+        <div class="inputText">
+          <input type="text" data-ng-model="name" placeholder="Full Name" class="inputText-input" bg-focus-when="true" bg-input-validator>
+          <div class="inputText-verification inputText-verification--unverified" ng-show="nameError">Need name</div>
+        </div>

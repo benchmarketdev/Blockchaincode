@@ -1,0 +1,31 @@
+<div class="u-alignRight">
+  <a class="button button--small button--create" ng-click="setState('addUser')">
+    <i class="icon icon--plus"></i> Add User
+  </a>
+</div>
+<table class="activityTable">
+  <thead>
+    <tr>
+      <th  class="activityTable-users">Users</th>
+      <th>Wallets</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-show="enterprises.current.users | bgIsObjectEmpty">
+      <td colspan="2">
+        <div class = "meta">
+          <h2>No other users have been added yet.</h2>
+          <p class="u-typography-4">Add users to your wallets to assist with security and auditing of your funds.</p>
+        </div>
+      </td>
+    </tr> 
+    <tr class="activityTable-rowItem" ng-repeat="(userId, walletsAccessibleByUser) in enterprises.current.users" ng-click="selectUser(userId, walletsAccessibleByUser)">
+      <td bg-get-user user-id="{{ userId }}">{{ user.settings.email.email }}</td>
+      <td>
+        <span ng-repeat="wallet in walletsAccessibleByUser"> 
+        {{wallet.walletLabel}}{{$last ? '' : ', '}}
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

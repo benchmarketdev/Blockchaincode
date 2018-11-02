@@ -1,0 +1,17 @@
+<form name="securityManagerDirective" class="row" security-manager-directive bg-state-manager>
+  <div class="col col--twoOfTen">
+    <nav>
+      <ul class="pageNav">
+        <li>
+          <a class="pageNav-item is-selected" ng-class="{ 'is-selected': !showState('password') }" ng-click="setState('twoStepVerificationList')">Two-Step Verification</a>
+        </li>
+        <li>
+          <a class="pageNav-item" ng-class="{ 'is-selected': showState('password') }" ng-click="setState('password')">Password</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="col col--eightOfTen" bg-otp-devices>
+    <ng-include src="templateSource"></ng-include>
+  </div>
+</form>

@@ -1,0 +1,78 @@
+<div bg-state-manager>
+  <!-- Masthead section -->
+  <section class="masthead">
+    <div class="contentWrapper">
+
+      <!-- Header Wallet info -->
+      <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col--noPadding">
+          <h1 class="masthead-heading masthead-heading--withSubContent">{{ wallets.current.data.label }}</h1>
+          <p class="walletAddress-main">
+            <a bg-qr-code class="icon icon--qrcode" ng-show="isCurrentWalletState('receive')" ng-click="openModal(currentReceiveAddress.address, currentReceiveAddress.label)"></a>
+            {{ currentReceiveAddress.address }}
+          </p>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 u-alignRight col--noPadding">
+          <div class="u-typography-2">{{ wallets.current.data.balance | bgBitcoinFormat }}
+            <span class="u-typography-light">{{ null | bgBitcoinFormat:'name':null:null:'' }}</span>
+          </div>
+          <div ng-show="marketDataAvailable" class="u-colorGrey">{{ currency.data.symbol }} {{ wallets.current.data.balance | bgBitcoinToCurrency }} {{ currency.currency }}</div>
+        </div>
+      </div>
+
+      <!-- Sub nav items -->
+      <div class="row">
+        <div class="navbar-header">
+
+          <button type="button" class="wallet-toggle navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <!-- Left Side Nav Items -->
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col--noPadding collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+          <nav>
+            <ul ng-click="navCollapsed=true" class="sectionNav leftSectionNav">
+              <li class="sectionNav-item">
+                <a class="sectionNav-link" ng-click="setState('transactions')" ng-class="{ 'is-selected' : isCurrentWalletState('transactions') }">Transactions</a>
+              </li>
+              <li class="sectionNav-item" ng-show="wallets.current.roleIsAdmin() && wallets.current.isSafehdWallet()">
+                <a class="sectionNav-link" ng-click="setState('users'); setSubState()" ng-class="{ 'is-selected' : isCurrentWalletState('users') }">Users</a>
+              </li>
+              <li class="sectionNav-item" ng-show="wallets.current.roleIsAdmin() && wallets.current.isSafehdWallet()">
+                <a class="sectionNav-link" ng-click="setState('policy')" ng-class="{ 'is-selected' : isCurrentWalletState('policy') }">Policy</a>
+              </li>
+              <li class="sectionNav-item">
+                <a class="sectionNav-link" ng-click="setState('settings')" ng-class="{ 'is-selected' : isCurrentWalletState('settings') }">Settings</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- Right Side Nav Items -->
+        <div class="col-xs-12 col-sm-4 col-md-4 col--noPadding collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+          <nav>
+            <ul ng-click="navCollapsed=true" class="sectionNav rightSectioNav">
+              <li class="sectionNav-item"  ng-show="!wallets.current.roleIsViewer()">
+                <a class="sectionNav-link" ng-click="setState('send')" ng-class="{ 'is-selected' : isCurrentWalletState('send') }">
+                  <i class="icon icon--arrowUp"></i>Send
+                </a>
+              </li>
+              <li class="sectionNav-item">
+                <a class="sectionNav-link" ng-click="setState('receive')" ng-class="{ 'is-selected' : isCurrentWalletState('receive') }">
+                  <i class="icon icon--arrowDown"></i>Receive
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="mainContent contentWrapper">
+    <ng-include src="walletStateTemplateSource"></ng-include>
+  </main>
+
+</div>

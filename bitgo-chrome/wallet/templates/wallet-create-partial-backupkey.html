@@ -1,0 +1,117 @@
+<div wallet-create-steps-backupkey class="row">
+  <div class="col">
+
+    <h2>Backup Key</h2>
+    <p class="u-typography-3 u-colorGreyDark u-marginBottom45">The Backup Key can be used to recover your wallet in the event that you need access without BitGo.</p>
+
+    <h3>Choose how to create a backup key</h3>
+
+    <!-- User backup key selection -->
+    <div class="selector row">
+      <div class="col-xss-12 col-xs-6 col-sm-3 col-md-3 col-lg-3 col--noPadding" feature-flag="krs">
+        <div class="selector-item" ng-class="{ 'is-selected' : showOption('krsProvided'), 'is-disabled' : optionIsDisabled('krsProvided') }" ng-click="setBackupkeyOption('krsProvided')">
+          <h4 class="selector-heading">Recovery Service</h4>
+          <p>
+            Create your backup key on a third party recovery service. Keys are generated offline and stored cold in a vault.
+            <i class="formRow-small--icon icon icon--qmark u-colorBlueGreyLight" popover-trigger="mouseenter" popover-placement="right" popover-template="wallet/templates/krspopover-partial.html"></i>
+          </p>
+          <div class="selector-notice">EASIEST</div>
+        </div>
+      </div>
+      <div class="col-xss-12 col-xs-6 col-sm-3 col-md-3 col-lg-3 col--noPadding">
+        <div class="selector-item" ng-class="{ 'is-selected' : showOption('inBrowser'), 'is-disabled' : optionIsDisabled('inBrowser') }" ng-click="setBackupkeyOption('inBrowser')">
+          <h4 class="selector-heading">Create in browser</h4>
+          <p>Create the key now, in your browser, and encrypt it with your password.  BitGo will never see your password or your key.</p>
+        </div>
+      </div>
+      <div class="col-xss-12 col-xs-6 col-sm-3 col-md-3 col-lg-3 col--noPadding" feature-flag="coldkey">
+        <div class="selector-item" ng-class="{ 'is-selected' : showOption('coldKeyApp'), 'is-disabled' : optionIsDisabled('coldKeyApp') }" ng-click="setBackupkeyOption('coldKeyApp')">
+          <h4 class="selector-heading">Use BitGo KeyTool</h4>
+          <p>Create the key using the BitGo KeyTool iOS App and easily send the public key to BitGo.</p>
+        </div>
+      </div>
+      <div class="col-xss-12 col-xs-6 col-sm-3 col-md-3 col-lg-3 col--noPadding">
+        <div class="selector-item" ng-class="{ 'is-selected' : showOption('userProvided'), 'is-disabled' : optionIsDisabled('userProvided') }" ng-click="setBackupkeyOption('userProvided')">
+          <h4 class="selector-heading">Provide public key</h4>
+          <p>Generate a key offline, and provide only the public portion of your Backup Key.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create backup key in-Browser -->
+    <div ng-show="showOption('inBrowser')">
+      <form name="createStepsBackupkeyInBrowserForm">
+        <div class="buttons">
+          <button type="submit" class="button" name="advanceBackupkey" ng-click="advanceBackupkey()">Next</button>
+          <a class="button button--grey" name="cancel" ng-click="cancel()">Cancel</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- User provides their own backup xpub -->
+    <div ng-show="showOption('userProvided')">
+      <h3>Enter your key</h3>
+      <p class="u-typography-4 u-colorGreyDark">Generate your Backup Key with any BIP32 key generation software.  You should generate the key on a separate machine from the one you are using now, and you must keep a backup of your private key.</p>
+
+      <form name="createStepsBackupkeyUserProvidedForm">
+
+        <div class="formRow" ng-class="{ 'formRow--error': backupPubKeyError }">
+          <p class="notice" ng-show="backupPubKeyError">Invalid xpub</p>
+          <div class="inputText">
+            <input type="xpub" name="backupPubKey" ng-model="inputs.backupPubKey" placeholder="BIP32 Extended Public Key (xpub)" class="inputText-input inputText-input--smallType" bg-input-validator bg-focus-when="true" >
+            <div class="u-colorGreen inlineNotice" ng-show="userXpubValid()">
+              <i class="icon icon--checkmark"></i> Key valid
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="button" ng-class="{ 'disabled' : !userXpubValid() }" name="advanceBackupkey" ng-click="advanceBackupkey()">Next</button>
+          <a class="button button--grey" name="cancel" ng-click="cancel()">Cancel</a>
+        </div>
+
+      </form>
+    </div>
+    <!-- User provides backup xpub from ColdKey app -->
+    <div ng-show="showOption('coldKeyApp')">
+      <ng-include src="'wallet/templates/wallet-create-partial-backupkey-coldkeyapp.html'"></ng-include>
+    </div>
+
+    <!-- KRS -->
+    <div ng-show="showOption('krsProvided')">
+      <p class="u-typography-4 u-colorGreyDark">
+        Using a Key Recovery service (KRS) for your backup key is the easiest and safest way to store your Bitcoin.
+        The KRS is an independent third party service that specializes in generating / storing backup keys for emergency use.
+        <strong><a target="_blank" ng-href="https://bitgo.zendesk.com/hc/en-us/sections/201316363-BitGo-KRS">See FAQs.</a></strong>
+      </p>
+      <div class="formRow">
+        <p class="u-typography-4 u-colorGreyDark">Our current KRS provider is Keyternal. BitGo will be supporting more KRS providers in the future.</p>
+        <div class="formRow u-marginTop60">
+
+          <div class="u-marginBottom40" ng-repeat="backupKeyProvider in backupKeyProviders">
+            <div class="inputRadio">
+              <input type="radio" name="radioGroupCoin" ng-model="inputs.backupKeyProvider" value="{{backupKeyProvider.id}}" id="{{backupKeyProvider.id}}">
+              <label for="{{backupKeyProvider.id}}"> &nbsp;
+                <div class="plansBox krsBox u-clearfix">
+                  <div class="supportPlansHeading">
+                    <img src="{{backupKeyProvider.image}}">
+                  </div>
+                  <div class="supportPlansDescription col-xss-12 col-xs-12 col-sm-9 col--noPadding u-clearfix">
+                    <a target="_blank" ng-href="https://keytern.al/">Keyternal</a> is run by <a target="_blank" ng-href="https://eeqj.com/">EEQJ</a> and provisions backups secured in a cold, offline environment with private keys never exposed to the Internet.
+                    The recovery process will require identity verification and a mandatory waiting period.
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form name="createStepsKRSForm">
+        <div class="buttons">
+          <button type="submit" class="button" name="advanceBackupkey" ng-click="advanceBackupkey()">Next</button>
+          <a class="button button--grey" name="cancel" ng-click="cancel()">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

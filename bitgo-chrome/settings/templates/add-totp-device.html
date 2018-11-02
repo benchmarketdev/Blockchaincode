@@ -1,0 +1,33 @@
+<div>
+  <p class="u-typography-4 u-pullRight u-pushDown35 u-colorBlueGreyDark"><a ng-click="fetchTotpParams()">Get a new code</a></p>
+  <h2 class="u-typography-3 u-typography-medium u-marginBottom30">Using your Google Authenticator App</h2>
+  <form novalidate name="OTPForm"></form>
+  <ul class="u-cleanList u-inlineList u-marginBottom10">
+    <h3>Scan the code below</h3>
+    <div class="qrCode-modal-auth-border-outer">
+      <div class="qrCode-modal-border-inner">
+        <bg-qr-code height="200" text="{{ device.totpUrl.url }}"></bg-qr-code>
+      </div>
+    </div>
+  </ul>
+  <ul class="u-cleanList u-inlineList u-marginBottom30">
+    <div class="inputText--readonly col--pullLeftFullWidth u-marginBottom30">
+      <textarea type="email" placeholder="Loading..." class="inputText-input inputText-totpCode" ng-model="device.totpUrl.key" readonly="readonly" disabled></textarea>
+    </div>
+  </ul>
+ <ul class="u-cleanList u-inlineList u-marginBottom30">
+    <h3>Enter your two-step verification code below</h3>
+  </ul>
+  <form novalidate name="TOTPForm" ng-submit="addOTPDevice('totp')">
+    <div class="formRow" ng-class="{ 'formRow--error': otpAccessError }">
+      <div class="inputText standardFormWidth">
+        <input name="otpCode" class="inputText-input" ng-model="device.otpCode" placeholder="Verification Code" bg-input-validator bg-focus-when="true" max-length="6" />
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a class="button u-marginTop30" type="submit" class="button" name="setTotp" ng-click="addOTPDevice('totp')">Submit</a>
+      <a class="button button--grey" type="cancel" class="button" ng-click="setState('twoStepVerificationSelect')">Cancel</a>
+    </div>
+  </form>
+</div>

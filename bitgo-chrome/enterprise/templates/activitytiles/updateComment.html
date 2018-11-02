@@ -1,0 +1,23 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- if current user updated the comment -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You updated the comment on
+      <a target="_blank" ng-href="{{ externalTransactionUrl }}{{ logItem.data.transaction }}">a transaction</a>
+      in wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+    </span>
+
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }} updated the comment on
+      <a target="_blank" ng-href="{{ externalTransactionUrl }}{{ logItem.data.transaction }}">a transaction</a>
+      in wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+    </span>
+
+    <!-- uniform data -->
+    <div>The new comment is: "{{ logItem.data.comment }}"</div>
+
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

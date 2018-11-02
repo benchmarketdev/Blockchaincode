@@ -1,0 +1,17 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- if current user renamed wallet -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You renamed wallet "{{ logItem.data.oldLabel }}" to wallet "{{ logItem.data.newLabel }}"
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }} renamed wallet "{{ logItem.data.oldLabel }}" to wallet "{{ logItem.data.newLabel }}"
+    </span>
+
+    <!-- uniform data -->
+    <div ng-show="logItem.data.needsApproval"><b>This rename required approval.</b></div>
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

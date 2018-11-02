@@ -1,0 +1,53 @@
+<div modal-otp-then-unlock-manager>
+  <div bg-state-manager>
+
+    <!-- OTP Verification Step -->
+    <div ng-show="showState('otp')" modal-otp-form>
+      <div>
+        <h1 class="modal-heading">2-Step Verification</h1>
+      </div>
+
+      <bg-form-error></bg-form-error>
+
+      <form class="u-noMargin" novalidate>
+
+        <div class="formRow" ng-class="{ 'formRow--error': otpError }">
+          <div class="inputText">
+            <input type="text" name="otp" class="inputText-input" placeholder="Enter code" ng-model="form.otp" bg-focus-when="true" bg-input-numbers-only max-length="7" />
+          </div>
+        </div>
+        <a class="u-typography-4 u-pullRight" ng-click="resendOTP()">Resend</a>
+
+        <button type="submit" class="button" name="submitOTP" ng-click="submitOTP()">Submit</button>
+        <a class="u-colorGreyDark u-typography-4" ng-click="closeWithError('cancel')">Cancel</a>
+
+      </form>
+    </div>
+
+    <!-- login password Step -->
+    <div ng-show="showState('password')" modal-password-form>
+
+      <div>
+        <h1 ng-hide="isAcceptingShare" class="modal-heading">Enter Your Wallet Password</h1>
+        <h1 ng-show="isAcceptingShare" class="modal-heading">Enter Your Login Password</h1>
+      </div>
+
+      <bg-form-error></bg-form-error>
+
+      <form class="u-noMargin" name="walletPassword" novalidate>
+
+        <div class="formRow" ng-class="{ 'formRow--error': passwordError }">
+          <div class="inputText">
+            <input ng-hide="isAcceptingShare" type="password" name="password" class="inputText-input" placeholder="Enter your wallet password" ng-model="form.password" bg-focus-when="true" />
+            <input ng-show="isAcceptingShare" type="password" name="password" class="inputText-input" placeholder="Enter your login password" ng-model="form.password" bg-focus-when="true" />  
+          </div>
+        </div>
+
+        <button type="submit" class="button" name="verifyPassword" ng-click="verifyPassword()">Submit</button>
+        <a class="u-colorGreyDark u-typography-4" ng-click="closeWithError('cancel')">Cancel</a>
+
+      </form>
+    </div>
+
+  </div>
+</div>

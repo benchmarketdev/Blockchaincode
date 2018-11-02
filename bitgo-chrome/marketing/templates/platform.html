@@ -1,0 +1,145 @@
+<div>
+  <section>
+    <div class="hero">
+      <div class="contentWrapper">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <h1>BitGo Platform API</h1>
+            <h2>Integrate multi-sig, HD security into your bitcoin application in minutes</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="contentSection">
+      <div class="contentWrapper">
+        <div class="row">
+          <h1>Robust Multi-Sig Wallet API and SDK</h1>
+          <h2>Secure your bitcoin applications with the same platform that protects the world’s leading exchanges and institutions.</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="u-bordered u-textCenter">
+              <h3 class="u-textBlue">Security and Privacy</h3>
+              <p>All of our wallets use industry standards of multi-sig (P2SH) for security and HD (BIP32) for financial privacy.</p>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="u-bordered u-textCenter">
+              <h3 class="u-textBlue">Co-Signing Engine</h3>
+              <p>Build in powerful business rules for co-signing including rate limits, address whitelists, webhooks, secondary approvals, and more.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="u-bordered u-textCenter">
+              <h3 class="u-textBlue">Seamless Integration</h3>
+              <p>Migrate from your existing wallet system with minimal development effort. The integration can be as simple as changing one line of code.</p>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="u-bordered u-textCenter">
+              <h3 class="u-textBlue">Powerful SDK</h3>
+              <p>The Javascript SDK implements client-side wallet features and interfaces with our APIs and the blockchain. You won’t need to implement any cryptography. View it on <a target="_blank" href="https://github.com/BitGo/BitGoJS">github</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="contentSection">
+      <div class="contentWrapper contentWrapper--borderedTop">
+        <div class="row">
+          <h1>Learn More</h1>
+        </div>
+
+        <div class="row">
+          <h2>Read our <a href="http://bitgo.com/api">API documentation</a> or checkout our <a href="{{templatePrefix}}/api-pricing">pricing</a>.</h2>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="contentSection">
+      <div class="contentWrapper contentWrapper--borderedTop">
+        <div class="row">
+          <h1>Contact</h1>
+        </div>
+
+        <div class="row">
+          <form name="applyform">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow">
+                  <div class="inputText">
+                    <input type="text" name="name" class="inputText-input" placeholder="Name" ng-model="userInfo.name" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow">
+                  <div class="inputText">
+                    <input type="text" name="company" class="inputText-input" placeholder="Company" ng-model="userInfo.company" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow">
+                  <div class="inputText">
+                    <input type="text" name="industry" class="inputText-input" placeholder="Industry" ng-model="userInfo.industry" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow" ng-class="{ 'formRow--error': emailError }">
+                  <p class="notice" ng-show="emailError">Invalid email address</p>
+                  <div class="inputText">
+                    <input type="email" name="email" class="inputText-input" placeholder="Email Address" ng-model="userInfo.email" bg-input-validator />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow">
+                  <div class="inputText">
+                    <input type="text" name="text" class="inputText-input" placeholder="Phone" ng-model="userInfo.phone" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-md-offset-3 hidden-xs hidden-sm">
+              <button type="submit" ng-click="onSubmitForm()" class="button u-pullRight">Get In Touch</button>
+            </div>
+            <div class="col-md-6 col-md-offset-3 hidden-lg hidden-md">
+              <button type="submit" ng-click="onSubmitForm()" class="button">Get In Touch</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>

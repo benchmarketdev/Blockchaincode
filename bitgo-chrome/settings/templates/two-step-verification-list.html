@@ -1,0 +1,47 @@
+<div>
+ <!-- Description -->
+  <div class="row">
+    <a class="button button--small button--create u-pullRight" ng-click="checkUnlock()"><i class="icon icon--plus"></i>Add Device</a>
+    <p class="introText u-colorGreyDark">Two-Step Verification Devices</p>
+  </div>
+  <!-- List of registered otp devices -->
+  <table class="addressTable">
+    <thead>
+      <tr>
+        <!--th>Date Added</th-->
+        <th>Label</th>
+        <th colspan="2">Type</th>
+        <th colspan="1">
+          <span ng-hide="user.settings.otpDevices.length === 1">Action</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-hide="user.settings.otpDevices.length">
+        <td colspan="5">
+          <div class="meta">
+            <h2>Set a two-step verification device for enhanced security.</h2>
+            <p class="u-typography-4">
+              Two-step verification can help protect your Bitcoin from Bitcoin Bandits!
+            </p>
+          </div>
+        </td>
+      </tr>
+      <tr ng-repeat="device in user.settings.otpDevices">
+        <td colspan="1">{{ device.label }}
+          <span ng-if="device.type === 'authy'"> ({{ device.phone }})</span>
+        </td>
+        <td colspan="2">{{ device.type }}</td>
+        <td colspan="1">
+          <div bg-confirm-action ng-show="user.settings.otpDevices.length > 1">
+            <a ng-click="initiateAction()" ng-hide="confirmationMessage">Remove Device</a>
+            <span ng-show="confirmationMessage">Sure?
+              <a ng-click="removeDevice(device.id)">Yes</a> |
+              <a ng-click="cancelAction()">No</a>
+            </span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

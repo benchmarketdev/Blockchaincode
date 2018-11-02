@@ -1,0 +1,41 @@
+<div bg-state-manager>
+  <!-- Masthead section -->
+  <section class="masthead">
+    <div class="contentWrapper">
+
+      <!-- Header info -->
+      <div class="row">
+        <div class="col col--eightOfTwelve">
+          <h1 class="masthead-heading masthead-heading--withSubContent">BitGo Rewards Wallet</h1>
+          <p class="u-typography-5 u-colorGreyDark u-marginBottom30">
+            <span ng-show="canSendInvites()">
+              Invite your friends to join BitGo by sending them some coin and we'll send you the same amount when they create their own secure wallet!
+            </span>
+            <span ng-hide="canSendInvites()">
+              No more invitations can be sent from this wallet, but the updated status of invitations you've already sent will still be available.
+            </span>
+          </p>
+        </div>
+        <div class="col col--fourOfTwelve u-alignRight" ng-show="canSendInvites()">
+          <div class="u-typography-2 walletBalance">{{ matchwallets.current.data.balance | bgBitcoinFormat:null:'bits' }}
+            <span class="u-typography-light">bits</span>
+          </div>
+          <div class="u-colorGrey">{{ currency.data.symbol }} {{ matchwallets.current.data.balance | bgBitcoinToCurrency }} {{ currency.currency }}</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <main class="mainContent contentWrapper">
+    <main matchwallet-send-manager>
+      <div ng-show="showState('prepare')">
+        <ng-include src="'matchwallet/templates/matchwallet-send-partial-prepare.html'"></ng-include>
+      </div>
+      <div ng-show="showState('confirmAndSend')">
+        <ng-include src="'matchwallet/templates/matchwallet-send-partial-confirm.html'"></ng-include>
+      </div>
+    </main>
+  </main>
+
+</div>

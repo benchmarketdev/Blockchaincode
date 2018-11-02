@@ -1,0 +1,13 @@
+<div class="popover-inner inlinePopover inlinePopover-wButtons">
+  <h2 ng-show="txIsWithdrawal()" class="inlinePopover-heading">Sent to Address</h2>
+  <h2 ng-hide="txIsWithdrawal()" class="inlinePopover-heading">Received in Address</h2>
+
+  <form>
+    <div class="formRow">
+      <div class="inputText">
+        <input type="text" disabled="disabled" value="{{ tx.toAddress }}" class="inputText-input u-typography-4">
+      </div>
+      <button class="button button--small" ng-click="manualHide()">Send</button>
+    </div>
+  </form>
+</div>

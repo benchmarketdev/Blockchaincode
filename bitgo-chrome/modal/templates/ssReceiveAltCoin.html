@@ -1,0 +1,55 @@
+<div modal-receive-alt-coin>
+
+  <div class="u-alignCenter">
+      <h2>Convert Altcoins to Bitcoin</h2>
+  </div>
+  <div class="u-marginBottom30"></div>
+
+    <form class="formRow formRow--error">
+      <span class="notice" ng-show="unableToLoadAltCoins">Unable to load AltCoins. Please try again later</span>
+      <ss-drop-down id="alt-dropdown" ignoreCoinsList="changeCoin" is-disabled="addressBeingGenerated" has-errors="unableToLoadAltCoins" alt="receiveAltCoin.altCoin" change="changeCoin" class="customSelect">
+      </ss-drop-down>
+      <div class="u-marginBottom30"></div>
+    </form>
+
+    <div class="u-colorGreyDark" ng-show="!receiveAltCoin.altCoin.useAltCoin && !addressBeingGenerated && !hasAltErrors">
+      <h3 >How does it work?</h3>
+      <span class="u-typography-5">BitGo enables you to convert altcoins to bitcoin through <a href="https://shapeshift.io/site/about" target="_blank">ShapeShift.</a></span>
+      <div class="u-marginBottom30"></div>
+      <ol>
+        <li class="u-typography-5">Select your altcoin.</li>
+        <li class="u-typography-5">Send the altcoin to the address generated</li>
+        <li class="u-typography-5">Bitcoins get deposited to your current receive address ({{receiveAltCoin.altCoin.recipientAddress}}) automatically</li>
+      </ul>
+    </div>
+
+    <div class="row " ng-show="receiveAltCoin.altCoin.useAltCoin && !addressBeingGenerated && !hasAltErrors">
+      <p>{{receiveAltCoin.altCoin.selected}} deposited to the below address will be converted to Bitcoin at a rate of <strong>1 {{receiveAltCoin.altCoin.symbol}} = {{receiveAltCoin.altCoin.rate | bgDecimalFormat:2:null}} BTC</strong> and deposited to your wallet</p>
+      <div class="u-alignCenter">
+        <div class="qrCode-border-outer qrAltCoin">
+          <div class="qrCode-border-inner">
+            <!--<div bg-confirm-action class="row">-->
+              <a bg-qr-code ng-click="openModal(receiveAltCoin.altCoin.depositAddress, receiveAltCoin.altCoin.label)" height="180" text=" {{ receiveAltCoin.altCoin.depositAddress }} "></a>
+              <!--</div>-->
+          </div>
+        </div>
+        <span class="u-colorGreyDark u-typography-5">{{receiveAltCoin.altCoin.depositAddress}}</span>
+      </div>
+    </div>
+
+    <div ng-show="addressBeingGenerated" class="u-alignCenter">
+      <img src="/img/loading.gif" width="200px" />
+      <p class="u-typography-4 u-colorBlue">Generating {{receiveAltCoin.altCoin.selected}} address.
+      </p>
+    </div>
+
+    <div class="row" ng-show="hasAltErrors">
+      <div class="alert alert--danger">
+        <i class="icon icon--crossmark"></i>
+        <p class="alert-text">An error has occurred generating {{receiveAltCoin.altCoin.selected}} deposit address, please try again later.</p>
+
+      </div>
+    </div>
+
+
+</div>

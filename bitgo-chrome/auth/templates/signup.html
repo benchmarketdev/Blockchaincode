@@ -1,0 +1,68 @@
+<div class="mainContent contentWrapper">
+  <div class="row" bg-state-manager>
+    <div class="col col--centered">
+
+      <div ng-show="showState('signup')">
+
+        <h1>
+          Sign Up
+          <span class="formHead-right-align">Have an account? <a href="{{ TemplatePathPrefix }}/login">Log In</a></span>
+        </h1>
+
+        <form novalidate name="signupForm" signup-form>
+
+          <bg-form-error></bg-form-error>
+
+          <div class="formRow" ng-class="{ 'formRow--error': emailError }">
+            <label>Email Address</label>
+            <p class="notice" ng-show="emailError">Invalid email address</p>
+            <div class="inputText">
+              <input type="email" name="email" class="inputText-input" placeholder="Email Address" ng-model="user.settings.email.email" bg-input-validator bg-focus-when="true" />
+            </div>
+          </div>
+
+          <div class="formRow" ng-class="{ 'formRow--error': passwordError }">
+            <label>Password</label>
+            <i class="formRow-icon icon icon--qmark" popover-trigger="mouseenter" popover-placement="right" popover-template="auth/templates/passwordpopover-partial.html"></i>
+
+            <p class="notice" ng-show="passwordError">Invalid password</p>
+            <div class="inputText">
+              <input type="password" name="password" class="inputText-input" placeholder="Password" ng-model="password" bg-password-strength="passwordStrength" on-password-change="checkStrength(passwordStrength)" bg-input-validator />
+            </div>
+            <div class="passwordStrength" ng-show="showPasswordStrength()">
+              <div class="passwordStrength-indicator">
+                <span class="passwordStrength-fill" ng-class="passwordStrength.progress.class"></span>
+              </div>
+              It would take {{ passwordStrength.crack_time_display }} to crack this password.
+            </div>
+          </div>
+
+          <div class="formRow" ng-class="{ 'formRow--error': passwordConfirmError }">
+            <label>Password Confirm</label>
+            <p class="notice" ng-show="passwordConfirmError">Invalid password confirmation</p>
+            <div class="inputText">
+              <input type="password" class="inputText-input" name="passwordConfirm" placeholder="Password Confirm" ng-model="passwordConfirm" bg-input-validator />
+            </div>
+          </div>
+
+          <p class="u-typography-4 u-colorBlueGreyDark">
+            <input type="checkbox" name="terms" ng-model="agreedToTerms">
+            <span ng-click="toggleTerms()">I have read and agree to the</span> <a href="https://www.bitgo.com/terms" target="_blank">Terms of Service</a>
+          </p>
+
+          <div class="buttons">
+            <button type="submit" class="button" name="btn-submit" ng-click="submitSignup()">Sign Up</button>
+          </div>
+
+        </form>
+      </div>
+
+      <div ng-show="showState('confirmEmail')">
+        <h1>Verify Your Email</h1>
+        <p class="u-typography-3">An email was sent to: {{ lockedEmail }}</p>
+        <p class="u-typography-3">Click on the activation link in the email to verify your email address.</p>
+      </div>
+
+    </div>
+  </div>
+</div>

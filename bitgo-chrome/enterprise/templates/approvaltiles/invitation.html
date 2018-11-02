@@ -1,0 +1,49 @@
+<td colspan="2">
+  <div class="activityTable-text">
+    <span ng-show="approvalItem.info.gift">
+      {{ approvalItem.info.invitation.inviterEmail }} invited you to join BitGo!
+    </span>
+    <span ng-show="approvalItem.info.reward">
+      <span ng-show="approvalItem.info.invitation.giftClaimed">
+        {{ approvalItem.info.invitation.inviteeEmail }} accepted your invitation to join BitGo!
+      </span>
+      <span ng-hide="approvalItem.info.invitation.giftClaimed">
+        You invited {{ approvalItem.info.invitation.inviteeEmail }} to join BitGo!
+        <br>You will be eligible to claim your reward of
+        <b>{{ approvalItem.info.invitation.amount | bgBitcoinFormat:'name':'bits' }}</b>
+        when they accept their invitation.
+      </span>
+    </span>
+    <div ng-show="canClaimReward">
+      Select a wallet to claim your reward of <b>{{ approvalItem.info.invitation.amount | bgBitcoinFormat:'name':'bits' }}</b>
+    </div>
+    <div ng-hide="canClaimReward || (approvalItem.info.reward && !invitationAccepted)">
+      To claim your reward of <b>{{ approvalItem.info.invitation.amount | bgBitcoinFormat:'name':'bits' }}</b>
+      <ul>
+        <li ng-hide="rewardWalletId">
+          <a ng-click="goToCreateWallet()">Create your first wallet</a>
+        </li>
+        <li ng-hide="currentUser.settings.identity.verified">
+          <a ng-click="goToIdentityVerification()">Verify your identity</a>
+        </li>
+     </ul>
+    </div>
+    <div class="activityTable-timestamp">{{ approvalItem.prettyDate }}</div>
+  </div>
+</td>
+<td class="activityTable-wallet">
+  <div ng-show="canClaimReward" matchwallet-reward-wallet></div> 
+</td>
+<td class="activityTable-buttons">
+  <div class="buttons">
+    <span bg-confirm-action>
+      <a class="button button--small button--green" ng-hide="confirmationMessage" ng-click="setApprovalState('approved')"
+         ng-disabled="!canClaimReward">Claim</a>
+      <a class="button button--small button--reject" ng-hide="confirmationMessage" ng-click="initiateAction()">Reject</a>
+      <span ng-show="confirmationMessage">Are you sure?
+        <a ng-click="setApprovalState('rejected')">Yes</a> | 
+        <a ng-click="cancelAction()">No</a>
+      </span>
+    </span>
+  </div>
+</td>

@@ -1,0 +1,112 @@
+<div>
+
+  <!-- User Basics -->
+  <div class="u-marginBottom40">
+    <h2 class="u-marginBottom20">Personal Info</h2>
+
+    <form name="settingsAboutForm" settings-about-form class="row u-noMargin">
+      <fieldset class="col col--oneOfTwo col--noPadding">
+        <bg-form-error></bg-form-error>
+        <label>Name</label>
+        <div class="inputText">
+          <input type="text" data-ng-model="settings.name.full" placeholder="Full Name" class="inputText-input" bg-focus-when="true" bg-input-validator>
+          <div class="inputText-verification inputText-verification--unverified" ng-show="nameError">Need name</div>
+        </div>
+        <label>Email Address</label>
+        <div class="inputText--readonly">
+          <input type="email" placeholder="Email Address" class="inputText-input" ng-model="settings.email.email" readonly="readonly" disabled>
+        </div>
+        <label>Timezone</label>
+        <div class="formRow">
+          <div class="customSelect">
+            <span class="customSelect-text">{{ settings.timezoneDisplay }}<i class="icon icon--arrowSmallDown"></i></span>
+            <bg-timezone-select settings="settings"></bg-timezone-select>
+          </div>
+        </div>
+        <button ng-show="hasChanges()" class="button buttonSubmit" type="submit" name="saveAboutForm" ng-click="saveAboutForm()">Save Changes</button>
+      </fieldset>
+    </form>
+
+    <!-- Phone-specific Form -->
+    <form name="settingsPhoneForm" settings-phone-form class="row">
+      <fieldset class="col col--oneOfTwo col--noPadding">
+
+        <label>Phone Number</label>
+        <p class="notice" ng-show="phoneError">Bad phone number</p>
+        <div class="formRow" ng-class="{ 'formRow--error': phoneError }">
+          <div class="inputText">
+            <bg-intl-tel-input name="phone" type="tel" ng-model="settings.phone.phone" bg-input-validator></bg-intl-tel-input>
+            <div ng-show="!needsVerification()" class="inputText-verification inputText-verification--verified">Verified <i class="icon icon--checkmark"></i></div>
+            <div ng-show="needsVerification()" class="inputText-verification inputText-verification--unverified">Unverified</div>
+          </div>
+        </div>
+
+        <div ng-show="showVerificationForm()">
+          <label>Please verify your new phone number</label>
+          <p class="notice" ng-show="verificationOtpError">Missing verification OTP</p>
+          <div class="formRow u-marginBottom30" ng-class="{ 'formRow--error': verificationOtpError }">
+            <div class = "inputText">
+              <input name="verificationOtp" ng-model="verificationOtp" class="inputText-input" placeholder="Enter Verification Code" bg-input-validator bg-input-numbers-only max-length="7" />
+            </div>
+            <p class="u-pullRight u-typography-6 u-noMargin u-layer"><a ng-click="sendSMS()" class="u-colorGreyDark">&nbsp;Resend verification code</a></p>
+            <p class="u-pullRight u-typography-6 u-noMargin u-layer"><a ng-click="cancelPhoneReset()" class="u-colorGreyDark">Cancel phone reset</a> |</p>
+          </div>
+        </div>
+
+        <span ng-hide="showVerificationForm()">
+          <button ng-show="hasPhoneChanges()" class="button buttonSubmit" type="submit" name="savePhoneForm" ng-click="savePhoneForm()">Save Changes</button>
+        </span>
+        <span ng-show="showVerificationForm()">
+          <button class="button buttonSubmit" type="submit" name="savePhoneForm" ng-click="savePhoneForm()">Verify Phone</button>
+        </span>
+
+      </fieldset>
+    </form>
+
+    <!-- Account deactivation -->
+    <div bg-confirm-action class="u-marginTop30 row">
+      <a ng-hide="confirmationMessage" class="u-colorRed" ng-click="confirmDeactivate()">Deactivate Account</a>
+    </div>
+
+  </div>
+
+  <hr ng-hide="currentUser.isEnterpriseCustomer()" class="row u-marginBottom40">
+
+
+  <!-- Payment / Plan Details -->
+  <div ng-hide="currentUser.isEnterpriseCustomer()">
+    <h2 class="u-marginBottom20">Payment Details</h2>
+
+    <form settings-about-form class="row u-noMargin">
+      <fieldset class="col col--oneOfTwo col--noPadding">
+
+        <label>Your Current Plan</label>
+        <div class="inputText--readonly">
+          <input type="text" class="inputText-input" ng-model="currentUser.plan.prettyName" readonly="readonly" disabled>
+          <div ng-click="goToPlans()" class="u-marginTop10">
+            <a ng-hide="currentUser.isPro()">Upgrade your plan</a>
+            <a ng-show="currentUser.isPro()">Change your plan</a>
+          </div>
+        </div>
+
+        <label>Payment Amount (per {{ settings.stripe.subscription.data.plan.interval }})</label>
+        <div class="inputText--readonly">
+          <input type="text" class="inputText-input" value="${{currentUser.settings.stripe.subscription.data.plan.amount/100}}" readonly="readonly" disabled>
+          <div class="u-marginTop10">
+            <a target="_blank" ng-click="logViewInfo()" href="https://bitgo.zendesk.com/hc/en-us/sections/201084635-Billing">Learn more about billing</a>
+          </div>
+        </div>
+
+        <div ng-show="currentUser.settings.stripe.subscription.id">
+          <label>Credit Card</label>
+          <div class="inputText--readonly">
+            <input type="text" class="inputText-input" value="xxxx xxxx xxxx {{currentUser.settings.stripe.customer.data.cards.data[0].last4}}" readonly="readonly" disabled>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+
+  </div>
+
+</div>

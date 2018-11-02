@@ -1,0 +1,154 @@
+<div bg-state-manager>
+
+  <main class="mainContent contentWrapper">
+
+    <div class="row" ng-show="showState('initial')">
+      <div class="col col--centered">
+
+        <h1>Wallet Recovery</h1>
+
+        <h2>You are recovering {{ wallets.current.data.label }}</h2>
+
+        <div class="introText">
+          <p class="u-colorGreyDark u-marginBottom45">
+            A BitGo wallet with a lost wallet password may be recovered
+            using the KeyCard that was created and saved at the time wallet was first created.
+            Before starting, you should have access to the KeyCard for this wallet.
+          </p>
+          <p class="u-colorGreyDark u-marginBottom45">
+            Older BitGo wallets may not be able to use this recovery process. If the recovery process fails,
+            please contact <a mailto:support@bitgo.com>support@bitgo.com</a>.
+          </p>
+
+          <div class="buttons">
+            <button type="submit" class="button" name="recoverWithKeycardBoxD" ng-click="initRecoveryInfo()">Start Recovery</button>
+          </div>
+         <!--  <p class="u-colorGreyDark u-marginBottom45">
+            When you are ready, <a ng-click="initRecoveryInfo()">click here to begin</a>.
+          </p> -->
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row" ng-show="showState('recovery')">
+      <div class="col col--centered">
+
+        <h1>Wallet Recovery</h1>
+
+        <h2>You are recovering {{ wallets.current.data.label }}</h2>
+
+        <div ng-show="showInviteRecoveryOption()">
+          <h3 class="u-marginBottom45">Step 1: Choose the recovery method for this wallet</h3>
+
+          <!-- Recovery type selection -->
+          <ul class="selector row">
+            <li class="selector-item" ng-show="showInviteRecoveryOption()" ng-class="{ 'is-selected' : showOption('requestInvite'), 'is-disabled' : optionIsDisabled('requestInvite') }" ng-click="setRecoveryOption('requestInvite')">
+              <h4 class="selector-heading">Request Re-invite</h4>
+              <p>Recover access by getting another wallet admin to re-invite you.</p>
+            </li>
+
+            <li class="selector-item" ng-class="{ 'is-selected' : showOption('keycard'), 'is-disabled' : optionIsDisabled('keycard') }" ng-click="setRecoveryOption('keycard')">
+              <h4 class="selector-heading">Use KeyCard</h4>
+              <p>Enter recovery info from the KeyCard saved when this wallet was created.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div ng-show="!showInviteRecoveryOption()">
+          <h3 class="u-marginBottom45">Step 1: Enter recovery info from the KeyCard for this wallet</h3>
+        </div>
+
+        <form>
+          <bg-form-error></bg-form-error>
+        </form>
+
+        <!-- Recovery method views -->
+        <div ng-show="showOption('keycard') && walletRecoveryInfo">
+          <ng-include src="'wallet/templates/wallet-recover-partial-keycardboxd.html'"></ng-include>
+        </div>
+
+        <div ng-show="showOption('keycard') && !walletRecoveryInfo">
+          <ng-include src="'wallet/templates/wallet-recover-partial-userxprv.html'"></ng-include>
+        </div>
+
+        <div ng-show="showOption('requestInvite')">
+          <ng-include src="'wallet/templates/wallet-recover-partial-requestinvite.html'"></ng-include>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row" ng-show="showState('newpasscode')">
+      <div class="col col--centered">
+
+        <h1>Wallet Recovery</h1>
+
+        <h2>You are recovering {{ wallets.current.data.label }}</h2>
+
+        <h3 class="u-marginBottom45">Step 2: Set the new password for this wallet</h3>
+
+        <form class="row" name="newPasscodeForm">
+          <fieldset class="col col--oneOfTwo">
+
+            <bg-form-error></bg-form-error>
+
+            <!-- New PW -->
+            <div class="formRow" ng-class="{ 'formRow--error': newPasscodeError }">
+              <label>New Wallet Password</label>
+              <p class="notice" ng-show="newPasscodeError">Invalid new password</p>
+              <div class="inputText">
+                <input type="password" name="newPasscode" class="inputText-input" placeholder="Password" ng-model="newPasscode" bg-input-validator bg-password-strength="passcodeStrength" on-password-change="checkStrength(passcodeStrength)" />
+              </div>
+              <!-- Strength Meter -->
+              <div class="passwordStrength" ng-show="showPasscodeStrength()">
+                <div class="passwordStrength-indicator">
+                  <span class="passwordStrength-fill" ng-class="passcodeStrength.progress.class"></span>
+                </div>
+                It would take {{ passcodeStrength.crack_time_display }} to crack this password.
+              </div>
+            </div>
+
+            <!-- PW Confirm -->
+            <div class="formRow" ng-class="{ 'formRow--error': newPasscodeConfirmError }">
+              <label>New Password Confirm</label>
+              <p class="notice" ng-show="newPasscodeConfirmError">Invalid password confirmation</p>
+              <div class="inputText">
+                <input type="password" class="inputText-input" name="newPasscodeConfirm" placeholder="Password Confirm" ng-model="newPasscodeConfirm" bg-input-validator />
+              </div>
+            </div>
+
+            <div class="buttons" ng-show="showUpdateButton()">
+              <button type="submit" class="button" name="finishRecovery" ng-click="finishRecovery()">Set New Password</button>
+            </div>
+
+          </fieldset>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="row" ng-show="showState('requestedReshare')">
+      <div class="col col--centered">
+
+        <h1>Wallet Recovery</h1>
+
+        <h3>Wallet administrators have been notified. Once you have been re-invited to the wallet, you will be able to reset your wallet password.</h3>
+
+      </div>
+    </div>
+
+    <div class="row" ng-show="showState('done')">
+      <div class="col col--centered">
+
+        <h1>Wallet Recovery</h1>
+
+        <h2>You have successfully recovered
+        <a href="{{ TemplatePathPrefix }}/enterprise/{{ enterprises.current.id }}/wallets/{{ wallets.current.data.id }}">{{ wallets.current.data.label }}</a></h2>
+
+      </div>
+    </div>
+
+  </main>
+
+</div>

@@ -1,0 +1,112 @@
+<div>
+  <h3>Choose Your 2-Step Verification Method</h3>
+  <div class="selector">
+    <div class="col-xss-12 col-xs-6 col-sm-4 col-md-4 col-lg-4 col--noPadding">
+      <div class="selector-item" ng-class="{ 'is-selected': isTwoFactorMethod('totp') }" ng-click="setTwoFactorMethod('totp')">
+        <h4 class="selector-heading">Google Authenticator</h4>
+        <p>Generate two-step verification codes using the Google Authenticator app. No phone number is required.</p>
+        <div class="selector-notice">Recommended</div>
+      </div>
+    </div>
+    <div class="col-xss-12 col-xs-6 col-sm-4 col-md-4 col-lg-4 col--noPadding">
+      <div class="selector-item" ng-class="{ 'is-selected': isTwoFactorMethod('yubikey') }" ng-click="setTwoFactorMethod('yubikey')">
+        <h4 class="selector-heading">Yubikey</h4>
+        <p>Use your Yubikey for one-touch authentication. No phone number is required</p>
+        <div class="selector-notice"></div>
+      </div>
+    </div>
+    <div class="col-xss-12 col-xs-6 col-sm-4 col-md-4 col-lg-4 col--noPadding">
+      <div class="selector-item" ng-class="{ 'is-selected': isTwoFactorMethod('authy') }" ng-click="setTwoFactorMethod('authy')">
+        <h4 class="selector-heading">Authy App</h4>
+        <p>Use the Authy app on your phone or desktop, or receive two-step verification codes via text message. Verified phone number is required.</p>
+        <div class="selector-notice"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Show Authy specific UI -->
+  <div ng-show="isTwoFactorMethod('authy')">
+    <div class="u-clear u-clearfix col-sm-12 col-md-12 col-lg-12 col--noPadding">  
+      <h3 class="u-marginTop30 u-marginBottom0">Install the Authy App</h3>
+      <ul class="u-cleanList u-inlineList u-marginBottom30">
+        <li>
+          <a href="https://itunes.apple.com/us/app/authy/id494168017" target="_blank">
+            <img src="/img/new_bitgo/appstore.png" alt="Available on the iPhone App Store">
+          </a>
+        </li>
+        <li>
+          <a href="https://play.google.com/store/apps/details?id=com.authy.authy" target="_blank">
+            <img src="/img/new_bitgo/googleplay.png" alt="Get it on Google Play">
+          </a>
+        </li>
+        <li>
+          <a href="https://chrome.google.com/webstore/detail/authy/gaedmjdfmmahhbjefcbgaolhhanlaolb" target="_blank">
+            <img src="/img/new_bitgo/AuthyButton.png" alt="Get it on Desktop">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>Mobile Phone Number</h3>
+    </div>
+
+    <div>
+      <form novalidate>
+        <bg-form-error></bg-form-error>
+        <div class="inputText col-xss-12 col-xs-10 col-sm-7 col-md-7 col-lg-7 col--noPadding">
+          <bg-intl-tel-input name="phone" ng-model="device.inputPhone" placeholder="Enter mobile phone number" bg-input-validator></bg-intl-tel-input>
+        </div>
+        <ul class="u-clear u-cleanList u-inlineList u-marginBottom30">
+          <li>
+            <button type="submit" class="button" ng-click="setPhoneVerification(device.inputPhone)">Next</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+  <!-- Show yubikey specific UI-->
+  <div ng-show="isTwoFactorMethod('yubikey')" class="u-clear u-clearfix col-xss-12 col-xs-10 col-sm-8 col-md-8 col-lg-8 col--noPadding">
+    <div>
+      <h3 class="u-marginTop30">Yubikey Label</h3>
+    </div>
+    <form novalidate name="OTPForm">
+      <div class="inputText">
+        <input name="otpLabel" class="inputText-input 'u-typography-4" ng-model="device.otpLabel" placeholder="Enter a Yubikey Label" bg-input-validator bg-focus-when="true" max-length="44" />
+      </div>
+      <h3>Yubikey Code</h3>
+      <div class="formRow" ng-class="{ 'formRow--error': yubikeyAccessError }">
+        <div class="inputText">
+          <input name="otpVerify" class="inputText-input 'u-typography-4" ng-model="device.otpCode" placeholder="Enter a Yubikey Code" bg-input-validator bg-focus-when="true" max-length="47" />
+        </div>
+      </div>
+      <ul class="u-clear u-cleanList u-inlineList u-marginBottom30">
+        <li>
+          <button type="submit" class="button" name="submitSetYubikey" ng-click="addOTPDevice('yubikey')">Submit</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+
+  <!-- Show Google Authenticator Specific UI-->
+  <form class="u-clear u-clearfix col-sm-12 col-md-12 col-lg-12 col--noPadding" ng-show="isTwoFactorMethod('totp')" ng-submit="setState('addTotpDevice')">
+    <h3 class="u-marginTop30 u-marginBottom0">Install and Launch Google Authenticator</h3>
+
+    <ul class="u-cleanList u-inlineList u-marginBottom30">
+      <li>
+        <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605" target="_blank">
+          <img src="/img/new_bitgo/appstore.png" alt="Available on the iPhone App Store">
+        </a>
+      </li>
+      <li>
+        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank">
+          <img src="/img/new_bitgo/googleplay.png" alt="Get it on Google Play">
+        </a>
+      </li>
+    </ul>
+    <ul class="u-clear u-cleanList u-inlineList u-marginBottom30">
+      <li bg-otp-devices>
+        <button type="submit" class="button" ng-click="fetchTotpParams()">Next</button>
+      </li>
+    </ul>
+  </form>
+
+</div>

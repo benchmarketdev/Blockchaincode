@@ -1,0 +1,52 @@
+<div identity-create-form>
+
+  <section class="masthead" ng-hide="submitted">
+    <div class="contentWrapper">
+      <div class="row u-pushDown25">
+        <div class="col col--noPadding">
+          <h1 class="masthead-heading">Verified Identity</h1>
+          <p class="u-typography-5 u-colorGreyDark u-marginBottom30">
+            Verifying your identity is required to receive Bitcoin through BitGo Rewards
+            programs. We use the information you provide solely for preventing fraudulant
+            rewards, and only your name will be stored in our system.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="identityForm" class="mainContent contentWrapper">
+    <form name="identityCreateForm" ng-hide="submitted" class="u-noMargin">
+      <fieldset class="col col--sevenOfTwelve col--noPadding">
+        <bg-form-error></bg-form-error>
+        <label class="u-marginTop0">Legal Name</label>
+        <div class="formRow standardFormWidth">
+          <div class="inputText">
+            <input type="text" data-ng-model="identity.name" placeholder="Full Name" class="inputText-input" bg-focus-when="true" bg-input-validator>
+            <div class="inputText-verification inputText-verification--unverified" ng-show="nameError">Need name</div>
+          </div>
+        </div>
+        <label>Phone Number</label>
+        <div class="formRow standardFormWidth u-marginBottom40" ng-class="{ 'formRow--error': phoneError }">
+          <div class="inputText">
+            <bg-intl-tel-input name="phone" ng-model="identity.phone" placeholder="Enter phone number" bg-input-validator></bg-intl-tel-input>
+          </div>
+        </div>
+        <p class="u-typography-6">
+          By entering into this agreement, you agree to our service provider's (SynapsePay's) terms of service found <a href="https://synapsepay.com/legal/" target="_blank">here</a> which are incorporated herein by reference.
+          This website/application is not directly supported by, endorsed or certified by SynapsePay. SynapsePay gives no warranties and makes no claims about this application/website.
+        </p>
+        <div class="formRow standardFormWidth" ng-class="{ 'formRow--error': agreeError }">
+          <input name="agree" type="checkbox" ng-model="agree"></input> <span>I agree to the terms of service</span>
+        </div>
+        <button class="button buttonSubmit" type="submit" name="submitForm" ng-click="submitForm()">Continue</button>
+      </fieldset>
+    </form>
+
+    <div id="synapse_iframe_wrapper">
+      <iframe id="synapse_iframe" style="top:0;height:0;width:0;position:fixed;z-index:100000;visibility:hidden;" frameborder="0"></iframe>
+    </div>
+
+  </main>
+
+</div>

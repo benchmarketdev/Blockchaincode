@@ -1,0 +1,31 @@
+<main wallet-settings-manager bg-state-manager>
+  <div class="row">
+
+    <!-- Side Nav -->
+    <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 col--noPadding">
+      <nav>
+        <ul class="pageNav">
+          <li><a class="pageNav-item" ng-class="{ 'is-selected': showState('general') }" ng-click="setState('general')">General</a></li>
+          <li><a class="pageNav-item" ng-class="{ 'is-selected': showState('passcode') }" ng-click="setState('passcode')">Password</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Page Content -->
+
+    <!-- Need to do this cause bootstrap 3.0.0 doesn't have xs-offset class -->
+    <div class="col-xs-1 col--noPadding"></div>
+    <div class="col-xs-8 col-sm-10 col-md-10 col-lg-10 col--noPadding">
+      <div class="row">
+        <div ng-show="showState('general')">
+          <ng-include src="'wallet/templates/wallet-settings-partial-general.html'"></ng-include>
+        </div>
+
+        <div ng-show="showState('passcode')">
+          <ng-include src="'wallet/templates/wallet-settings-partial-passcode.html'"></ng-include>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

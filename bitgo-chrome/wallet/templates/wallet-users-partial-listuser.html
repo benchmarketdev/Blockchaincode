@@ -1,0 +1,57 @@
+<div wallet-user-list>
+  <div class="row">
+    <div class="col col--eightOfTen">
+      <div wallet-approval-tile bg-approval-tile-policy-request bg-state-manager ng-repeat="approvalItem in wallets.current.data.pendingApprovals | bgApprovalsFilter:false:'userChangeRequest'" id="{{ approvalItem.id }}"></div>
+    </div>
+  </div>
+  <div ng-class ="{'u-marginTop30': hasApprovals()}">
+    <a class="button button--small button--create u-pullRight" ng-click="setState('addUser')">
+      <i class="icon icon--plus"></i> Add User
+    </a>
+    <p class="introText u-colorGreyDark">Grant user access to your wallet to enforce policy or enable multiple spenders.</p>
+  </div>
+  <table class="userTable">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th colspan="2">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="walletUserEntry in wallets.current.data.admin.users">
+        <td class="userTable-user" bg-get-user user-id="{{ walletUserEntry.user }}">
+          <b>{{ user.settings.email.email }}</b>
+          <div ng-show="walletUserEntry.needsRecovery && walletUserEntry.user !== currentUser.settings.id"><a bg-add-user-to-wallet ng-click="reshareWallet(walletUserEntry, user)">Re-invite</a></div>
+        </td>
+        <td class="userTable-role">
+          <span>
+                  {{ walletUserEntry.permissions | bgPermissionsRoleConversionFilter }}
+              </span>
+        </td>
+        <td class="table-action">
+          <span ng-show="canDelete(walletUserEntry.user)" bg-confirm-action>
+            <a ng-hide="confirmationMessage" class="u-colorRed" ng-click="initiateAction()">Remove</a>
+            <span ng-show="confirmationMessage">Are you sure?
+              <a ng-click="revokeAccess(wallets.current.data.id, walletUserEntry.user)">Yes</a> |
+              <a ng-click="cancelAction()">No</a>
+            </span>
+          </span>
+        </td>
+      </tr>
+      <tr ng-repeat="(walletShareId, walletShare) in walletShares.all.outgoing | bgWalletSharesByWallet:wallets.current" id = "{{ walletShare.id }}">
+        <td class="userTable-user">
+          <b bg-get-user user-id="{{ walletShare.toUser }}">{{ user.settings.email.email }}</b>
+          <div class="meta">Has not accepted invite - <a ng-click="resendEmail(walletShare.id)">Resend Email</a></div>
+        </td>
+        <td class="userTable-role">
+          <span>
+            {{ walletShare.permissions | bgPermissionsRoleConversionFilter }}
+          </span>
+        </td>
+        <td class="table-action">
+          <a ng-click="rejectInvite(walletShare.id)">Remove</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

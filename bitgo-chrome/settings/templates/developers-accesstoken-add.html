@@ -1,0 +1,69 @@
+<div class="row" developers-accesstoken-add-form>
+
+  <div>
+    <p class="u-typography-4 u-colorBlueGreyDark">
+      <i>Long-lived access tokens are suitable for use on servers/unattended devices. This is an advanced feature for <strong>DEVELOPERS ONLY</strong>. The tokens <strong>do not require an OTP</strong> for spending and must be locked down to IP addresses.</i>
+    </p>
+  </div>
+
+  <form>
+    <fieldset class="col col--oneOfTwo col--noPadding">
+
+      <bg-form-error></bg-form-error>
+
+      <div class="formRow">
+        <label>Token Label</label>
+        <p class="notice" ng-show="labelError">Label Error</p>
+        <div class="inputText">
+          <input type="text" name="label" class="inputText-input" placeholder="Label" ng-model="tokenParams.label" bg-input-validator bg-focus-when="true" />
+        </div>
+      </div>
+
+      <div class="formRow">
+        <label>Duration (seconds)</label>
+        <p class="notice" ng-show="durationError">Duration Error</p>
+        <div class="inputText">
+          <input type="text" name="duration" class="inputText-input" placeholder="Duration" ng-model="tokenParams.duration" bg-input-validator bg-input-numbers-only />
+        </div>
+      </div>
+
+      <div class="formRow">
+        <label>Lifetime Spending Limit ({{ currency.bitcoinUnit }})</label>
+        <p class="notice" ng-show="txValueLimitError">Limit Error</p>
+        <div class="inputText">
+          <input type="text" name="txValueLimit" class="inputText-input" placeholder="Limit" ng-model="tokenParams.txValueLimit" bg-input-validator bg-input-to-satoshi-converter />
+        </div>
+      </div>
+
+      <div class="formRow">
+        <label>IP Addresses Allowed (comma-separated)</label>
+        <p class="notice" ng-show="ipRestrictError">IP Error</p>
+        <div class="inputText">
+          <input type="text" name="ipRestrict" class="inputText-input" placeholder="54.218.89.30, 54.215.128.143" ng-model="tokenParams.ipRestrict" bg-input-validator />
+        </div>
+      </div>
+
+      <div class="formRow u-marginBottom30">
+        <label>Permissions</label>
+        <div ng-repeat="oAuthScope in accessToken.oAuthScopes">
+          <div class="inputCheckbox">
+            <input type="checkbox" id="oAuthScope-{{ $index }}" ng-model="oAuthScope.selected" value="{{ oAuthScope.name }}" />
+            <label for="oAuthScope-{{ $index }}">{{ oAuthScope.text }}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="formRow u-marginBottom30">
+        <input type="checkbox" name="terms" ng-model="agreedToTerms">
+        <span class="u-pointer" ng-click="toggleTerms()">I agree to the <a href="{{ TemplatePathPrefix }}/services_agreement" target="_blank">terms and conditions</a> and understand the risks associated with creating this token.</span>
+      </div>
+
+      <div class="formRow">
+        <div class="buttons">
+          <button type="submit" class="button buttonSubmit" name="addNewToken" ng-click="addNewToken()">Add Token</button>
+          <button class="button button--grey" name="cancelAdd" ng-click="setState('list')">Cancel</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

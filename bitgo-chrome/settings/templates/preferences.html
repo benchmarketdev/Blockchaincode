@@ -1,0 +1,112 @@
+<div settings-preferences-form>
+  <!-- Currency Preferences -->
+  <form  name="settingsCurrencyForm" class="u-marginBottom40 col-md-6">
+
+    <h2 class="u-marginBottom20">Currency</h2>
+
+    <div class="u-marginBottom30">
+      <h2 class="u-typography-3">Bitcoin Unit</h2>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCoin" ng-model="settings.currency.bitcoinUnit" value= "BTC" id="BTC">
+        <label for="BTC"> &nbsp; BTC</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCoin" ng-model="settings.currency.bitcoinUnit" value= "BTC8" id="BTCprecision">
+        <label for="BTCprecision"> &nbsp; BTC (full-precision)</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCoin" id="bitsradio" ng-model="settings.currency.bitcoinUnit" value="bits">
+        <label for="bitsradio"> &nbsp; bits</label>
+      </div>
+    </div>
+
+    <div class="u-marginBottom30">
+      <h2 class="u-typography-3">Fiat Currency</h2>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCurrency" ng-model="settings.currency.currency" value= "AUD" id="AUDradio">
+        <label for="AUDradio"> &nbsp; Australian Dollar (A$)</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCurrency" id="GBPradio" ng-model="settings.currency.currency" value="GBP">
+        <label for="GBPradio"> &nbsp; British Pound (£)</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCurrency" ng-model="settings.currency.currency" value= "CAD" id="CADradio">
+        <label for="CADradio"> &nbsp; Canadian Dollar (C$)</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCurrency" id="CNYradio" ng-model="settings.currency.currency" value="CNY">
+        <label for="CNYradio"> &nbsp; Chinese Yuan (¥)</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCurrency" ng-model="settings.currency.currency" value= "EUR" id="EURradio">
+        <label for="EURradio"> &nbsp; European Euro (€)</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCurrency" id="ZARradio" ng-model="settings.currency.currency" value="ZAR">
+        <label for="ZARradio"> &nbsp; South African Rand (R)</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radioGroupCurrency" ng-model="settings.currency.currency" value= "USD" id="USDradio">
+        <label for="USDradio"> &nbsp; United States Dollar ($)</label>
+      </div>
+    </div>
+    <div class = "buttons">
+      <button ng-show="hasPreferenceChanges()" type="submit" ng-click="submitPreferences()" class = "button">Save changes</button>
+    </div>
+
+  </form>
+
+  <!-- Notification Preferences -->
+  <form name="settingsNotificationForm" class="col-md-6">
+
+    <h2 class="u-marginBottom20">Notifications</h2>
+
+    <div class="u-marginBottom30">
+      <h2 class="u-typography-3">Notify me via</h2>
+      <div class="inputCheckbox">
+        <input type="checkbox" id="checkbox1" ng-model="settings.notifications.via_email">
+        <label for="checkbox1">Email</label>
+      </div>
+      <div ng-show="user.isAuthyUser()">
+        <div class="inputCheckbox">
+          <input type="checkbox" id="checkbox2" ng-model="settings.notifications.via_phone">
+          <label for="checkbox2">Phone</label>
+        </div>
+      </div>
+    </div>
+    <div class="u-marginBottom30">
+      <h2 class="u-typography-3">Notify me when</h2>
+        <div class="inputCheckbox">
+          <input type="checkbox" id="checkbox3" ng-model="settings.notifications.on_recv_btc">
+          <label for="checkbox3">Bitcoin is <b>received</b> in my account</label>
+        </div>
+        <div class="inputCheckbox">
+          <input type="checkbox" id="checkbox4" ng-model="settings.notifications.on_send_btc">
+          <label for="checkbox4">Bitcoin is <b>sent</b> from my account</label>
+        </div>
+    </div>
+    <div ng-show="true">
+      <h2 class="u-typography-3">Email digest</h2>
+      <div class="inputCheckbox">
+        <input type="checkbox" id="checkbox5" ng-model="settings.digest.enabled" ng-change="resetDigest()">
+        <label for="checkbox5">Send Transaction and Market Activity</label>
+      </div>
+      <div class="inputSubGroup u-marginBottom30">
+        <div class="inputRadio">
+          <input type="radio" name="radiogroup" id="radio1" ng-model="settings.digest.intervalSeconds" value="{{digestIntervals.daily.value}}" ng-disabled="!settings.digest.enabled">
+          <label for="radio1">{{digestIntervals.daily.name}}</label>
+        </div>
+        <div class="inputRadio">
+          <input type="radio" name="radiogroup" id="radio3" ng-model="settings.digest.intervalSeconds"  value="{{digestIntervals.weekly.value}}" ng-disabled="!settings.digest.enabled">
+          <label for="radio3">{{digestIntervals.weekly.name}}</label>
+        </div>
+        <div class="inputRadio">
+          <input type="radio" name="radiogroup" id="radio5" ng-model="settings.digest.intervalSeconds" value="{{digestIntervals.monthly.value}}" ng-disabled="!settings.digest.enabled">
+          <label for="radio5">{{digestIntervals.monthly.name}}</label>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

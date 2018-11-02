@@ -1,0 +1,1622 @@
+<div press-manager>
+  <div bg-state-manager>
+    <section>
+      <div class="hero">
+	<div class="contentWrapper">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <h1>BitGo Press</h1>
+              <h2>Announcements can be found on our blog. Press contact: press@bitgo.com</h2>
+            </div>
+          </div>
+	</div>
+      </div>
+    </section>
+    <section>
+      <!-- Sub nav items -->
+      <nav class="navbar">
+        <div class="container-fluid">
+          <ul class="sectionPressNav">
+            <li class="sectionPressNav-item">
+              <a class="sectionPressNav-link" ng-click="setState('press')" ng-class="{ 'is-selected' : showState('press') }">Press</a>
+            </li>
+            <li class="sectionPressNav-item">
+              <a class="sectionPressNav-link" ng-click="setState('branding')" ng-class="{ 'is-selected' : showState('branding') }">Branding</a>
+            </li>
+            <!--li class="sectionPressNav-item">
+              <a bg-state-manager class="sectionPressNav-link" ng-click="setState('bios')" ng-class="{ 'is-selected' : isCurrentState('bios') }">Bios</a>
+            </li-->
+          </ul>
+        </div>
+      </nav>
+      <div class="contentSection" ng-show="showState('press')">
+        <div class="contentWrapper">
+          <div class="row">
+            <h1>News Articles</h1>
+            <pagination class="u-marginTop-40" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></pagination>
+          </div>
+          </div>
+	<div class="u-pushDown60" ng-show="currentPage == 1">
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+              <img class="news-logo" src="./img/Money-beat.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://blogs.wsj.com/moneybeat/2015/06/03/bitbeat-bitlicense-is-the-beginning-not-the-end/" target="_blank">
+                  <h3 class="u-textLeft">BitLicense is the Beginning, Not the End</h3>
+		</a>
+		<div class="title-subtext">
+                  WSJ, 06/04/2015
+		</div>
+		<div class="whitePaper-text">
+                  As the regulatory front evolves, the business models are evolving as well. Bitfinex, a Hong Kong-based bitcoin exchange that ranks as one of the largest exchanges, unveiled a feature on Wednesday aimed at increasing the transparency into its holdings.  The firm is now offering individual multi-sig wallets through a partnership with BitGo that will provide segregated customer accounts, a “proof of reserves” concept that aims to provide complete visibility into customer holdings.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/bitcoinist-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://bitcoinist.net/bitfinex-bitgo-partner-offer-first-ever-multi-sig-exchange/" target="_blank">
+                  <h3 class="u-textLeft">Bitfinex and BitGo Partner Up to Offer First Ever Multi-Sig Exchange</h3>
+		</a>
+		<div class="title-subtext">
+                  Bitcoinist, 06/03/2015
+		</div>
+		<div class="whitePaper-text">
+                  In the past, most exchanges had to sacrifice either speed or security if they wanted to be able to offer accounts where the users could double-check the funds on the exchange in real time via the blockchain. Thanks to BitGo, Bitfinex is now the first exchange to offer this with no compromises to performance or security.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/bitcoin-magazine-300x142.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://bitcoinmagazine.com/20177/singaporean-bitcoin-exchange-coinhako-insures-holdings-bitgo-partnership/" target="_blank">
+                  <h3 class="u-textLeft">Singaporean Bitcoin Exchange CoinHako Insures Holdings Bitgo Partnership</h3>
+		</a>
+		<div class="title-subtext">
+                  Bitcoin Magazine, 04/28/2015
+		</div>
+		<div class="whitePaper-text">
+                  Singaporean-based Bitcoin exchange, CoinHako, has integrated the BitGo digital currency security platform and insurance offering and will now be run with multi-signature wallets and a state-of-the-art platform, and their holdings will be insured against theft and hacks.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/finextraLogo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.finextra.com/news/announcement.aspx?pressreleaseid=59539" target="_blank">
+                  <h3 class="u-textLeft">BitGo and Genesis Trading to build institutional bitcoin trading platform</h3>
+		</a>
+		<div class="title-subtext">
+                  Finextra, 04/24/2015
+		</div>
+		<div class="whitePaper-text">
+                  BitGo, the leading bitcoin security platform, today announced that it has partnered with Genesis Trading, the first broker-dealer in the US, regulated by FINRA and the SEC, to specialize in trading bitcoin.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/finextraLogo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.finextra.com/news/announcement.aspx?pressreleaseid=59044" target="_blank">
+                  <h3 class="u-textLeft">BitGo Now Free for Individual Users</h3>
+		</a>
+		<div class="title-subtext">
+                  Finextra, 03/16/2015
+		</div>
+		<div class="whitePaper-text">
+                  BitGo is now free for individuals and free to try for businesses, making the most secure, multi-sig bitcoin wallet service available and affordable to everyone. With significant upgrades to its web wallet user experience, BitGo has also now made available many of the enterprise security features to individuals and greatly enhanced the ease of use of its secure bitcoin wallet software.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/CryptoCoinsNews-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://www.cryptocoinsnews.com/bitgo-bitcoin-wallet-introduces-free-services-individuals-major-improvements/" target="_blank">
+                  <h3 class="u-textLeft">BitGo Bitcoin Wallet Introduces Free Services for Individuals and Major Improvements</h3>
+		</a>
+		<div class="title-subtext">
+                  Cryptocoins News, 03/16/2015
+		</div>
+		<div class="whitePaper-text">
+                  BitGo is announcing they are beginning to offer their services free for individuals. This news comes packed with several updates across the board. BitGo is adding features needed by enterprise customers; these include secure wallet sharing, address labeling and management. On top of it all they offer advanced audit capabilities like transaction memos. These robust features keep BitGo ahead of the pack in security and usability.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/cyberinsurance-pioneer-bitgo-insurance/" target="_blank">
+                  <h3 class="u-textLeft">Cyberinsurance Veteran Teams With BitGo on ‘Watershed’ Insurance Policy</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 03/16/2015
+		</div>
+		<div class="whitePaper-text">
+                  Bitcoin security specialist BitGo has announced a new partnership with Innovation Insurance Group and XL Group that will enable it to offer $250,000 in theft insurance to customers who opt in to the program. The coverage will protect BitGo‘s web wallet and platform API clients from errors resulting from its technology, processes or employee actions, as well as external hacking incidents and employee theft. Those who want to increase the value of their protection can also do so for a 1% annual fee.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/consumers-research.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://www.cryptocoinsnews.com/bitgo-bitcoin-wallet-introduces-free-services-individuals-major-improvements/" target="_blank">
+                  <h3 class="u-textLeft">BitGo, XL Group Team Up To Secure Bitcoin</h3>
+		</a>
+		<div class="title-subtext">
+                  Consumer Research, 02/27/2015
+		</div>
+		<div class="whitePaper-text">
+                  The security of bitcoin has been of concern to users, investors, and insurers due to numerous incidents of hacking and theft, but this historic partnership may change that. BitGo’s innovative multi-sigs system has added confidence to the security of there system, allowing the major, global insurer to take a stake in the bitcoin business.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/Money-beat.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://blogs.wsj.com/moneybeat/2015/02/25/bitbeat-bitgo-adds-comprehensive-insurance-to-its-services/" target="_blank">
+                  <h3 class="u-textLeft">BitGo Adds Comprehensive Insurance to Its Services</h3>
+		</a>
+		<div class="title-subtext">
+                  WSJ, 02/25/2015
+		</div>
+		<div class="whitePaper-text">
+                  BitGo handles user authentication, fraud detection, and policy verification before co-signing any transaction.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/CryptoCoinsNews-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://www.cryptocoinsnews.com/bitgos-bitcoin-wallet-now-backed-world-class-insurance/" target="_blank">
+                  <h3 class="u-textLeft">BitGo’s Bitcoin Wallet Now Backed By World-Class Insurance</h3>
+		</a>
+		<div class="title-subtext">
+                  Cryptocoins News, 02/25/2015
+		</div>
+		<div class="whitePaper-text">
+                  BitGo were the first to pioneer the multi-signature wallet back in August, 2013. Now they’re pioneering in security again, with this week’s unveiling of a partnership with one of the largest underwriters in the world, XL Group.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/Money-beat.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://blogs.wsj.com/moneybeat/2015/02/24/bitbeat-for-bitcoin-some-good-press-finally/" target="_blank">
+                  <h3 class="u-textLeft">BitBeat: For Bitcoin, Some Good Press, Finally</h3>
+		</a>
+		<div class="title-subtext">
+                  WSJ, 02/24/2015
+		</div>
+		<div class="whitePaper-text">
+                  BitGo, a leader in Bitcoin security, announced Tuesday it had secured first-of-its-kind insurance coverage for bitcoin theft from the global, A-rated XL Group insurance companies.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/securityweek_logo1.jpg"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.securityweek.com/c4-bitgo-publish-draft-cryptocurrency-security-standard" target="_blank">
+                  <h3 class="u-textLeft">C4, BitGo Publish Draft of CryptoCurrency Security Standard</h3>
+		</a>
+		<div class="title-subtext">
+                  SecurityWeek, 02/12/2015
+		</div>
+		<div class="whitePaper-text">
+                  A draft of the CryptoCurrency Security Standard (CCSS) was made available on Wednesday for public discussion. The CCSS draft is the result of a collaboration between the CryptoCurrency Certification Consortium (C4), a Canada-based not-for-profit organization that establishes cryptocurrency standards, and Bitcoin security platform BitGo.
+		</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div class="u-pushDown60" ng-show="currentPage == 2">
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/yahoofinance-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://finance.yahoo.com/news/bitcoin-foundation-leading-bitcoin-companies-141500596.html" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin Foundation and Leading Bitcoin Companies Engage theAudience to Launch Public Education Campaign on Bitcoin</h3>
+		</a>
+		<div class="title-subtext">
+                  Yahoo!Finance, 02/12/2015
+		</div>
+		<div class="whitePaper-text">
+                  The Bitcoin Foundation announced today a partnership with Bitcoin companies BitFury, BitGo,Tally Capital, ChangeTip, and Bitcoin Foundation lifetime member Bruce Fenton to engagetheAudience – one of the world’s largest multi-channel publishers of social and digital content. theAudience’s team of digital storytellers will work closely with these groups to launch a multi-faceted social and traditional media campaign to educate businesses, consumers, and society at large about Bitcoin.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/bitcoin-magazine-300x142.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://bitcoinmagazine.com/19203/bitgo-launches-platform-api-opening-bitcoin-security-infrastructure-masses/" target="_blank">
+                  <h3 class="u-textLeft">BitGo Launches Platform API Opening Its Bitcoin Security Infrastructure to the Masses</h3>
+		</a>
+		<div class="title-subtext">
+                  Bitcoin Magazine, 01/29/2015
+		</div>
+		<div class="whitePaper-text">
+                  Earlier today, Palo Alto­ based Bitcoin security service provider BitGo announced the general availability of the BitGo Platform API, which will allow developers to fully leverage, for the first time ever, the enterprise ­grade security features of BitGo’s multi­sig HD wallet in their own applications. The launch of this particular service stands to be a turning point in the Bitcoin industry. That’s because all companies, whether general merchants or Bitcoin service providers, are now capable of integrating the Bitcoin protocol into their core product without being forced to give up control of their bitcoins to a third party, or without facing the multiple and complex Bitcoin security challenges that have brought otherwise strong companies to their knees.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/Money-beat.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.followthecoin.com/follow-coin-first-look-exclusive-video-interview-bitgo-founders-launch-bitgo-platform-api/" target="_blank">
+                  <h3 class="u-textLeft">Follow the Coin First Look: Exclusive Video Interview with BitGo Founders On the Launch of BitGo Platform API</h3>
+		</a>
+		<div class="title-subtext">
+                  Follow the Coin, 01/29/2015
+		</div>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/BUJaY7hVE_o" frameborder="0" allowfullscreen></iframe>
+		<div class="whitePaper-text">
+                  Follow The Coin sits down with the founders of BitGo, CEO & Co-Founder Will O’Brien, CTO & Co-Founder Mike Belshe and CPO & Co-Founder Ben Davenport in an exclusive first look at BitGo’s launch of their BitGo API Platform, the Platform API version of its leading security products in Bitcoin.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/o-reilly.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.belshe.com/test/security2015/#slide1.0" target="_blank">
+                  <h3 class="u-textLeft">CTO Mike Belshe Speaks at O’Reilly Bitcoin Conference</h3>
+		</a>
+		<div class="title-subtext">
+                  O’Reilly Media, 01/27/2015
+		</div>
+		<div class="whitePaper-text">
+                  BitGo CTO Mike Belshe discusses bitcoin security, from personal to enterprise, at the O’Reilly Radar “Bitcoin and the Blockchain” summit. His presentation slides are available <a href="http://www.belshe.com/test/  security2015/#slide1.0" target="_blank">here</a>.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/tnabc-day-2-bitcoin-industry-takes-new-security-challenges/" target="_blank">
+                  <h3 class="u-textLeft">TNABC Day 2: Bitcoin Industry Takes On Security Challenges</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 01/19/2015
+		</div>
+		<div class="whitePaper-text">
+                  O’Brien notably illustrated how he expects security to advance in the year ahead. His most direct prediction may have been that 2015 will see the industry adopt a ‘multi-institutional’ security standard that will see companies  sharing the responsibility of holding and securing private keys.
+		</div>
+		<div class="whitePaper-text">
+                  “By the end of this year, it will no longer be acceptable for one company to hold all the keys to a wallet,” O’Brien said.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/TNABC-Logo-LG-WD.jpg"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://www.youtube.com/watch?v=y-TRgD8ECWQ">
+                  <h3 class="u-textLeft">TNABC Day 2: The Future of Bitcoin Security</h3>
+		</a>
+		<div class="title-subtext">
+                  TNABC, 01/18/2015
+		</div>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/y-TRgD8ECWQ" frameborder="0" allowfullscreen></iframe>
+		<div class="whitePaper-text">
+                  BitGo CEO Will O’Brien discusses the future of bitcoin security at 2015 The North American Bitcoin Conference in Miami.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/treasury-today-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://treasurytoday.com/2015/01/managing-the-bits-and-pieces-ttti">
+                  <h3 class="u-textLeft">Managing the Bits and Pieces</h3>
+		</a>
+		<div class="title-subtext">
+                  TreasuryToday, 01/16/2015
+		</div>
+		<div class="whitePaper-text">
+                  “Bitcoin has become a real currency that organisations are scaling their business around,” says Will O’Brien, CEO of BitGo a company that specialises in providing a secure enterprise solution for corporates to manage their Bitcoin. “Because of this, it is no longer acceptable to use traditional Bitcoin solutions to store and manage coins that could be worth millions in value. Treasury systems are needed that enable an organisation to scale its financial operations with Bitcoin in a similar way to traditional fiat currencies.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/CoinTelegraph.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://cointelegraph.com/news/113301/bitquick-implements-p2sh-multisig-escrow-addresses-through-bitgo" target="_blank">
+                  <h3 class="u-textLeft">BitQuick Implements P2SH Multisig Escrow Addresses Through BitGo</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinTelegraph, 01/14/2015
+		</div>
+		<div class="whitePaper-text">
+                  “Bitcoin OTC trading platform BitQuick, announces the integration of pay-to-script-hash (P2SH) multisignature addresses through BitGo to increase security of customer funds.
+		</div>
+		<div class="whitePaper-text">
+                  The integration of P2SH multisignature escrow addresses, is the latest move from BitQuick to provide greater security and privacy, the company stated in an announcement.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/medium.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://medium.com/@bendavenport/no-sleep-till-multi-sig-7db367998bc7" target="_blank">
+                  <h3 class="u-textLeft">No Sleep till Multi-Sig</h3>
+		</a>
+		<div class="title-subtext">
+                  Medium, 01/09/2015
+		</div>
+		<div class="whitePaper-text">
+                  “And yet, by Friday morning, Bitstamp reopened for business, and began processing deposits and withdrawals out of a brand-new multi-sig wallet secured with BitGo. The integration required a great deal of work from both teams, but resulted in changing only a single line of code in their core software.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/The_New_York_Times_logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://dealbook.nytimes.com/2015/01/09/bitcoin-exchange-bitstamp-resumes-services/?_r=1" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin Exchange Bitstamp Resumes Services</h3>
+		</a>
+		<div class="title-subtext">
+                  The New York Times, 01/09/2015
+		</div>
+		<div class="whitePaper-text">
+                  “Bitstamp said it had adopted new security measures and protocols, including BitGo multisignature technology, which provides more protection against theft, to prevent future breaches. The exchange said its systems were also running on ‘100 percent new hardware deployed from a completely secure backup of our code and data.'”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/bitcoin-exchange-bitstamp-resumes-services/" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin Exchange Bitstamp Resumes Services</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 01/09/2015
+		</div>
+		<div class="whitePaper-text">
+                  “Bitstamp’s <a href="https://www.bitstamp.net/article/bitstamp-is-open-for-business-better-than-ever/" target="_blank">blog post</a> announcing its return to business details how the exchange has rebuilt its systems “from the ground up” in an effort to prevent a repeat of its recent security breach. Updates to the exchange service include a migration to Amazon’s AWS cloud infrastructure, new hardware systems and the integration of BitGo’s multi-signature wallet technology.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/sandhill-300x300.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://blog.sandhill.exchange/post/107290618853/january-6-willobrien-on-cryptocurrency" target="_blank">
+                  <h3 class="u-textLeft">Will O’Brien on Cryptocurrency</h3>
+		</a>
+		<div class="title-subtext">
+                  Sand Hill Exchange, 01/06/2015
+		</div>
+		<div class="whitePaper-text">
+                  “In 2015, I believe we will witness the leading cryptocurrency companies make standards and scalability a priority. Bitcoin, and cryptocurrency in general, is too important and too complex to be left to DIY systems. At BitGo, we are seeing many of leading exchanges, funds, and businesses move from legacy cold storage security models to BitGo’s enterprise multi-sig platform.”
+		</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div class="u-pushDown60" ng-show="currentPage == 3">
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/NEWSBTC-BACKGROUND-BLUE-e1420676046821.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://newsbtc.com/2015/01/05/bitquick-integrates-pay-to-script-hash-multi-sig/" target="_blank">
+                  <h3 class="u-textLeft">BitQuick Integrates Pay to Script Hash Multi-Sig</h3>
+		</a>
+		<div class="title-subtext">
+                  NewsBTC, 01/05/2015
+		</div>
+		<div class="whitePaper-text">
+                  Peer-to-peer Bitcoin trading platform, <a href="http://newsbtc.com/2014/08/27/bitquick-launches-bitcoin-trading-middle-east/" target="_blank">BitQuick</a>, has announced its integration of Pay to Script Hash (P2SH) multi-sig addresses through <a href="http://newsbtc.com/2014/06/16/bitcoin-security-company-bitgo-raises-12-million-series-financing/" target="_blank">BitGo</a>. This makes BitQuick the first major marketplace to implement multi-sig technology. BitGo, which launched the first ever multi-sig Bitcoin wallet back in 2013, provides its clients with three keys. Two of the keys, the user key-pair and the backup-key pair, are held by BitQuick, and one key is held by BitGo.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/paymentsSource.jpg"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.paymentssource.com/news/technology/bitcoin-is-still-adrift-but-with-social-media-opportunities-abound-3020147-1.html" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin Is Still Adrift, but with Social Media, Opportunities Abound</h3>
+		</a>
+		<div class="title-subtext">
+                  PaymentsSource, 12/30/2014
+		</div>
+		<div class="whitePaper-text">
+                  “One of the key opportunities Bitcoin presents is micro-transactions,” said Will O’Brien, CEO at BitGo Inc. “We have gotten down to the 99 cent price in the Apple Store but not gotten down to paying a fraction of a penny for a Wall Street Journal article.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/2014-became-year-multisig/" target="_blank">
+                  <h3 class="u-textLeft">How 2014 Became the Year of Multi-Sig</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 12/29/14
+		</div>
+		<div class="whitePaper-text">
+                  “2014 was a pivotal year in bitcoin security. Although the industry had a rough start to the year with the collapse of the largest bitcoin exchange, Mt Gox, leading companies have made significant strides toward making the ecosystem more secure and ready to scale.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.belshe.com/test/security2015/#slide1.0" target="_blank">
+                  <h3 class="u-textLeft">ChangeTip CEO Nick Sullivan: We Won’t Sell User Data</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 12/18/2014
+		</div>
+		<div class="whitePaper-text">
+                  “With the partnership, ChangeTip has become one of an increasingly varied set of bitcoin businesses and service providers that have sought to partner with BitGo as a means to bolster security.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/changetip-300x300.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://bitgoinc.com/changetip-selects-bitgo-secure-bitcoin-storage-increased-transparency/" target="_blank">
+                  <h3 class="u-textLeft">ChangeTip Selects BitGo for Secure Bitcoin Storage and Increased Transparency</h3>
+		</a>
+		<div class="title-subtext">
+                  BitGo, 12/17/2014
+		</div>
+		<div class="whitePaper-text">
+                  “<a href="http://changetip.com" target="_blank">ChangeTip</a>, the popular social media tipping platform, has selected BitGo® as its enterprise-grade Bitcoin security platform. BitGo is the leader in Bitcoin security and a pioneer in multi-sig wallets. By selecting BitGo Enterprise™, BitGo’s flagship product, ChangeTip is giving confidence to its end users that their bitcoins held by ChangeTip are secured with the industry’s best practices and technologies.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/bitcoin-companies-keep-funds-safe/" target="_blank">
+                  <h3 class="u-textLeft">How Bitcoin Companies Keep Your Funds Safe</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 11/25/2014
+		</div>
+		<div class="whitePaper-text">
+                  “Multi-signature (‘multisig’) storage is one of the biggest developments in enterprise bitcoin security to date. BitGo, which CEO and co-founder Will O’Brien says focuses on solutions for enterprises and institutions, eschews cold storage altogether in favour of multisig.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/CoinTelegraph.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://cointelegraph.com/news/112971/bridging-the-gap-between-wallet-security-and-ease-of-use-with-arianna-simpson" target="_blank">
+                  <h3 class="u-textLeft">Bridging The Gap Between Wallet Security And Ease-Of-Use With Arianna Simpson</h3>
+		</a>
+		<div class="title-subtext">
+                  Coin Telegraph, 11/22/2014
+		</div>
+		<div class="whitePaper-text">
+                  “Holding bitcoins in cold storage makes day-to-day usage difficult and doesn’t scale. Recently, a number of companies have started introducing multi-signature wallets as a promising new solution, which can provide both strong security and ease-of-use. BitGo is a pioneer in this field. Multi-sig has a revolutionary impact on storage. It reduces the probability of hacks and user error. That’s core to making Bitcoin more usable.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/inside-bitcoins-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://insidebitcoins.com/news/bloomberg-bitcoin-conference-bitcoin-is-unstoppable/26460" target="_blank">
+                  <h3 class="u-textLeft">Bloomberg Bitcoin Conference: “Bitcoin is Unstoppable”</h3>
+		</a>
+		<div class="title-subtext">
+                  Inside Bitcoins, 11/17/2014
+		</div>
+		<div class="whitePaper-text">
+                  “Included on the initial panel for the day, “Bitcoin as Technology,” was Will O’Brien, CEO of Bitgo, who offered a an optimistic view on where bitcoin is going over the next few years, but specifically said that 2015 is going to be a very big year for the cryptocurrency.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/bloombergbusinessweek.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="Bitcoin as a Technology: Bloomberg Panel" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin as a Technology: Bloomberg Panel</h3>
+		</a>
+		<div class="title-subtext">
+                  Business Week, 11/17/2014
+		</div>
+		<div class="whitePaper-text">
+                  Will O’Brien, Founder and CEO of BitGo Inc. spoke on the Bloomberg “Bitcoin as a Technology” panel this week. You can find the link to the Video Coverage <a href="http://www.bloomberg.com/news/videos/2014-11-17/bitcoin-as-a-technology-bloomberg-panel-video" target="_blank">here</a>.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/CoinTelegraph.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://cointelegraph.com/news/112856/multisig-support-set-to-become-a-new-standard" target="_blank">
+                  <h3 class="u-textLeft">Multisig Support Set to Become a New Standard</h3>
+		</a>
+		<div class="title-subtext">
+                  Coin Telegraph, 11/4/2014
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo is recognized as the first wallet to offer multisig services, in which a Bitcoin address possesses not one, but three individual sets of private keys. Two sets of keys go to the user—one is stored on her computer, and the other is stored somewhere offline (on paper in a safe, for example). The service provider then holds the third key. A signature by two of the three keys is required to execute a transaction (called a “two of three”), and this simple process provides several benefits.“
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/CoinTelegraph.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://cointelegraph.com/news/112857/bitcoin-derivatives-trading-progresses-as-teraexchange-partners-up-with-bitgo" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin Derivatives Trading Progresses As TeraExchange Partners Up With BitGo</h3>
+		</a>
+		<div class="title-subtext">
+                  Coin Telegraph, 11/4/14
+		</div>
+		<div class="whitePaper-text">
+                  “Institutional trading platform TeraExchange announced it has partnered with Bitcoin security platform and multi-signature technology pioneer BitGo to provide multisig blockchain-based custodial services for USD/Bitcoin swaps executed on its trading platform, stated the company in a release.“
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/6-types-businesses-bitcoin-will-enable-first-time/" target="_blank">
+                  <h3 class="u-textLeft">6 Types of Businesses Bitcoin Will Enable for the First Time</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 11/2/14
+		</div>
+		<div class="whitePaper-text">
+                  “Probably the most important tech emerging for wallets today is multi-signature. It is a type of private-key security that protects wallet balances by using several keys to unlock funds – hence the name ‘multi-signature’.
+		</div>
+		<div class="whitePaper-text">
+                  BitGo is a company focused on wallet technologies and is building advanced multisig technology that can be used in large organizations.”
+		</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div class="u-pushDown60" ng-show="currentPage == 4">
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/NEWSBTC-BACKGROUND-BLUE-e1420676046821.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://bitgoinc.com/binary-financial-announces-btc-01-worlds-first-concierge-bitcoin-liquidity-service-partners-bitgo-institutional-security/" target="_blank">
+                  <h3 class="u-textLeft">Binary Financial Announces BTC-01, World’s First Concierge Bitcoin Liquidity Service, Partners With BitGo for Institutional Security</h3>
+		</a>
+		<div class="title-subtext">
+                  BitGo, 10/6/14
+		</div>
+		<div class="whitePaper-text">
+                  “Binary Financial, a leading digital asset investment manager, today announced BTC-01, a concierge Bitcoin liquidity service for institutional clients and high net worth individuals. Binary Financial selected BitGo, the leading Bitcoin security platform, as the exclusive provider of multi-sig, enterprise Bitcoin wallet technology and management tools for the service. “
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/Money-beat.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://blogs.wsj.com/moneybeat/2014/10/06/bitbeat-bitcoin-finds-willing-buyers-even-with-prices-plunging/" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin Finds Willing Buyers, Even With Prices Plunging</h3>
+		</a>
+		<div class="title-subtext">
+                  MoneyBeat, 10/6/14
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo, which launched its first “multi-sig” wallet in the wake of the massive February loss of bitcoins at failed bitcoin exchange Mt. Gox, has become something of a standard-bearer in what is emerging as the preferred way for institutions to secure their bitcoin. Arranged so that wallets can efficiently send and receive bitcoin but with the requirement that at least two of three different signatories to an account apply a “private key,” or digital password, to access those holdings, multi-sig wallets are designed to allow the fluidity and speed of use of an online, or hot wallet but the security of an offline, or cold wallet.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/binary-financial-bitcoin-buying-service-high-net-worth/" target="_blank">
+                  <h3 class="u-textLeft">New Concierge Bitcoin Buying Service Targets High Net-Worth Investors</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 10/6/14
+		</div>
+		<div class="whitePaper-text">
+                  “In the past when Binary Financial received requests to purchase digital assets on our clients’ behalf we required our clients to provision their own wallets. By partnering with BitGo, we are able to use their multi-sig wallet platform to manage holdings for our clients, reducing the barriers to entry for new investors.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/Silicon-Angle-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://siliconangle.com/blog/2014/09/22/coin-center-aims-to-heavily-back-bitcoin/" target="_blank">
+                  <h3 class="u-textLeft">The ‘Coin Center’ aims to heavily back Bitcoin</h3>
+		</a>
+		<div class="title-subtext">
+                  Silicon Angle, 9/22/14
+		</div>
+		<div class="whitePaper-text">
+                  “Former head of the technology policy program at George Mason’s Mercatus Center Jerry Brito has announced he’ll be heading a new organization called the ‘Coin Center’, which is a ‘new non-profit research and advocacy center focused on the public policy issues facing cryptocurrency technologies such as Bitcoin.’ The organization aims to build a better understanding of cryptocurrencies and promote a regulatory climate that preserves maximum freedom of action. This will be possible by producing and publishing policy research from respected academics and experts, as well as educating policymakers and the media about block chain technology.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/medium.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://medium.com/@willobrien/its-time-to-end-the-cold-storage-ice-age-and-adopt-multi-sig-8589733c9fd6" target="_blank">
+                  <h3 class="u-textLeft">It’s Time to End the Cold Storage Ice Age and Adopt Multi-Sig</h3>
+		</a>
+		<div class="title-subtext">
+                  Medium, 9/15/14
+		</div>
+		<div class="whitePaper-text">
+                  “We believe the main reason there are still so many bitcoins in cold storage is simple inertia. It is scary to move millions of dollars from a storage system that has worked fine, so far, to a new storage system, even if you are confident the new system is better. But enough time has passed and enough diligence has been performed to conclude that multi-sig is fundamentally a better solution than single-key cold storage. BitGo is calling on all of the major players in the industry to make multi-sig a top priority. Whether you build your own multi-sig, or use a security platform service provider, we need to commit to multi-sig in order to make a safer bitcoin ecosystem and ensure the future growth we all hope to see.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/inside-bitcoins-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://insidebitcoins.com/news/with-bitgo-buy-in-bitfury-continues-its-strategy-of-holding-investments-close-to-the-vest/24053" target="_blank">
+                  <h3 class="u-textLeft">With BitGo Buy-In, BitFury Continues its Strategy of Holding Investments Close to the Vest</h3>
+		</a>
+		<div class="title-subtext">
+                  Inside Bitcoins, 9/4/14
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo, a bitcoin security platform and provider of multi-signature wallet technology, today announced that BitFury Capital has made a “strategic investment” in the firm, though specific details were not released. ‘We are pleased to make our second investment into the Bitcoin ecosystem by investing in BitGo. We believe the BitGo team will continue delivering proven results as multi-signature solutions proliferate,’ said Marat Kichikov, managing partner of BitFury Capital. Preferring to keep its investments close to the vest, BitFury had previously announced an investment in an undisclosed wallet provider. The BitFury Group also named BitGo as a provider for its bitcoin treasury management operations.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/BusinessWire-Logo.jpg"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.businesswire.com/news/home/20140904005228/en/BitFury-Group-Selects-BitGo-Enterprise%E2%84%A2-Treasury-Management#.VUOpSmTBzGe" target="_blank">
+                  <h3 class="u-textLeft">BitFury Group Selects BitGo Enterprise for Treasury Management Solution</h3>
+		</a>
+		<div class="title-subtext">
+                  Business Wire, 9/4/14
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo, the leading bitcoin security platform and a pioneer in multi-signature wallet technology, today announced that BitFury Group, the largest bitcoin infrastructure provider and bitcoin transaction processing company has selected BitGo for its bitcoin enterprise treasury management solutions. Highly regarded within the bitcoin industry as the leading bitcoin mining equipment maker, BitFury also mines bitcoin at its several mega datacenters, provides hosting services to its global clients, and trades bitcoin with major financial institutions. With this announcement, BitFury Group becomes the latest Platinum-tier customer for BitGo, and plans to use BitGo Enterprise’s highly scalable service offerings to support its diverse treasury management operations.“
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/bitcoin-foundation-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://bitcoinfoundation.org/" target="_blank">
+                  <h3 class="u-textLeft">Press Release August 12, 2014: Bitcoin Foundation Selects BitGo Enterprise For Scalable Financial Infrastructure Solution</h3>
+		</a>
+		<div class="title-subtext">
+                  Bitcoin Foundation, 8/12/14
+		</div>
+		<div class="whitePaper-text">
+                  “The Bitcoin Foundation, the leading member-driven non-profit trade organization working to standardize, protect and promote the Bitcoin protocol, and BitGo, the first Bitcoin multi-sig wallet secure platform, today announced that the Bitcoin Foundation has selected BitGo Enterprise™ for increased operational capacity through multi-signature wallets, risk diversification, and the ability to implement scalable internal treasury controls.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/boring-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://boringbitcoinreport.com/2014/08/bitgo-brings-multi-sig-security-services-bitcoin-foundation/" target="_blank">
+                  <h3 class="u-textLeft">BitGo Brings Multi-Sig Security Services To The Bitcoin Foundation</h3>
+		</a>
+		<div class="title-subtext">
+                  The Boring Bitcoin Report, 8/12/14
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo, the company that pioneered the first multi-signature wallet, is announcing today that the Bitcoin Foundation has elected to use BitGo Enterprise’s security solutions for its operations. The Bitcoin Foundation is a non-profit trade organization and its core values are the ‘development, safety, and promotion’ of Bitcoin. Will O’Brien, the CEO and co-Founder of BitGo, stated that the Bitcoin Foundation’s ‘adoption of multi-sig is a case study for the world. As stewards of the core protocol code and influencers in other important areas of the ecosystem, the Foundation must have business continuity and operational scalability.'”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/bridging-talent-gap-bitcoin-industry/" target="_blank">
+                  <h3 class="u-textLeft">Bridging the Talent Gap in the Bitcoin industry</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 8/5/14
+		</div>
+		<div class="whitePaper-text">
+                  “For a new industry to grow, it needs smart, dedicated people. However, despite the promise and potential of bitcoin and its many companies, attracting qualified employees can be surprisingly challenging. The simple fact is, although many startups are founded and initially run by small, experienced teams, bitcoin entrepreneurs must hire skilled staff in order to execute their company’s vision. … However, despite difficulties attracting talent, not to mention how much it costs to hire developers in and around the industry’s central hub of San Francisco, bitcoin observers think the cryptocurrency industry is on the cusp of breaking through.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/bitscan-logo.jpg"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://bitscan.com/articles/multisignature-technology-the-players-and-the-potential/" target="_blank">
+                  <h3 class="u-textLeft">MultiSignature Technology: The players and the potential</h3>
+		</a>
+		<div class="title-subtext">
+                  BitScan, 8/4/14
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo is for the less technically-minded, who still want the security of a multisig wallet. … According to CEO, Will O’Brien, ‘The BitGo technology actually reduces risk both for us and our customers by removing any single point of attack or failure. … In every transaction, BitGo acts as a security layer – authenticating, running anti-fraud checks, and confirming corporate treasury policies – and a co-signer on the account.’ … The BitGo team pride themselves on their best practices for security. ‘A home-grown system is much more difficult to maintain and an easier target for an attacker,’ states O’Brien.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/washingtonpostlogo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.washingtonpost.com/blogs/the-switch/wp/2014/07/30/bitcoin-is-barely-regulated-and-these-congressmen-want-to-keep-it-that-way/" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin is barely regulated – and these congressmen want to keep it that way</h3>
+		</a>
+		<div class="title-subtext">
+                  Washington Post, 7/30/14
+		</div>
+		<div class="whitePaper-text">
+                  “Many technophiles and libertarians already love Bitcoin. If three bitcoin-friendly congressmen have their way, federal lawmakers could, too. Bitcoin industry representatives descended on Capitol Hill on July 29 to trumpet the cryptocurrency to any staffers who would listen. … While the events were billed as strictly educational, their agenda was clear: to encourage legislators to continue their laissez-faire approach to regulating the virtual currency.”
+		</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div class="u-pushDown60" ng-show="currentPage == 5">
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/bitgive-bitcoin-industry-charity-bowling-showdown/" target="_blank">
+                  <h3 class="u-textLeft">BitGive Unites Bitcoin Industry for Charity Bowling Showdown</h3>
+		</a>
+		<div class="title-subtext">
+                  Coin Desk, 6/9/14
+		</div>
+		<div class="whitePaper-text">
+                  “Eight teams representing bitcoin companies in the San Francisco Bay area competed in a charitable tournament hosted by the BitGive Foundation on Sunday, 8th June at the Yerba Buena Gardens skating and bowling center. The fundraising event featured … a number of leading bitcoin companies in the Bay Area participated including Coinbase, Xapo, Vaurum, BitPay, Kraken, Buttercoin, BitGo and BTCJam.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/techcrunch_logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://techcrunch.com/2014/05/28/ben-davenport-bitgo/" target="_blank">
+                  <h3 class="u-textLeft">Ben Davenport, One of Facebook Messenger’s Creators, Joins Bitcoin Startup BitGo As CPO</h3>
+		</a>
+		<div class="title-subtext">
+                  Tech Crunch, 5/28/14
+		</div>
+		<div class="whitePaper-text">
+                  “Ben Davenport, who co-founded the startup Beluga which Facebook acquired to build its Messenger app, just left the company after several years to dive into the world of Bitcoin. He’s joining BitGo as a co-founder and chief product officer. BitGo is building a security-as-a-service platform for Bitcoin.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/btc-journal-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.btcjournal.com/content/interview-mike-belshe-cto-and-co-founder-bitgo" target="_blank">
+                  <h3 class="u-textLeft">Interview with Mike Belshe CTO and Co-Founder of BitGo</h3>
+		</a>
+		<div class="title-subtext">
+                  BTC Journal, 5/19/14
+		</div>
+		<div class="whitePaper-text">
+                  Listen to BTC Journal interview BitGo CTO and Co-Founder Mike Belshe. 34 mins.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/OnBitcoinlogo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://onbitcoin.com/2014/05/02/coinme-bitcoin-atm-kiosk-seattle-launch/" target="_blank">
+                  <h3 class="u-textLeft">Seattle Welcomes Its First Bitcoin ATM Kiosk at Coinme Launch Party</h3>
+		</a>
+		<div class="title-subtext">
+                  On Bitcoin, 5/2/14
+		</div>
+		<div class="whitePaper-text">
+                  “Will O’Brien expressed an enthusiasm that Bitcoin is here to stay. ‘The digital currency genie has left the bottle. Bitcoin will drive much needed innovation in our financial services ecosystem, and adoption is increasing at an incredible pace,’ said O’Brien whose company, BitGo, uses multi-sig technology to secure Bitcoin investments and transactions.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/Forbes-Logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.forbes.com/fdc/welcome_mjx.shtml" target="_blank">
+                  <h3 class="u-textLeft">Secure Bitcoin Storage: A Q&A With Three Bitcoin Company CEOs</h3>
+		</a>
+		<div class="title-subtext">
+                  Forbes, 4/26/14
+		</div>
+		<div class="whitePaper-text">
+                  “In any single key storage solution, there is only one piece of information a hacker needs in order to steal bitcoins. With multi-sig, an online wallet is secure because multiple keys are never on the same machine. With this foundation, companies can build easy-to-use, consumer-friendly services that leverage the power of bitcoin without carrying the associated risks.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/MoneyTech.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://moneyandtech.com/will-obrien-inside-bitcoins-ny/" target="_blank">
+                  <h3 class="u-textLeft">WILL O’BRIEN @ INSIDE BITCOINS NY</h3>
+		</a>
+		<div class="title-subtext">
+                  Forbes, 7/28/14
+		</div>
+		<div class="whitePaper-text">
+                  “’Bitcoin is going to change the world, and it is going to happen faster than we can imagine,’ says Will O’Brien, the CEO and Co-Founder of BitGo, Inc. His platform strives to make using Bitcoin safer for everyone. They have pioneered a multi-signature, multi-user wallet that is unlike the standalone wallet described by Dubois. It has built-in corporate treasury policies, such as spending limits that require multiple approvals.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/fortune-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://fortune.com/2014/07/22/on-winklevoss-bitcoin-index-its-open-season-for-developers/" target="_blank">
+                  <h3 class="u-textLeft">On Winklevoss Bitcoin index, it’s open season for developers</h3>
+		</a>
+		<div class="title-subtext">
+                  Fortune, 7/22/14
+		</div>
+		<div class="whitePaper-text">
+                  “Nicknamed the ‘WinkDex,’ the Winklevoss Index is one of a handful of Bitcoin pricing indexes that seek to pinpoint a current value for a commodity that is in constant flux. Now, Fortune has learned that the brothers will open the API, or application programming interface, for their index today so that developers can build on top of it. … ‘Their index is not, today, seen as the leading one,’ says Will O’Brien, chief executive of BitGo, … ‘But if developers really embrace this, you’ll have a crowd effect where credibility becomes de facto.'”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/ghash-commits-40-hashrate-cap-bitcoin-mining-summit/" target="_blank">
+                  <h3 class="u-textLeft">GHash Commits to 40% Hashrate Cap at Bitcoin Mining Summit</h3>
+		</a>
+		<div class="title-subtext">
+                  CoinDesk, 7/16/14
+		</div>
+		<div class="whitePaper-text">
+                  “A summit meant to address the threat of 51% attacks against the bitcoin network has resulted in a renewed industry commitment to protecting the digital currency’s transaction processing network from majority control by any one entity. … BitGo co-founder and CEO Will O’Brien told CoinDesk that one of the outcomes of the meeting is that the community itself needs to play a role in finding a solution. ‘It’s incumbent upon the industry leaders themselves to make changes that build confidence among the broad bitcoin community, investment community, and the press. We cannot and should not rely on one or more trade organizations to set the rules. Bitcoin is decentralized, and we must build solutions that support that original framework of decision-making.'”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <img class="news-logo" src="./img/twitter-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://twitter.com/aplusk/status/478954789087084544" target="_blank">
+                  <h3 class="u-textLeft">Ashton Kutcher on Twitter @plusk</h3>
+		</a>
+		<div class="title-subtext">
+                  Twitter, 6/17/14
+		</div>
+		<div class="whitePaper-text">
+                  “Congrats to @BitGoInc on.wsj.com/1vuJMhf””
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <img class="news-logo" src="./img/bitgo-logo-black.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://bitgoinc.com/bitgo-announces-12-million-series-a-financing/" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin Security Pioneer BitGo Raises $12 Million in Series A Financing from Redpoint Ventures, Stratton Sclavos and Syndicate of Leading Bitcoin Investors</h3>
+		</a>
+		<div class="title-subtext">
+                  BitGo blog, 6/16/14
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo™, the leading Bitcoin security platform, today announced it has raised $12 million in Series A financing led by Silicon Valley venture capital firm Redpoint Ventures. Previous investors Bridgescale Partners, Jeff Skoll, Bill Lee, and Eric Hahn participated in the round. New investors include Radar Partners, Founders Fund, Barry Silbert’s Bitcoin Opportunity Corp., Liberty City Ventures, Crypto Currency Partners, Ashton Kutcher & Guy Oseary’s A-GRade Investments, and a number of top Bitcoin industry executives and angel investors. This financing makes BitGo one of the most well-funded companies in the Bitcoin ecosystem and positions the company for significant growth.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <img class="news-logo" src="./img/cnet_logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.cnet.com/news/bitcoin-security-platform-bitgo-raises-12m-in-funding/" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin security platform BitGo raises $12M in funding</h3>
+		</a>
+		<div class="title-subtext">
+                  CNET, 6/16/14
+		</div>
+		<div class="whitePaper-text">
+                  “‘We are still in the early innings of the Bitcoin revolution,” BitGo CEO and co-founder Will O’Brien said in a statement. “BitGo’s mission is to secure the world’s Bitcoin. By solving Bitcoin’s early security concerns for our customers and industry partners, BitGo is excited to help the Bitcoin industry grow with what we believe will be a speed and scale comparable to the Internet itself.'”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+              <img class="news-logo" src="./img/techcrunch_logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://techcrunch.com/2014/06/16/bitgo-raises-12m-led-by-redpoint-for-multi-signature-bitcoin-wallets-services/" target="_blank">
+                  <h3 class="u-textLeft">BitGo Raises $12M Led By Redpoint For Multi-Signature Bitcoin Wallets, Services</h3>
+		</a>
+		<div class="title-subtext">
+                  Tech Crunch, 6/16/14
+		</div>
+		<div class="whitePaper-text">
+                  “After poaching one of the creators behind Facebook Messenger, Ben Davenport, the company is announcing today that it has raised $12 million in funding led by Redpoint Ventures. … While this is a large Series A round, BitGo faces a number of other really well-funded competitors like Andreessen Horowitz-backed Coinbase, Benchmark-backed Xapo and Accel-backed Circle, led by former Brightcove CEO Jeremy Allaire. … With the round, Redpoint’s founding partner Jeff Brody joins the company’s board along with Radar Partners’ Stratton Sclavos, who was the CEO of Verisign from 1995 to 2007.”
+		</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div class="u-pushDown60" ng-show="currentPage == 6">
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/bitgive-bitcoin-industry-charity-bowling-showdown/" target="_blank">
+                  <h3 class="u-textLeft">BitGive Unites Bitcoin Industry for Charity Bowling Showdown</h3>
+		</a>
+		<div class="title-subtext">
+                  Coin Desk, 6/9/14
+		</div>
+		<div class="whitePaper-text">
+                  “Eight teams representing bitcoin companies in the San Francisco Bay area competed in a charitable tournament hosted by the BitGive Foundation on Sunday, 8th June at the Yerba Buena Gardens skating and bowling center. The fundraising event featured … a number of leading bitcoin companies in the Bay Area participated including Coinbase, Xapo, Vaurum, BitPay, Kraken, Buttercoin, BitGo and BTCJam.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/techcrunch_logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://techcrunch.com/2014/05/28/ben-davenport-bitgo/" target="_blank">
+                  <h3 class="u-textLeft">Ben Davenport, One of Facebook Messenger’s Creators, Joins Bitcoin Startup BitGo As CPO</h3>
+		</a>
+		<div class="title-subtext">
+                  Tech Crunch, 5/28/14
+		</div>
+		<div class="whitePaper-text">
+                  “Ben Davenport, who co-founded the startup Beluga which Facebook acquired to build its Messenger app, just left the company after several years to dive into the world of Bitcoin. He’s joining BitGo as a co-founder and chief product officer. BitGo is building a security-as-a-service platform for Bitcoin.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/btc-journal-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.btcjournal.com/content/interview-mike-belshe-cto-and-co-founder-bitgo" target="_blank">
+                  <h3 class="u-textLeft">Interview with Mike Belshe CTO and Co-Founder of BitGo</h3>
+		</a>
+		<div class="title-subtext">
+                  BTC Journal, 5/19/14
+		</div>
+		<div class="whitePaper-text">
+                  Listen to BTC Journal interview BitGo CTO and Co-Founder Mike Belshe. 34 mins.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/OnBitcoinLogo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://onbitcoin.com/2014/05/02/coinme-bitcoin-atm-kiosk-seattle-launch/" target="_blank">
+                  <h3 class="u-textLeft">Seattle Welcomes Its First Bitcoin ATM Kiosk at Coinme Launch Party</h3>
+		</a>
+		<div class="title-subtext">
+                  On Bitcoin, 5/2/14
+		</div>
+		<div class="whitePaper-text">
+                  “Will O’Brien expressed an enthusiasm that Bitcoin is here to stay. ‘The digital currency genie has left the bottle. Bitcoin will drive much needed innovation in our financial services ecosystem, and adoption is increasing at an incredible pace,’ said O’Brien whose company, BitGo, uses multi-sig technology to secure Bitcoin investments and transactions.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/Forbes-Logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.forbes.com/fdc/welcome_mjx.shtml" target="_blank">
+                  <h3 class="u-textLeft">Secure Bitcoin Storage: A Q&A With Three Bitcoin Company CEOs</h3>
+		</a>
+		<div class="title-subtext">
+                  Forbes, 4/26/14
+		</div>
+		<div class="whitePaper-text">
+                  “In any single key storage solution, there is only one piece of information a hacker needs in order to steal bitcoins. With multi-sig, an online wallet is secure because multiple keys are never on the same machine. With this foundation, companies can build easy-to-use, consumer-friendly services that leverage the power of bitcoin without carrying the associated risks.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/MoneyTech.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://moneyandtech.com/will-obrien-inside-bitcoins-ny/" target="_blank">
+                  <h3 class="u-textLeft">WILL O’BRIEN @ INSIDE BITCOINS NY</h3>
+		</a>
+		<div class="title-subtext">
+                  Money & Tech, 4/17/14
+		</div>
+		<div class="whitePaper-text">
+                  “Perianne Boring caught up with Will O’Brien, CEO and co-founder of BitGo, to talk about their exciing new developments around multi-signature technology, including their new BitGo Enterprise solution for bitcoin businesses that features spending and velocity limits, user management services, and 24/7 monitoring services.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/wired-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.wired.com/2014/04/bitcoin-harder-to-steal/" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin Gets a Security Boost as Payment Startups Target Enterprises</h3>
+		</a>
+		<div class="title-subtext">
+                  Payments Source, 4/15/14
+		</div>
+		<div class="whitePaper-text">
+                  “Bitcoin companies are looking to win business from large corporations by offering more of the security features that traditional payments providers have long used. … “We’re bringing bank-grade security to Bitcoin,” says Will O’Brien, BitGo’s co-founder and CEO.”
+		</div>
+              </div>
+            </div>
+          </div>
+      	  <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/fortune-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://fortune.com/2014/07/22/on-winklevoss-bitcoin-index-its-open-season-for-developers/" target="_blank">
+                  <h3 class="u-textLeft">A Hack That Makes Bitcoins a Whole Lot Harder to Steal</h3>
+		</a>
+		<div class="title-subtext">
+                  Wired, 4/9/14
+		</div>
+		<div class="whitePaper-text">
+                  “Anyone can use the BitGo wallet, but the company sees a real opportunity in building bank-like services that let companies put corporate controls over their bitcoins. On Tuesday, BitGo introduced a suite of wallet services that let businesses limit how many bitcoins a user can spend without corporate approval, and control digital currency spending in other ways.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/Payments-Source-Logo.jpg"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.paymentssource.com/news/technology/bitgo-introduces-multi-signature-bitcoin-security-services-3017552-1.html" target="_blank">
+                  <h3 class="u-textLeft">BitGo Introduces Multi-Signature Bitcoin Security Services</h3>
+		</a>
+		<div class="title-subtext">
+                  Payments Source, 4/8/14
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo, a San Francisco-based a digital currency payments processor, has launched a new suite of services for financial institutions that engage in Bitcoin-based commercial transactions. The services are based on multi-signature security, which requires authorization from multiple parties before a transaction can be approved.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/Forbes-Logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.forbes.com/sites/perianneboring/2014/04/02/bitcoin-could-strengthen-the-world-economy-if-washington-doesnt-destroy-it/" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin Could Strengthen The World Economy If Washington Doesn’t Destroy It</h3>
+		</a>
+		<div class="title-subtext">
+                  Forbes, 4/2/14
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo and BitPay are two industry leaders that are ahead of the curve in innovation and regulatory compliance. Despite the IRS classifying Bitcoin as “property” and not currency, Will O’Brien, the CEO of BitGo, the company that pioneered multi-signature wallet security says they were complying all along with the IRS guidelines.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coinsummit_logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://www.youtube.com/watch?v=F28bqzD-m5w" target="_blank">
+                  <h3 class="u-textLeft">Developing Bitcoin industry security standards in a post GOX world.</h3>
+		</a>
+		<div class="title-subtext">
+                  Coin Summit, 3/27/14
+		</div>
+		<div class="whitePaper-text">
+                  Watch Bitcoin Security panelists speak at CoinSummit 2014. CEO of BitGo Will O’Brien; Angel Investor Trace Mayer; co-founder of Kryptokit Anthony Di Iorio; moderated by Steve Waterhouse of Pantera Capital Management.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/MoneyTech.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://moneyandtech.com/preventing-the-next-mtgox-multi-sig/" target="_blank">
+                  <h3 class="u-textLeft">Preventing the Next Mt.Gox – Multi-Sig Readies Bitcoin for Primetime.</h3>
+		</a>
+		<div class="title-subtext">
+                  Money & Tech, 3/20/14
+		</div>
+		<div class="whitePaper-text">
+                  “Multi-sig changes the paradigm for Bitcoin exchanges. It is not necessary for an exchange to pool and hold all of its customer funds. Instead, an exchange can have an individual multi-sig wallet with every customer. The customer controls one key, the exchange controls a second key, and a third key is held by a neutral party – like the safe deposit box example – whose job is to authenticate and co-sign transactions.”
+		</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div class="u-pushDown60" ng-show="currentPage == 7">
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/forrester.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://bitgoinc.com/bitgo-cited-in-forrester-report-on-bitcoin/" target="_blank">
+                  <h3 class="u-textLeft">BitGo Cited in Forrester Research, Inc. Report on Bitcoin</h3>
+		</a>
+		<div class="title-subtext">
+                  Forrester Research, Inc. 3/6/14
+		</div>
+		<div class="whitePaper-text">
+                  Forrester Research published an extensive report about the Bitcoin ecosystem, in which BitGo was cited following an interview with BitGo CEO Will O’Brien. <a href="https://www.forrester.com/Bitcoin+Some+Parts+Brilliant+Some+Parts+Sure+To+Bomb/fulltext/-/E-RES115509?highlightTerm=bitcoin&isTurnHighlighting=false" target="_blank">Read the report</a>.
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/bloombergbusinessweek.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="hhttp://www.bloomberg.com/bw/articles/2014-02-27/mt-dot-goxalypse-bitcoins-credibility-faces-make-or-break-moment" target="_blank">
+                  <h3 class="u-textLeft">Mt. Goxalypse Now! Bitcoin’s Credibility Faces a Make-or-Break Moment</h3>
+		</a>
+		<div class="title-subtext">
+                  Bloomberg Businessweek 2/27/14
+		</div>
+		<div class="whitePaper-text">
+                  “Mt. Gox was fundamentally crippled by its own business approach,” says Will O’Brien, chief executive officer of BitGo, which develops security software for Bitcoin transactions. “It never really took a mature, serious approach to delivering on its promise to its customers.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/MoneyTech.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://moneyandtech.com/will-obrien-mike-belshe-bitgo/" target="_blank">
+                  <h3 class="u-textLeft">Will O’Brien & Mike Belshe talk BitGo</h3>
+		</a>
+		<div class="title-subtext">
+                  Money & Tech
+		</div>
+		<div class="whitePaper-text">
+                  “Watch Money & Tech’s Jered Kenna interview Will O’Brien and Mike Belshe, co-founders of BitGo, a new Bitcoin service that uses multi-signature technology to add another layer of security to Bitcoin wallets.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/SFChronicle.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.sfgate.com/technology/article/Bitcoin-s-transaction-malleability-rattles-system-5236912.php" target="_blank">
+                  <h3 class="u-textLeft">Bitcoin’s Transaction Malleability Rattles System</h3>
+		</a>
+		<div class="title-subtext">
+                  SF Chronicle 2/15/14
+		</div>
+		<div class="whitePaper-text">
+                  “Transaction malleability has been a known issue in the bitcoin community since 2011. … the glitch is a small time window when bitcoin transactions can be “renamed” before being confirmed in the log, which could allow theft.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/media-post.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.mediapost.com/publications/article/218421/online-businesses-can-capitalize-on-bitcoin.html" target="_blank">
+                  <h3 class="u-textLeft">Online Businesses Can Capitalize On BitCoin</h3>
+		</a>
+		<div class="title-subtext">
+                  Media Post 1/30/14
+		</div>
+		<div class="whitePaper-text">
+                  “If you’re an entrepreneur, now is the time to begin using and investing in the currency and the technology that will support it. As more major companies and big brand names become a part of this monetary entity, its value will increase.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/king5.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.king5.com/news/technology/Seattle-entrepreneur-mines-Bitcoin-phenomenon--241178501.html" target="_blank">
+                  <h3 class="u-textLeft">Seattle Entrepreneur Mines Bitcoin Phenomenon</h3>
+		</a>
+		<div class="title-subtext">
+                  KING5 Seattle 1/20/14
+		</div>
+		<div class="whitePaper-text">
+                  “Seattle entrepreneur Will O’Brien started learning about the Bitcoin digital currency technology in late 2012. He said it didn’t take him long to realize that what was really at stake was the transformation of the financial services system.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/medium.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://moneyandtech.com/will-obrien-inside-bitcoins-ny/" target="_blank">
+                  <h3 class="u-textLeft">What is The Best Way to Store Bitcoins?</h3>
+		</a>
+		<div class="title-subtext">
+                  Medium 1/3/14
+		</div>
+		<div class="whitePaper-text">
+                  “Bitgo reduces the risk of having a single point of failure in a very interesting and clever way. It’s a very elegant solution, and I hope all the wallet companies out there adopt it. Reducing the risk of having Bitcoins stolen will do a lot towards increasing mainstream adoption”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper contentWrapper--borderedTop">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img class="news-logo" src="./img/coindesk-logo.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="http://www.coindesk.com/bitgo-safe-aims-secure-bitcoin-wallets-multi-signature-transactions/" target="_blank">
+                  <h3 class="u-textLeft">BitGo Safe Aims to Secure Bitcoin Wallets With Multi-Signature Transactions</h3>
+		</a>
+		<div class="title-subtext">
+                  Coin Desk 12/19/13
+		</div>
+		<div class="whitePaper-text">
+                  “BitGo’s founder Mike Belshe says that relying on a single device to store your bitcoins is a bad idea. Web wallets are outside the user’s control, while their own devices are prone to attack, hardware failure, or simple user error. “You wouldn’t want to use pure web, but you wouldn’t want to use pure client-side either – at least not for most mortals,” he said.”
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="contentWrapper">
+            <div class="row">
+              <h1>Thought Leadership</h1>
+              <h2 class="u-shiftUp10">Articles by BitGo Founders</h2>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+		<img src="./img/btclock.png"></img>
+              </div>
+              <div class="col-sm-24 col-md-8 col-lg-8">
+		<a href="https://medium.com/@willobrien/with-mtgox-effectively-dead-bitcoin-officially-enters-its-third-stage-of-evolution-2d33cf85382b" target="_blank">
+		  <h3 class="u-textLeft">With MtGox Effectively Dead, Bitcoin Officially Enters Its Third Stage of Evolution</h3>
+		</a>
+		<div class="title-subtext">
+		  Medium 2/25/14
+		</div>
+		<div class="whitePaper-text">
+		  “We are now entering the third stage, in which core financial infrastructure and services will be built by veteran entrepreneurs backed by institutional money, and in accordance with the regulatory framework of the United States and other nations. This stage will end with mainstream adoption of Bitcoin and consolidation of Bitcoin companies as large financial incumbents embrace digital currency.”
+		</div>
+              </div>
+            </div>
+          </div>
+	</div>
+      </div>
+    </section>
+    <section>
+      <div class="contentSection" ng-show="showState('branding')">
+	<div class="contentWrapper">
+          <div class="row">
+            <h1>Press Kit</h1>
+          </div>
+          <h3 class="u-textLeft u-border u-paddingBottom1p u-marginBottom10p">Full-Color Logos</h3>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 u-marginBottom20p u-marginTop10p">
+              <img src="./img/bitgo-logo-black.png"></img>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 u-marginBottom20p u-marginTop10p">
+              <img class="highlightLogo" src="./img/new_bitgo/logo.png"></img>
+            </div>
+          </div>
+          <h3 class="u-textLeft u-border u-paddingBottom1p u-marginBottom10p">Black and White Logos</h3>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 u-marginBottom20p u-marginTop10p">
+              <img src="./img/new_bitgo/BitGo_Logo_BW.png"></img>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 u-marginBottom20p u-marginTop10p">
+              <img class="highlightNoWidth" src="./img/new_bitgo/BitGo_Logo_BW_White.png"></img>
+            </div>
+          </div>
+          <h3 class="u-textLeft u-border u-paddingBottom1p u-marginBottom10p">BitGo Brand Colors</h3>
+          <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 u-marginBottom20p u-marginTop10p">
+              <div class="brandColors">
+                <div class="blue text">#00AEEF</div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 u-marginBottom20p u-marginTop10p">
+              <div class="brandColors">
+                <div class="white text">#FFFFFF</div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 u-marginBottom20p u-marginTop10p">
+              <div class="brandColors">
+                <div class="black text">#414042</div>
+              </div>
+            </div>
+          </div>
+          <h3 class="u-textLeft u-border u-paddingBottom1p">Secured with BitGo Security Seal</h3>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 u-marginBottom20p u-marginTop10p">
+              <img src="./img/new_bitgo/BitGo_Secured_Color.png"></img>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 u-marginBottom20p u-marginTop10p">
+              <img class="highlightNoWidth" src="./img/new_bitgo/BitGo_Secured_Color_White.png"></img>
+            </div>
+          </div>
+          <div class="row">
+            <h3 class="u-textLeft u-border u-paddingBottom1p">BitGo Branding and Trademark Guidelines</h3>
+            <div class="whitePaper-text">
+              We encourage you to use the “BitGo” trademark and logo with your company’s marketing materials for as long as you are a BitGo customer. You can use the icons and other assets on this page provided that you follow the guidelines described below.  The following are guidelines for the BitGo brand and related assets.
+            </div>
+            <div class="whitePaper-text">
+              <ol>
+		<li>
+                  BitGo™ should have a trademark symbol the first time it appears in a creative.
+		</li>
+		<li>
+                  BitGo Enterprise™ should have a trademark symbol the first time it appears in a creative.
+		</li>
+		<li>
+                  BitGo should always be capitalized and is never plural or possessive.
+		</li>
+		<li>
+                  “BitGo” cannot be used as a noun, only as an adjective, with the only exception being “secured with BitGo”.
+		</li>
+		<li>Usage
+                  <ul>
+                    <li>
+                      Incorrect: “ABC Corp works with BitGo”
+                    </li>
+                    <li>
+                      Correct: “ABC Corp’s Bitcoin holdings are secured with BitGo”
+                    </li>
+                    <li>
+                      Incorrect: “BitGo’s enterprise solutions”
+                    </li>
+                    <li>
+                      Correct: “BitGo Enterprise enables safe, easy commercial Bitcoin transactions.”
+                    </li>
+                  </ul>
+		</li>
+              </ol>
+              You may not file trademark applications incorporating any of the BitGo trademarks or logo or derivatives thereof.
+            </div>
+          </div>
+	</div>
+      </div>
+    </section>
+  </div>
+</div>

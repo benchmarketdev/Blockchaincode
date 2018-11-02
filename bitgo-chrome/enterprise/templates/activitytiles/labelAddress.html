@@ -1,0 +1,19 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- if current user changed the wallet label -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }}
+    </span>
+
+    <!-- uniform data -->
+    labeled address {{ logItem.target }} as "{{ logItem.data.label }}"
+    in wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

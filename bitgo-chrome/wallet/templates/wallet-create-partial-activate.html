@@ -1,0 +1,55 @@
+<div wallet-create-steps-activate class="row">
+  <div class="col-xss-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col--noPadding">
+
+    <h2>Activate Wallet</h2>
+    <h3>Keycard</h3>
+    <p class="introText u-colorGreyDark">Activate your wallet by opening the wallet KeyCard just downloaded to your computer. <br/>Look for the Activation Code in the upper right corner.</p>
+
+    <form name="createStepsActivateForm" class="u-clearfix">
+      <div class="col-xss-12 col-xs-6 col-sm-5 col-md-5 col-lg-5 col--noPadding">
+        <bg-form-error></bg-form-error>
+        <h3>1. Find the KeyCard in your download folder.</h3>
+        <p class="u-typography-5 u-colorGreyDark"><a ng-click="download()">Click here</a> if it did not download.</p>
+        <h3>2. Enter activation code.</h3>
+        <div class="formRow u-marginBottom20" ng-class="{ 'formRow--error': activationCodeConfirmError }">
+          <div class="col-xss-9 col-xs-9 col-sm-10 col--noPadding">  
+            <p class="notice" ng-show="activationCodeConfirmError">Missing activation code</p>
+            <div class="inputText">
+              <input type="text" name="activationCodeConfirm" class="inputText-input" placeholder="Activation code" ng-model="inputs.activationCodeConfirm" bg-input-numbers-only max-length="6" bg-input-validator bg-focus-when="true" />
+            </div>
+          </div>
+          <div class="col-xss-2 col-xss-offset-1 col-xs-offset-1 col-sm-offset-1 col-xs-2 col-sm-1 col-md-1 col-lg-1 col--noPadding">
+            <div ng-show="canActivate()" class="inputText-verification--verified">
+              <span class="u-typography-3"><i class="icon u-typography-2 icon--checkmark"></i></span>
+            </div>
+            <div ng-show="wrongActivationCode()" class="inputText-verification--verified">
+              <span class="u-typography-3"><i class="icon icon--crossmark"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xss-8 col-xs-6 col-sm-7 col-md-7 col-lg-7 col--noPadding">
+        <!-- Activation code image -->
+        <img class="u-pullRight" src="/img/wallet-keycard-code.png">
+      </div>
+      <ul class="u-clear u-cleanList u-inlineList">
+        <li>
+          <button type="submit" class="button" ng-class="{ 'disabled' : !canActivate() }" name="activateWallet" ng-click="activateWallet()">Activate Wallet</button>
+        </li>
+        <li>
+          <a class="button button--grey" name="cancel" ng-click="cancel()">Cancel</a>
+        </li>
+      </ul>
+    </form>
+  </div>
+
+  <!-- Hidden QR codes: needed when generating the PDF backup -->
+  <div ng-hide="true">
+    <bg-qr-code id='qrEncryptedUserKey' height="349" text="{{ generated.walletKeychain.encryptedXprv }}"></bg-qr-code>
+    <bg-qr-code id='qrEncryptedBackupKey' height="349" text="{{ generated.walletBackupKeychain.encryptedXprv }}"></bg-qr-code>
+    <bg-qr-code id='qrEncryptedUserProvidedXpub' height="349" text="{{ generated.walletBackupKeychain.xpub }}"></bg-qr-code>
+    <bg-qr-code id='qrBitgoKey' height="349" text="{{ generated.bitgoKeychain.xpub }}"></bg-qr-code>
+    <bg-qr-code id='qrEncryptedWalletPasscode' height="349" text="{{ generated.encryptedWalletPasscode }}"></bg-qr-code>
+  </div>
+
+</div>

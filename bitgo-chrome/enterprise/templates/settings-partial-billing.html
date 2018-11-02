@@ -1,0 +1,118 @@
+<!-- Payment / Plan Details -->
+<div enterprise-settings-billing bg-state-manager>
+  
+  <!-- show credit card when one exists for the enterprise -->
+
+  <form class="row u-noMargin">
+    <fieldset ng-show="showState('showExistingCard')" class="col col--eightOfTwelve col--noPadding">
+
+      <h3 class="billing-header">Card On File</h3>
+      <div ng-repeat="card in enterprises.current.customerData.sources.data" class="col col--eightOfTen col--noPadding">
+
+        <label>Name On Card</label>
+        <div class="inputText--readonly">
+          <input type="text" class="inputText-input" value="{{card.name}}" readonly="readonly" disabled>
+        </div>
+        <label>Card Number</label>
+        <div class="inputText--readonly">
+          <input type="text" class="inputText-input" value="xxxx xxxx xxxx {{card.last4}}" readonly="readonly" disabled>
+        </div>
+        <div class="u-marginTop10 row">
+          <a ng-hide="confirmationMessage" class="u-colorRed" ng-click="setState('addNewCard')">Change card</a>
+        </div>
+      </div>
+    </fieldset>
+
+
+    <!-- Add credit card form when there is no card -->
+
+    <div bg-credit-card-form ng-show="showState('addNewCard')" class="col col--eightOfTwelve col--noPadding">
+      <h3 class="billing-header">Add a <span ng-show="enterprises.current.hasPaymentOnFile()">new</span> card</h3>
+
+      <bg-form-error></bg-form-error>
+
+      <fieldset class="col col--eightOfTen col--noPadding">
+        <div class="row">
+          <div>
+            <label>Name on Card</label>
+            <p class="notice" ng-show="formcreditcard.name.$invalid && !formcreditcard.name.focused">Please provide a name</p>
+            <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.name.$invalid && !formcreditcard.name.focused }">
+              <div class="inputText">
+                <input name="name" type="text" ng-model="cc.name" class="inputText-input" placeholder="Name on Card" ng-model-options="{ updateOn: 'blur' }" bg-input-validator />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Credit Card</label>
+            <p class="notice" ng-show="formcreditcard.creditCard.$invalid && !formcreditcard.creditCard.focused">Invalid credit card number</p>
+            <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.creditCard.$invalid && !formcreditcard.creditCard.focused }">
+              <div class="inputText">
+                <input name="creditCard" type="text" ng-model="cc.number" class="inputText-input" payments-validate="card" placeholder="0000 0000 0000 0000" payments-format="card" ng-model-options="{ updateOn: 'blur' }" ng-focus="initCardTracker()" bg-input-validator />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col--fiveOfTwelve">
+            <label>Expiration</label>
+            <p class="notice" ng-show="formcreditcard.expiry.$invalid && !formcreditcard.expiry.focused">Invalid expiration</p>
+            <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.expiry.$invalid && !formcreditcard.expiry.focused }">
+              <div class="inputText">
+                <input name="expiry" type="text" ng-model="cc.expiry" class="inputText-input" payments-validate="expiry" placeholder="MM/YY" payments-format="expiry" ng-model-options="{ updateOn: 'blur' }" bg-input-validator />
+              </div>
+            </div>
+          </div>
+
+          <div class="col--fiveOfTwelve u-pullRight">
+            <label>CVC</label>
+            <p class="notice" ng-show="formcreditcard.cvc.$invalid && !formcreditcard.cvc.focused">Invalid CVC</p>
+            <div class="formRow" ng-class="{ 'formRow--error': formcreditcard.cvc.$invalid && !formcreditcard.cvc.focused }">
+              <div class="inputText">
+                <input name="cvc" type="text" ng-model="cc.cvc" class="inputText-input" payments-validate="cvc" payments-format="cvc" placeholder="234" ng-model-options="{ updateOn: 'blur' }" bg-input-validator />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <button class="button" ng-click="submitCard()" ng-disabled="inProcess"><span ng-hide="inProcess">Submit</span><span ng-show="inProcess">In Progress... </span></button>
+          <button ng-show="enterprises.current.hasPaymentOnFile()" type="submit"  class="button button--grey" ng-click="setState('showExistingCard')">Cancel</button>
+        </div>
+      </fieldset>
+
+    </div>
+
+
+    <div class="col col--fourOfTwelve col--pullRight">
+      <div class="sideInfoBox">
+
+        <div class="sideBarContainer-row">
+          <h2 class="sideBarContainer-heading">Total Cost</h2>
+        </div>
+        <div ng-show="enterprises.current.supportPlan !== plans.custom.planId && enterprises.current.supportPlan !== plans.external.planId" class="sideInfoContent">
+          <p>
+            Users: <span class="u-pullRight">{{enterpriseUsers.count}} x $30/month</span>
+          </p>
+          <p>
+            Support plan: <span class="u-pullRight">${{plans[enterprises.current.supportPlan].cost}}/month</span><br>
+            ({{plans[enterprises.current.supportPlan].prettyName}})
+          </p>
+        </div>
+        <div ng-show="enterprises.current.supportPlan == plans.custom.planId" class="sideInfoContent">
+          <p>
+            You are currently on a custom plan. Please contact sales@bitgo.com for any changes
+          </p>
+        </div>
+        <div ng-show="enterprises.current.supportPlan == plans.external.planId" class="sideInfoContent">
+          <p>
+            This is a legacy organization and does not conform to the new billing structure. Please contact sales@bitgo for any changes
+          </p>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

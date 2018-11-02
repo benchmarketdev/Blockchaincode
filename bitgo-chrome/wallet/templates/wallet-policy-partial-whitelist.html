@@ -1,0 +1,18 @@
+<div wallet-policy-whitelist-manager bg-state-manager>
+
+  <div class="meta" ng-show="blockWhitelist()">
+    <p class="u-typography-4">The address whitelist allows you to restrict withdrawals to specified addresses.</p>
+    <p class="u-typography-4">Currently this wallet can send to any address. <a ng-click="goToCreateOrg()">Create an organization</a> to access this feature.</p>
+  </div>
+
+  <div ng-hide="blockWhitelist()">
+    <div ng-show="showState('list')">
+      <ng-include src="'wallet/templates/wallet-policy-partial-whitelist-list.html'"></ng-include>
+    </div>
+
+    <div ng-show="showState('add')">
+      <ng-include src="'wallet/templates/wallet-policy-partial-whitelist-add.html'"></ng-include>
+    </div>
+  </div>
+
+</div>

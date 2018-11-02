@@ -1,0 +1,8 @@
+<td>
+  <div class="activityTable-text">
+    You created a wallet "{{ logItem.data.label }}"
+    using a backup key generated <span ng-show="logItem.data.backupSource === backupSource.OFFLINE">offline</span><span ng-show="logItem.data.backupSource === backupSource.BROWSER">in the browser</span>
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

@@ -1,0 +1,18 @@
+{
+  "name": "BitGo",
+  "description": "BitGo Wallet",
+  "version": "1.7.0",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": [
+        "chrome.js"
+      ]
+    }
+  },
+  "icons": {
+    "16": "img/bitgo.icon16.png",
+    "48": "img/bitgo.icon48.png",
+    "128": "img/bitgo.icon128.png"
+  }
+}

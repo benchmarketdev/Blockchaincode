@@ -1,0 +1,23 @@
+<div class="col-xs-12 col-md-8 col-lg-8 u-marginBottom30">
+  <div class="row u-marginTop30">
+    <h2 class="u-textLeft">{{currentJob.title}}</h2>
+    <div class="whitePaper-text u-alignLeft" ng-bind-html="currentJob.description">
+    </div>
+  </div>
+  <div class="row u-marginTop30">  
+    <h3 class="u-textLeft">Requirements</h3>
+    <div class="whitePaper-text" ng-bind-html="currentJob.requirements">
+    </div>
+  </div>
+
+  <div class="row u-marginTop30">
+    <a href="{{currentJob.url}}/candidates/new" target="_blank">
+      <button class="button buttonSubmit">Apply</button>
+    </a>
+  </div>
+</div>
+<div class="col-xs-12 .col-sm-offset-0 .col-md-offset-1 col-md-3 .col-md-offset-5 .col-lg-offset-1  u-marginBottom30">
+  <div class="row u-marginTop30">
+    <div class="whitePaper-text"><a class="u-textBlue" ng-click="setState('showAllJobs')">Back to all jobs</a></div>
+  </div>  
+</div>  

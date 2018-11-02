@@ -1,0 +1,11 @@
+<main wallet-send-manager bg-state-manager>
+
+  <div ng-show="showState('prepareTx')">
+    <ng-include src="'wallet/templates/wallet-send-partial-preparetx.html'"></ng-include>
+  </div>
+
+  <div ng-show="showState('confirmAndSendTx')">
+    <ng-include src="'wallet/templates/wallet-send-partial-confirmtx.html'"></ng-include>
+  </div>
+
+</main>

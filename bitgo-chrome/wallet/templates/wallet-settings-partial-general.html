@@ -1,0 +1,42 @@
+<div wallet-settings-general-form>
+
+  <!-- Description -->
+  <div class="row">
+    <p class="introText u-colorGreyDark">Manage the general settings for this wallet.</p>
+  </div>
+
+  <form class="row">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col--noPadding" ng-show="wallets.current.roleIsAdmin()">
+        <label>Wallet name</label>
+        <div class="inputText">
+          <input type="text" data-ng-model="walletName" placeholder="Full Name" class="inputText-input" bg-focus-when="true" bg-input-validator>
+          <div class="inputText-verification inputText-verification--unverified" ng-show="nameError">Need name</div>
+        </div>
+      </div>
+      <div class="col-sm-5 col-md-5 col-lg-5 col-sm-offset-1 col--noPadding">
+        <button class="button button--inputParallel" ng-show="showRenameButton()" ng-click="saveLabelChange()">Rename wallet</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col--noPadding">
+        <bg-form-error></bg-form-error>
+        <label>Your role</label>
+        <div class="inputText--readonly">
+          <input type="text" data-ng-model="wallets.current.role" class="inputText-input" readonly="readonly" disabled>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <div bg-confirm-action>
+    <a ng-hide="confirmationMessage" class="u-colorRed" ng-click="initiateAction()">Remove Wallet from Dashboard</a>
+    <span ng-show="confirmationMessage">Are you sure?
+      <a ng-click="confirmDelete()">Yes</a> |
+      <a ng-click="cancelAction()">No</a>
+    </span>
+  </div>
+</div>

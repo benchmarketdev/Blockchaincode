@@ -1,0 +1,12 @@
+<div class="row">
+  <a class="icon--cancel" ng-click="closeWithSuccess()"></a>
+  <p>
+    Verification failed.
+    <span ng-hide="locals.retryTime">
+      You may try the verification process again.
+    </span>
+    <span ng-show="locals.retryTime">
+      You may try again {{ locals.retryTime }}.
+    </span>
+  </p>
+</div>

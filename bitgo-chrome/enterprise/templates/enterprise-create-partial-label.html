@@ -1,0 +1,43 @@
+<div enterprise-create-steps-label class="row">
+  <div class="col col--eightOfTwelve">
+  	<p class="u-typography-3 u-colorGreyDark u-marginTop10 u-marginBottom45">
+  	  Creating an organization enables a group of people to manage and secure their wallets. BitGo offers multiple Service Level Agreement (SLA) choices to meet your business needs. The organization will be charged $30/month per wallet user.
+  	</p>
+    <div class="u-marginBottom20">
+      <h2>Name of Organization</h2>
+    </div>
+    <form name="createStepsLabelForm">
+
+      <bg-form-error></bg-form-error>
+
+      <div class="formRow" ng-class="{ 'formRow--error': enterpriseNameError }">
+        <p class="notice" ng-show="enterpriseNameError">Invalid organization name</p>
+        <div class="inputText">
+          <input type="text" name="enterpriseName" class="inputText-input" placeholder="Organization name" ng-model="inputs.enterpriseLabel" bg-input-validator bg-focus-when="true" />
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="button" type="submit" name="advanceLabel" ng-click="advanceLabel()">Next</button>
+        <a class="button button--grey" name="cancel" ng-click="cancel()">Cancel</a>
+      </div>
+    </form>
+
+  </div>
+  <div class="col col--fourOfTwelve col--pullRight">
+
+    <div class="sideInfoBox">
+      <div class="sideBarContainer-row">
+        <h2 class="sideBarContainer-heading">Features</h2>
+      </div>
+      <div class="sideInfoContent">
+        <p><i class="icon icon--checkmark u-colorGreen"></i>&nbsp; BitGo Loss Protection</p>
+        <p><i class="icon icon--checkmark u-colorGreen"></i>&nbsp; Support Plan</p>
+        <p><i class="icon icon--checkmark u-colorGreen"></i>&nbsp; Address Whitelisting</p>                
+        <p><i class="icon icon--checkmark u-colorGreen"></i>&nbsp; Security Audit Log</p>
+        <p><i class="icon icon--checkmark u-colorGreen"></i>&nbsp; Monthly Statements</p>
+        <p><i class="icon icon--checkmark u-colorGreen"></i>&nbsp; View Only Users</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div matchwallet-send-steps-prepare>
+  <form class="row" name="sendInvitationForm">
+    <fieldset class="col col--sevenOfTwelve">
+
+       <bg-form-error></bg-form-error>
+
+       <div class="formRow" ng-class="{ 'form--Rowerror': recipientInvalid }">
+        <label>Send To</label>
+        <p class="notice" ng-show="emailInvalid">Invalid email address</p>
+        <div class="inputText">
+          <input type="text" name="invitation.email" class="inputText-input" ng-model="invitation.email"  class="form-control" bg-focus-when="true" placeholder="Recipient email address" />
+         </div>
+
+       </div>
+
+       <label>Amount</label>
+       <div class="formRow formRow--constrainWidth u-pullRight">
+        <div class="currencyBox u-valignMiddle">
+          <span class="u-typography-3 u-colorBlueGreyLight u-valignMiddle span--constrainWidth">{{ currency.data.symbol }} {{ invitation.amount | bgBitcoinToCurrency }}</span>
+           <span class="currencyBox-text u-valignMiddle u-pullRight">
+             {{ currency.currency }}
+           </span>
+        </div>
+      </div>
+
+      <div class="formRow formRow--constrainWidth">
+         <div class="customInputText--overlay">
+          <span class="customSelect-text customSelect--overlay-text">
+             {{ null | bgBitcoinFormat:'name':'bits':null:'' }}
+           </span>
+        </div>
+
+        <div class="inputText">
+          <input type="text" name="amount" ng-model="invitation.amount" bg-input-validator class="u-alignRight inputText-input" bg-input-to-satoshi-converter bitcoin-unit="bits" max-length="16">
+        </div>
+      </div>
+
+      <div class="formRow">
+        <label>Message</label>
+        <div class="inputText">
+          <textarea name="message" ng-model="invitation.message" class="inputText-input inputText-textarea"></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="button buttonSubmit" name="advanceInvitation" ng-click="advanceInvitation()">Send</button>
+      <button type="submit" class="button button--grey" name="advanceInvitation" ng-click="cancelSend()"
+              ng-show="matchwallets.current.data.invitations.length">Cancel</button>
+    </fieldset>
+  </form>
+</div>

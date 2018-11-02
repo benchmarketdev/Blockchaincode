@@ -1,0 +1,55 @@
+<h2>Add user</h2>
+<div bg-add-user-to-wallet>
+  <form class="row" add-user-form>
+    <fieldset class="col col--oneOfTwo">
+
+      <bg-form-error></bg-form-error>
+
+      <div class="formRow" ng-class="{ 'formRow--error': emailError }">
+        <label>Email Address</label>
+        <p class="notice" ng-show="emailError">Invalid email address</p>
+        <div class="inputText">
+          <input type="email" name="email" ng-model="email" class="inputText-input" placeholder="Email Address" bg-input-validator bg-focus-when="true">
+        </div>
+      </div>
+
+      <div class="formRow">
+        <label>Invite Message</label>
+        <div class="inputText">
+          <textarea ng-model="message" class="inputText-input inputText-textarea" placeholder="Hi! Join my wallet on BitGo!"></textarea>
+        </div>
+      </div>
+
+      <div class="formRow formRow--constrainWidth">
+        <label>Wallet</label>
+        <div class="customSelect customSelect--inlineSmall" bg-focus-ui role="role">
+          <span class="customSelect-text">
+              {{ wallets.all[walletId].data.label }} <i class="icon icon--arrowSmallDown"></i>
+          </span>
+          <select ng-model="walletId" ng-options="walletId as walletData.data.label for (walletId, walletData) in wallets.all | bgWalletsByRole:'Admin'" class="customSelect-select" ng-focus="highlightParent($event)" ng-blur="removeHighlight($event)">
+          </select>
+        </div>
+      </div>
+
+      <div class="formRow">
+        <label>Role</label>
+        <i class="formRow-icon icon icon--qmark" popover-trigger="mouseenter" popover-placement="right" popover-template="enterprise/templates/rolepopover-partial.html"></i>
+        <div class="customSelect customSelect--inlineSmall" bg-focus-ui role="role">
+          <span class="customSelect-text">
+            {{ role }} <i class="icon icon--arrowSmallDown"></i>
+          </span>
+          <select class="customSelect-select" ng-model="role" ng-focus="highlightParent($event)" ng-blur="removeHighlight($event)">
+            <option value="Admin" selected="selected"> Admin </option>
+            <option value="Spender"> Spender </option>
+            <option value="Viewer"> Viewer </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="button" ng-click="saveAddUserForm()">Share</button>
+        <button class="button button--grey" ng-click="setState('showAllUsers')">Cancel</button>
+      </div>
+    </fieldset>
+  </form>
+</div>

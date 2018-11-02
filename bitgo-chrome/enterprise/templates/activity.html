@@ -1,0 +1,29 @@
+<div bg-state-manager>
+
+  <section class="masthead">
+    <div class="contentWrapper">
+      <div class="row u-pushDown25">
+        <h1 class="masthead-heading">Activity</h1>
+      </div>
+      <div class="row">
+        <nav>
+          <ul class="sectionNav">
+           <li class="sectionNav-item" ng-click="setState('approvals')">
+              <a class="sectionNav-link" ng-class="{ 'is-selected': isActivitySection('approvals') }">Approval Requested
+                <i ng-show="showApprovalIcon()" class="bullet"></i>
+              </a>
+            </li>
+            <li class="sectionNav-item" ng-click="setState('auditlog')">
+              <a class="sectionNav-link" ng-class="{ 'is-selected': isActivitySection('auditlog') }">Audit Log</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <main class="mainContent contentWrapper u-fullHeight u-fullHeight--withMasthead">
+    <ng-include src="activityTemplateSource"></ng-include>
+  </main>
+
+</div>

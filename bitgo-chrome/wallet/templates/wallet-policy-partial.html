@@ -1,0 +1,35 @@
+<main wallet-policy-manager bg-state-manager>
+  <div class="row">
+
+    <!-- Side Nav -->
+    <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 col--noPadding">
+      <nav>
+        <ul class="pageNav">
+          <li><a class="pageNav-item" ng-class="{ 'is-selected': showState('dailyLimit') }" ng-click="setState('dailyLimit')">Daily Limits</a></li>
+          <li><a class="pageNav-item" ng-class="{ 'is-selected': showState('transactionLimit') }" ng-click="setState('transactionLimit')">Transaction Limits</a></li>
+          <li><a class="pageNav-item" ng-class="{ 'is-selected': showState('whitelist') }" ng-click="setState('whitelist')">Whitelist</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Page Content -->
+    <!-- Need to do this cause bootstrap 3.0.0 doesn't have xs-offset class -->
+    <div class="col-xs-1 col--noPadding"></div>
+    <div class="col-xs-8 col-sm-10 col-md-10 col-lg-10 col--noPadding">
+      <div class="row">
+        <div ng-show="showState('dailyLimit')">
+          <ng-include src="'wallet/templates/wallet-policy-partial-dailyLimit.html'"></ng-include>
+        </div>
+
+        <div ng-show="showState('transactionLimit')">
+          <ng-include src="'wallet/templates/wallet-policy-partial-transactionLimit.html'"></ng-include>
+        </div>
+
+        <div ng-show="showState('whitelist')">
+          <ng-include src="'wallet/templates/wallet-policy-partial-whitelist.html'"></ng-include>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

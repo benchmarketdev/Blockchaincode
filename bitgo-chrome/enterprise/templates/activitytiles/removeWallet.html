@@ -1,0 +1,16 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- If current user removed the wallet -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You deleted wallet "{{ logItem.data.label }}"
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }} deleted wallet "{{ logItem.data.label }}"
+    </span>
+
+    <!-- uniform data -->
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

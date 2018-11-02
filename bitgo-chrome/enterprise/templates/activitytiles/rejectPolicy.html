@@ -1,0 +1,42 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- if current user acted to rejected the policy -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You 
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }}
+    </span>
+
+    <!-- if current user was the initiator of the proposed policy change -->
+    <span ng-show="currentUser.settings.id === logItem.data.initiator">
+      canceled
+    </span>
+    <span ng-hide="currentUser.settings.id === logItem.data.initiator">
+      rejected
+    </span>
+
+    an update to the {{ logItem.data.update.id | bgPolicyIdStringConversion }} policy
+    on the wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+
+    <!-- policy description -->
+    <div bg-activity-tile-policy-description>
+      <span ng-show="logItem.isPolicyItem" >
+        <!-- spending limits -->
+        <span ng-show="showById('com.bitgo.limit.day') || showById('com.bitgo.limit.tx')">
+          The rejected limit was {{ amountInQuestion | bgBitcoinFormat:'name':null:null:'Unlimited' }}
+        </span>
+        <!-- whitelist -->
+        <span ng-show="showById('com.bitgo.whitelist.address')">
+          The address "{{ addressInQuestion }}" was not {{ verb === 'Add' ? 'added' : 'removed' }}
+        </span>
+      </span>
+    </div>
+
+    <!-- uniform data -->
+    <div class="activityTable-timestamp">Approval ID: {{ logItem.target }}</div>
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

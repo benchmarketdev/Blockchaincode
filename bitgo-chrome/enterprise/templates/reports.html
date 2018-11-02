@@ -1,0 +1,22 @@
+<div class="ng-scope" bg-state-manager>
+  <section class="masthead">
+    <div class="contentWrapper">
+      <div class="row u-pushDown25">
+        <h1 class="masthead-heading">Reports</h1>
+      </div>
+      <div class="row">
+        <div class="col col--oneOfTwo col-noPadding">
+          <nav ng-class="{'u-hidden': blockReports() }">
+            <ul class="sectionNav">
+              <li class="sectionNav-item"><a ng-click="setState('monthly')" class="sectionNav-link" ng-class="{ 'is-selected': showState('monthly') }">Monthly Statements</a></li>
+              <li class="sectionNav-item"><a ng-click="setState('csv')" class="sectionNav-link" ng-class="{ 'is-selected': showState('csv') }">CSV</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="mainContent contentWrapper">
+    <ng-include src="activityTemplateSource"></ng-include>
+  </div>
+</div>  

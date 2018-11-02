@@ -1,0 +1,43 @@
+<div>
+
+  <!-- Description -->
+  <div class="row">
+    <p class="introText u-colorGreyDark">Manage your per-transaction spending limit for this wallet.</p>
+  </div>
+
+  <!-- Pending approvals -->
+  <div class="row u-marginTop30" ng-show="showLimitApprovals('tx')">
+    <div class="approvalRequest">
+
+      <h2 class="approvalRequest-heading">Approval requested</h2>
+      <div ng-show="showLimitApprovals('tx')" wallet-approval-tile bg-approval-tile-policy-request bg-state-manager ng-repeat="approvalItem in wallets.current.data.pendingApprovals | bgApprovalsFilter:true:'com.bitgo.limit.tx' " id="{{ approvalItem.id }}"></div>
+
+    </div>
+  </div>
+
+  <!-- Spending limit per tx -->
+  <div class="row" wallet-policy-spending-limit policy-id="com.bitgo.limit.tx">
+    <form name="dailyLimitForm">
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col--noPadding">
+        <bg-form-error></bg-form-error>
+        <div ng-class="{ 'formRow--error': satoshiError }">
+          <label>Transaction Limit</label>
+          <p class="notice" ng-show="satoshiError">Value indivisible by one satoshi</p>
+          <div class="inputText">
+            <div class="inlineLabel">{{ null | bgBitcoinFormat:'name':null:null:'' }}</div>
+            <input type="text" name="satoshi" class="inputText-input u-alignRight" ng-model="localPolicy.condition.amount" bg-input-to-satoshi-converter max-length="16" />
+          </div>
+          <a class="u-pullRight" ng-show="showRemoveButton()" ng-click="deletePolicy()">Remove policy</a>
+          <a class="u-pullRight" ng-show="showCancelButton()" ng-click="cancelPolicyChanges()">Cancel changes</a>
+        </div>  
+      </div>
+
+      <div class="col-sm-5 col-md-5 col-lg-5 col-sm-offset-1 col--noPadding">
+        <button type="submit" name="submitChange" class="button button--inputParallel" ng-show="showSaveButton() && !satoshiError" ng-click="submitChange()">Save change</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>

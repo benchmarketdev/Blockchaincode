@@ -1,0 +1,56 @@
+<form name="settingsNotificationForm" settings-notification-form>
+  <div class="u-marginBottom30">
+    <h2 class="u-typography-3">Notify me via</h2>
+    <div class="inputCheckbox">
+      <input type="checkbox" id="checkbox1" ng-model="settings.notifications.via_email">
+      <label for="checkbox1">Email</label>
+    </div>
+    <div class="inputCheckbox">
+      <input type="checkbox" id="checkbox2" ng-model="settings.notifications.via_phone" ng-disabled="!settings.phone.verified">
+      <label for="checkbox2">Phone</label>
+    </div>
+  </div>
+  <div class="u-marginBottom30">
+    <h2 class="u-typography-3">Notify me when</h2>
+      <div class="inputCheckbox">
+        <input type="checkbox" id="checkbox3" ng-model="settings.notifications.on_recv_btc">
+        <label for="checkbox3">Bitcoin is <b>received</b> in my account</label>
+      </div>
+      <div class="inputCheckbox">
+        <input type="checkbox" id="checkbox4" ng-model="settings.notifications.on_send_btc">
+        <label for="checkbox4">Bitcoin is <b>sent</b> from my account</label>
+      </div>
+  </div>
+  <div ng-show="false">
+    <h2 class="u-typography-3">Email digest</h2>
+    <div class="inputCheckbox">
+      <input type="checkbox" id="checkbox5" ng-model="settings.digest.enabled" ng-change="resetDigest()">
+      <label for="checkbox5">Send Transaction and Market Activity</label>
+    </div>
+    <div class="inputSubGroup u-marginBottom30">
+      <div class="inputRadio">
+        <input type="radio" name="radiogroup" id="radio1" ng-model="settings.digest.intervalSeconds" value="{{digestIntervals.daily.value}}" ng-disabled="!settings.digest.enabled">
+        <label for="radio1">{{digestIntervals.daily.name}}</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radiogroup" id="radio2" ng-model="settings.digest.intervalSeconds" value="{{digestIntervals.every_other_day.value}}" ng-disabled="!settings.digest.enabled">
+        <label for="radio2">{{digestIntervals.every_other_day.name}}</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radiogroup" id="radio3" ng-model="settings.digest.intervalSeconds"  value="{{digestIntervals.weekly.value}}" ng-disabled="!settings.digest.enabled">
+        <label for="radio3">{{digestIntervals.weekly.name}}</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radiogroup" id="radio4" ng-model="settings.digest.intervalSeconds" value="{{digestIntervals.bi_weekly.value}}" ng-disabled="!settings.digest.enabled">
+        <label for="radio4">{{digestIntervals.bi_weekly.name}}</label>
+      </div>
+      <div class="inputRadio">
+        <input type="radio" name="radiogroup" id="radio5" ng-model="settings.digest.intervalSeconds" value="{{digestIntervals.monthly.value}}" ng-disabled="!settings.digest.enabled">
+        <label for="radio5">{{digestIntervals.monthly.name}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="buttons">
+    <button ng-show="hasChanges()" class="button" type="submit" name="submitNotifications" ng-click="submitNotifications()">Save Changes</button>
+  </div>
+</form>

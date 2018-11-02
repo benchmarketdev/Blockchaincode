@@ -1,0 +1,54 @@
+<form name="settingsCurrencyForm" settings-currency-form>
+
+  <div class="u-marginBottom30">
+    <h2 class="u-typography-3">Bitcoin Unit</h2>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCoin" ng-model="settings.currency.bitcoinUnit" value= "BTC" id="BTCradio">
+      <label for="BTCradio"> &nbsp; BTC</label>
+    </div>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCoin" ng-model="settings.currency.bitcoinUnit" value= "BTC8" id="BTCradio">
+      <label for="BTCradio"> &nbsp; BTC (full-precision)</label>
+    </div>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCoin" id="bitsradio" ng-model="settings.currency.bitcoinUnit" value="bits">
+      <label for="bitsradio"> &nbsp; bits</label>
+    </div>
+  </div>
+
+  <div class="u-marginBottom30">
+    <h2 class="u-typography-3">Fiat Currency</h2>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCurrency" ng-model="settings.currency.currency" value= "AUD" id="AUDradio">
+      <label for="AUDradio"> &nbsp; Australian Dollar (A$)</label>
+    </div>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCurrency" id="GBPradio" ng-model="settings.currency.currency" value="GBP">
+      <label for="GBPradio"> &nbsp; British Pound (£)</label>
+    </div>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCurrency" ng-model="settings.currency.currency" value= "CAD" id="CADradio">
+      <label for="CADradio"> &nbsp; Canadian Dollar (C$)</label>
+    </div>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCurrency" id="CNYradio" ng-model="settings.currency.currency" value="CNY">
+      <label for="CNYradio"> &nbsp; Chinese Yuan (¥)</label>
+    </div>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCurrency" ng-model="settings.currency.currency" value= "EUR" id="EURradio">
+      <label for="EURradio"> &nbsp; European Euro (€)</label>
+    </div>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCurrency" id="ZARradio" ng-model="settings.currency.currency" value="ZAR">
+      <label for="ZARradio"> &nbsp; South African Rand (R)</label>
+    </div>
+    <div class="inputRadio">
+      <input type="radio" name="radioGroupCurrency" ng-model="settings.currency.currency" value= "USD" id="USDradio">
+      <label for="USDradio"> &nbsp; United States Dollar ($)</label>
+    </div>
+  </div>
+  <div class = "buttons">
+    <button ng-show="hasChanges()" type="submit" name="submitCurrency" ng-click="submitCurrency()" class = "button">Save changes</button>
+  </div>
+</form>
+

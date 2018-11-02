@@ -1,0 +1,20 @@
+<td colspan="2" bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+    <i class="icon icon--wallet"></i>
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      <b>You </b>
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      <b>{{ user.settings.name.full }} </b>
+    </span>
+    added<br>
+    <b bg-get-user user-id="{{ logItem.target }}"> {{ user.settings.name.full }} </b> as <b>{{ logItem.data.permissions | bgPermissionsRoleConversionFilter }}</b><br>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>
+<td class="activityTable-wallet">
+  <span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>
+</td>
+<td class="activityTable-buttons">
+  <span ng-show="logItem.data.needsApproval">Required approval</span>
+</td>

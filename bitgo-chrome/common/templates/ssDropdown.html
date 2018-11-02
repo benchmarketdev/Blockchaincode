@@ -1,0 +1,18 @@
+<div class="display customSelect-text" ng-keypress="keypressFilter($event)"  ng-class="{placeholder: !hasCoinSelected}" ng-click="toggleList()" tabindex="1">
+  <span ng-show="!hasCoinSelected">Select altcoin</span>
+  <div ng-show="hasCoinSelected">
+    <img src="{{coinImg}}" />
+    <span>{{coinName}}</span>
+  </div>
+</div>
+<div class="arrow down"></div>
+
+<input class="inputText-input inputFilter hide" type="text" ng-model="search"/>
+
+<div class="container"  ng-keypress="keypressFilter($event)" tabindex="2">
+
+  <div class='item {selected: item.name==coinName}' ng-repeat="item in items | filter: {name: search}" ng-init="$last ? refresh() : null" ng-click="changeCoin(item);">
+    <img src="{{item.image}}" name="{{item.name}}"/>
+    {{item.name}}
+  </div>
+</div>

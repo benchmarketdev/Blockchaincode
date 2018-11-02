@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" ng-app="BitGo" ng-csp ng-controller="AppController">
+<head>
+  <title>World's Most Secure Bitcoin Wallet - BitGo.com</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="Description" content="Create the world's most secure bitcoin wallet with BitGo: Industry-leading multi-sig security, full custody and user-access control, and the BitGo Promise.">
+
+  <base href="/">
+
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="stylesheet" href="/vendor/angular/1.3.2/angular-csp.css">
+  <link rel="stylesheet" media="screen" href="/vendor/bootstrap/3.0.0/css/custom-bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/authy/form.authy.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/d3/nv.d3.css" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/libphonenumber/intlTelInput.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bitgo-client.min.css">
+
+  <script src="/vendor/sjcl.min.js"></script>
+  <script src="/vendor/jquery/jquery-2.1.1.min.js"></script>
+  <script src="/vendor/angular/1.3.2/custom-angular.min.js"></script>
+  <script src="/vendor/angular/1.3.2/angular-route.min.js"></script>
+  <script src="/vendor/angular/1.3.2/angular-animate.min.js"></script>
+  <script src="/vendor/angular/1.3.2/angular-resource.min.js"></script>
+  <script src="/vendor/angular/1.3.2/angular-cookies.min.js"></script>
+  <script src="/vendor/angular/1.3.2/angular-sanitize.min.js"></script>
+  <script src="/vendor/angular-payments/angular-payments.min.js"></script>
+  <script src="/vendor/feature-flags/featureFlag.js"></script>
+  <script src="/vendor/ui-bootstrap/custom-ui-bootstrap-tpls-0.11.0.min.js"></script>
+  <script src="/vendor/ga-angular/angular-ga.min.js"></script>
+  <script src="/vendor/feature-flags/featureFlag.js"></script>
+  <script src="/vendor/lodash.min.js"></script>
+  <script src="/vendor/raven.min.js"></script>
+  <script src="/vendor/angular-raven.js"></script>
+  <script src="/js/bitgo-client.js"></script>
+  <script src="/js/BitGoJS.min.js"></script>
+
+  <!-- Facebook -->
+  <meta property="og:title" content="The World's Most Secure Bitcoin Wallet" />
+  <meta property="og:site_name" content="BitGo"/>
+  <meta property="og:url" content="https://www.bitgo.com" />
+  <meta property="og:description" content="Create the world's most secure bitcoin wallet with BitGo: Industry-leading multi-sig security, full custody and user-access control, and the BitGo Promise." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://www.bitgo.com/img/share.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@bitgo" />
+  <meta name="twitter:creator" content="@bitgo" />
+  <meta name="twitter:url" content="https://www.bitgo.com" />
+
+</head>
+<body bg-infinite-scroll when-scrolled="handleScroll()">
+
+  <nav class="siteHeader navbar-default" ng-cloak>
+    <div class="contentWrapper">
+
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a ng-hide="user.loggedIn && user.hasAccess" href="{{ TemplatePathPrefix }}/"><img src="/img/new_bitgo/logo.png" alt="BitGo" title="BitGo" class="siteHeader-logo"></a>
+        <a ng-show="user.loggedIn && user.hasAccess" href="{{ TemplatePathPrefix }}/enterprise/{{ enterprises.current.id }}/wallets"><img src="/img/new_bitgo/logo.png" alt="BitGo" title="BitGo" class="siteHeader-logo"></a>
+      </div>
+      <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+        <span ng-hide="user.loggedIn && user.hasAccess">
+          <nav ng-click="navCollapsed=true">
+            <ul class="nav navbar-right">
+              <li class="siteHeader-navItem" ng-show="priceDisplay">
+                <span class="siteHeader-price mobile-hideDisplay">1 BTC = {{currency.symbol}}{{priceDisplay}}</span>
+              </li>
+              <li class="siteHeader-navItem">
+                <a class="siteHeader-navLink" ng-class="{ 'is-selected': isPage('/platform') }" href="{{ TemplatePathPrefix }}/platform">Platform API</a>
+              </li>
+              <li class="siteHeader-navItem">
+                <a class="siteHeader-navLink" ng-class="{ 'is-selected': isPage('/wallet') }" href="{{ TemplatePathPrefix }}/wallet">Wallet</a>
+              </li>
+              <li class="siteHeader-navItem">
+                <a class="siteHeader-navLink" ng-class="{ 'is-selected': isPage('/login') }" href="{{ TemplatePathPrefix }}/login">Log In</a>
+              </li>
+            </ul>
+          </nav>
+        </span>
+
+        <span ng-show="user.loggedIn && user.hasAccess">
+
+          <nav ng-click="navCollapsed=true">
+            <ul class="nav navbar-nav">
+              <li class="siteHeader-navItem">
+                <a class="siteHeader-navLink" ng-class="{ 'is-selected': isCurrentEnterpriseSection('wallets') }" href="{{ TemplatePathPrefix }}/enterprise/{{ enterprises.current.id }}/wallets">Wallets</a>
+              </li>
+              <li class="siteHeader-navItem">
+                <i ng-show="showApprovalIcon(enterprises.current.id)" class="bullet bullet--topNav">{{ relevantApprovalCount[enterprises.current.id] }}</i>
+                <a class="siteHeader-navLink" ng-class="{ 'is-selected': isCurrentEnterpriseSection('activity') }" href="{{ TemplatePathPrefix }}/enterprise/{{ enterprises.current.id }}/activity">Activity
+                </a>
+              </li>
+              <li class="siteHeader-navItem">
+                <a class="siteHeader-navLink" ng-class="{ 'is-selected': isCurrentEnterpriseSection('reports') }" href="{{ TemplatePathPrefix }}/enterprise/{{ enterprises.current.id }}/reports">Reports</a>
+              </li>
+            </ul>
+          </nav>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a class="mobileSettingsIcon" ng-show="canShowEnterpriseSettingsIcon() && !isCreateEnterpriseSection()" ng-click="goToEnterpriseSettings(enterprises.current); navCollapsed=true">
+                <span ng-class="{'is-selected': isEnterpriseSettingsSection()}" class="icon-cog topLevelNavSettingsIcon">
+                </span>
+              </a>
+              <a class="mobileSettingsIcon" ng-show="enterprises.current.isPersonal && !isCreateEnterpriseSection()" ng-click="goToGlobalSettings(); navCollapsed=true">
+                <span ng-class="{'is-selected': isAccountSettingsSection()}" class="icon-cog topLevelNavSettingsIcon"></span>
+              </a>
+              <span class="topLevelNav">
+                <div class="u-inline-block" dropdown is-open="toggleDropdown">
+                  <div dropdown-toggle class="topLevelNav-title">
+                    <span ng-hide="isCreateEnterpriseSection()">
+                      <span ng-show="enterprises.current.isPersonal" class="title u-pullLeft topLevelNav-title-position"><img class="u-pullLeft" src="/favicon.ico" feature-flag="employee">{{ currentUser.settings.name.full }}</span>
+                      <span ng-hide="enterprises.current.isPersonal" class="title u-pullLeft topLevelNav-title-position">{{ enterprises.current.name }}</span>
+                    </span>
+                    <i class="icon icon--arrowSmallDown navArrow"></i>
+                  </div>
+                  <div class="topLevelNav-menu" ng-click="navCollapsed=true">
+
+                    <div ng-repeat="enterprise in enterprises.all | bgEnterpriseOrderingFilter">
+                      <div class="topLevelNav-menuItem" ng-class="{ 'active' : isDropdownSection(enterprise.id) }" ng-click="goToEnterprise(enterprise)">
+                        <div>
+                          <div class="name u-pullLeft">
+                            <span ng-show="enterprise.isPersonal">
+                              <i ng-show="showApprovalAndSharesIcon(enterprise.id)" class="bullet bullet--dropdown">{{ approvalAndSharesCount[enterprise.id] }}</i>{{ currentUser.settings.name.full }}
+                            </span>
+                            <span ng-hide="enterprise.isPersonal">
+                              <i ng-show="showApprovalAndSharesIcon(enterprise.id)" class="bullet bullet--dropdown">{{ approvalAndSharesCount[enterprise.id] }}</i>{{ enterprise.name }}
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div>
+                          <span class="details">
+                            {{ enterprise.walletCount }} wallets |
+                            {{ enterprise.balance | bgBitcoinFormat:'name' }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Log Out box -->
+                    <div class="topLevelNav-menuItem" ng-click="logout()">
+                      <div>
+                        <div class="name u-pullLeft">Log Out</div>
+                        <div class="u-pullRight"><span class="icon-circle-arrow-right u-colorGreyDark"></span></div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </span>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Main app view entry point -->
+  <div ng-view class="siteBody" autoscroll="true"></div>
+
+  <footer class="siteFooter" ng-show="isViewLoaded && isMarketingPage()" ng-cloak>
+    <div class="contentWrapper">
+
+      <div class="row">
+        <div class="col-sm-12 col-md-2 col-lg-2">
+          <div class="row">
+            <a href="#">
+              <img class="siteFooter--logo" src="/img/new_bitgo/logo.png" alt="BitGo" title="BitGo">
+            </a>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-10 col-lg-10">
+
+          <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+              <div class="siteFooter-Title" ng-init="footerProductCollapsed = true" ng-click="footerProductCollapsed = !footerProductCollapsed">Products</div>
+              <ul class="siteFooter-NavList collapse navbar-collapse" ng-class="!footerProductCollapsed && 'in'" ng-click="footerProductCollapsed=true">
+                <li class="siteFooter-NavItem"><a href="{{ TemplatePathPrefix }}/enterprise">BitGo Enterprise</a></li>
+                <li class="siteFooter-NavItem"><a href="{{ TemplatePathPrefix }}/platform">BitGo Platform</a></li>
+                <li class="siteFooter-NavItem"><a href="{{ TemplatePathPrefix }}/wallet">Web Wallet</a></li>
+                <li class="siteFooter-NavItem"><a target="_blank" href="https://chrome.google.com/webstore/detail/bitgo/jlgeogaipkoajobchncghcojanffjfhl">Chrome App</a></li>
+              </ul>
+            </div>
+
+            <div class="col-sm-12 col-md-2 col-lg-3">
+              <div class="siteFooter-Title" ng-init="footerCompanyCollapsed = true" ng-click="footerCompanyCollapsed = !footerCompanyCollapsed">Company</div>
+              <ul class="siteFooter-NavList collapse navbar-collapse" ng-class="!footerCompanyCollapsed && 'in'" ng-click="footerCompanyCollapsed=true">
+                <li class="siteFooter-NavItem"><a href="{{ TemplatePathPrefix }}/about">About</a></li>
+                <li class="siteFooter-NavItem"><a target="_blank" href="https://bitgo.zendesk.com/hc/en-us">Help</a></li>
+                <li class="siteFooter-NavItem"><a href="{{ TemplatePathPrefix }}/jobs">Jobs</a></li>
+                <li class="siteFooter-NavItem"><a href="{{ TemplatePathPrefix }}/press">Press</a></li>
+              </ul>
+            </div>
+
+            <div class="col-sm-12 col-md-3 col-lg-3">
+              <div class="siteFooter-Title" ng-init="footerResourceCollapsed = true" ng-click="footerResourceCollapsed = !footerResourceCollapsed">Resources</div>
+              <ul class="siteFooter-NavList collapse navbar-collapse" ng-class="!footerResourceCollapsed && 'in'" ng-click="footerResourceCollapsed=true">
+                <li class="siteFooter-NavItem"><a target="_blank" href="https://www.bitgo.com/api/">API Docs</a></li>
+                <li class="siteFooter-NavItem"><a target="_blank" href="https://github.com/BitGo/BitGoJS">Javascript SDK</a></li>
+                <li class="siteFooter-NavItem"><a target="_blank" href="https://github.com/BitGo">GitHub</a></li>
+              </ul>
+            </div>
+
+            <div class="col-sm-12 col-md-2 col-lg-3">
+              <div class="siteFooter-Title" ng-init="footerNewsCollapsed = true" ng-click="footerNewsCollapsed = !footerNewsCollapsed">News & Legal</div>
+              <ul class="siteFooter-NavList collapse navbar-collapse" ng-class="!footerNewsCollapsed && 'in'" ng-click="footerNewsCollapsed=true">
+                <li class="siteFooter-NavItem"><a target="_blank" href="https://blog.bitgo.com/">Blog</a></li>
+                <li class="siteFooter-NavItem"><a target="_blank" href="https://twitter.com/BitGo">Twitter</a></li>
+                <li class="siteFooter-NavItem"><a href="{{ TemplatePathPrefix }}/terms">Terms</a></li>
+                <li class="siteFooter-NavItem"><a href="{{ TemplatePathPrefix }}/privacy">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="mobile-menu-backdrop" ng-show="!navCollapsed"></div>
+
+  <script src="bitcoinjs-lib.min.js"></script>
+  <script src="/npm/lproof/build/lproof.js"></script>
+  <script src="/vendor/authy/form.authy.min.js"></script>
+  <script src="/vendor/autofill-event-polyfill.js"></script>
+  <script src="/vendor/bowser.min.js"></script>
+  <script src="/vendor/d3/d3.min.js"></script>
+  <script src="/vendor/d3/nvd3.min.js"></script>
+  <script src="/vendor/d3/legend.min.js"></script>
+  <script src="/vendor/d3/line.min.js"></script>
+  <script src="/vendor/d3/utils.min.js"></script>
+  <script src="/vendor/FileSaver/FileSaver.min.js"></script>
+  <script src="/vendor/ga/ga.js"></script>
+  <script src="/vendor/moment/moment.min.js"></script>
+  <script src="/vendor/moment/moment-timezone.js"></script>
+  <script src="/vendor/qrcode.min.js"></script>
+  <script src="/vendor/underscore.string.min.js"></script>
+  <script src="/vendor/zxcvbn.js"></script>
+  <script src="/vendor/libphonenumber/intlTelInput.min.js"></script>
+  <script src="/vendor/libphonenumber/utils.js"></script>
+  <script src="/vendor/jspdf.min.js"></script>
+</body>
+</html>

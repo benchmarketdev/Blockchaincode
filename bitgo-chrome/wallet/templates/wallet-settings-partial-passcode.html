@@ -1,0 +1,61 @@
+<div wallet-settings-passcode-form>
+
+  <!-- Description -->
+  <div class="row">
+    <p class="introText u-colorGreyDark">Manage the wallet password used to encrypt your user key.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col--noPadding">
+
+      <form name="walletPasswordForm" class="row u-marginBottom30">
+
+        <bg-form-error></bg-form-error>
+
+        <!-- Existing PW -->
+        <div class="formRow" ng-class="{ 'formRow--error': oldPasscodeError }">
+          <label>Current Wallet Password</label>
+          <p class="notice" ng-show="oldPasscodeError">Invalid password</p>
+          <div class="inputText">
+            <input type="password" class="inputText-input" name="oldPasscode" placeholder="Enter current password" ng-model="oldPasscode" bg-input-validator bg-focus-when="true" />
+          </div>
+        </div>
+
+        <!-- New PW -->
+        <div class="formRow" ng-class="{ 'formRow--error': newPasscodeError }">
+          <label>New Wallet Password</label>
+          <p class="notice" ng-show="newPasscodeError">Invalid new password</p>
+          <div class="inputText">
+            <input type="password" name="newPasscode" class="inputText-input" placeholder="Enter new password" ng-model="newPasscode" bg-input-validator bg-password-strength="passcodeStrength" on-password-change="checkStrength(passcodeStrength)" />
+          </div>
+          <!-- Strength Meter -->
+          <div class="passwordStrength" ng-show="showPasscodeStrength()">
+            <div class="passwordStrength-indicator">
+              <span class="passwordStrength-fill" ng-class="passcodeStrength.progress.class"></span>
+            </div>
+            It would take {{ passcodeStrength.crack_time_display }} to crack this password.
+          </div>
+        </div>
+
+        <!-- PW Confirm -->
+        <div class="formRow" ng-class="{ 'formRow--error': newPasscodeConfirmError }">
+          <label>Confirm New Password</label>
+          <p class="notice" ng-show="newPasscodeConfirmError">Invalid password confirmation</p>
+          <div class="inputText">
+            <input type="password" class="inputText-input" name="newPasscodeConfirm" placeholder="Confirm new password" ng-model="newPasscodeConfirm" bg-input-validator />
+          </div>
+        </div>
+
+        <div class="buttons" ng-show="showUpdateButton()">
+          <button type="submit" class="button" name="updatePassword" ng-click="updatePassword()">Update Password</button>
+        </div>
+      </form>
+
+      <div class="row u-marginBottom30">
+         Lost your wallet password? <a href="{{ TemplatePathPrefix }}/enterprise/{{ enterprises.current.id }}/wallets/{{ wallets.current.data.id }}/recover">Recover your wallet</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>

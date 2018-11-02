@@ -1,0 +1,47 @@
+<div class="approvalRequest-request row" bg-get-user user-id="{{ approvalItem.creator }}">
+
+  <!-- Show this if the user created the approval -->
+  <div class="col" ng-show="userIsCreator">
+    <p><b>Your</b> request to change the daily spending limit is awaiting approval<br>
+    New limit
+      <b>
+        <span ng-show="approvalItem.info.policyRuleRequest[approvalItemAction].condition.amount >= 0">{{ approvalItem.info.policyRuleRequest[approvalItemAction].condition.amount | bgBitcoinFormat:null:null:null:'Unlimited':true }}
+        </span>
+        <span ng-show="approvalItem.info.policyRuleRequest.action === 'remove'">Unlimited</span>
+        {{ null | bgBitcoinFormat:'name':null:null:'' }}
+      </b>
+    </p>
+    <div class="meta">{{ approvalItem.prettyDate }}</div>
+  </div>
+
+  <!-- Show this if someone else created the approval -->
+  <div class="col" ng-hide="userIsCreator">
+    <p><b>{{ user.settings.email.email }}</b> requested to change the daily spending limit<br>
+    New limit
+      <b>
+        <span ng-show="approvalItem.info.policyRuleRequest[approvalItemAction].condition.amount >= 0">{{ approvalItem.info.policyRuleRequest[approvalItemAction].condition.amount | bgBitcoinFormat:null:null:null:'Unlimited':true }}</span>
+        <span ng-show="approvalItem.info.policyRuleRequest.action === 'remove'">Unlimited</span>
+        {{ null | bgBitcoinFormat:'name':null:null:'' }}
+      </b>
+    </p>
+    <div class="meta">{{ approvalItem.prettyDate }}</div>
+  </div>
+
+  <div class="col col--pullRight">
+    <div class="buttons" ng-show="userIsCreator">
+      <a class="button button--small button--cancel" ng-click="setApprovalState('rejected')">Cancel</a>
+    </div>
+
+    <div class="buttons" ng-hide="userIsCreator">
+      <span bg-confirm-action>
+        <a class="button button--small button--green" ng-hide="confirmationMessage" ng-click="setApprovalState('approved')">Approve</a>
+        <a class="button button--small button--reject" ng-hide="confirmationMessage" ng-click="initiateAction()">Reject</a>
+        <span ng-show="confirmationMessage">Are you sure?
+          <a ng-click="setApprovalState('rejected')">Yes</a> |
+          <a ng-click="cancelAction()">No</a>
+        </span>
+      </span>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,14 @@
+<div modal-create-wallet>
+  <div class="row">
+    <div class="row">
+      <a class="icon--cancel" ng-click="closeWithSuccess()"></a>
+      <div class="qrModalHeader">Let's Create Your First Wallet!</div>
+        <p ng-hide="invitationGiftPending()">You've setup your BitGo account, now let's create your first BitGo Secure wallet.</p>
+        <p ng-show="invitationGiftPending()">You've setup your BitGo account, now let's create your first BitGo Secure wallet to receive your {{ invitation.amount / 100 }} bits.</p>
+	<button type="submit" name="submitChange" class="button button--inputParallel button--center" ng-click="createNewWallet()">Create Wallet Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

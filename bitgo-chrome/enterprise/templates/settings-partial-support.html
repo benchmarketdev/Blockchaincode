@@ -1,0 +1,246 @@
+<div enterprise-settings-support>
+
+  <div class="row">
+    <div class="inputRadio u-marginTop80">
+      <input type="radio" ng-change='onSelectSupportPlan()' name="radioGroupCoin" ng-model="selectedPlanId" value="{{plans.OrgBasicMonthly.planId}}" id="{{plans.OrgBasicMonthly.prettyName}}" ng-disabled="disableOptions">
+      <label for="{{plans.OrgBasicMonthly.prettyName}}"> &nbsp;&nbsp;
+        <div class="row">
+          <div class="subscriptionPricingRow">
+            <div class="subscriptionProduct col--twoOfTwelve u-pullLeft"><h4>{{plans.OrgBasicMonthly.prettyName}}</h4><p class="u-noMargin"><span class="subscriptionPrice-small">$</span><span class="subscriptionPrice-large">{{plans.OrgBasicMonthly.cost}}</span></p><p class="u-noMargin"><a ng-show="plans.OrgBasicMonthly.planId == plans[enterprises.current.supportPlan].planId">Current plan</a></p>
+            </div>
+            <div class="subscriptionPricingSegment"><h4 class="subscriptionSubHeading">Guaranteed API Rates</h4>
+              <ul>
+                <li>
+                  As available
+                </li>
+              </ul>
+            </div>
+            <div class="subscriptionPricingSegment supportColumnWidth"><h4 class="subscriptionSubHeading">Support</h4>
+              <ul>
+                <li>
+                  Help Center
+                </li>
+              </ul>
+            </div>
+            <div class="u-marginRight10 subscriptionPricingSegment"><h4 class="subscriptionSubHeading">SLA & Loss Protection*</h4>
+              <ul>
+                <li>
+                  No SLA
+                </li>
+                <li>
+                  No Loss Protection
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+    <div class="inputRadio u-marginTop80">
+      <input type="radio" ng-change='onSelectSupportPlan()' name="radioGroupCoin" ng-model="selectedPlanId" value="{{plans.OrgProMonthly.planId}}" id="{{plans.OrgProMonthly.prettyName}}" ng-disabled="disableOptions">
+      <label for="{{plans.OrgProMonthly.prettyName}}"> &nbsp;&nbsp;
+      <div class="row">
+        <div class="subscriptionPricingRow">
+          <div class="subscriptionProduct col--twoOfTwelve u-pullLeft"><h4>{{plans.OrgProMonthly.prettyName}}</h4><p class="u-noMargin"><span class="subscriptionPrice-small">$</span><span class="subscriptionPrice-large">{{plans.OrgProMonthly.cost}}</span></p><p class="u-noMargin"><a ng-show="plans.OrgProMonthly.planId == plans[enterprises.current.supportPlan].planId">Current plan</a></p>
+          </div>
+          <div class="subscriptionPricingSegment"><h4 class="subscriptionSubHeading">Guaranteed API Rates</h4>
+            <ul>
+              <li>
+                  5/sec
+              </li>
+              <li>
+                  60/min
+              </li>
+              <li>
+                  600/hr
+              </li>
+            </ul>
+          </div>
+          <div class="subscriptionPricingSegment supportColumnWidth"><h4 class="subscriptionSubHeading">Support</h4>
+            <ul>
+              <li>
+                Help center
+              </li>
+              <li>
+                Email support
+              </li>
+            </ul>
+          </div>
+          <div class="u-marginRight10 subscriptionPricingSegment"><h4 class="subscriptionSubHeading">SLA & Loss Protection</h4>
+            <ul>
+              <li>
+                99% guaranteed uptime
+              </li>
+              <li>
+                Includes Loss Protection
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inputRadio u-marginTop80">
+      <input type="radio" ng-change='onSelectSupportPlan()' name="radioGroupCoin" ng-model="selectedPlanId" value="{{plans.OrgBusinessMonthly.planId}}" id="{{plans.OrgBusinessMonthly.prettyName}}" ng-disabled="disableOptions">
+      <label for="{{plans.OrgBusinessMonthly.prettyName}}"> &nbsp;&nbsp;
+      <div class="row">
+        <div class="subscriptionPricingRow">
+          <div class="subscriptionProduct col--twoOfTwelve u-pullLeft"><h4>{{plans.OrgBusinessMonthly.prettyName}}</h4><p class="u-noMargin"><span class="subscriptionPrice-small">$</span><span class="subscriptionPrice-large">{{plans.OrgBusinessMonthly.cost}}</span></p><p class="u-noMargin"><a ng-show="plans.OrgBusinessMonthly.planId == plans[enterprises.current.supportPlan].planId">Current plan</a></p>
+          </div>
+          <div class="subscriptionPricingSegment"><h4 class="subscriptionSubHeading">Guaranteed API Rates</h4>
+            <ul>
+              <li>
+                  5/sec
+              </li>
+              <li>
+                  120/min
+              </li>
+              <li>
+                  3000/hr
+              </li>
+            </ul>
+          </div>
+          <div class="subscriptionPricingSegment supportColumnWidth"><h4 class="subscriptionSubHeading">Support</h4>
+            <ul>
+              <li>
+                Everything in Developer
+              </li>
+              <li>
+                Prioritized Email
+              </li>
+            </ul>
+          </div>
+          <div class="u-marginRight10 subscriptionPricingSegment"><h4 class="subscriptionSubHeading">SLA & Loss Protection</h4>
+            <ul>
+              <li>
+                99.9% guaranteed uptime
+              </li>
+              <li>
+                Includes Loss Protection
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inputRadio u-marginTop80">
+      <input type="radio" ng-change='onSelectSupportPlan()' name="radioGroupCoin" ng-model="selectedPlanId" value="{{plans.OrgBusinessPlusMonthly.planId}}" id="{{plans.OrgBusinessPlusMonthly.prettyName}}" ng-disabled="disableOptions">
+      <label for="{{plans.OrgBusinessPlusMonthly.prettyName}}"> &nbsp;&nbsp;
+      <div class="row">
+        <div class="subscriptionPricingRow">
+          <div class="subscriptionProduct col--twoOfTwelve u-pullLeft"><h4>{{plans.OrgBusinessPlusMonthly.prettyName}}</h4><p class="u-noMargin"><span class="subscriptionPrice-small">$</span><span class="subscriptionPrice-large">{{plans.OrgBusinessPlusMonthly.cost}}</span></p><p class="u-noMargin"><a ng-show="plans.OrgBusinessPlusMonthly.planId == plans[enterprises.current.supportPlan].planId">Current plan</a></p>
+          </div>
+          <div class="subscriptionPricingSegment"><h4 class="subscriptionSubHeading">Guaranteed API Rates</h4>
+            <ul>
+              <li>
+                  5/sec
+              </li>
+              <li>
+                  120/min
+              </li>
+              <li>
+                  3000/hr
+              </li>
+            </ul>
+          </div>
+          <div class="subscriptionPricingSegment supportColumnWidth"><h4 class="subscriptionSubHeading">Support</h4>
+            <ul>
+              <li>
+                Everything in Business
+              </li>
+              <li>
+                White Glove Account &<br>Technical Support
+              </li>
+            </ul>
+          </div>
+          <div class="u-marginRight10 subscriptionPricingSegment"><h4 class="subscriptionSubHeading">SLA & Loss Protection</h4>
+            <ul>
+              <li>
+                99.9% guaranteed uptime
+              </li>
+              <li>
+                Includes Loss Protection
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inputRadio u-marginTop80">
+      <input type="radio" ng-change='onSelectSupportPlan()' name="radioGroupCoin" ng-model="selectedPlanId" value="{{plans.custom.planId}}" id="{{plans.custom.prettyName}}" ng-disabled="disableOptions">
+      <label for="{{plans.custom.prettyName}}"> &nbsp;&nbsp;
+      <div class="row">
+        <div class="subscriptionPricingRow">
+          <div class="subscriptionProduct col--twoOfTwelve u-pullLeft">
+            <p class="u-marginTop40">
+              <span class="apiPrice-custom">Custom</span>
+            </p>
+            <p class="u-noMargin">
+              <a ng-show="plans.custom.planId == plans[enterprises.current.supportPlan].planId || plans.external.planId == plans[enterprises.current.supportPlan].planId">Current plan</a>
+            </p>
+          </div>
+          <div class="subscriptionPricingSegment"><h4 class="subscriptionSubHeading">Guaranteed API Rates</h4>
+            <ul>
+              <li>
+                  15/sec
+              </li>
+              <li>
+                  600/min
+              </li>
+              <li>
+                  6000/hr
+              </li>
+            </ul>
+          </div>
+          <div class="subscriptionPricingSegment supportColumnWidth"><h4 class="subscriptionSubHeading">Support</h4>
+            <ul>
+              <li>
+                Everything in Business
+              </li>
+              <li>
+                White Glove Account &<br>Technical Support
+              </li>
+            </ul>
+          </div>
+          <div class="u-marginRight10 subscriptionPricingSegment"><h4 class="subscriptionSubHeading">SLA & Loss Protection</h4>
+            <ul>
+              <li>
+                99.99% guaranteed uptime
+              </li>
+              <li>
+                Includes Loss Protection
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row u-marginTop30">
+      <div class="whitePaper-text">
+        <span class="u-typography-6">
+          All paid tiers get a monthly uptime percentage guarantee based on our <a href="{{ TemplatePathPrefix }}/sla" target="_blank">More Information</a>.<br>
+          Billing for the support plan will be pro rated. Learn more <a href="https://bitgo.zendesk.com/hc/en-us/articles/204611059-Are-my-monthly-charges-prorated-" target="_blank">here</a>.<br>
+          * Up to $250,000 in bitcoin value is covered with the <a href="{{ TemplatePathPrefix }}/insurance" target="_blank">BitGo Bitcoin Loss Protection Program</a>.<br>
+        </span>
+      </div>
+    </div>
+    <div class="row u-marginTop30">
+      <button type="submit" class="button" ng-show="newPlanSelected && !confirmationState" ng-click="submitSupportPlan()" ng-disabled="inProcess">
+        <span ng-hide="inProcess" class="ng-binding">
+          <span ng-show="isUpgrade(selectedPlanId)" class="">Upgrade</span>
+          <span ng-hide="isUpgrade(selectedPlanId)" class="ng-hide">Downgrade</span> to {{plans[selectedPlanId].prettyName}}
+        </span>
+        <span ng-show="inProcess" class="ng-hide"> Updating .... </span>
+      </button>
+      <div ng-show="confirmationState">
+        <div class="alert alert--successLarge">
+          <i class="icon icon--checkmark"></i>
+          <p class="alert-text">Your Plan was changed to {{plans[enterprises.current.supportPlan].prettyName}}.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

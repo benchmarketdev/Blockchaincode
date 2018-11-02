@@ -1,0 +1,25 @@
+<div class="col col--sevenOfTwelve" wallet-policy-whitelist-add>
+
+  <form>
+
+    <bg-form-error></bg-form-error>
+
+    <div class="formRow" ng-class="{ 'formRow--error': newAddressError }">
+      <label>Address</label>
+      <div class="inputText">
+        <input type="text" name="newAddress" ng-model="newAddress.address" bg-input-validator class="inputText-input" placeholder="Bitcoin address" bg-focus-when="true">
+      </div>
+    </div>
+
+    <div class="formRow" ng-class="{ 'formRow--error': labelError }">
+      <label>Label</label>
+      <div class="inputText">
+        <input type="text" name="label" ng-model="newAddress.label" bg-input-validator class="inputText-input" placeholder="Label">
+      </div>
+    </div>
+
+    <button type="submit" class="button buttonSubmit" name="submitNewAddressForm" ng-click="submitNewAddressForm()">Save</button>
+    <button class="button button--grey" name="cancelAdd" ng-click="setState('list')">Cancel</button>
+  </form>
+
+</div>

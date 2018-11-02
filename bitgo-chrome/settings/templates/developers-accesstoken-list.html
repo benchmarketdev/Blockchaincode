@@ -1,0 +1,61 @@
+<div developers-form>
+
+  <div class="alert alert--notice" ng-show="newToken">
+    <p class="alert-text">New token with the label '{{ newToken.label }}' created. Please save it securely now: <br/><b>{{ newToken.token }}</b><br/><br/><a ng-click="removeToken()">I have saved my token.</a></p>
+  </div>
+
+  <!-- Description -->
+  <div class="row">
+    <a ng-click="setState('add')" ng-hide="restrictedAccess" class="button button--small button--create u-pullRight"><i class="icon icon--plus"></i> Add Access Token</a>
+    <p class="introText u-colorGreyDark">Long-lived access tokens</p>
+  </div>
+
+
+  <!-- List of whitelisted addresses -->
+  <table class="addressTable">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Label</th>
+        <th>Scope</th>
+        <th colspan="2">Spent / Limit</th>
+        <th colspan="2">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-show="!accessTokenList || accessTokenList.length == 0">
+        <td colspan="5">
+         <div class="meta" ng-show="!restrictedAccess">
+            <h2>This is a feature for developers only.</h2>
+            <p class="u-typography-4">
+              Long-lived access tokens are suitable for use on servers/unattended devices.
+            </p>
+          </div>
+          <div class="meta" ng-show="restrictedAccess">
+            <h2>This feature requires two-step verification.</h2>
+            <p class="u-typography-4" security-manager-directive>
+              <a ng-click="setTwoStepVerification()">
+                Click here
+              </a>
+                to set your two-step verification device.
+            </p>
+          </div>
+        </td>
+      </tr>
+      <tr id="tile-{{ token.address }}" ng-repeat="token in accessTokenList">
+        <td colspan="1">{{ token.created | date: "MM/d/yy" }}</td>
+        <td colspan="1">{{ token.label }}</td>
+        <td colspan="1">{{ token.scope.join(', ') }}</td>
+        <td colspan="2">{{ (token.unlock.txValue || 0) | bgBitcoinFormat:null }} / {{ (token.unlock.txValueLimit || 0) | bgBitcoinFormat:'name' }}</td>
+        <td colspan="2" bg-confirm-action>
+          <a ng-hide="confirmationMessage" ng-click="initiateAction()">Remove Token</a>
+          <span ng-show="confirmationMessage">Sure?
+            <a ng-click="removeAccessToken(token.id)">Yes</a> |
+            <a ng-click="cancelAction()">No</a>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

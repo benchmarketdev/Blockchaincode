@@ -1,0 +1,95 @@
+<td class="transactionsTable-date">{{ tx.prettyDate }}</td>
+<td class="transactionsTable-action">
+  <i class="{{ txBuildListIcon() }}"></i>
+</td>
+<td>
+
+  <!-- If transaction was a BitGo wallet to BitGo wallet transfer -->
+  <div ng-show="txIsTransfer()" class="transactionsTable-text">
+
+    <!-- If transaction was to another address WITHIN THIS WALLET -->
+    <div ng-show="txIsTransferWithinSameWallet()">
+      Internal transfer
+    </div>
+
+    <!-- If transaction was to another of the user's BitGo wallets -->
+    <div ng-hide="txIsTransferWithinSameWallet()">
+      <!-- Tx was a transfer SENT to another of the user's BitGo Wallets -->
+      <span ng-show="txIsWithdrawal()">
+        Transfer to <b bg-get-address-label address-id="{{ tx.otherWalletId }}" wallet-id="{{ tx.otherWalletId }}" class="u-wordBreak">{{ label }}</b>
+      </span>
+
+      <!-- Tx was a transfer RECEIVED from another of the user's BitGo Wallets -->
+      <span ng-hide="txIsWithdrawal()">
+        Transfer from <b bg-get-address-label address-id="{{ tx.otherWalletId }}" wallet-id="{{ tx.otherWalletId }}" class="u-wordBreak">{{ label }}</b>
+      </span>
+    </div>
+
+    <!-- Address popover -->
+<!--     <span id="addressModal-{{ tx.id }}" popover-trigger="showAddressPopover" popover-placement="right" popover-template="wallet/templates/wallet-transaction-partial-address-popover.html">
+      <span class="inlinePopover--anchor"></span>
+    </span> -->
+  </div>
+
+  <!-- If transaction was NOT a BitGo wallet to BitGo wallet transfer -->
+  <div ng-hide="txIsTransfer()" class="transactionsTable-text">
+    <!-- Tx was SENT to a non-BitGo address -->
+    <span ng-show="txIsWithdrawal()">
+      Sent <span feature-flag="instant" ng-show="tx.isInstant">as Instant Transaction </span>to <b bg-get-address-label address-id="{{ tx.toAddress }}" wallet-id="{{ tx.walletId }}" class="u-wordBreak">{{ label }}</b>
+    </span>
+
+    <!-- Tx was RECEIVED from a non-BitGo address -->
+    <span ng-hide="txIsWithdrawal()">
+      Received <span bg-get-address-label address-id="{{ tx.toAddress }}" wallet-id="{{ tx.walletId }}"><span ng-show="label"><span feature-flag="instant" ng-show="tx.isInstant">as Instant Transaction </span>at </span> <b class="u-wordBreak">{{ label }}</b></span>
+    </span>
+  </div>
+  <div ng-show="txIsUnconfirmed()" class="transactionsTable-pending">Pending</div>
+
+  <!-- Tx Comment -->
+  <div ng-hide="txIsOpen()">
+    <div ng-show="tx.comment" class="notice">{{ tx.comment }}</div>
+  </div>
+
+  <!-- Tx Comment edit functionality and history view -->
+  <div ng-show="txIsOpen()">
+
+    <form class="table-form">
+      <div class="formRow">
+        <div class="inputText">
+          <input type="text" name="comment" ng-model="temp.comment" placeholder="Add memo" class="inputText-input" ng-click="killPropagation($event)" maxlength="60">
+        </div>
+        <p class="u-typography-6"><i>Note: Memos are only visible to users on this wallet.</i></p>
+
+        <div ng-show="canShowButtons()">
+          <span ng-hide="processing">
+            <button type="submit" class="button button--small" ng-click="saveComment($event)">Save</button>
+            <button class="button button--small button--grey" ng-click="closeCurrentTx($event, tx)">Cancel</button>
+          </span>
+          <span ng-show="processing">
+            <button type="submit" class="button button--small">Saving...</button>
+            <button class="button button--small button--grey">Cancel</button>
+          </span>
+        </div>
+      </div>
+    </form>
+
+    <!-- Tx History -->
+    <ul ng-show="tx.history" class="transactionsTable-details" ng-click="killPropagation($event)">
+      <li class="transactionsTable-detailsRow">
+        <a target="_blank" ng-href="{{ externalTransactionUrl }}{{ tx.transactionId }}">View transaction details</a>
+      </li>
+      <div ng-repeat="historyItem in tx.history">
+        <!-- Note: this is compiled on the fly when the tile opens -->
+        <wallet-transaction-history-tile item="historyItem"></wallet-transaction-history-tile>
+      </div>
+    </ul>
+
+  </div>
+
+</td>
+<td class="transactionsTable-amount">
+  <span ng-class="{ 'u-colorRed' : txIsWithdrawal() }">
+    <span ng-hide="txIsWithdrawal()">+</span>{{ tx.amount | bgBitcoinFormat }}
+  </span>
+</td>
+<td class="transactionsTable-balance">{{ tx.runningBalance | bgBitcoinFormat }}</td>

@@ -1,0 +1,49 @@
+<div monthly-reports class="customSelect customSelect--inlineSmall u-shiftUp10">
+  <span ng-show="selectedWallet" class="customSelect-text">
+      {{ selectedWallet.data.label }} <i class="icon icon--arrowSmallDown"></i>
+  </span>
+  <span ng-hide="selectedWallet" class="customSelect-text">
+      All Wallets <i class="icon icon--arrowSmallDown"></i>
+  </span>
+  <select ng-model="selectedWallet" ng-options="wallet.data.label for wallet in getWallets()" class="customSelect-select">
+    <option value="">All Wallets</option>
+  </select>
+</div>
+<span ng-hide="selectedWallet" class = "u-pullRight">
+  <bg-time-period-select periods="dateVisibleRange" current-period="selectedDate"></bg-time-period-select>
+</span>
+<div class="u-pushDown25">
+  <div ng-hide="selectedWallet">
+    <ul class="reportsList">
+      <div ng-repeat="wallet in getWallets()">
+        <li>
+          <div ng-show="showWalletForCurrentPeriod(wallet)">
+            <a ng-click="getReport(wallet)">
+              <i class="icon icon--pdf"></i> {{ wallet.data.label }} Statement - {{ selectedDate }}
+            </a>
+          </div>
+        </ul>
+      </div>
+      <div ng-hide="hasReportsForCurrentPeriod">
+        <div class="meta-display">No reports yet</div>
+       </div>
+    </ul>
+  </div>
+  <div ng-show="selectedWallet">
+    <div ng-repeat= "year in selectedWallet.data.reportDates">
+      <h2 class="u-typography-3">{{ year.year }}</h2>
+      <ul class="reportsList">
+        <div ng-repeat="reportDateInfo in year.data">
+          <li>
+            <a ng-click="getReport(selectedWallet, reportDateInfo)">
+              <i class="icon icon--pdf"></i> {{selectedWallet.data.label}} Statement - {{ reportDateInfo.dateVisible }}
+            </a>
+          </li>
+        </div>
+        <div ng-show="year.year | bgIsObjectEmpty">
+          <div class = "meta-display">No reports yet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

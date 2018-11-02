@@ -1,0 +1,54 @@
+<td colspan="2" bg-get-user user-id="{{ approvalItem.creator }}">
+
+  <!-- Show this if currentUser created the approval -->
+  <div ng-show="userIsCreator" class="activityTable-text">
+    <span ng-show="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+      Your request to remove a user from this organization<br> is awaiting approval<br>
+    </span>
+    <span ng-hide="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+      Your request to add a user to this organization<br> is awaiting approval<br>
+    </span>
+    
+    <b><span bg-get-user user-id="{{ approvalItem.info.updateEnterpriseRequest.userId }}">{{ user.settings.email.email }}</span></b> as an
+    <b> owner</b>
+    <div class="activityTable-timestamp">{{ approvalItem.prettyDate }}</div>
+  </div>
+  <!-- Show this if someone else created the approval -->
+  <div ng-hide="userIsCreator" class="activityTable-text">
+    <span ng-show="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+      <b>{{ user.settings.email.email }} </b>requested to remove a user<br>
+    </span>
+    <span ng-hide="approvalItem.info.updateEnterpriseRequest.action === 'remove'">
+      <b>{{ user.settings.email.email }} </b>requested to add a user<br>
+    </span>
+
+    <b><span bg-get-user user-id="{{ approvalItem.info.updateEnterpriseRequest.userId }}">{{ user.settings.email.email }}</span></b> as an
+    <b> owner</b> 
+
+    <span ng-show="approvalItem.info.updateEnterpriseRequest.action === 'remove'">from</span> 
+    <span ng-hide="approvalItem.info.updateEnterpriseRequest.action === 'remove'">to</span> 
+    this organization
+    <div class="activityTable-timestamp">{{ approvalItem.prettyDate }}</div>
+  </div>
+
+</td>
+<td class="activityTable-wallet">
+  <span></span>
+</td>
+<td class="activityTable-buttons">
+  <div class="buttons" ng-show="userIsCreator">
+    <a class="button button--small button--cancel" ng-click="setApprovalState('rejected')">Cancel</a>
+  </div>
+  <div class="buttons" ng-hide="userIsCreator">
+    <span bg-confirm-action>
+      <a class="button button--small button--green" ng-hide="confirmationMessage" ng-click="setApprovalState('approved')">Approve</a>
+      <a class="button button--small button--reject" ng-hide="confirmationMessage" ng-click="initiateAction()">Reject</a>
+      <span ng-show="confirmationMessage">Are you sure?
+        <a ng-click="setApprovalState('rejected')">Yes</a> | 
+        <a ng-click="cancelAction()">No</a>
+      </span>
+    </span>
+  </div>
+</td>
+
+

@@ -1,0 +1,16 @@
+<div>
+  <h3 class="u-typography-3 u-typography-medium">Launch the Authy app on your new device, select BitGo, and enter the code below</h3>
+  <form novalidate name="OTPForm">
+    <bg-form-error></bg-form-error>
+    <div class="formRow standardFormWidth" ng-class="{ 'formRow--error': otpAccessError }">
+      <p class="notice" ng-show="otpAccessError">Invalid code</p>
+      <div class="inputText" bg-otp-devices>
+        <input name="otpAccess" class="inputText-input" ng-model="device.otpCode" placeholder="Enter code" bg-input-validator bg-focus-when="true" max-length="44" />
+      </div>
+    </div>
+    <div class="buttons">
+      <button type="submit" class="button" name="submitOTP" ng-click="addOTPDevice('authy')">Submit</button>
+      <button class="button button--grey" type="cancel" class="button" ng-click="setState('twoStepVerificationSelect')">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,52 @@
+<main wallet-receive-manager>
+
+  <div class="row u-marginBottom30" wallet-receive-current-receive-address-manager>
+    <div class="u-staticWidth88p u-pullLeft relative">
+      <label>Current Receive Address</label>
+      <div class="u-pullRight inputText-verification inputText-verification--info receiveLabel" ng-click="useAltCoin()" feature-flag="shapeshift">Receive Altcoins</div>
+      <div class="inputText">
+        <input type="text" ng-model="currentReceiveAddress.address" class="inputText-input" disabled="disabled">
+
+        <!-- State based on address generation -->
+        <div class="inputText-verification inputText-verification--info" ng-show="addressBeingGenerated">Generating...</div>
+        <div class="inputText-verification inputText-verification--info" ng-show="canGenerateAddress()" ng-click="generateNewReceiveAddress()">Generate New Address</div>
+      </div>
+      <form>
+        <div class="formRow u-clear" ng-class="{ 'formRow--error': temporaryLabelError }">
+          <div class="inputText">
+            <input type="text" name="temporaryLabel" ng-model="currentReceiveAddress.temporaryLabel" ng-focus="emptyTemporary(currentReceiveAddress)" bg-input-validator class="inputText-input" ng-class="{ 'disabled' : cannotEditLabel()}" placeholder="Address label">
+          </div>
+
+          <div ng-show="canShowMainEditButtons()">
+            <button type="submit" class="button" ng-click="saveMainLabel(currentReceiveAddress, currentReceiveAddress.temporaryLabel)">Save</button>
+            <button class="button button--grey" ng-click="cancelMainLabelSave()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="u-pullRight u-qrCode-receive u-marginTopQr">
+      <div class="qrCode-border-outer">
+        <div class="qrCode-border-inner">
+          <div bg-confirm-action class="row">
+            <a bg-qr-code ng-click="openModal(currentReceiveAddress.address, currentReceiveAddress.label)" height="94.5" text=" {{ currentReceiveAddress.address }} "></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <table ng-show="wallets.current.isSafehdWallet()">
+      <thead>
+        <tr>
+          <th colspan="2">Label</th>
+          <th colspan="2">Address</th>
+          <th class="u-alignRight">Received</th>
+        </tr>
+      </thead>
+      <tbody bg-list-active-tile-manager>
+        <tr wallet-receive-address-tile bg-state-manager id="addressTile-{{ tileItem.address }}" ng-repeat="tileItem in addresses"></tr>
+      </tbody>
+    </table>
+
+  </div>
+</main>

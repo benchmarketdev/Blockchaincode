@@ -1,0 +1,103 @@
+<div wallet-create-steps-passcode class="row">
+  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col--noPadding">
+    <!-- HIDE this section when checking passcodes, generating keys, etc... -->
+    <div ng-hide="creatingWallet">
+
+      <h2>Wallet Password</h2>
+      <p class="u-typography-3 u-colorGreyDark u-marginBottom45">Your wallet password is used to encrypt your key in the browser.<br/>It is required in order to transact.</p>
+
+      <h3>Choose how to set the password for this wallet</h3>
+
+      <!-- Password type selection -->
+      <div class="selector row">
+        <div class="col-xss-12 col-xs-6 col-sm-5 col-md-5 col-lg-5 col--noPadding">  
+          <div class="selector-item" ng-class="{ 'is-selected' : showOption('loginPw'), 'is-disabled' : optionIsDisabled('loginPw') }" ng-click="setPasswordOption('loginPw')">
+            <h4 class="selector-heading">Login Password</h4>
+            <p>Use a single password for both login and encryption of keys.</p>
+          </div>
+        </div>
+        <div class="col-xss-12 col-xs-6 col-sm-5 col-md-5 col-lg-5 col--noPadding">
+          <div class="selector-item" ng-class="{ 'is-selected' : showOption('newWalletPw'), 'is-disabled' : optionIsDisabled('newWalletPw') }" ng-click="setPasswordOption('newWalletPw')">
+            <h4 class="selector-heading">Secondary Password</h4>
+            <p>Use a secondary encryption password for enhanced security and phishing protection.</p>
+            <div class="selector-notice">MORE SECURE</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 col--noPadding u-marginTop-15">
+        <!-- Use the User's Login Password -->
+        <div ng-show="showOption('loginPw')" class="u-marginTop-25">
+          <form name="createStepsLoginPasswordForm">
+
+            <bg-form-error></bg-form-error>
+
+            <div class="formRow" ng-class="{ 'formRow--error': passcodeError }">
+              <label>Login Password</label>
+              <p class="notice" ng-show="passcodeError">Invalid password</p>
+              <div class="inputText">
+                <input type="password" name="passcode" class="inputText-input" placeholder="Enter login password" ng-model="inputs.passcode" bg-input-validator bg-focus-when="true" />
+              </div>
+            </div>
+            <div class="buttons">
+              <button type="submit" class="button" name="advanceWithLoginPasscode" ng-click="advanceWithLoginPasscode()">Next</button>
+              <a name="cancel" class="button button--grey" ng-click="cancel()">Cancel</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- Use a New Wallet Password -->
+        <div ng-show="showOption('newWalletPw')" class="u-marginTop-25">
+          <form name="createStepsNewWalletPasswordForm" wallet-create-steps-passcode-new-wallet-form>
+
+            <bg-form-error></bg-form-error>
+
+            <!-- New PW -->
+            <div class="formRow" ng-class="{ 'formRow--error': passcodeError }">
+              <label>Wallet Password</label>
+              <p class="notice" ng-show="passcodeError">Invalid password</p>
+              <div class="inputText">
+                <input type="password" name="passcode" class="inputText-input" placeholder="Enter password" ng-model="inputs.passcode" bg-input-validator bg-focus-when="true" bg-password-strength="passcodeStrength" on-password-change="checkStrength(passcodeStrength)" />
+              </div>
+              <!-- Strength Meter -->
+              <div class="passwordStrength" ng-show="showPasscodeStrength()">
+                <div class="passwordStrength-indicator">
+                  <span class="passwordStrength-fill" ng-class="passcodeStrength.progress.class"></span>
+                </div>
+                It would take {{ passcodeStrength.crack_time_display }} to crack this password.
+              </div>
+            </div>
+
+            <!-- PW Confirm -->
+            <div class="formRow" ng-class="{ 'formRow--error': passcodeConfirmError }">
+              <label>Confirm Wallet Password</label>
+              <p class="notice" ng-show="passcodeConfirmError">Invalid password confirmation</p>
+              <div class="inputText">
+                <input type="password" class="inputText-input" name="passcodeConfirm" placeholder="Confirm password" ng-model="inputs.passcodeConfirm" bg-input-validator />
+              </div>
+            </div>
+
+            <div class="buttons">
+              <button type="submit" class="button" name="advanceWithNewWalletPasscode" ng-click="advanceWithNewWalletPasscode()">Next</button>
+              <a name="cancel" class="button button--grey" ng-click="cancel()">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOW this section when checking passcode, generating keys, etc... -->
+  <div class="col col--twelveOfTwelve">
+    <div class="row" ng-show="creatingWallet">
+      <h2 class="u-alignCenter u-pushDown35">Securely Generating Wallet...</h2>
+      <div class="processing">
+        <div class="processing-progress processing-progress--noDividers">
+          <div class="processing-indicator"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

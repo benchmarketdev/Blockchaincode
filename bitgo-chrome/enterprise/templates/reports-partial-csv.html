@@ -1,0 +1,20 @@
+<div csv-reports class="u-shiftUp10">
+</div>
+<div>
+  <div>
+    <ul class="reportsList">
+      <div ng-repeat="wallet in getWallets()">
+        <li>
+          <div>
+            <a ng-click="getReport(wallet)">
+              <i class="icon icon--csv"></i> {{ wallet.data.label }}.csv
+            </a>
+          </div>
+        </li>
+      </div>
+      <div ng-show="getWallets().length === 0">
+        <div class = "meta-display">No reports yet</div>
+      </div>
+    </ul>
+  </div>
+</div>

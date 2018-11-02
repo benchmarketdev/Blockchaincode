@@ -1,0 +1,68 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- If the current user changed the policy -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }}
+    </span>
+
+    <!-- If the change DID NOT require approval -->
+    <span ng-hide="logItem.data.needsApproval">
+      <!-- Handle policy upates and removals -->
+      <span ng-show="logItem.data.action === 'update'">updated</span>
+      <span ng-show="logItem.data.action === 'remove'">removed</span>
+      the {{ logItem.data.update.id | bgPolicyIdStringConversion }} policy
+      on the wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+
+      <!-- policy description -->
+      <div ng-hide="logItem.data.action === 'remove'">
+        <div bg-activity-tile-policy-description>
+          <span ng-show="logItem.isPolicyItem">
+            <!-- spending limits -->
+            <span ng-show="showById('com.bitgo.limit.day') || showById('com.bitgo.limit.tx')">
+                The new limit was {{ amountInQuestion | bgBitcoinFormat:'name':null:null:'unlimited' }}
+            </span>
+            <!-- whitelist -->
+            <span ng-show="showById('com.bitgo.whitelist.address')">
+              The address "{{ addressInQuestion }}" was {{ verb === 'Add' ? 'added' : 'removed' }}
+            </span>
+          </span>
+        </div>
+
+      </div>
+    </span>
+
+    <!-- If the change REQUIRED approval -->
+    <span ng-show="logItem.data.needsApproval">
+      requested a change to the {{ logItem.data.update.id | bgPolicyIdStringConversion }} policy
+      on the wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+
+      <!-- policy description -->
+      <div ng-hide="logItem.data.action === 'remove'">
+
+        <div bg-activity-tile-policy-description>
+          <span ng-show="logItem.isPolicyItem">
+            <!-- spending limits -->
+            <span ng-show="showById('com.bitgo.limit.day') || showById('com.bitgo.limit.tx')">
+                The proposed limit was {{ amountInQuestion | bgBitcoinFormat:'name':null:null:'unlimited' }}
+            </span>
+            <!-- whitelist -->
+            <span ng-show="showById('com.bitgo.whitelist.address')">
+              The proposed address to {{ verb.toLowerCase() }} was "{{ addressInQuestion }}"
+            </span>
+          </span>
+        </div>
+
+      </div>
+    </span>
+
+    <!-- uniform data -->
+    <div ng-show="logItem.data.needsApproval"><b>This policy change required approval.</b></div>
+    <div ng-show="logItem.data.pendingApproval" class="activityTable-timestamp">Approval ID: {{ logItem.data.pendingApproval }}</div>
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

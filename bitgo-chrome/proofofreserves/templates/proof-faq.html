@@ -1,0 +1,58 @@
+<div>
+
+  <!-- Masthead section -->
+  <section class="proof-masthead">
+    <div class="contentWrapper">
+      <h1 class="masthead-heading masthead-heading--withSubContent masthead-heading--fullLength">Verified by BitGo</h1>
+      <h2 class="u-marginTop20 u-marginBottom45">Frequently Asked Questions</h2>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <main class="mainContent contentWrapper">
+
+    <div class="row u-marginTop30">
+      <h3 class="u-textLeft">What is Verified by BitGo?</h3>
+      <div class="whitePaper-text">
+        It’s a publicly accessible audit service that BitGo offers to provide transparency and security to end users of other services. It gives the public assurance of the total bitcoin-denominated funds held by a company while allowing users to cryptographically verify their own account balances have been included in the company’s stated liabilities. By combining these two features, Verified by BitGo provides reassurance that a company is not operating a fractional reserve scheme.
+      </div>
+    </div>
+    <div class="row u-marginTop30">
+      <h3 class="u-textLeft">Why does BitGo offer this service? </h3>
+      <div class="whitePaper-text">
+        Demonstrating 100% reserves, meaning that a company’s bitcoin assets are greater than or equal to its liabilities, has posed a significant challenge to the bitcoin industry. Many businesses offer no way for customers to verify that their funds are indeed held by the company.
+      </div>
+      <div class="whitePaper-text">
+        Other businesses have taken steps to demonstrate their ownership of assets and associated keys through a number of other methods, including periodically moving coins or signing messages. These steps are often cumbersome and pose substantial security and privacy risks. Our new Verified by BitGo pages instead offer this transparency as a service, allowing any business to easily show its assets and cryptographically prove that it is operating in a solvent state.
+      </div>
+    </div>
+    <div class="row u-marginTop30">
+      <h3 class="u-textLeft">Where did the idea for Proof of Reserves come from?</h3>
+      <div class="whitePaper-text">
+        Other members of the community, in particular <a href="https://iwilcox.me.uk/2014/nofrac-orig" target="_blank">Greg Maxwell</a> and <a href="https://github.com/olalonde/proof-of-solvency" target="_blank">Olivier Lalonde</a>, have proposed and designed a series of implementations that can allow companies to prove they are operating in a solvent state. Several of these concepts are integral to BitGo’s Proof of Reserves service. We build on Lalonde’s work on our server and in our client, and our API produces proof trees which are compatible with his <a href="http://syskall.com/proof-of-liabilities/#verify" target="_blank">proof of liability tools</a>.
+      </div>
+    </div>
+    <div class="row u-marginTop30">
+      <h3 class="u-textLeft">What are the limitations of the service?</h3>
+      <div class="whitePaper-text">
+        No system of audit is perfect. While BitGo is able to directly verify and attest to Bitcoin assets held in its multi-sig wallets, it cannot directly verify the liability information provided by the company. BitGo must rely on the end users to verify the liability information by checking that their own balances are correct and have been included in the overall totals. If the company excludes certain inactive customers from the stated liabilities, BitGo cannot detect that unless those users attempt to verify their balances.
+      </div>
+      <div class="whitePaper-text">
+        BitGo also has no knowledge of the state of the company’s overall balance sheet. It cannot verify that the company has not borrowed bitcoin temporarily in order to show an apparent state of solvency.
+      </div>
+      <div class="whitePaper-text">
+        The audit is not renewed in real time. In the time intervals since the last audit, the company may have entered a state of insolvency. Users should always consider the recency of the audit data.
+      </div>
+      <div class="whitePaper-text">
+        While the crowd-sourced audit of liabilities can be applied to fiat currencies, BitGo has no way to directly verify any fiat assets.
+      </div>
+    </div>
+    <div class="row u-marginTop30">
+      <h3 class="u-textLeft">Does BitGo have access to my bitcoin?</h3>
+      <div class="whitePaper-text">
+        No, BitGo do not hold your bitcoin or the company’s bitcoin and cannot transact independently. We act as a co-signer to the company’s pool of bitcoin in order to provide enhanced security and trasparency.
+      </div>
+    </div>
+  </main>
+
+</div>

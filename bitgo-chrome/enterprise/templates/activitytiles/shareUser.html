@@ -1,0 +1,42 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- If current user invite a user to a wallet -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You 
+      
+      <!-- if it needed approval from other admins -->
+      <span ng-show="logItem.data.needsApproval">requested to invite</span>
+      <span ng-hide="logItem.data.needsApproval">invited</span>
+
+      <span bg-get-user user-id="{{ logItem.target }}">{{ user.settings.email.email }}</span>
+      to join wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>" as {{ logItem.data.permissions | bgPermissionsRoleConversionFilter }}
+    </span>
+
+    <!-- If another other invited someone -->
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }} 
+      
+      <!-- if it needed approval from other admins -->
+      <span ng-show="logItem.data.needsApproval">requested to invite</span>
+      <span ng-hide="logItem.data.needsApproval">invited</span>
+
+      <!-- show correct context of the invitee -->
+      <span bg-get-user user-id="{{ logItem.target }}">
+        <!-- if current user is the invitee -->
+        <span ng-show="user.settings.id === currentUser.settings.id">you</span>
+        <!-- if another user is the invitee -->
+        <span ng-hide="user.settings.id === currentUser.settings.id">{{ user.settings.email.email }}</span>
+      </span>
+
+      to join wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>" as {{ logItem.data.permissions | bgPermissionsRoleConversionFilter }}
+    </span>
+
+    <!-- uniform data -->
+    <div ng-show="logItem.data.needsApproval"><b>Adding them required approval.</b></div>
+
+    <div class="activityTable-timestamp" ng-show="logItem.data.pendingApproval" class="activityTable-timestamp">Approval ID: {{ logItem.data.pendingApproval }}</div>
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

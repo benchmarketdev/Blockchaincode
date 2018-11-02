@@ -1,0 +1,65 @@
+<div class="approvalRequest-request row" bg-get-user user-id="{{ approvalItem.creator }}">
+
+  <div class="col" ng-show="showState('initial')">
+
+    <!-- Show this if currentUser created the approval -->
+    <p ng-show="userIsCreator">
+      <b>Your</b> request to send funds is awaiting approval<br>
+      <b>{{ approvalItem.info.transactionRequest.requestedAmount | bgBitcoinFormat:'name':null:null:null:true }}</b>
+      <span bg-get-address-label address-id="{{ approvalItem.info.transactionRequest.destinationAddress }}" wallet-id="{{ approvalItem.bitcoinAddress }}">
+        <b>to {{ label }}</b>
+        <span ng-show="foundLabel">
+          <br>
+          ({{ approvalItem.info.transactionRequest.destinationAddress }})
+        </span>
+      </span>
+    </p>
+
+    <!-- Show this if someone else created the approval -->
+    <p ng-hide="userIsCreator">
+      <b>{{ user.settings.email.email }}</b> requested to send funds<br>
+      <b>{{ approvalItem.info.transactionRequest.requestedAmount | bgBitcoinFormat:'name':null:null:null:true }}</b>
+      <span bg-get-address-label address-id="{{ approvalItem.info.transactionRequest.destinationAddress }}" wallet-id="{{ approvalItem.bitcoinAddress }}">
+        <b>to {{ label }}</b>
+        <span ng-show="foundLabel">
+          <br>
+          ({{ approvalItem.info.transactionRequest.destinationAddress }})
+        </span>
+      </span>
+    </p>
+
+    <div class="meta">{{ approvalItem.prettyDate }}</div>
+  </div>
+
+  <div class="col" ng-show="showState('passcode')" bg-get-user user-id="{{ approvalItem.creator }}">
+    <form class="u-noMargin" ng-submit="submitTx()">
+      <div class="formRow" ng-class="{ 'formRow--error': passcodeInvalid }">
+        <p class="notice" ng-show="passcodeInvalid">Invalid passcode</p>
+        <div class="inputText">
+          <input type="password" name="passcode" class="inputText-input" placeholder="Enter your account passcode" ng-model="txInfo.passcode" bg-input-validator bg-focus-when="true" />
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Tile Buttons -->
+  <div class="col col--pullRight">
+    <!-- Show these if currentUser created the approval -->
+    <div class="buttons" ng-show="userIsCreator">
+      <a class="button button--small button--cancel" ng-click="submitApproval('rejected')">Cancel</a>
+    </div>
+
+    <!-- Show these if someone else created the approval -->
+    <div class="buttons" ng-hide="userIsCreator">
+      <!-- Show when the form is unavailable -->
+      <span bg-confirm-action ng-show="showState('initial')">
+        <a class="button button--small button--green" ng-hide="confirmationMessage" ng-click="submitTx()">Approve</a>
+        <a class="button button--small button--reject" ng-hide="confirmationMessage" ng-click="initiateAction()">Reject</a>
+        <span ng-show="confirmationMessage">Are you sure?
+          <a ng-click="submitApproval('rejected')">Yes</a> |
+          <a ng-click="cancelAction()">No</a>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>

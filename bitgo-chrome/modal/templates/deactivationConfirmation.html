@@ -1,0 +1,52 @@
+<div modal-account-deactivation>
+  <div bg-state-manager>
+    
+    <!-- Deactivation Confirmation Step -->
+    <div ng-show="showState('confirm')">
+      <center>
+        <h2 class="modal-heading">Please confirm your BitGo account deactivation</h2>
+      </center>
+
+      <hr class="u-pushUp12"></hr>
+      
+      <form class="u-noMargin" novalidate name="modalAccountDeactivation" >
+        <div class="btn-toolbar" bg-confirm-action>
+          <center>
+            <a type="submit" class="button--warning u-marginRight10" name="deactivateUser" ng-click="deactivateUser()">Confirm</a>
+            <button type="submit" class="button button--grey u-marginLeft10" name="cancelDeactivate" ng-click="closeWithError('cancel')">Cancel</button>
+          </center>
+        </div>
+      </form>
+    </div>
+
+    <!-- Request Feedback Step -->
+    <div ng-show="showState('form')"> 
+
+      <center>
+        <h2 class="modal-heading">We're always looking for ways to improve BitGo. Let us know what we can do better!</h2>
+      </center>
+
+      <hr class="u-pushDown12 u-pushUp10"></hr>
+
+      <form class="form-horizontal u-alignCenter">
+        <div class="form-group">
+          <div class="center">
+            <textarea type="text" class="form-control u-maxWidth500" rows="7" maxLength="1000" id="deactivationReason" ng-model="data.deactivationForm" placeholder="Enter feedback here..."></textarea>
+          </div>
+        </div>
+      </form>
+      
+      <bg-form-error></bg-form-error>
+      
+      <div>
+        <form class="u-noMargin" name="modalAccountDeactivation">
+          <div bg-confirm-action>
+            <center>
+              <a type="submit" class="button--warning" name="confirmDeactivation" ng-click="confirmDeactivation()">Submit</a>
+            </center>
+          </div>
+        </form>
+      </div>   
+    </div>
+  </div>
+</div>

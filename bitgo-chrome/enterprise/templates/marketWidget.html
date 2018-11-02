@@ -1,0 +1,55 @@
+<div class="marketWidgetFixedHeight"  ng-hide="marketDataAvailable">
+  <div class="marketWidgetPlaceHolder">
+    <div class="marketWidgetError-row">
+      <h2 class="sideBarContainer-heading">Market data unavailable</h2>
+    </div>
+  </div>
+</div>
+<div ng-show="marketDataAvailable">
+  <div class="sideBarContainer-row">
+    <h2 class="sideBarContainer-heading">Bitcoin Price</h2>
+    <div class="bitcoinPrice-price"><span>{{currency.symbol}} </span>{{currency.data.current.last}}</div>
+  </div>
+  <div class="sideBarContainer-row">
+    <div class="bitcoinPrice-priceRecord">High <b>{{currency.data.current.prevDayHigh}}</b></div>
+    <span class="bitcoinPrice-type">24h</span>
+    <div class="bitcoinPrice-positionRight" ng-switch on="direction">
+      <div class = "u-colorGreen" ng-switch-when="up">
+        <i class="icon icon--arrowUp"></i> {{currency.data.symbol}}{{delta}} ({{changePercent}}%)
+      </div>
+      <div class = "u-colorRed" ng-switch-when="down">
+        <i class="icon icon--arrowDown"></i> {{currency.data.symbol}}{{delta}} ({{changePercent}}%)
+      </div>
+      <div class = "u-colorBlue" ng-switch-when="equal">
+        {{currency.data.symbol}}{{delta}} ({{changePercent}}%)
+      </div>
+    </div>
+  </div>
+  <div class="sideBarContainer-row">
+    <div class="bitcoinPrice-priceRecord">Low <b>{{currency.data.current.prevDayLow}}</b></div>
+    <span class="bitcoinPrice-type">Global Vol</span>
+    <div class="bitcoinPrice-positionRight">{{ currency.data.current.total_vol.toFixed(0) }} BTC</div>
+  </div>
+  <div class="u-marginTop30">
+    <nav class="bitcoinPrice-graphNav">
+      <a ng-click = "setTime('week')" class="bitcoinPrice-graphNavItem" ng-class="{ 'is-selected': isCurrentTime('week') }">1w</a>
+      <a ng-click = "setTime('month')" class="bitcoinPrice-graphNavItem" ng-class="{ 'is-selected': isCurrentTime('month') }">1m</a>
+      <a ng-click = "setTime('months')" class="bitcoinPrice-graphNavItem" ng-class="{ 'is-selected': isCurrentTime('months') }">3m</a>
+      <span ng-show="userHover" class="u-pullRight">
+        {{currency.symbol}}
+        <span id="hoverPrice"></span> | 
+        <span id="hoverDate"></span>
+      </span>
+      <span ng-hide="userHover" class="u-pullRight">
+        {{currency.symbol}}
+        <span>{{currency.data.current.last}}</span> | 
+        <span>{{currentDate}}</span>
+      </span>
+    </nav>
+    <svg id="chart" ng-mouseenter="showData()" ng-mouseleave="hideData()"></svg>
+    <!-- The hover blockers are in place to trim the svg element created by d3. 
+    Hover needs to be blocked on both axis as d3 builds in some padding vertically and horizontally -->
+    <div class="d3HorizontalHoverBlocker"></div>
+    <div class="d3VerticalHoverBlocker"></div>
+  </div>
+</div>

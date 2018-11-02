@@ -1,0 +1,14 @@
+<td>
+  <div class="activityTable-text">
+    BitGo <a target="_blank" ng-href="{{ externalTransactionUrl }}{{ logItem.target }}">signed a transaction</a>
+    to send {{ logItem.data.amount | bgBitcoinFormat:'name' }} to 
+    <span bg-get-address-label address-id="{{ logItem.data.address }}" wallet-id="{{ logItem.walletId }}">"{{ label }}"</span> from wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+
+	<div class="activityTable-timestamp">Transaction ID: {{ logItem.target }}</div>
+	<!-- TODO BARATH - Should this have an approval id? 
+	<div ng-show="logItem.data.pendingApproval" class="activityTable-timestamp">Approval ID: {{ logItem.data.pendingApproval }}</div>
+	-->
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

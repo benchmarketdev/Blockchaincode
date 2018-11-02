@@ -1,0 +1,44 @@
+<div>
+
+  <!-- Description -->
+  <div class="row">
+    <a ng-click="setState('add')" class="button button--small button--create u-pullRight"><i class="icon icon--plus"></i> Add Address</a>
+
+    <p class="introText u-colorGreyDark">Manage a list of approved recipient bitcoin addresses.</p>
+  </div>
+
+  <!-- Pending approvals -->
+  <div class="row u-marginTop30" ng-show="showWhitelistApprovals()">
+    <div class="approvalRequest">
+      <h2 class="approvalRequest-heading">Approval requested</h2>
+      <div wallet-approval-tile bg-approval-tile-policy-request bg-state-manager ng-repeat="approvalItem in wallets.current.data.pendingApprovals | bgApprovalsFilter:true:'com.bitgo.whitelist.address' " id="{{ approvalItem.id }}"></div>
+    </div>
+  </div>
+
+  <!-- List of whitelisted addresses -->
+  <table class="addressTable">
+    <thead>
+      <tr>
+        <th>Address</th>
+        <th colspan="2">Label</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody bg-list-active-tile-manager>
+      <!-- No whitelist -->
+      <tr ng-show="!whitelist || whitelist.length == 0">
+        <td colspan="2">
+          <div class = "meta">
+            <h2>This wallet can send to any bitcoin address.</h2>
+            <p class="u-typography-4">
+              You can restrict withdrawals from this wallet to only go to addresses specified in this list. (optional)
+            </p>
+          </div>
+        </td>
+      </tr>
+      <tr wallet-policy-whitelist-tile bg-state-manager id="tile-{{ tileItem.address }}" ng-repeat="tileItem in whitelist"></tr>
+    </tbody>
+  </table>
+
+</div>

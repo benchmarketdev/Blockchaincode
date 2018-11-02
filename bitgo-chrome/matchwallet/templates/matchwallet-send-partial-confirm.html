@@ -1,0 +1,56 @@
+<div matchwallet-send-steps-confirm>
+
+  <!-- In section notifications -->
+   <div class="row" ng-show="invitationSent">
+     <div class="col col--sevenOfTwelve">
+
+      <div class="invitation alert alert--success">
+        <i class="icon icon--checkmark"></i>
+        <p class="alert-text">
+          <span ng-hide="lastInvitationSent">
+            Your invitation was sent!
+          </span>
+          <span ng-show="lastInvitationSent">
+            Thanks for inviting your friends to join BitGo! You've sent all your invitations. Check out your <a ng-click="goToActivityFeed()">Activity Feed</a> to see the status of your rewards.
+          </span>
+        </p>
+      </div>
+
+     </div>
+   </div>
+
+   <form name="confirmSendInvitationForm">
+     <div class="row">
+
+      <p ng-hide="invitationSent" class="u-typography-2">
+        You are about to send:
+      </p>
+
+      <p class="u-typography-4">{{ invitation.amount | bgBitcoinFormat:'name':null:null:null:true }}
+        to {{ invitation.email }}
+      </p>
+
+      <p class="u-typography-4" ng-show="invitation.message">
+        Message: <span class="u-typography-5 u-colorGreyDark">{{ invitation.message }}
+      </p>
+
+    </div>
+
+    <div ng-hide="invitationSent">
+      <div class="row">
+        <div class="buttons">
+          <button type="submit" class="button buttonSubmit" ng-class="{ 'disabled' : processing }" name="sendInvite" ng-click="sendInvitation()">Send</button>
+          <button class="button button--create" ng-class="{ 'disabled' : processing }" name="modify" ng-click="setState('prepare')">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="invitationSent">
+      <div class="row u-pushDown35">
+        <button class="button buttonSubmit" name="sendMoreInvites" ng-click="sendMoreInvites()" ng-show="lastInvitationSent">Send More Invites</button>
+        <button class="button button--create" ng-click="cancelSend()">Back</button>
+      </div>
+     </div>
+   </form>
+
+</div>

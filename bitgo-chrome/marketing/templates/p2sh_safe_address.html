@@ -1,0 +1,278 @@
+<div>
+  <section>
+    <div class="hero">
+      <div class="contentWrapper">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <h1>BitGo Whitepaper</h1>
+            <h2>Mike Belshe</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="contentSection">
+      <div class="contentWrapper">
+        <div class="row">
+          <h1>P2SH Safe Address</h1>
+          <h2>This paper describes a mechanism for using Bitcoin’s P2SH functionality to build a stronger, more secure web wallet.</h2>
+        </div>
+
+        <div class="row u-marginTop30">
+          <h3 class="u-textLeft">Background</h3>
+          <div class="whitePaper-text">
+            Bitcoin addresses (where your bitcoins are stored) are secured today using public key cryptography and the Elliptic Curve Digital Signature Algorithm (ECDSA).  This offers very strong security.  But the secret keys used within ECDSA are lengthy 256 numbers which humans can’t remember, and the security of your bitcoin hinges on how safely you can protect this key from others.  To help us protect and manage our keys, users employ bitcoin wallets.  There are many wallets available to choose from, and each offers its unique benefits for ease of use, security, and features.
+          </div>
+          <div class="whitePaper-text">
+            But wallets can be divided into two basic categories:
+            <ol>
+              <li>Client-side Wallets<br>
+              These wallets, such as the original Satoshi Client, run using software installed locally on the user’s computer.
+              </li>
+              <li>Web Wallets<br>
+              These wallets are hosted on a web site and require no custom software installation from the user.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="row u-marginTop30">
+          <h3 class="u-textLeft">Client-side wallets</h3>
+          <div class="whitePaper-text">
+            The advantage of a client side wallet is that your bitcoin keys are entirely your own.  No intermediaries are required to help you transact.
+
+            The disadvantage of the client side wallet is that the security is entirely your own.  In effect you are the guard of your own bank.  As such you need to:
+            prevent malware and viruses from stealing your keys
+            maintain and update proper backups of your keys
+            enforce physical security of the computer(s) containing the keys (e.g. locked with an encrypted hard disk).
+            Accessing your bitcoins from multiple computers can be difficult, as it requires you to transfer the keys safely between multiple computers.  Further, because most users take extra precautions with their passwords for their bitcoin cash, forgetting or losing unusually ‘strong’ passwords becomes a real threat of loss.
+          </div>
+        </div>
+
+        <div class="row u-marginTop30">
+          <h3 class="u-textLeft">Web Wallets</h3>
+          <div class="whitePaper-text">
+            Web Wallets have the advantage that they are accessible through the web, from anywhere.   The web site hosting your wallet needs to be a trusted party, as they often require direct access to your keys, or they may hold your keys while you don’t have them at all.  Assuming that the website does a good job managing the security of your keys, this can be an advantage, as you don’t need to do it yourself.
+          </div>
+          <div class="whitePaper-text">
+            But the disadvantages are obvious.  A web site holding many keys for millions of users is a very obvious target for attackers.  If the web site is hacked, you will lose your bitcoin.  Similarly, if the website is shutdown due to failure to meet regulatory compliance, you will lose your bitcoin as well.
+          </div>
+        </div>
+
+        <div class="row u-marginTop30">
+          <h3 class="u-textLeft">Pay To Script Hash (a.k.a. P2SH)</h3>
+          <div class="whitePaper-text">
+            P2SH is a new type of bitcoin address which was introduced as part of Bitcoin Improvement Proposal 16 (BIP 16) in early 2012.  P2SH addresses can be secured by more complex algorithms than traditional bitcoin addresses.  In this paper, we evaluate using a 2-of-3 signature address, which we’ll call a “2-of-3 address”.
+          </div>
+          <div class="whitePaper-text">
+            Unlike traditional bitcoin addresses, which are secured with a single ECDSA key, 2-of-3 addresses are secured with three ECDSA keys.  Depositing funds into the 2-of-3 address is the same as depositing funds into a standard bitcoin address.  However, withdrawing funds from the 2-of-3 address requires at least 2 of the 3 keys to sign.
+          </div>
+          <div class="whitePaper-text">
+            Using a 2-of-3 address offers several advantages:
+            <ol>
+              <li>
+                You can give a trusted party a single key for final approval on transactions without enabling them to initiate transactions on your funds alone.
+              </li>
+              <li>You can lose a key but not lose access to your funds.</li>
+              <li>
+                You can share a key with multiple, trusted parties who individually cannot access your funds, but can if they work together.
+              </li>
+            </ol>
+          </div>
+          <img src="./img/wallet-architecture.jpg" class="walletArchitecture-image"></img>
+        </div>
+
+        <div class="row u-marginTop30">
+          <h3 class="u-textLeft">A Proposal for a 2-of-3 Address Web Wallet Implementation</h3>
+          <div class="whitePaper-text">
+            In this section, we propose an implementation of a web wallet using the 2-of-3 address.  It provides the following features
+
+            <ol>
+              <li>Safety
+                <ul>
+                  <li>The service cannot initiate a transaction by itself</li>
+                  <li>Stealing the user’s online password is not sufficient to steal funds</li>
+                  <li>Stealing the user’s online private key is not sufficient to steal funds</li>
+                  <li>Malware on the user’s computer cannot steal funds</li>
+                </ul>
+              </li>
+              <li>Convenience
+                <ul>
+                  <li>The user can access his funds from any computer</li>
+                  <li>The user does not need to remember his private key and can access funds with a password and two-factor authentication.</li>
+                </ul>
+              </li>
+              <li>Recovery
+                <ul>
+                  <li>The user can recover funds even if the service is shutdown due to regulatory reasons</li>
+                  <li>The user can lose his website password and not lose his funds</li>
+                  <li>The user can lose his private key and not lose his funds</li>
+                </ul>
+              </li>
+              <li>Privacy
+                <ul>
+                  <li>Privacy must be maintained for the user’s funds</li>
+                </ul>
+              </li>
+            </ol>
+
+            This implementation will rely upon:
+            <ul>
+              <li>A service  (e.g. a website) with all communications over TLS.</li>
+              <li>Coordination between a browser and that service</li>
+              <li>Use of 2-factor authentication</li>
+              <li>Use of strong passwords</li>
+            </ul>
+          </div>  
+        </div>
+
+        <div class="row u-marginTop30">
+            <h3 class="u-textLeft">2-of-3 Address Creation</h3>
+            <div class="whitePaper-text">
+              The mechanics of creating the 2-of-3 address is very important.  In this proposal, it will be done both on the user’s computer and on the website.  Critically, the user will generate 2 keys while the server will generate one.  Address creation time is the only time when two or more of the keys are on the same computer concurrently.
+            </div>
+            <div class="whitePaper-text">
+              The process starts with the user’s browser (or client-side key creator) generating 2 ECDSA keys:
+              <ul>
+                <li>The user’s key-pair</li>
+                <li>A backup key-pair</li>
+              </ul>
+            </div>
+            <div class="whitePaper-text">
+              The backup private key-pair will be printed out and stored completely offline. It is only for fund recovery.  The backup public key will be stored with the service.  The service never sees the backup private key and cannot use it to unlock funds.
+            </div>
+            <div class="whitePaper-text">
+              The user’s private key will be encrypted on the user’s machine with a strong password of the user’s choice.  The encrypted private key and the public key will be stored in the service.  Because the private key is encrypted with a password the service has never seen, the service cannot use this key to unlock funds.
+            </div>
+            <div class="whitePaper-text">
+              The server will then create a 3rd key.  The private key will be encrypted with a strong password known to the service and stored on the server.  The server will use the 2 public keys from the user as well as the service key to create the 2-of-3 address.  The server will notify the user of the server’s public key, as this will be critical for recovering funds from the address if the service ever goes down.  The user will print out a copy of all 3 public keys and store them securely.
+            </div>
+            <div class="whitePaper-text">
+              With this system, we now have an address where the user has 1 key, the service has 1 key, and the 3rd key has been saved for later use.
+            </div> 
+        </div>
+
+        <div class="row u-marginTop30">
+            <h3 class="u-textLeft">Withdrawing Funds from the 2-of-3 Address</h3>
+            <div class="whitePaper-text">
+              To withdraw funds from the 2-of-3 address, the following steps will need to take place.
+            </div>
+            <div class="whitePaper-text">
+              First, the user will login or authenticate to the service, and inform the service that she will make a withdrawal.  The service will require the user to further authenticate with a 2-factor authentication challenge to a smartphone or mobile device.  Note:  2-factor authentication is required because even strong passwords can be stolen with a keylogger.
+            </div>
+            <div class="whitePaper-text">
+              Upon validation of the 2-factor authentication, the service sends the user’s encrypted private key to the user’s browser.  The browser will prompt the user for the user’s password to unlock the encrypted private key.
+            </div>
+            <div class="whitePaper-text">
+              Executing within the user’s browser, the application creates the bitcoin transaction for the withdrawal, unlocks the encrypted private key, and signs the transaction with a single signature.
+            </div>
+            <div class="whitePaper-text">
+              Finally, the signed transaction is then sent to the service.  The service validates the transaction, and if suitable, applies the 2nd signature using its private key.  Note that the service will likely implement transaction limits.  If, for some reason, the user's account was compromised, the service can refuse to sign large transactions unless further authentication or the backup key signature is presented.
+            </div>
+        </div>
+
+        <div class="row u-marginTop30">
+            <h3 class="u-textLeft">Maintaining Privacy</h3>
+            <div class="whitePaper-text">
+              To maintain maximal privacy, it is important to not re-use bitcoin addresses.  However, re-generating such keys repeatedly with each transaction would make many of the backup benefits that come with this system difficult.  Users of bitcoin standard addresses already face this problem today and use a variety of deterministic wallet mechanisms to generate multiple keys from a single source.
+            </div>
+            <div class="whitePaper-text">
+              The same techniques can be applied to the 2-of-3 address.  Any key used as a signature should be rotated to a new address based on the next sequence in the deterministic key.
+            </div>
+            <div class="whitePaper-text">
+              As a compromise solution, the 2-of-3 address offers one more option:  only rotating the server's key.  Since the 2-of-3 key is generated from 3 keys, one of which is managed by the service, we can rotate the user's funds to a new address by only rotating the server’s key.  The resulting address cannot be correlated to the original 2-of-3 address.  However, upon spending of the outputs, the public keys will again be revealed and a correlation could be made at that time.  To maintain the ability for the user to extract funds without the service, the service will need to send the newly minted service public key to the user for safekeeping.  This can be done via email.  But again for maximal privacy, use of deterministic key rotation is recommended.
+            </div>
+        </div>
+
+        <div class="row u-marginTop30">
+            <h3 class="u-textLeft">Other Advantages</h3>
+            <div class="whitePaper-text">
+              Using multi-signature wallets provides flexibility for the user to share keys with trusted family without exposing all funds.  For example, a user may decide to give one key to his sister, and another to his lawyer, with instructions to get the bitcoin when the user dies.  With a traditional bitcoin address, the lawyer and sister would both have full access to the user’s funds.  With a 2-of-3 wallet, they would need to collude against the user.  But overall, the 2-of-3 address offers a lot of flexibility.
+            </div>
+        </div>
+
+        <div class="row u-marginTop30">
+            <h3 class="u-textLeft">Weaknesses</h3>
+            <div class="whitePaper-text">
+              No security mechanism is perfect.  One potential weakness with the 2-of-3 address is that it does have 2 of the 3 keys online in the user’s browser at the time of address creation.  Malware that specifically targeted an application using 2-of-3 wallets could lie-in-wait of an address to be created, steal the keys, and then extract the funds later.  However, any wallet, client or server suffers from this problem.  With a 2-of-3 address, the exposure to malware is mostly limited to address creation time, whereas traditional addresses are exposed to this weakness any time you transact.  Hardware wallets may be the best mitigator against this particular attack.
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="contentSection">
+      <div class="contentWrapper contentWrapper--borderedTop">
+        <div class="row">
+          <h1>Learn More</h1>
+        </div>
+
+        <div class="row">
+          <form name="applyform">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow">
+                  <div class="inputText">
+                    <input type="text" name="name" class="inputText-input" placeholder="Name" ng-model="userInfo.name" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow">
+                  <div class="inputText">
+                    <input type="text" name="company" class="inputText-input" placeholder="Company" ng-model="userInfo.company" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow">
+                  <div class="inputText">
+                    <input type="text" name="industry" class="inputText-input" placeholder="Industry" ng-model="userInfo.industry" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow" ng-class="{ 'formRow--error': emailError }">
+                  <p class="notice" ng-show="emailError">Invalid email address</p>
+                  <div class="inputText">
+                    <input type="email" name="email" class="inputText-input" placeholder="Email Address" ng-model="userInfo.email" bg-input-validator />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="formRow">
+                  <div class="inputText">
+                    <input type="text" name="text" class="inputText-input" placeholder="Phone" ng-model="userInfo.phone" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-md-offset-3 hidden-xs hidden-sm">
+              <button type="submit" ng-click="onSubmitForm()" class="button u-pullRight">Get In Touch</button>
+            </div>
+            <div class="col-md-6 col-md-offset-3 hidden-lg hidden-md">
+              <button type="submit" ng-click="onSubmitForm()" class="button">Get In Touch</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>

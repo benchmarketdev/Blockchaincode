@@ -1,0 +1,22 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+
+    <!-- if current user initiated the tx -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }}
+    </span>
+
+    <!-- uniform data -->
+    initiated a transaction to send {{ logItem.data.amount | bgBitcoinFormat:'name' }}
+    to "<span bg-get-address-label address-id="{{ logItem.data.address }}" wallet-id="{{ logItem.walletId }}">{{ label }}</span>" from wallet "<span bg-get-local-wallet wallet-id="{{ logItem.walletId }}">{{ label }}</span>"
+
+    <div ng-show="logItem.data.needsApproval"> <b>This transaction required approval.</b></div>
+    <div ng-hide="logItem.data.needsApproval" class="activityTable-timestamp">Transaction ID: {{ logItem.target }}</div>
+    <div ng-show="logItem.data.pendingApproval" class="activityTable-timestamp">Approval ID: {{ logItem.data.pendingApproval }}</div>
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>

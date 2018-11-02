@@ -1,0 +1,31 @@
+<td bg-get-user user-id="{{ logItem.user }}">
+  <div class="activityTable-text">
+    <!-- if current user created the enterprise -->
+    <span ng-show="user.settings.id === currentUser.settings.id">
+      You 
+    </span>
+    <span ng-hide="user.settings.id === currentUser.settings.id">
+      {{ user.settings.email.email }} 
+    </span>
+    approved a pending approval to 
+    <span ng-show="logItem.data.action === 'remove'">
+      remove
+    </span>
+    <span ng-hide="logItem.data.action === 'remove'">
+      add
+    </span><br>
+    <span bg-get-user user-id="{{ logItem.data.updatedUser }}"> 
+      <span ng-hide="user.settings.id === currentUser.settings.id">
+        {{ user.settings.email.email }} 
+      </span>
+      <span ng-show="user.settings.id === currentUser.settings.id">
+        you 
+      </span>      
+    </span> 
+    as an owner<br> of the organization "{{ enterprises.all[logItem.enterpriseId].name }}"
+    <div class="activityTable-timestamp">IP Address: {{ logItem.ip }}</div>
+    <div class="activityTable-timestamp">{{ logItem.prettyDate }}</div>
+  </div>
+</td>
+
+

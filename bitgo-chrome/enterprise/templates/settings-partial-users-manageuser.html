@@ -1,0 +1,32 @@
+
+<h3 class = "u-marginBottom40" bg-get-user user-id="{{ selectedUserId }}"> {{ user.settings.email.email }} </h3>
+<form bg-permissions-form>
+  <table class="userTable">
+    <thead>
+      <tr>
+        <th>Wallet</th>
+        <th colspan="2">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(userId, walletsAccessibleByUser) in enterprises.current.users | bgEnterpriseWalletsByUser:selectedUserId">
+        <td class="userTable-user">{{ walletsAccessibleByUser.walletLabel }}</td>
+        <td class="userTable-role">
+          <span>
+            {{ walletsAccessibleByUser.permissions | bgPermissionsRoleConversionFilter }} 
+          </span>  
+        </td>
+        <td ng-show="canDelete(selectedUserId)" class="table-action">
+          <span bg-confirm-action>
+            <a ng-hide="confirmationMessage" class="u-colorRed" ng-click="initiateAction()">Remove</a>
+            <span ng-show="confirmationMessage">Are you sure?
+              <a ng-click="revokeAccess(walletsAccessibleByUser.walletId, selectedUserId)">Yes</a> |
+              <a ng-click="cancelAction()">No</a>
+            </span>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+

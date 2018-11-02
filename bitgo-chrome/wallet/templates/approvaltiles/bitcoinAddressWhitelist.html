@@ -1,0 +1,45 @@
+<div class="approvalRequest-request row" bg-get-user user-id="{{ approvalItem.creator }}">
+
+  <!-- Show this if the user created the approval -->
+  <div class="col" ng-show="userIsCreator">
+    <span ng-show="addingAddress">
+      <p><b>Your</b> request to add an address to the whitelist is awaiting approval<br>
+      Adding <b>{{ addressInQuestion }}</b></p>
+    </span>
+    <span ng-hide="addingAddress">
+      <p><b>Your</b> request to remove an address from the whitelist is awaiting approval<br>
+      Removing <b>{{ addressInQuestion }}</b></p>
+    </span>
+    <div class="meta">{{ approvalItem.prettyDate }}</div>
+  </div>
+
+  <!-- Show this if someone else created the approval -->
+  <div class="col" ng-hide="userIsCreator">
+    <span ng-show="addingAddress">
+      <p><b>{{ user.settings.email.email }}</b> requested to add an address to the whitelist<br>
+      Adding <b>{{ addressInQuestion }}</b></p>
+    </span>
+    <span ng-hide="addingAddress">
+      <p><b>{{ user.settings.email.email }}</b> requested to remove an address from the whitelist<br>
+      Removing <b>{{ addressInQuestion }}</b></p>
+    </span>
+    <div class="meta">{{ approvalItem.prettyDate }}</div>
+  </div>
+
+  <div class="col col--pullRight">
+    <div class="buttons" ng-show="userIsCreator">
+      <a class="button button--small button--cancel" ng-click="setApprovalState('rejected')">Cancel</a>
+    </div>
+    <div class="buttons" ng-hide="userIsCreator">
+      <span bg-confirm-action>
+        <a class="button button--small button--green" ng-hide="confirmationMessage" ng-click="setApprovalState('approved')">Approve</a>
+        <a class="button button--small button--reject" ng-hide="confirmationMessage" ng-click="initiateAction()">Reject</a>
+        <span ng-show="confirmationMessage">Are you sure?
+          <a ng-click="setApprovalState('rejected')">Yes</a> | 
+          <a ng-click="cancelAction()">No</a>
+        </span>
+      </span>
+    </div>
+  </div>
+
+</div>

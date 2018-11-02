@@ -1,0 +1,31 @@
+<td class="u-pointer" ng-click="toggleActiveTile(tileItem)">{{ tileItem.address }}</td>
+<td colspan="2" class="addressTable-label u-pointer" ng-click="toggleActiveTile(tileItem)" ng-show="showState('initial')">
+  {{ tileItem.label }}
+</td>
+<td class="table-action" ng-show="showState('initial')">
+  <a ng-click="removeAddress(tileItem)">Remove</a>
+</td>
+
+<td colspan="1" ng-show="showState('labeling')">
+
+  <!-- We have odd html formatting to allow the form to span -->
+  <!-- Multiple <td>'s - so the user can click enter to submit the form -->
+  <form ng-submit="saveTileItemLabel(tileItem, tileItem.temporaryLabel)">
+  <!-- Label Input -->
+    <div class="col">
+      <div class="formRow" ng-class="{ 'formRow--error': temporaryLabelError }">
+        <div class="inputText inputText--tableRow">
+          <input type="text" name="temporaryLabel" ng-model="tileItem.temporaryLabel" bg-input-validator class="inputText-input inputText-input--tableRow input-{{ tileItem.index }}" placeholder="Address label" bg-focus-when="true">
+        </div>
+      </div>
+    </div>
+  </td>
+
+  <td colspan="2" ng-show="showState('labeling')">
+    <!-- Tile Buttons -->
+    <div class="col">
+      <button type="submit" class="button button--small button--inline" ng-click="saveTileItemLabel(tileItem, tileItem.temporaryLabel)">Save</button>
+      <button class="button button--grey button--small button--inline" ng-click="cancelTileItemEdit()">Cancel</button>
+    </div>
+  </form>
+</td>
