@@ -1,0 +1,576 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page should render home page 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(ConnectedRouter)
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <ConnectedRouter
+      action="POP"
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+      location={
+        Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        }
+      }
+      onLocationChanged={[Function]}
+    >
+      <Router
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "createHref": [Function],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+      >
+        <Home>
+          <div
+            className="Home"
+          >
+            <Connect(Navigation)>
+              <Navigation
+                auth={
+                  Object {
+                    "data": Object {
+                      "isAuthenticated": false,
+                      "profile": Object {},
+                    },
+                    "error": null,
+                  }
+                }
+                postUnauthRequest={[Function]}
+              >
+                <div
+                  className="Navigation theme-primary-2"
+                >
+                  <Row
+                    prefix="zent"
+                  >
+                    <div
+                      className="zent-row"
+                    >
+                      <Col
+                        prefix="zent"
+                        span={12}
+                      >
+                        <div
+                          className="zent-col zent-col-12"
+                        >
+                          <Link
+                            replace={false}
+                            to="/"
+                          >
+                            <a
+                              href="/"
+                              onClick={[Function]}
+                            >
+                              <h1>
+                                Simple blockchain wallet
+                              </h1>
+                            </a>
+                          </Link>
+                        </div>
+                      </Col>
+                      <Col
+                        prefix="zent"
+                        span={12}
+                      >
+                        <div
+                          className="zent-col zent-col-12"
+                        />
+                      </Col>
+                    </div>
+                  </Row>
+                </div>
+              </Navigation>
+            </Connect(Navigation)>
+            <Connect(Form(Login))>
+              <Form(Login)
+                auth={
+                  Object {
+                    "data": Object {
+                      "isAuthenticated": false,
+                      "profile": Object {},
+                    },
+                    "error": null,
+                  }
+                }
+                onChange={[Function]}
+                onInvalid={[Function]}
+                onSubmit={[Function]}
+                onSubmitFail={[Function]}
+                onSubmitSuccess={[Function]}
+                onValid={[Function]}
+                postAuthRequest={[Function]}
+                scrollToError={false}
+                validationErrors={null}
+              >
+                <Login
+                  auth={
+                    Object {
+                      "data": Object {
+                        "isAuthenticated": false,
+                        "profile": Object {},
+                      },
+                      "error": null,
+                    }
+                  }
+                  handleSubmit={[Function]}
+                  onInvalid={[Function]}
+                  onSubmit={[Function]}
+                  onSubmitFail={[Function]}
+                  onSubmitSuccess={[Function]}
+                  onValid={[Function]}
+                  postAuthRequest={[Function]}
+                  scrollToError={false}
+                  zentForm={
+                    Object {
+                      "asyncValidateForm": [Function],
+                      "getFieldError": [Function],
+                      "getFormValues": [Function],
+                      "initialize": [Function],
+                      "isFieldDirty": [Function],
+                      "isFieldTouched": [Function],
+                      "isFieldValidating": [Function],
+                      "isFormAsyncValidated": [Function],
+                      "isFormSubmitFail": [Function],
+                      "isFormSubmitSuccess": [Function],
+                      "isSubmitting": [Function],
+                      "isValid": [Function],
+                      "isValidating": [Function],
+                      "resetFieldsValue": [Function],
+                      "setFieldExternalErrors": [Function],
+                      "setFieldsValue": [Function],
+                      "setFormDirty": [Function],
+                      "setFormPristine": [Function],
+                      "updateFormSubmitStatus": [Function],
+                      "validateForm": [Function],
+                    }
+                  }
+                >
+                  <Row
+                    prefix="zent"
+                  >
+                    <div
+                      className="zent-row"
+                    >
+                      <Col
+                        offset={8}
+                        prefix="zent"
+                        span={8}
+                      >
+                        <div
+                          className="zent-col zent-col-8 zent-col-offset-8"
+                        >
+                          <div
+                            className="Login"
+                          >
+                            <h1>
+                              Login
+                            </h1>
+                            <Form
+                              disableEnterSubmit={true}
+                              onSubmit={[Function]}
+                              prefix="zent"
+                              vertical={true}
+                            >
+                              <form
+                                className="zent-form zent-form--vertical"
+                                onKeyDown={[Function]}
+                                onSubmit={[Function]}
+                              >
+                                <FormInputField
+                                  label="Username:"
+                                  name="username"
+                                  required={true}
+                                  type="text"
+                                  validations={
+                                    Object {
+                                      "required": true,
+                                    }
+                                  }
+                                >
+                                  <Field
+                                    clearErrorOnFocus={true}
+                                    component={[Function]}
+                                    label="Username:"
+                                    name="username"
+                                    required={true}
+                                    type="text"
+                                    validateOnBlur={true}
+                                    validateOnChange={true}
+                                    validationError=""
+                                    validationErrors={Object {}}
+                                    validations={
+                                      Object {
+                                        "required": true,
+                                      }
+                                    }
+                                    value=""
+                                  >
+                                    <ControlGroup
+                                      clearErrorOnFocus={true}
+                                      error=""
+                                      errors={
+                                        Array [
+                                          "",
+                                        ]
+                                      }
+                                      isAsyncValidated={[Function]}
+                                      isDirty={false}
+                                      isTouched={false}
+                                      isValid={false}
+                                      label="Username:"
+                                      name="username"
+                                      onBlur={[Function]}
+                                      onChange={[Function]}
+                                      onFocus={[Function]}
+                                      required={true}
+                                      type="text"
+                                      validateOnBlur={true}
+                                      validateOnChange={true}
+                                      validationError=""
+                                      validationErrors={Object {}}
+                                      validations={
+                                        Object {
+                                          "required": true,
+                                        }
+                                      }
+                                      value=""
+                                    >
+                                      <div
+                                        className="zent-form__control-group "
+                                      >
+                                        <label
+                                          className="zent-form__control-label"
+                                        >
+                                          <em
+                                            className="zent-form__required"
+                                          >
+                                            *
+                                          </em>
+                                          Username:
+                                        </label>
+                                        <div
+                                          className="zent-form__controls"
+                                        >
+                                          <InputWrap
+                                            clearErrorOnFocus={true}
+                                            error=""
+                                            errors={
+                                              Array [
+                                                "",
+                                              ]
+                                            }
+                                            isAsyncValidated={[Function]}
+                                            isDirty={false}
+                                            isTouched={false}
+                                            isValid={false}
+                                            name="username"
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onFocus={[Function]}
+                                            type="text"
+                                            validateOnBlur={true}
+                                            validateOnChange={true}
+                                            validationError=""
+                                            validationErrors={Object {}}
+                                            validations={
+                                              Object {
+                                                "required": true,
+                                              }
+                                            }
+                                            value=""
+                                          >
+                                            <Input
+                                              autoFocus={false}
+                                              autoSelect={false}
+                                              disabled={false}
+                                              name="username"
+                                              onBlur={[Function]}
+                                              onChange={[Function]}
+                                              onFocus={[Function]}
+                                              prefix="zent"
+                                              readOnly={false}
+                                              showClear={false}
+                                              type="text"
+                                              value=""
+                                            >
+                                              <div
+                                                className="zent-input-wrapper"
+                                                style={Object {}}
+                                              >
+                                                <input
+                                                  autoFocus={false}
+                                                  className="zent-input"
+                                                  disabled={false}
+                                                  name="username"
+                                                  onBlur={[Function]}
+                                                  onChange={[Function]}
+                                                  onFocus={[Function]}
+                                                  onKeyDown={[Function]}
+                                                  readOnly={false}
+                                                  type="text"
+                                                  value=""
+                                                />
+                                              </div>
+                                            </Input>
+                                          </InputWrap>
+                                        </div>
+                                      </div>
+                                    </ControlGroup>
+                                  </Field>
+                                </FormInputField>
+                                <FormInputField
+                                  label="Password:"
+                                  name="password"
+                                  required={true}
+                                  type="password"
+                                  validations={
+                                    Object {
+                                      "required": true,
+                                    }
+                                  }
+                                >
+                                  <Field
+                                    clearErrorOnFocus={true}
+                                    component={[Function]}
+                                    label="Password:"
+                                    name="password"
+                                    required={true}
+                                    type="password"
+                                    validateOnBlur={true}
+                                    validateOnChange={true}
+                                    validationError=""
+                                    validationErrors={Object {}}
+                                    validations={
+                                      Object {
+                                        "required": true,
+                                      }
+                                    }
+                                    value=""
+                                  >
+                                    <ControlGroup
+                                      clearErrorOnFocus={true}
+                                      error=""
+                                      errors={
+                                        Array [
+                                          "",
+                                        ]
+                                      }
+                                      isAsyncValidated={[Function]}
+                                      isDirty={false}
+                                      isTouched={false}
+                                      isValid={false}
+                                      label="Password:"
+                                      name="password"
+                                      onBlur={[Function]}
+                                      onChange={[Function]}
+                                      onFocus={[Function]}
+                                      required={true}
+                                      type="password"
+                                      validateOnBlur={true}
+                                      validateOnChange={true}
+                                      validationError=""
+                                      validationErrors={Object {}}
+                                      validations={
+                                        Object {
+                                          "required": true,
+                                        }
+                                      }
+                                      value=""
+                                    >
+                                      <div
+                                        className="zent-form__control-group "
+                                      >
+                                        <label
+                                          className="zent-form__control-label"
+                                        >
+                                          <em
+                                            className="zent-form__required"
+                                          >
+                                            *
+                                          </em>
+                                          Password:
+                                        </label>
+                                        <div
+                                          className="zent-form__controls"
+                                        >
+                                          <InputWrap
+                                            clearErrorOnFocus={true}
+                                            error=""
+                                            errors={
+                                              Array [
+                                                "",
+                                              ]
+                                            }
+                                            isAsyncValidated={[Function]}
+                                            isDirty={false}
+                                            isTouched={false}
+                                            isValid={false}
+                                            name="password"
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onFocus={[Function]}
+                                            type="password"
+                                            validateOnBlur={true}
+                                            validateOnChange={true}
+                                            validationError=""
+                                            validationErrors={Object {}}
+                                            validations={
+                                              Object {
+                                                "required": true,
+                                              }
+                                            }
+                                            value=""
+                                          >
+                                            <Input
+                                              autoFocus={false}
+                                              autoSelect={false}
+                                              disabled={false}
+                                              name="password"
+                                              onBlur={[Function]}
+                                              onChange={[Function]}
+                                              onFocus={[Function]}
+                                              prefix="zent"
+                                              readOnly={false}
+                                              showClear={false}
+                                              type="password"
+                                              value=""
+                                            >
+                                              <div
+                                                className="zent-input-wrapper"
+                                                style={Object {}}
+                                              >
+                                                <input
+                                                  autoFocus={false}
+                                                  className="zent-input"
+                                                  disabled={false}
+                                                  name="password"
+                                                  onBlur={[Function]}
+                                                  onChange={[Function]}
+                                                  onFocus={[Function]}
+                                                  onKeyDown={[Function]}
+                                                  readOnly={false}
+                                                  type="password"
+                                                  value=""
+                                                />
+                                              </div>
+                                            </Input>
+                                          </InputWrap>
+                                        </div>
+                                      </div>
+                                    </ControlGroup>
+                                  </Field>
+                                </FormInputField>
+                                <div
+                                  className="zent-form__form-actions"
+                                >
+                                  <Button
+                                    block={false}
+                                    bordered={true}
+                                    className=""
+                                    disabled={false}
+                                    htmlType="submit"
+                                    loading={false}
+                                    outline={false}
+                                    prefix="zent"
+                                    size="medium"
+                                    type="primary"
+                                  >
+                                    <button
+                                      className="zent-btn-primary zent-btn"
+                                      disabled={false}
+                                      onClick={[Function]}
+                                      type="submit"
+                                    >
+                                      <span
+                                        key=".0"
+                                      >
+                                        Submit
+                                      </span>
+                                    </button>
+                                  </Button>
+                                </div>
+                              </form>
+                            </Form>
+                          </div>
+                        </div>
+                      </Col>
+                    </div>
+                  </Row>
+                </Login>
+              </Form(Login)>
+            </Connect(Form(Login))>
+          </div>
+        </Home>
+      </Router>
+    </ConnectedRouter>
+  </Connect(ConnectedRouter)>
+</Provider>
+`;

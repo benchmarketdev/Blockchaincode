@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error page should render PageError page 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(ConnectedRouter)
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <ConnectedRouter
+      action="POP"
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+      location={
+        Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        }
+      }
+      onLocationChanged={[Function]}
+    >
+      <Router
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "createHref": [Function],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+      >
+        <PageError>
+          <div>
+            <Connect(Navigation)>
+              <Navigation
+                auth={
+                  Object {
+                    "data": Object {
+                      "isAuthenticated": false,
+                      "profile": Object {},
+                    },
+                    "error": null,
+                  }
+                }
+                postUnauthRequest={[Function]}
+              >
+                <div
+                  className="Navigation theme-primary-2"
+                >
+                  <Row
+                    prefix="zent"
+                  >
+                    <div
+                      className="zent-row"
+                    >
+                      <Col
+                        prefix="zent"
+                        span={12}
+                      >
+                        <div
+                          className="zent-col zent-col-12"
+                        >
+                          <Link
+                            replace={false}
+                            to="/"
+                          >
+                            <a
+                              href="/"
+                              onClick={[Function]}
+                            >
+                              <h1>
+                                Simple blockchain wallet
+                              </h1>
+                            </a>
+                          </Link>
+                        </div>
+                      </Col>
+                      <Col
+                        prefix="zent"
+                        span={12}
+                      >
+                        <div
+                          className="zent-col zent-col-12"
+                        />
+                      </Col>
+                    </div>
+                  </Row>
+                </div>
+              </Navigation>
+            </Connect(Navigation)>
+            <div
+              className="Error-page"
+            >
+              <h1>
+                Page unavailable.
+              </h1>
+            </div>
+          </div>
+        </PageError>
+      </Router>
+    </ConnectedRouter>
+  </Connect(ConnectedRouter)>
+</Provider>
+`;

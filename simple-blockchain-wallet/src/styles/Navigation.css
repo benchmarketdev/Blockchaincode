@@ -1,0 +1,22 @@
+.Navigation {
+  padding: 16px 20px;
+  color: #f8f8f8;
+  background-color: #444;
+}
+
+.Navigation h1 {
+  color: #f8f8f8;
+}
+
+.Navigation-user {
+  text-align: right;
+}
+
+.Navigation-user a {
+  color: #f8f8f8;
+  margin: 0 10px;
+}
+
+.Navigation-user button {
+  margin-left: 10px;
+}

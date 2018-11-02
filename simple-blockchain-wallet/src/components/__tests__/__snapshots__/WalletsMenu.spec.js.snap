@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component Should match snapshot 1`] = `
+<MockWalletsMenu>
+  <WalletsMenu
+    getWalletListRequest={[Function]}
+    loading={false}
+    walletList={Array []}
+  >
+    <div
+      className="Wallet-content"
+    >
+      <h1>
+        Wallet list:
+      </h1>
+      <div
+        className="Wallet-list"
+      />
+    </div>
+  </WalletsMenu>
+</MockWalletsMenu>
+`;

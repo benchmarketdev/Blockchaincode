@@ -1,0 +1,15 @@
+.Login {
+
+  background-color: #e8f7fd;
+  border-radius: 5px;
+  margin-top: 150px;
+}
+
+.Login form {
+  padding: 15px;
+}
+
+.Login h1 {
+  text-align: center;
+  padding-top: 20px;
+}

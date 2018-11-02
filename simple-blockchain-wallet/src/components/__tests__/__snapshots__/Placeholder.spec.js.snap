@@ -1,0 +1,633 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component Should match snapshot 1`] = `
+<MockPlaceHolder>
+  <LoadingPlaceholder>
+    <RichTextBlock
+      animate={true}
+      className=""
+      dashed={true}
+      prefix="zent"
+      rows={7}
+      shape="rect"
+      size={160}
+      style={Object {}}
+    >
+      <div
+        className="zent-placeholder-richtext-block"
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
+      >
+        <Rectangle
+          animate={true}
+          height={160}
+          prefix="zent"
+          style={
+            Object {
+              "marginRight": 10,
+            }
+          }
+          width={160}
+        >
+          <Base
+            animate={true}
+            className="zent-placeholder-rectangle"
+            prefix="zent"
+            style={
+              Object {
+                "height": 160,
+                "marginRight": 10,
+                "minWidth": 160,
+              }
+            }
+          >
+            <div
+              className="zent-placeholder-shape zent-placeholder-shape--animate zent-placeholder-rectangle"
+              style={
+                Object {
+                  "height": 160,
+                  "marginRight": 10,
+                  "minWidth": 160,
+                }
+              }
+            />
+          </Base>
+        </Rectangle>
+        <TextBlock
+          animate={true}
+          dashSegments={
+            Array [
+              Array [
+                61.8,
+                38,
+              ],
+              Array [
+                30,
+                25,
+                44,
+              ],
+              Array [
+                20,
+                75,
+              ],
+              Array [
+                33,
+                16,
+                20,
+                27,
+              ],
+              Array [
+                12,
+                32,
+                53,
+              ],
+              Array [
+                45,
+                12,
+                42,
+              ],
+              Array [
+                20,
+                10,
+                47,
+                18,
+              ],
+              Array [
+                14,
+                47,
+                37,
+              ],
+            ]
+          }
+          dashed={true}
+          lineSpacing="0.7em"
+          prefix="zent"
+          rows={7}
+          widths={
+            Array [
+              97,
+              99,
+              94,
+              92,
+              96,
+              95,
+              98,
+              60,
+            ]
+          }
+        >
+          <div
+            className="zent-placeholder-text-block"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          >
+            <TextRowDashed
+              animate={true}
+              key="0"
+              lineSpacing={0}
+              prefix="zent"
+              segments={
+                Array [
+                  61.8,
+                  38,
+                ]
+              }
+              style={
+                Object {
+                  "width": "97%",
+                }
+              }
+            >
+              <div
+                className="zent-placeholder-text-row-dashed"
+                style={
+                  Object {
+                    "marginTop": 0,
+                    "width": "97%",
+                  }
+                }
+              >
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="0"
+                  style={
+                    Object {
+                      "paddingLeft": 0,
+                      "width": "61.8%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="1"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "38%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+              </div>
+            </TextRowDashed>
+            <TextRowDashed
+              animate={true}
+              key="1"
+              lineSpacing="0.7em"
+              prefix="zent"
+              segments={
+                Array [
+                  30,
+                  25,
+                  44,
+                ]
+              }
+              style={
+                Object {
+                  "width": "99%",
+                }
+              }
+            >
+              <div
+                className="zent-placeholder-text-row-dashed"
+                style={
+                  Object {
+                    "marginTop": "0.7em",
+                    "width": "99%",
+                  }
+                }
+              >
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="0"
+                  style={
+                    Object {
+                      "paddingLeft": 0,
+                      "width": "30%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="1"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "25%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="2"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "44%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+              </div>
+            </TextRowDashed>
+            <TextRowDashed
+              animate={true}
+              key="2"
+              lineSpacing="0.7em"
+              prefix="zent"
+              segments={
+                Array [
+                  20,
+                  75,
+                ]
+              }
+              style={
+                Object {
+                  "width": "94%",
+                }
+              }
+            >
+              <div
+                className="zent-placeholder-text-row-dashed"
+                style={
+                  Object {
+                    "marginTop": "0.7em",
+                    "width": "94%",
+                  }
+                }
+              >
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="0"
+                  style={
+                    Object {
+                      "paddingLeft": 0,
+                      "width": "20%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="1"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "75%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+              </div>
+            </TextRowDashed>
+            <TextRowDashed
+              animate={true}
+              key="3"
+              lineSpacing="0.7em"
+              prefix="zent"
+              segments={
+                Array [
+                  33,
+                  16,
+                  20,
+                  27,
+                ]
+              }
+              style={
+                Object {
+                  "width": "92%",
+                }
+              }
+            >
+              <div
+                className="zent-placeholder-text-row-dashed"
+                style={
+                  Object {
+                    "marginTop": "0.7em",
+                    "width": "92%",
+                  }
+                }
+              >
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="0"
+                  style={
+                    Object {
+                      "paddingLeft": 0,
+                      "width": "33%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="1"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "16%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="2"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "20%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="3"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "27%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+              </div>
+            </TextRowDashed>
+            <TextRowDashed
+              animate={true}
+              key="4"
+              lineSpacing="0.7em"
+              prefix="zent"
+              segments={
+                Array [
+                  12,
+                  32,
+                  53,
+                ]
+              }
+              style={
+                Object {
+                  "width": "96%",
+                }
+              }
+            >
+              <div
+                className="zent-placeholder-text-row-dashed"
+                style={
+                  Object {
+                    "marginTop": "0.7em",
+                    "width": "96%",
+                  }
+                }
+              >
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="0"
+                  style={
+                    Object {
+                      "paddingLeft": 0,
+                      "width": "12%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="1"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "32%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="2"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "53%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+              </div>
+            </TextRowDashed>
+            <TextRowDashed
+              animate={true}
+              key="5"
+              lineSpacing="0.7em"
+              prefix="zent"
+              segments={
+                Array [
+                  45,
+                  12,
+                  42,
+                ]
+              }
+              style={
+                Object {
+                  "width": "95%",
+                }
+              }
+            >
+              <div
+                className="zent-placeholder-text-row-dashed"
+                style={
+                  Object {
+                    "marginTop": "0.7em",
+                    "width": "95%",
+                  }
+                }
+              >
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="0"
+                  style={
+                    Object {
+                      "paddingLeft": 0,
+                      "width": "45%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="1"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "12%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="2"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "42%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+              </div>
+            </TextRowDashed>
+            <TextRowDashed
+              animate={true}
+              key="6"
+              lineSpacing="0.7em"
+              prefix="zent"
+              segments={
+                Array [
+                  20,
+                  10,
+                  47,
+                  18,
+                ]
+              }
+              style={
+                Object {
+                  "width": "98%",
+                }
+              }
+            >
+              <div
+                className="zent-placeholder-text-row-dashed"
+                style={
+                  Object {
+                    "marginTop": "0.7em",
+                    "width": "98%",
+                  }
+                }
+              >
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="0"
+                  style={
+                    Object {
+                      "paddingLeft": 0,
+                      "width": "20%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="1"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "10%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="2"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "47%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+                <div
+                  className="zent-placeholder-text-row-dashed-segment"
+                  key="3"
+                  style={
+                    Object {
+                      "paddingLeft": "0.3em",
+                      "width": "18%",
+                    }
+                  }
+                >
+                  <div
+                    className="zent-placeholder-shape zent-placeholder-shape--animate"
+                  />
+                </div>
+              </div>
+            </TextRowDashed>
+          </div>
+        </TextBlock>
+      </div>
+    </RichTextBlock>
+  </LoadingPlaceholder>
+</MockPlaceHolder>
+`;

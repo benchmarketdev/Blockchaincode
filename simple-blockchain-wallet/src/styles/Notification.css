@@ -1,0 +1,13 @@
+.Notification {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #fff;
+}
+
+.Notification.success {
+  background-color: #459c3c;
+}
+
+.Notification.failure {
+  background-color: #ef5d5d;
+}

@@ -1,0 +1,64 @@
+.Wallet {}
+
+.Wallet-menu {
+  height: calc(100vh - 50px);
+  position: fixed;
+  width: 180px;
+}
+
+.Wallet-content {
+  overflow: hidden;
+  padding: 16px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.Wallet-content h1 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.Wallet-balance__label {
+  display: block;
+}
+
+.Wallet-balance__text {
+  font-weight: bold;
+  color: #333;
+  padding: 0 10px;
+  line-height: 1.4;
+  border: 1px solid;
+  word-break: break-all;
+  display: block;
+  margin: 5px 0;
+}
+
+.Wallet-form {
+  padding: 1rem;
+  border: 1px solid #dcdcdc;
+}
+
+.Wallet-list {
+  border: 1px solid #dcdcdc;
+}
+
+.Wallet-list--item {
+  text-align: center;
+}
+
+.Wallet-list--item:hover {
+  background-color: #dcdcdc;
+}
+
+.Wallet-list--item:not(:first-child) {
+  border-top: 1px solid #dcdcdc;
+}
+
+.Wallet-list__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #333;
+  padding: 1rem 0;
+}
+
