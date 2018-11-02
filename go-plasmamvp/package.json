@@ -1,0 +1,26 @@
+{
+  "name": "go-plasmamvp",
+  "version": "1.0.0",
+  "description": "This is a WIP [plasma mvp](https://ethresear.ch/t/minimal-viable-plasma/426) implementation in Go. We are learning plasma by trying to implement.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D-Technologies/go-plasmamvp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/D-Technologies/go-plasmamvp/issues"
+  },
+  "homepage": "https://github.com/D-Technologies/go-plasmamvp#readme",
+  "dependencies": {
+    "truffle-hdwallet-provider": "0.0.5"
+  }
+}

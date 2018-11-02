@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+echo "Building BitPay Plugin Directory..."
+rm -rf wpsc-merchants
+mkdir wpsc-merchants
+mkdir wpsc-merchants/bitpay
+mkdir wpsc-merchants/bitpay/lib
+cp -r src/bitpay/assets wpsc-merchants/bitpay
+cp -r src/bitpay/templates wpsc-merchants/bitpay
+cp src/bitpay.merchant.php wpsc-merchants/
+cp LICENSE wpsc-merchants/ > /dev/null
+cp README.md wpsc-merchants/ > /dev/null
+cp CHANGELOG wpsc-merchants/ > /dev/null
+cp -avR vendor/bitpay/php-client/src/* wpsc-merchants/bitpay/lib > /dev/null
+echo "Setup finished"

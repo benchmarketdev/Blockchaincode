@@ -1,0 +1,249 @@
+.marketplace-container {
+    margin-right:-18px;
+    padding-right:17px;
+    padding-left:0;
+    /*padding-top: 60px;*/
+}
+.padding0{
+    padding:0;
+}
+.celebrity-card {
+    max-width:310px;
+    max-height:414px;
+    margin:auto;
+    border: 2px solid #44648d;
+    border-radius: 5px;
+    background: linear-gradient(#0d1828, #14253b);
+    margin-bottom: 10px;
+    cursor:pointer;
+}
+.celebrity-card:hover {
+    border-color: #4b9cff;
+}
+.img-avatar {
+    width:100%;
+    position: relative;
+    z-index:1;
+}
+.player-name {
+    z-index: 2;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    background: linear-gradient(#406297, #253a5baf, #1c408015);
+    font-family: monospace;
+    font-size: 20px;
+    padding-left: 5px;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 15px blue, 0 0 5px darkblue;
+}
+.verification-status{
+    height: 32px;
+    width: 40px;
+    position: absolute;
+    z-index: 2;
+    /*background: rgba(255,255,255,0.03);*/
+    /*border-radius:5px;*/
+    top: 0;
+    right: 0;
+    font-size:18px;
+    padding-right: 5px;
+    text-align: right;
+
+}
+.verified{
+    color: #34ff55;
+}
+.locked {
+    color: #ff3455;
+}
+.team-name{
+    z-index: 2;
+    position: absolute;
+    font-family: monospace;
+    font-size: 20px;
+    padding-left: 5px;
+    color: lightgrey;
+    text-shadow: 1px 1px 2px black, 0 0 15px blue, 0 0 5px darkblue;
+    right: 0;
+    bottom: -5px;
+    padding-right: 5px;
+    background: linear-gradient(to left, rgba(155,245,255,0.5) , transparent);
+}
+.label-title {
+    font-size: 14px;
+    font-family: monospace;
+    font-weight: bolder;
+    color: white;
+    margin-bottom:0;
+}
+.italic{
+    font-style: italic;
+}
+.a-label {
+    font-family: Montserrat-UltraLight;
+    font-size: 15px;
+    width:100px;
+    color: #0297bf;
+    padding-top: 1px;
+}
+.a-label:hover {
+    text-decoration: none;
+    color: gold;
+}
+.span-wrap{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width: 80px;
+    float: right;
+    /*display: inline-block;*/
+    /*margin-top: -1px;*/
+    /*padding-left: 5px;*/
+}
+.btn-buy {
+    width: 100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.crypto-form {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #96939342;
+    border-radius: 5px;
+    padding: 10px;
+}
+.crypto-form>thead>tr>td {
+    color: white;
+    border-bottom: 2px solid #0297bf;
+    font-size:18px;
+    font-family: Montserrat-UltraLight;
+    padding: 10px 15px;
+    border-left: 1px solid #33333393;
+}
+.crypto-form>tbody>tr>td {
+    border-bottom: 1px solid #ffffff43;
+    font-size:14px;
+    font-family: Montserrat-UltraLight;
+    padding: 10px 15px;
+    border-left: 1px solid #33333393;
+}
+.buy {
+    color: red;
+}
+.sell {
+    color: #38D865;
+}
+.white-text {
+    color: white!important;
+}
+.tr-buy {
+    background: rgba(255, 0, 0, 0.1);
+}
+.tr-sell {
+    background: rgba(0, 255, 0, 0.1);
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 13.8px 0;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #ddddff; /*linear-gradient(#333, #999, #333); */
+    border-radius: 3px;
+    /*border: 0.2px solid #010101;*/
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000055;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: radial-gradient(#ffffff, #1111ff);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ddddff; /*linear-gradient(#333, #999, #333); */
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #ddddff; /*linear-gradient(#333, #999, #333); */
+    border-radius: 3px;
+    /*border: 0.2px solid #010101;*/
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 16px;
+    width: 16px;
+    border-radius: 3px;
+    background: radial-gradient(#ffffff, #1111ff);
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #c6ffff;
+    cursor: pointer;
+    height: 8.4px;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: linear-gradient(#333, #999, #333);
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: linear-gradient(#333, #999, #333);
+}
+
+#span_receive_eth{
+    width: 70px;
+    color: red;
+    text-align: right;
+}
+.panel {
+    font-family: Montserrat-UltraLight;
+    font-size: 16px;
+    color: white;
+    background: transparent;
+}
+.fontsize28{
+    font-size: 28px;
+}
+.fontsize20{
+    font-size: 20px;
+}

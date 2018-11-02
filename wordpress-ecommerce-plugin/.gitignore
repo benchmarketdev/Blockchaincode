@@ -1,0 +1,14 @@
+/bin/**
+/nbproject/
+/wordpress/
+/wpsc-merchants/
+/vendor/
+/.settings/
+/build/
+.project
+.buildpath
+composer.lock
+license.txt
+bitpay_table.sql
+wp-cli.yml
+tests\php_input.txt

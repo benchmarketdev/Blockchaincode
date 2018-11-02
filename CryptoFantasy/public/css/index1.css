@@ -1,0 +1,1364 @@
+@font-face {
+    font-family: "opensans";
+    font-style: normal;
+    font-weight: normal;
+    src: url(../fonts/opensans-regular-webfont.woff2) format("woff2")
+}
+@font-face {
+    font-family: "opensans";
+    font-style: bold;
+    font-weight: bold;
+    src: url(../fonts/opensans-bold-webfont.woff2) format("woff2")
+}
+@font-face {
+    font-family: "btcglyph";
+    font-style: normal;
+    font-weight: normal;
+    src: url(../fonts/btcglyph.woff2) format("woff2")
+}
+::-webkit-scrollbar {display:none;}
+body,
+html {
+    height: 100%
+}
+body {
+    overflow:hidden;
+    position: relative;
+    margin: 0;
+    font-family: "opensans", sans-serif, "btcglyph";
+    font-size: 11px;
+    color: hsla(206,8%,82%,.75);
+    background-image:url("../images/background4.png");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+.btn, a, a:focus, a:hover, button, button:focus, button:hover {
+    outline: 0 none!important;
+    border: none;
+    transition: all .2s ease;
+}
+.row {
+    margin: 0px;
+    float: left;
+}
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.col-md-12 {
+    padding: 0px;
+    width: 100%;
+}
+#app, .content {
+    height: 100%;
+}
+
+/* loading */
+
+#curtain {
+    margin: 80px auto;
+}
+#curtain_2 {
+    margin: 0px auto;
+}
+#order_book_loading,
+#trade_loading {
+    display: none;
+    margin: 85px auto;
+}
+#open_orders_loading,
+#fills_loading {
+    display: none;
+    margin: 60px auto;
+}
+.loader,
+.loader:before,
+.loader:after {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation: load7 1.8s infinite ease-in-out;
+    animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+    color: #434343;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+    content: '';
+    position: absolute;
+    top: 0;
+}
+.loader:before {
+    left: -3.5em;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 2.5em 0 -1.3em;
+    }
+    40% {
+        box-shadow: 0 2.5em 0 0;
+    }
+}
+@keyframes load7 {
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 2.5em 0 -1.3em;
+    }
+    40% {
+        box-shadow: 0 2.5em 0 0;
+    }
+}
+
+/* banner */
+
+.banner {
+    width: 100%;
+    height: 30px;
+    padding: 4px 20px;
+}
+.erc_txt {
+    float: left;
+    position: relative;
+    font-weight: bold;
+    margin-top: 4px;
+}
+.erc_toggle {
+    float: left;
+    margin-left: 20px;
+    
+}
+#page {
+    display: block;
+}
+.etherdelta {
+    display: none;
+}
+.etherdelta iframe {
+    border: 0px;
+}
+/* header */
+
+.header .row {
+    display: flex;
+    height: 45px;
+    margin-top: 0px;
+    background-color: #fff;
+}
+.header .brand {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header .brand span {
+    display: block;
+    width: 125px;
+    height: 100%;
+    margin-left: 14px;
+    background: url(../images/logo1.png);
+    background-size: contain;
+}
+.header .info {
+    display: flex;
+    flex: 1;
+    padding: 0 2px 0 20px;
+    background-color: #fff;
+}
+.header .info .marketinfo {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    white-space: nowrap;
+    list-style: none;
+}
+.header .marketinfo .product_selection {
+    position: relative;
+    margin-right: 20px;
+    transition: transform 1s;
+}
+.header .marketinfo .menu_entry {
+    margin-right: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(21,35,44,.8);
+}
+.header .marketinfo .menu_entry:hover {
+    color: rgba(81,141,202,.8);
+    cursor: pointer;
+}
+.header .marketinfo .arrow {
+    position: absolute;
+    top: 15px;
+    right: 4px;
+    width: 15px;
+    height: 14px;
+}
+.header .marketinfo .arrow:before {
+    content: "";
+    position: absolute;
+    top: 60%;
+    right: 8%;
+    width: 53%;
+    height: 2px;
+    margin-top: -2px;
+    background: #15232c;
+    transform: rotate(-45deg);
+    transition: all .1s;
+    pointer-events: none;
+}
+.header .marketinfo .arrow:after {
+    left: 8%;
+    transform: rotate(45deg);
+    content: "";
+    position: absolute;
+    top: 60%;
+    right: 8%;
+    width: 53%;
+    height: 2px;
+    margin-top: -2px;
+    background: #15232c;
+    transition: all .1s;
+    pointer-events: none;
+}
+.header .marketinfo .descr {
+    display: block;
+    font-size: 11px;
+    font-weight: normal;
+    color: rgba(21,35,44,.5);
+}
+.header .marketinfo .product_list {
+    position: absolute;
+    top: 46px;
+    right: -20px;
+    width: 231px;
+    margin-right: -8px;
+    padding: 14px 0 14px 14px;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 2px 5px #15232c;
+    background: #fff;
+    opacity: 1;
+    z-index: 2;
+    display: none;
+}
+.header .marketinfo .product_list:before {
+    top: -8px;
+    border-color: transparent transparent rgba(21,35,44,.1);
+    content: "";
+    position: absolute;
+    right: 12px;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border-width: 0 7px 7px;
+    border-style: solid;
+}
+.header .product_list .selection {
+    margin-bottom: 10px;
+}   
+.header .product_list .selection:last-child {
+    margin-bottom: 0px;
+}
+.header .product_list .title {
+    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #15232c;
+}   
+.header .product_list .products {
+    border-left: 1px solid rgba(30,43,52,.25);
+}
+.header .product a {
+    display: flex;
+    align-items: center;
+    padding: 8px 0 8px 10px;
+    font-size: 12px;
+    text-decoration: none!important;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color .2s ease;
+}
+.header .product .item_name {
+    flex: 0 1 25%;
+    color: #444f56;
+}
+.header .product .item_stats {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+.header .product .price {
+    flex: 1 1 0;
+    text-align: right;
+    text-overflow: ellipsis;
+    color: #444f56;
+    overflow: hidden;
+}
+.header .product .percent {
+    color: #71aa3c;
+    flex: 0 0 35%;
+    text-align: right;
+}
+.header .product .icon {
+    border-bottom: 7px solid #71aa3c;
+    opacity: 1;
+    width: 0;
+    height: 0;
+    margin: 0 15px 0 10px;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+/* trade_info_bar */
+
+.market_stat, 
+.day_volume {
+    position: relative;
+    margin-right: 20px;
+    transition: transform 1s;
+    color: #15232c;
+    font-size: 14px;
+    float: left;
+}
+.market_stat .num,
+.market_stat .back_asset,
+.day_volume .num,
+.day_volume .front_asset {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    opacity: .8;
+    color: white;
+    float: left;
+}
+.market_stat .descr,
+.price_up .descr,
+.day_volume .descr {
+    display: block;
+    font-size: 11px;
+    font-weight: normal;
+    opacity: 1;
+    color: hsla(206,8%,82%,.6);
+}
+.price_up {
+    position: relative;
+    margin-right: 20px;
+    transition: transform 1s;
+    color: #15232c;
+    font-size: 14px;
+    float:left;
+}
+.price_up .sign,
+.price_up .num {
+    color: #31ff31;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    opacity: .8;
+}   
+
+/*------------ sidebar ------------*/
+
+.sidebar {
+    width: 230px;
+    float:left;
+    border-right: 2px solid hsla(0,0%,100%,.2);
+    overflow: hidden;
+}
+.sidebar .account {
+    align-items: center;
+    padding: 0 20px;
+    text-align:center;
+}
+.sidebar .margin {
+    align-items: center;
+    text-align:center;
+    height: 40px;
+    width: 100%;
+}
+.sidebar .margin .margin_txt {
+    margin: 0;
+    margin-left: 24px;
+    font-size: 12px;
+    line-height: 43px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    float:left;
+}
+.sidebar .margin .margin_toggle {
+    margin-top: 10px;
+    float:right;
+}
+.navicon {
+    position: relative;
+    font-size: 18px;
+    margin-top: 13px;
+    cursor: pointer;
+    float:left;
+}
+.navicon:hover {
+    color: white;
+}
+.c-nav {
+    background: rgb(28, 28, 28);
+    color: #fff;
+    position: fixed;
+    width: 0px;
+    z-index: 1;
+    overflow: auto;
+    height: 100%;
+    margin-top: 43px;
+    font-weight: bold;
+}
+#netfee {
+    font-size: 16px;
+    text-align: center;
+    height: 30px;
+    padding-top: 7px;
+    border-bottom: 1px solid hsla(206,8%,82%,.15);
+    color: hsla(206,8%,82%,.75);
+    cursor: pointer;
+}
+#netfee:hover {
+    background-color:hsla(0,0,0,0.2);
+    color:white;
+}
+.asset_section {
+    border-bottom: 1px solid hsla(206,8%,82%,.15);
+    text-align: center;
+    width: 100%;
+    float: right;
+    color: hsla(206,8%,82%,.75);
+    padding: 10px 0 0 0;
+    display: none;
+}
+.asset_title_part {
+    width: 58px;
+    word-wrap: break-word;
+    float: left;
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+    border-right: 1px solid hsla(206,8%,82%,.15);
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: monospace;
+}
+#asset_title_bitcoin {
+    padding-top: 20px;
+}
+#asset_title_ethereum {
+    padding-top: 6px;
+}
+#asset_title_litecoin {
+    padding-top: 6px;
+}
+.asset_item {
+    padding: 8px 5px 22px 5px;
+    font-size: 11px;
+    cursor: pointer;
+}
+.asset_item:hover {
+    background-color:hsla(206,8%,82%,.15);
+}
+.asset_title {
+    font-size: 14px;
+    color: white;
+}
+.crypto_name {
+    float: left;
+    width: 38%;
+    text-align: left;
+}
+.crypto_price {
+    float: left;
+    width: 36%;
+    text-align: left;
+}
+.crypto_percent {
+    float: left;
+    color: #31ff31;
+    width: 18%;
+    text-align: right;
+}
+.crypto_rise {
+    float: left;
+    width: 8%;
+    text-align: right;
+}
+.fa-chevron-up {
+    float:right;
+    color:#31ff31;
+}
+.fa-chevron-down {
+    float:right;
+    color:#fd2d2f;
+}
+.txt_balance {
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.btn_style1 {
+    height: 60px;
+}
+.btn-outline-primary {
+    font-size:12px;
+}
+#deposit_btn {
+    float:left;
+    padding: 8px 20px;
+    color: hsla(0,0%,100%,.5);
+    border: 1px solid hsla(0,0%,100%,.5);
+    border-radius: 5px;
+    cursor: pointer;
+}
+#withdraw_btn {
+    float:right;
+    padding: 8px 20px;
+    color: hsla(0,0%,100%,.5);
+    border: 1px solid hsla(0,0%,100%,.5);
+    border-radius: 5px;
+    cursor: pointer;
+}
+#deposit_btn:hover,
+#withdraw_btn:hover {
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: rgba(0,0,0,0.5);
+}
+.currency_name {
+    float:left;
+}
+.front_currency_price,
+.back_currency_price {
+    float:right;
+}
+.style1 {
+    height:30px;
+}
+.sidebar .margin .indicator {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    width: 22px;
+    border-radius: 2px;
+    background: #fff;
+    transition: left .15s ease-out,transform .15s ease-out;
+    left: 100%;
+    transform: translateX(-100%) translateX(-1px);
+}
+.sidebar .margin .off_txt {
+    padding-left: 2px;
+    color: hsla(0,0%,100%,.5);
+    opacity: 1;
+    flex: 1;
+    padding-bottom: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.sidebar .margin .on_txt {
+    flex: 1;
+    padding-bottom: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+}
+.sidebar .account {
+    border-bottom: 2px solid rgba(21,35,44,0.8);
+    background-color: rgba(61,132,214,0.8);
+    padding: 30px 20px;
+}
+.sidebar .account button {
+    width: 100%;
+    padding: 14px 0;
+    border: 1px solid hsla(0,0%,100%,.4);
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: transparent;
+    transition: all .3s ease;
+}
+.sidebar .account .or_txt {
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
+    text-align: center;
+}
+.sidebar .account a {
+    width: 100%;
+    padding: 14px 0;
+    border: 1px solid hsla(0,0%,100%,.4);
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+.sidebar .orderform {
+    background: rgba(0, 0, 0, 0.6);
+    padding : 20px;
+    padding-top: 0px;
+    height: 100%;
+    overflow: auto;
+}
+.sidebar .orderform .trade_type {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.sidebar .orderform .market {
+    flex: 1;
+    margin-bottom: -2px;
+    padding: 3px 4px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color .2s ease-in-out,color .2s ease-in-out;
+}
+.sidebar .orderform .limit {
+    flex: 1;
+    margin-bottom: -2px;
+    padding: 3px 4px;
+    font-size: 12px;
+    border-radius: 4px;
+    text-align: center;
+    color: hsla(0,0%,100%,.4);
+    cursor: pointer;
+    user-select: none;
+    transition: border-color .2s ease-in-out,color .2s ease-in-out;
+}
+.sidebar .orderform .stop {
+    flex: 1;
+    margin-bottom: -2px;
+    padding: 3px 4px;
+    font-size: 12px;
+    border-radius: 4px;
+    text-align: center;
+    color: hsla(0,0%,100%,.4);
+    cursor: pointer;
+    user-select: none;
+    transition: border-color .2s ease-in-out,color .2s ease-in-out;
+}
+.sidebar .orderform .limit .fa,
+.sidebar .orderform .stop .fa {
+    display:none;
+}
+.sidebar .orderform .trade_side {
+    background-color: rgba(0,0,0,0);
+}
+.sidebar .orderform .buy {
+    width: 100%;
+    flex: 1;
+    border: 2px solid #31ff31;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+}
+.sidebar .orderform .sell {
+    margin-top: 2px;
+    width: 100%;
+    flex: 1;
+    border: 1px solid hsla(0,0%,100%,.5);
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    color: hsla(0,0%,100%,.5);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color .2s ease-in-out;
+}
+.sidebar .orderform .section,
+.sidebar .orderform .advanced_section {
+    margin-top: 15px;
+}
+.sidebar .ordeform .note {
+    margin-top: 10px;
+}
+.sidebar .orderform .section_header {
+    margin-bottom: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    color: hsla(0,0%,100%,.8);
+}
+.sidebar .orderform .order_form_input_box input {
+    width: 100%;
+    height: 36px;
+    padding: 8px 5px 8px 10px;
+    border: 1px solid #565f66;
+    border-radius: 2px;
+    outline: 0;
+    box-shadow: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    color: #fff;
+    background-color: rgba(64,74,82,0.2);
+}
+.sidebar .orderform .order_form_input_box span {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    font-size: 11px;
+    font-weight: bold;
+    color: hsla(0,0%,100%,.9);
+    transform: translateY(-50%);
+}
+.sidebar .orderform .order_form_input_box {
+    position: relative;
+}
+.sidebar .orderform .order_total {
+    display: flex;
+    margin-top: 15px;
+    padding: 15px 0;
+    border-top: 2px solid hsla(206,8%,82%,.15);
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 11px;
+    color: #ced2d5;
+}
+.sidebar .orderform .order_total span {
+    font-size: 10px;
+    font-weight: normal;
+}
+.sidebar .orderform .total {
+    flex: 1;
+    font-size: 10px;
+    text-align: right;
+}
+.sidebar .orderform .stateful_btn {
+    width: 100%;
+    height: 44px;
+    margin: 0 auto;
+    padding: 13px 5px;
+    border: 2px solid #31ff31;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color .3s ease,color .5s ease;
+    background-color: rgba(0,0,0,0);
+}
+.sidebar .orderform .advanced_section .header {
+    display: flex;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.sidebar .orderform .advanced_section .spacer {
+    flex: 1;
+}
+.sidebar .orderform .advanced_section a {
+    font-size: 11px;
+    text-decoration: underline;
+    color: hsla(0,0%,100%,.6);
+}
+.sidebar .orderform .advanced_section .header span {
+    display: inline-block;
+    width: 12px;
+    height: 9px;
+    margin-right: 5px;
+    background: url("data:image/svg+xml,%3Csvg width='13' height='8' viewBox='0 0 13 8' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EShape%3C/title%3E%3Cpath d='M.5 2.076l6 5.453 6-5.453L10.798.529 6.5 4.435 2.202.529.5 2.076z' fill='%23FFF' fill-rule='evenodd'/%3E%3C/svg%3E") no-repeat 50%,50%;
+    background-size: 100%;
+    transform: rotate(-90deg);
+}
+.sidebar .orderform .advanced_section .advanced_content {
+    margin-top: 15px;
+    border-top: 2px solid hsla(206,8%,82%,.15);
+    display: none;
+}
+.sidebar .orderform .advanced_section .advanced_content .header {
+    margin-bottom: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    color: hsla(0,0%,100%,.8);
+}
+.sidebar .orderform .advanced_section .advanced_content select {
+    width: 100%;
+    height: 36px;
+    padding: 8px 5px 8px 10px;
+    border: 1px solid #565f66;
+    border-radius: 2px;
+    box-shadow: none;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    color: #fff;
+    background-color: #232526;
+}
+.sidebar .orderform .limit_order,
+.sidebar .orderform .stop_order {
+    display: none;
+}
+.sidebar .orderform .advanced_section .advanced_btn:hover {
+    color: #fff;
+}
+.cancel {
+    display: none;
+}
+
+/* order_book_panel */
+
+.order_book_panel {
+    float: left;
+    width: 620px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin-left: 2px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    height: 347px;
+}
+.order_book_panel .order_book_header,
+.trade_history_panel .trade_history_header {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 43px;
+    padding: 0 10px;
+    background-color: rgba(0,0,0,0.1);
+}
+.order_book_panel .title,
+.trade_history_panel .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+.order_trade_tabs {
+    display: none;
+    margin-top: 2px;
+    border-bottom: 1px solid hsla(206,8%,82%,.2);
+}
+.order_tab,
+.trade_tab {
+    margin-bottom: -1px;
+    padding-bottom: 1px;
+    font-size: 11px;
+    font-weight: bold;
+    color: hsla(206,8%,82%,.6);
+    cursor: pointer;
+    float: left;
+}
+.trade_tab {
+    margin-left: 10px;
+}
+.order_tab {
+    color: white;
+}
+.order_book_panel .order_book_content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.order_book_panel .table_head {
+    display: flex;
+    padding: 6px 10px 12px 0;
+    border-bottom: 1px solid hsla(206,8%,82%,.15);
+    font-weight: bold;
+    text-align: right;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.order_book_panel .table_content {
+    position: relative;
+    display: flex;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.order_book_panel .wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: auto;
+}
+.order_book_panel .aggregation {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 3px 0;
+    border-top: 1px solid hsla(0,0%,100%,.2);
+    border-right: none;
+    border-left: none;
+    background: rgba(0, 0, 0, 0.4);
+    width: 620px;
+}
+.order_book_panel .sell_market_size {
+    width: 15%;
+    text-align:right;
+}
+.order_book_panel .buy_market_size {
+    width: 15%;
+    text-align:left;
+}
+.order_book_panel .sell_price,
+.order_book_panel .buy_price {
+    width: 18%;
+}
+.order_book_panel .sell_price {
+    text-align:right;
+}
+.order_book_panel .buy_price {
+    text-align:left;
+}
+.order_book_panel .sell_my_size,
+.order_book_panel .buy_my_size {
+    width: 15%;
+    text-align:center;
+}
+.order_book_panel .blank {
+    width: 4%;
+}
+.order_book_panel .aggregation .column {
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+.order_book_panel .aggregation .buttons {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+.order_book_panel .aggregation .text {
+    padding-left: 10px;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-align: left;
+    color: hsla(206,8%,82%,.75);
+}
+.order_book_panel .aggregation .value {
+    flex: 1;
+    padding-right: 3px;
+    font-weight: 700;
+    text-align: right;
+    color: hsla(206,8%,82%,.75);
+}
+.order_book_panel .aggregation_dec {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3E-%3C/title%3E%3Cg fill='%23FFF' fill-rule='evenodd'%3E%3Cpath d='M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 2C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10z'/%3E%3Cpath d='M16 9H4v2h12V9z'/%3E%3C/g%3E%3C/svg%3E");
+    width: 13px;
+    height: 13px;
+    margin-right: 10px;
+    background-color: transparent;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: .6;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: all;
+}
+.order_book_panel .aggregation_dec:hover {
+    color:#fff;
+}
+.order_book_panel .aggregation_inc {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EOval 1 + Line + Line Copy%3C/title%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 2C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10z' fill='%23FFF'/%3E%3Cpath d='M10 5.273v9.454M15 10H5' stroke='%23FFF' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E");
+    width: 13px;
+    height: 13px;
+    margin-right: 10px;
+    background-color: transparent;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: .6;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: all;
+}
+.trade_history_panel {
+    width: 620px;
+    height: 312px;
+    position: relative;
+    right: 0;
+    margin-top: 2px;
+    margin-left: 2px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    float:left;
+}
+.trade_history_panel .table_header {
+    display: flex;
+    width: 100%;
+    padding-right: 10px;
+    min-height: 29px;
+    padding: 6px 0;
+    border-bottom: 1px solid hsla(0,0%,100%,.2);
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.trade_history_panel .trade_size {
+    width: 30%;
+    text-align: right;
+}
+.trade_history_panel .price {
+    width: 40%;
+    text-align: center;
+}
+.trade_history_panel .time {
+    width: 30%;
+    text-align: left;
+}
+.trade_history_panel .table_content {
+    position: relative;
+    display: flex;
+    min-height: 0;
+    height: 242px;
+    overflow:hidden;
+}
+.trade_history_panel .wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow:auto;
+}
+.middle_panel {
+    float:left;
+}
+.price_chart_panel {
+    position: relative;
+    width: 100%;
+    height:661px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 0 0 0;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    float: left;
+}
+.price_chart_panel .price_chart_header {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 43px;
+    padding: 0 10px;
+    background-color: rgba(0,0,0,0.1);
+}
+.price_chart_panel .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+.open_orders_panel {
+    width: 100%;
+    margin: 2px 2px 0 0;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    float: left;
+}
+.open_orders_panel .open_orders_header, 
+.fills_panel .open_orders_header {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 43px;
+    padding: 0 10px;
+    background-color: rgba(0,0,0,0.1);
+}
+.open_orders_panel .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+.open_fill_tabs {
+    display: none;
+    margin-top: 2px;
+    border-bottom: 1px solid hsla(206,8%,82%,.2);
+}
+.open_tab,
+.fill_tab {
+    margin-bottom: -1px;
+    padding-bottom: 1px;
+    font-size: 11px;
+    font-weight: bold;
+    color: hsla(206,8%,82%,.6);
+    cursor: pointer;
+}
+.fill_tab {
+    margin-left: 10px;
+}
+.open_tab {
+    color: white;
+}
+.open_orders_panel .open_orders_content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.open_orders_panel .table_head {
+    display: flex;
+    padding: 6px 10px 6px 0;
+    border-bottom: 1px solid hsla(206,8%,82%,.15);
+    font-weight: bold;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.open_orders_panel .table_content {
+    position: relative;
+    display: flex;
+    min-height: 0;
+    overflow:hidden;
+}
+.open_orders_panel .wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow:auto;
+}
+.open_orders_panel .open_orders_content .size,
+.open_orders_panel .open_orders_content .fee,
+.open_orders_panel .open_orders_content .time,
+.open_orders_panel .open_orders_content .status,
+.open_orders_panel .open_orders_content .filled,
+.open_orders_panel .open_orders_content .price {
+    width: 15%;
+}
+.open_orders_panel .open_orders_content .order_type {
+    width: 10%;
+}
+.fills_panel {
+    width: 620px;
+    position: relative;
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    float: right;
+}
+.fills_panel .fills_header {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 43px;
+    padding: 0 10px;
+    background-color: rgba(0,0,0,0.1);
+}
+.fills_panel .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+.fills_panel .table_head {
+    display: flex;
+    padding: 6px 10px 6px 0;
+    border-bottom: 1px solid hsla(206,8%,82%,.15);
+    font-weight: bold;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+.fills_panel .table_content {
+    position: relative;
+    display: flex;
+    min-height: 0;
+    overflow:hidden;
+}
+.fills_panel .wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow:auto;
+}
+.fills_panel .fills_content .size,
+.fills_panel .fills_content .price,
+.fills_panel .fills_content .fee,
+.fills_panel .fills_content .time,
+.fills_panel .fills_content .status {
+    width: 20%;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  background-color: #f5f5f5;
+}
+.trade_btn,
+.book_btn,
+.charts_btn,
+.orders_btn {
+    width:25%;
+    cursor: pointer;
+    padding: 15px 0 15px 0;
+    font-weight: bold;
+    border-right: 1px solid hsla(0,0%,100%,.5);
+    float:left;
+}
+.history_btn {
+    border-right: 0px solid;
+}
+.footer {
+    background-color: #1d1d1d;
+    border-top: 1px solid hsla(0,0%,100%,.5);
+    text-align: center;
+    display: none;
+}
+
+.deposit_bg {
+    position: absolute;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.deposit_dlg {
+    position: absolute;
+    width: 240px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: #333 2px 2px 10px;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -120px;
+    margin-top: -120px;
+    background: #fff;
+    z-index: 2;
+}
+.font_style_1 {
+    margin-bottom: 5px;
+    font-weight: 700;
+    color : #676767;
+}
+#btn_deposit_ok {
+    width: 95px;
+} 
+#btn_deposit_cancel {
+    width: 95px;
+    float: right;
+}
+@media (max-width: 1473px) {
+    .price_chart_panel {
+        height: 310px;
+    }
+    .order_book_panel, 
+    .trade_history_panel {
+        margin-top: 2px;
+        margin-left: 0px;
+        width: 100%;
+    }
+    .order_book_panel .aggregation {
+        width: 100%;
+    }
+    .trade_history_panel {
+        display: none;
+    }
+    .order_trade_tabs {
+        display: flex;
+    }
+    .open_orders_panel,
+    .fills_panel {
+        width: 100%;
+    }    
+    .open_orders_panel {
+        margin: 2px 0 0 0;
+    }
+    .fills_panel {
+        display: none;
+    }
+    .open_fill_tabs {
+        display: flex;
+    }
+}
+@media (max-width: 749px) {
+    .middle_panel,
+    .bottom_panel {
+        display: none;
+    }
+    .sidebar,
+    .sidebar .margin,
+    .sidebar .orderform,
+    .middle_panel,
+    .price_chart_panel {
+        width: 100%;
+    }
+    .footer {
+        display: flex;
+        z-index: 2;
+    }
+    .trade_info_bar {
+        display: none;
+    }
+}

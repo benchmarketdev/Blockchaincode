@@ -1,0 +1,7 @@
+.panel-group .panel+.panel {
+    margin-top: 1px;
+}
+.nav-link{
+    width:100%;
+    display: block;
+}

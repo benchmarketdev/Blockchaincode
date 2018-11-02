@@ -1,0 +1,688 @@
+/* ======= define font family from file ====== */
+@font-face {
+    font-family: Releway-ExtraBold;
+    src: url('../fonts/Raleway-ExtraBold.ttf')
+}
+@font-face {
+    font-family: Releway-Bold;
+    src: url('../fonts/Raleway-Bold.ttf')
+}
+@font-face {
+    font-family: Raleway-Regular;
+    src: url('../fonts/Raleway-Regular.ttf')
+}
+@font-face {
+    font-family: Baskerville-Italic;
+    src: url('../fonts/Baskerville-Italic.ttf')
+}
+@font-face {
+    font-family: Baskerville;
+    src: url('../fonts/baskvl.ttf')
+}
+/*=============== global ==================*/
+html {
+	
+	background: #fff;
+}
+body{
+	background: #fff;
+	color:#3c3c3c;
+	font-family: Raleway-Regular;
+}
+.c-nav{
+	background: #383838;
+	color: #ccc;
+	position: absolute;
+	width: 320px;
+	font-family: Releway-Bold;
+	z-index: 1;
+	height: 100%;
+}
+.menu-logo{
+	width: 100%;
+	position: relative;
+	text-align: center;
+	height: 80px;
+	border-bottom: 1px solid #555;
+}
+.menu-logo img{
+	width: 180px;
+    margin-top: 14px;
+}
+.menu-item-sel{
+	background: #c7c7c7;
+	color:#333;
+}
+.menu-item:hover{
+	background: rgba(255,255,255,0.3);
+	color: #fff;
+}
+.menu-item{
+	width: 100%;
+	height: 60px;
+	border-bottom: 1px solid #555;
+	position: relative;
+	cursor: pointer;
+}
+.menu-item-icon{
+	float: left;
+	width: 30px;
+	margin-left: 10px;
+	font-size: 20px;
+	margin-top: 15px;
+}
+.menu-item-title{
+	float: left;
+	margin-top:20px;
+	letter-spacing: 1px;
+}
+.menu-item-arrow{
+	float: right;
+	margin-top: 22px;
+    font-size: 10px;
+    margin-right: 16px;
+}
+
+.div_body{
+	position: relative;
+	background: #fff;
+	padding-left: 320px;
+}
+.div_body_top{
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	height: 80px;
+}
+.div_body_top_title{
+	font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-left: 20px;
+    padding-top: 20px;
+}
+/*=========================================*/
+.t-center{
+	text-align: center;
+}
+.t-left{ 
+	text-align: left;
+}
+.c-title{ 
+	font-family: Baskerville-Italic;
+}
+.clear{
+	clear: both;
+}
+.bottom-line { /* green thin line */
+	width:350px;
+	height:10px;
+	border-bottom: 1px solid #88a93d;
+	display: inline-block;
+}
+section img{
+	max-width: 100%;
+}
+.down-arrow{
+	position: fixed;
+	z-index:999;
+	bottom: 100px;
+	left: 50%;
+	margin-left: -28px;
+	cursor: pointer;
+	color: #3c3c3c;
+	text-decoration: none;
+}
+/*===============header menu==================*/
+.c-header{
+	background-color: #fff; /* header background color */
+	height: 50px;  /* header height */
+	position: fixed;  /* header fixed */
+	top: 0px;
+	left: 0px;
+	bottom:0px;
+	z-index: 10;
+	width: 100%;
+	text-align: center;
+}
+.c-header nav{
+	float: none;
+	display: inline-block;
+}
+.c-header nav ul li a.menu-item-sel{
+	background:transparent;
+	color:#88a93d;   /* color of menu item selected, for now it is green */
+}
+.c-header nav ul li a{
+	background:transparent !important;
+	color:#3c3c3c;
+	font-family: Releway-Bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: 3px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.c-header nav ul li a:hover{
+	background:transparent;
+	color:#88a93d;
+}
+
+/*================ main feature ===================*/
+.c-main{
+	background:#f7f7ed;
+	border-left: 50px solid #fff;
+	border-right: 50px solid #fff;
+	padding-top: 50px;
+}
+.c-main:after { /* show bottom white bar*/
+	content: '';
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	width: 100%;
+	height: 50px;
+	background-color: #fff;
+}
+.c-logo{ /* ===== logo ========= */
+	border:3px solid #88a93d;
+	color:#88a93d;
+	font-family: Releway-ExtraBold;
+	text-transform: uppercase;
+	width: 200px;
+	padding: 10px 0px;
+	font-size: 16px;
+	margin: auto;
+	margin-bottom: 50px;
+	letter-spacing: 1px;
+}
+
+/*************** style of selction tag (every page) ********************/
+.c-main section{
+	position: relative;
+	padding-right: 50px;
+	padding-left: 50px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+/*---------- top, bottom padding on every page-------------*/
+.c-main section.s-home{
+	padding-bottom: 100px;
+}
+.c-main section.s-about1,
+.c-main section.s-about2,
+.c-main section.s-about3,
+.c-main section.s-product,
+.c-main section.s-buy,
+.c-main section.s-contact{
+	padding-top: 150px;
+	padding-bottom: 150px;
+}
+.c-main section.s-contact{
+	padding-top: 250px;
+	padding-bottom: 100px;
+}
+/*-------------- end ----------*/
+
+/*========= style on home page ========*/
+.c-home-title{
+	font-size: 90px; /* font size of title on home page */
+	margin-bottom: 50px;
+	line-height: 90px;
+}
+.c-home-img{
+	margin:auto;
+	margin-top: 20px;
+}
+
+/*========= style on about page ========*/
+.col-cs-10{
+	max-width: 926px; /* fixed width on about2, about3 page when resize */
+	margin:auto;
+}
+.col-cs-11{
+	max-width: 1100px; /* width to fix whole width of 3 images on about2 page */
+	margin:auto;
+}
+.c-about1-title, .c-about2-title, .c-about3-title{
+	font-size: 42px;  /* font size of title on about page */
+	margin-top: 32px;
+}
+.c-about2-img{
+	margin-bottom: 50px;
+}
+.c-about3-title{
+	margin-top: 50px;
+}
+.c-about3-img{
+	margin-bottom: 40px;
+}
+/*============= end ============*/
+
+/*========= style on product page ========*/
+.c-product-title{
+	font-family: Raleway-Regular;
+	font-size: 34px;  /* font size of title on product page */
+	text-transform: uppercase;
+	letter-spacing: 4px; /* every letter's spacing of title on product page */
+	margin-bottom: 80px;
+}
+/*============== style on buy page ========*/
+.s-buy, .c-buy-title, .buy-desc{
+	font-family: Raleway-Regular;
+}
+.c-buy-title{
+	font-size: 32px; /* font size of title*/
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	margin-bottom: 20px;
+}
+.s-buy .c-logo{
+	margin-bottom: 100px;
+}
+.buy-section{ 
+	margin-top:20px;
+	margin-bottom:40px;
+}
+.buy-title{ /* style of address title on every position marked on map */
+	font-family: Releway-Bold;
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.buy-desc{ /* style of address on every position marked on map */
+	font-size: 18px;
+}
+#map{ /* style of map div */
+	max-height: 500px;
+}
+#map img{
+	max-height: 500px;
+}
+.s-buy .bottom-line{
+	width: 100px;  /* set width of green thin line on buy page */
+}
+.buy-item{ /* slide item */
+	max-width: 550px;
+	max-height: 600px;
+	position: relative;
+	background-color:#fff;
+	height: 100%;
+	display: inline-block;
+	cursor:pointer;
+}
+.buy-item img{
+	padding:80px 50px;
+	padding-bottom: 60px;
+}
+.buy-item .div-item-title{ /* style of title on slide */
+	font-size: 50px;
+	line-height: 50px;
+	font-family: Baskerville-Italic;
+	margin-bottom: 70px;
+}
+.buy-item .div-item-desc{ /* style of description on slide */
+	font-family: Releway-Bold;
+	font-size: 18px;
+	display: block;
+	text-align: left;
+	padding-left: 80px;
+	padding-right: 80px;
+	padding-bottom: 60px;
+} 
+#grocery{
+	margin-bottom: 30px;
+}
+/*============= contact page ===========*/
+.s-contact{
+	background: #fff; /* background color of contact page*/
+}
+.c-contact-title{
+	font-family: Raleway-Regular;
+	font-size: 42px;  /* font size of title on contact page*/
+	text-transform: uppercase;
+	letter-spacing: 7px;
+}
+.c-contact-desc{ /* sentence in below of title*/
+	font-family: Baskerville-Italic;
+	font-size: 34px;
+}
+.form{ /* contact form */
+	margin-top:50px;
+	width: 500px;
+	display: inline-block;
+}
+.form input, 
+.form textarea{
+	padding:15px 15px;
+	border: 1px solid #ccc; /* border color of input and message box*/
+	border-radius: 3px;
+	width: 100%;
+	margin-bottom: 40px;
+}
+.form textarea{
+	height: 150px; /* height of message box*/
+}
+.form #bt-send{ /* style of 'send' button */
+	background: #88a93d;
+	border: 2px solid #fff;
+	box-shadow: #ccc 2px 2px 3px;
+	width:152px;
+	padding:13px;
+	text-align: center;
+	font-size: 22px;
+	color:#fff;
+	text-transform: uppercase;
+	font-family: Releway-Bold;/*Raleway-Regular;*/
+	display: inline-block;
+	cursor: pointer;
+	margin-bottom: 200px;
+	letter-spacing: 3px;
+}
+.contact-social{
+	margin-bottom: 50px;
+}
+.contact-social a i{ /* color and size of every social icon*/
+	color:#3c3c3c;
+	font-size:20px;
+}
+.contact-social a{
+	margin:20px;
+	color: #3c3c3c;
+}
+.contact-social a:hover{
+	color: #3c3c3c;
+}
+.contact-footer{ /* style for copy right feature */
+	font-family: Baskerville;
+	font-size: 14px;
+	letter-spacing: 2px;
+}
+
+
+/* ======= customize carousel ====== style to customize the slide on product page */
+
+#product-carousel{
+	max-width: 1100px; /* set fixed width of slide on desktop*/
+	margin: auto;
+}
+#product-carousel-mobile{
+	max-width: 550px; /* set fixed width of slide on mobile*/
+	margin: auto;
+	display: none; /* hide the slide for mobile version on desktop */
+}
+.carousel,
+.carousel .item {
+  height: 440px; /* set initial height of slide, it is related to height of slide's image*/
+  background:#fff;
+}
+.carousel-control.left i,
+.carousel-control.right i{ /* style of next and previous button on slide */
+	width: 30px;
+	height: 30px;
+	margin-top: -10px;
+	font-size: 36px;
+	position: absolute;
+	top: 50%;
+	z-index: 5;
+	display: inline-block;
+}
+.carousel-control.left{ /* previous button */
+	background: transparent;
+	left: -60px; /* position of prev button */
+	width: 20px;
+	color: #3c3c3c;
+	text-shadow: none;
+	font-size: 22px;
+}
+.carousel-control.right{ /* next button */
+	background: transparent;
+	right: -31px; /* position of next button */
+	width: 20px;
+	color: #3c3c3c;
+	text-shadow: none;
+}
+#product-carousel .carousel-inner .item img { /* set image's width to 50%, so that show 2 items on time on desktop */
+	width:50%;
+	display: inline-block;
+	float: left;
+}
+#product-carousel .carousel-inner .item .div-item { /* set item's width to 50%, so that show 2 items on time on desktop */
+	width:50%;
+	display: inline-block;
+	float: left;
+	height: 100%;
+	background-color: #fff;
+}
+.carousel-inner .item .div-item .div-item-title{ /* style of title on slide */
+	font-size: 30px;
+	letter-spacing: 4px;
+	font-family: Raleway-Regular;
+	margin-top:50px;
+	margin-bottom: 20px;
+}
+.carousel-inner .item .div-item .div-item-desc{ /* style of description on slide */
+	width:55%;
+	font-family: Baskerville-Italic;
+	font-size: 20px;
+	display: inline-block;
+	margin-bottom: 40px;
+	text-align: left;
+} 
+.bt-buy{ /* style of buy button on slide */
+	background: #eae9e1;
+	color: #88a93d;
+	font-size: 22px;
+	font-family: Releway-Bold;
+	letter-spacing: 3px;
+	width: 152px;
+	padding:13px;
+	display: inline-block;
+	cursor: pointer;
+}
+/*==============================*/
+
+
+
+/*=========== because the text of product slide is overflow when window is resized, set font styles ======= */
+@media (max-width: 1300px) {
+#product-carousel .carousel-inner .item .div-item .div-item-title{
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+#product-carousel .carousel-inner .item .div-item .div-item-desc{
+	line-height: 20px;
+	width: 80%;
+	margin-bottom: 20px;
+}
+.c-contact-title{
+	font-size: 32px; 
+	letter-spacing: 3px;
+}
+.c-contact-desc{
+	font-size: 26px;
+}
+}
+
+@media (max-width: 890px) {
+#product-carousel .carousel-inner .item .div-item .div-item-title{
+	margin-top: 20px;
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+#product-carousel .carousel-inner .item .div-item .div-item-desc{
+	line-height: 16px;
+	width: 90%;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+}
+
+/*================ style for mobile(pad, phone) =============*/
+@media (max-width: 767px) {
+
+.down-arrow{
+	display:none !important;
+}
+.bb{ /* menu button on mobile */
+	font-family: Releway-Bold;
+	font-size: 14px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color:#88a93d;
+}
+.c-main:after{ 
+	height: 0px; /* hide bottom white bar on mobile*/
+}
+.c-main{ /* hide left, right white bar on mobile*/
+	border-left: 0px;
+	border-right: 0px;
+}
+/* set title's font-size smaller on mobile */
+.c-home-title{ 
+	font-size: 60px;
+	line-height: 60px;
+	margin-bottom: 20px;
+	margin-top: -20px;
+}
+.c-about1-title, .c-about2-title, .c-about3-title{
+	font-size: 28px;
+}
+.c-contact-title{
+	letter-spacing: 3px;
+}
+/* set form to full width on mobile */
+.form{
+	width: 100%;
+}
+.col-xs-4{ /* set every image's width to 100% on about2 page */
+	width: 100%;
+}
+.c-header nav{ 
+	width: 100%;
+}
+.navbar-toggle{ /* menu button's style*/
+	float: none;
+	margin-right: 0px;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 10px;
+	border-bottom: 1px solid #f7f7ed;
+	height: 50px;
+	width: 100%;
+}
+.navbar-collapse{ /* the background color of full down menu */
+	background-color: rgba(255,255,255,0.9);
+	margin-top:0px;
+	
+}
+.navbar-collapse li{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+/* font style the text on slide */
+#product-carousel .carousel-inner .item .div-item .div-item-title{
+	font-size: 18px;
+}
+#product-carousel .carousel-inner .item .div-item .div-item-desc{
+	width: 90%;
+	font-size: 14px;
+	line-height: 14px;
+}
+#product-carousel-mobile .carousel-inner .item .div-item .div-item-desc{
+	width: 80%;
+	margin-bottom: 10px;
+}
+#product-carousel-mobile .carousel-inner .item{
+	float: left;
+}
+/*    
+.carousel-control.left{
+	left: -35px;
+}
+.carousel-control.right{
+	right: -6px;
+}*/
+#product-carousel-mobile{
+	display: inline-block; /* show the slide for mobile version */
+}
+#product-carousel{ /* hide the slide for mobile version */
+	display: none;
+}
+
+}
+
+/* ============= some style on only phone ==========*/
+@media (max-width: 499px) {
+
+.c-home-img{
+	max-width: 40%;
+}
+.c-main section{
+	padding-right: 50px;
+	padding-left: 50px;
+}
+.buy-title, 
+.buy-desc{
+	font-size: 14px;
+}
+.c-main section.s-home{
+	padding-bottom: 50px;
+}
+.c-main section.s-about1,
+.c-main section.s-about2,
+.c-main section.s-about3,
+.c-main section.s-product,
+.c-main section.s-buy,
+.c-main section.s-contact{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.c-main section.s-contact{
+	padding-bottom: 20px;
+}
+.c-home-title{
+	font-size: 40px;
+	line-height: 40px;
+}
+.c-about1-title, .c-about2-title, .c-about3-title{
+	font-size: 18px;
+}
+.c-buy-title,
+.c-contact-title,.c-product-title{
+	font-size: 28px;
+}
+.form input, .form textarea{
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.form #bt-send{
+	margin-bottom: 50px;
+}
+#product-carousel-mobile .carousel-inner .item .div-item .div-item-title{
+	width: 80%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: inline-block;
+	font-size: 22px;
+}
+#product-carousel-mobile .carousel-inner .item .div-item .div-item-desc{
+	font-size: 18px;
+	line-height: 18px;
+	width: 80%;
+}
+.buy-item .div-item-title{ 
+	font-size: 40px;
+}
+.buy-item .div-item-desc{ 
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+}
+.bottom-line {
+	width: 250px;
+}
+
+}

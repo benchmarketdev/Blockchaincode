@@ -1,0 +1,14 @@
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+npm-debug.log
+
+.idea
+node_modules
+atlassian-ide-plugin.xml
