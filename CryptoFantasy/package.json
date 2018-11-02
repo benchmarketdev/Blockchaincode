@@ -1,0 +1,47 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+        "axios": "^0.16.2",
+        "babel-preset-react": "^6.23.0",
+        "bootstrap-sass": "^3.3.7",
+        "cross-env": "^5.0.1",
+        "jquery": "^3.1.1",
+        "laravel-mix": "^1.0",
+        "less": "^3.0.2",
+        "less-loader": "^4.1.0",
+        "lodash": "^4.17.4",
+        "react": "^15.4.2",
+        "react-dom": "^15.4.2"
+    },
+    "dependencies": {
+        "bignumber.js": "^6.0.0",
+        "crypto-js": "^3.1.9-1",
+        "eth-lightwallet": "^3.0.1",
+        "ethereum-contracts": "^1.0.0",
+        "ethereumjs-tx": "^1.3.4",
+        "ethereumjs-util": "^5.1.5",
+        "ethers": "^2.2.6",
+        "etherscan-api": "^8.0.4",
+        "ethjs": "^0.3.3",
+        "ethjs-contract": "^0.1.9",
+        "ethjs-query": "^0.3.3",
+        "fs": "0.0.1-security",
+        "laravel-echo": "^1.3.5",
+        "pusher-js": "^4.2.2",
+        "react-router": "^4.2.0",
+        "request": "^2.83.0",
+        "truffle": "^4.1.0",
+        "truffle-contract": "^3.0.4",
+        "web3": "^1.0.0-beta.33",
+        "xss": "^0.3.7"
+    }
+}

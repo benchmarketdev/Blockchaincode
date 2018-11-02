@@ -1,0 +1,59 @@
+body{
+font-family:"Arial", sans-serif;
+}
+
+.zInputWrapper{
+    background-color:rgba(0,0,0,0.7);
+    padding: 4px;
+    margin: 2px;
+    border-radius:12px;
+    display:inline-block;
+}
+
+.zInput{
+    display:inline-block;
+    width: 200px;
+    height:50px;
+    margin:4px;
+    padding: 12px;
+    text-align:center;
+    cursor:pointer;
+    color: white;
+    border-radius:10px;
+    font-size: 18px;
+    overflow:hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: linear-gradient(#484e55, #3a3f44 60%, #313539);
+    background-repeat: no-repeat;
+    filter: none;
+    border: 1px solid rgba(0,0,0,0.6);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+
+.zCheckbox1{
+    color: white;
+    border: rgba(0,0,0,0.6) 1px solid;
+}
+.zCheckbox{
+    color: #000099;
+    border: #000099 1px solid;
+}
+
+.zSelected{
+    color: white;
+    background-image: linear-gradient(#020202, #101112 40%, #191b1d);
+    background-repeat: no-repeat;
+    filter: none;
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.zSelected.zCheckbox{
+    background-color: #000099;
+
+}

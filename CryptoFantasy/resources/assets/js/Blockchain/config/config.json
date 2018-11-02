@@ -1,0 +1,14 @@
+{
+  "ethMainProvider": "https://mainnet.infura.io",
+  "infura_main_token": "BpOS6wkLpkJa4S9oINg5",
+  "etherscanNetwork": "homestead",
+  "etherscanApiKey": "GN7T7U7BSCIT5M7FEETAF751YUQQJ5UCHM",
+  
+  "ethLiveProvider": "https://myetherapi.com/eth",
+  "ethTestProvider": "https://ropsten.infura.io/QeKwoJN0nwhbcZDhvxGR",
+  "contractAddress": "0xCE5b4AcC8B14F2421A9682004134397E83A99454",
+  
+  "ethProviderType": "test",
+  "gasPrice": 300000
+}
+
